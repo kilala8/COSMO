@@ -313,7 +313,7 @@ h1 {
 
 .nav-buttons {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 13px;
   margin-top: 25px;
 }
@@ -359,6 +359,8 @@ h1 {
   grid-column: 1 / -1;
   --btn-color: #ffb85c;
 }
+
+.nav-button.wide:nth-child(4) { --btn-color: #b68cff; }
 
 .sub-links {
   display: flex;
@@ -784,11 +786,11 @@ footer {
   </div>
 
   <nav class="nav-buttons" aria-label="メインメニュー">
-    <a class="nav-button" href="mori.html">🌳 森の小さなレストラン</a>
-    <a class="nav-button" href="game.html">⭐️ あそび場</a>
-    <a class="nav-button" href="oekaki.html">🎨 お絵描き</a>
     <a class="nav-button" href="hello.html">🪐 HELLO</a>
-    <a class="nav-button wide" href="nikki.html">📖 にーとの日記</a>
+    <a class="nav-button" href="game.html">⭐️ あそび場</a>
+    <a class="nav-button" href="mori.html">🌳 森の小さなレストラン</a>
+    <a class="nav-button wide" href="oekaki.html">🎨 お絵描き 🖍️</a>
+    <a class="nav-button wide" href="nikki.html">📖 にーとの日記 ✏️</a>
   </nav>
 
   <div class="sub-links">
