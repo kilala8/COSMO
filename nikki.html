@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#070720">
 <title>KINOKO-BLOG</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script>
 window.twttr = (function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
@@ -44,18 +44,24 @@ html {
   scroll-behavior: smooth;
 }
 
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   color: #f8edff;
   background-color: var(--bg);
-  background-image:
-    var(--neon-tile);
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 408px 408px;
   font-family:
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
@@ -1388,6 +1394,7 @@ button.yt-facade {
 </head>
 
 <body>
+<div id="background-image" aria-hidden="true"></div>
 <div id="mycelium" aria-hidden="true"></div>
 <div id="stars" aria-hidden="true"></div>
 <canvas id="spore-canvas" aria-hidden="true"></canvas>
@@ -1474,6 +1481,7 @@ button.yt-facade {
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 "use strict";
 

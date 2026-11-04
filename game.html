@@ -29,18 +29,24 @@ html {
   scroll-behavior: smooth;
 }
 
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
   color: #f8edff;
   background-color: var(--bg);
-  background-image:
-    var(--neon-tile);
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 408px 408px;
   font-family:
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
@@ -553,6 +559,7 @@ h1 {
 </head>
 
 <body>
+<div id="background-image" aria-hidden="true"></div>
 <div id="mycelium" aria-hidden="true"></div>
 <div id="stars" aria-hidden="true"></div>
 <canvas id="spore-canvas" aria-hidden="true"></canvas>
