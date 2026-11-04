@@ -621,6 +621,166 @@
     animation: fluffy-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
+
+.page {
+  width: min(1040px, 93%);
+  margin: 0 auto;
+  padding: 55px 0 65px;
+}
+
+.page-intro { text-align: center; }
+.page-intro .eyebrow { margin-top: 18px; }
+
+.big-frame {
+  --frame-x: 22px;
+  --frame-y: 30px;
+  padding: var(--frame-y) var(--frame-x);
+  border: 2px solid #ff7ad9;
+  border-radius: 24px;
+  background: rgba(8, 6, 32, 0.42);
+  box-shadow:
+    0 0 15px #ff7ad988,
+    0 0 35px #ff3dc844,
+    inset 0 0 25px #b68cff33;
+  backdrop-filter: blur(3px);
+  position: relative;
+  isolation: isolate;
+  animation: frameBorderShift 8s linear infinite;
+}
+
+.big-frame::before,
+.big-frame::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.big-frame::before {
+  box-shadow:
+    0 0 22px 3px #ff7ad9,
+    0 0 52px 6px #ff3dc8aa,
+    inset 0 0 30px #ff7ad966;
+  animation: frameGlowA 3.4s ease-in-out infinite alternate;
+}
+
+.big-frame::after {
+  box-shadow:
+    0 0 22px 3px #4de1ff,
+    0 0 52px 6px #b68cffaa,
+    inset 0 0 30px #4de1ff55;
+  animation: frameGlowB 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes frameGlowA { from { opacity: 0.35; } to { opacity: 1; } }
+@keyframes frameGlowB { from { opacity: 1; } to { opacity: 0.25; } }
+@keyframes frameBorderShift {
+  0%   { border-color: #ff7ad9; }
+  33%  { border-color: #b68cff; }
+  66%  { border-color: #4de1ff; }
+  100% { border-color: #ff7ad9; }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 25px 0 40px; }
+  .big-frame { --frame-x: 14px; --frame-y: 22px; padding: 22px 14px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-frame, .big-frame::before, .big-frame::after { animation: none !important; }
+  .big-frame::before { opacity: 0.7; }
+  .big-frame::after { opacity: 0.4; }
+}
+
+.hero {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.hero-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: calc(var(--frame-y) * -1) calc(var(--frame-x) * -1) 14px;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  border-bottom: 2px solid rgba(255, 122, 217, 0.7);
+  box-shadow: 0 6px 18px rgba(255, 122, 217, 0.28);
+}
+
+.hero-bg {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-banner h1 {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(650px, 94%);
+  margin: 0;
+  line-height: 0;
+}
+
+.hero-banner .logo-link,
+.hero-banner .title-link {
+  display: block;
+  text-decoration: none;
+  transform: none;
+}
+
+.hero-banner .title-link:hover { transform: none; }
+
+.title-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  height: auto;
+  margin: 0 auto;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: neonBowaa 12s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.title-img:hover { transform: scale(1.03); }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out infinite;
+}
+
+@keyframes title-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(-3deg); }
+  60%  { transform: scale(0.93) rotate(2deg); }
+  80%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes neonBowaa {
+  0%   { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+  12.5% { filter: drop-shadow(0 0 10px #ff7ad9) drop-shadow(0 0 24px #ff3dc8) drop-shadow(0 0 46px #b68cff99); }
+  25%  { filter: drop-shadow(0 0 3px #4de1ffaa) drop-shadow(0 0 8px #00bfff66); }
+  37.5% { filter: drop-shadow(0 0 10px #4de1ff) drop-shadow(0 0 24px #00bfff) drop-shadow(0 0 46px #4de1ff99); }
+  50%  { filter: drop-shadow(0 0 3px #b6ff5caa) drop-shadow(0 0 8px #70f10066); }
+  62.5% { filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 24px #70f100) drop-shadow(0 0 46px #b6ff5c99); }
+  75%  { filter: drop-shadow(0 0 3px #b68cffaa) drop-shadow(0 0 8px #9d4edd66); }
+  87.5% { filter: drop-shadow(0 0 10px #b68cff) drop-shadow(0 0 24px #9d4edd) drop-shadow(0 0 46px #ffe84a88); }
+  100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+}
+
 </style>
 </head>
 
@@ -632,19 +792,30 @@
   </div>
 
   <main class="page">
-    <header>
-      <p class="eyebrow">KOKO WASHI NO HUNGI TENGOKU</p>
-      <a href="index.html" class="title-link" id="logoLink">
-        <h1><img src="1_files/illust.webp" alt="🖍️ ( ´ᯅ` ) 🎨" class="title-img" id="logoImg"></h1>
-      </a>
+    <section class="big-frame" aria-label="メインコンテンツ">
+    <header class="hero">
+      <div class="hero-banner">
+        <img src="1_files/back.cosmo.webp"
+             alt=""
+             aria-hidden="true"
+             class="hero-bg"
+             onerror="this.style.display='none'">
+        <h1>
+          <a href="index.html" class="logo-link title-link" id="logoLink" aria-label="トップへ戻る">
+            <img src="1_files/b_kilala.webp" alt="にーとの輝星（トップへ）" class="title-img" id="logoImg" decoding="async" draggable="false">
+          </a>
+        </h1>
+      </div>
+    </header>
 
+    <div class="page-intro">
+      <p class="eyebrow">KOKO WASHI NO HUNGI TENGOKU</p>
       <p class="subtitle">
         絵置き場です( ´ᯅ` )🎨<br>
         玉を転がしてみてね〜💫
       </p>
-
       <p class="hint">✧ THROW &amp; ROLL THE BALLS ✧</p>
-    </header>
+    </div>
 
     <section
       class="gallery"
@@ -659,6 +830,7 @@
         made of tiny spores &amp; STRANGE MATTARI THINGS ✧
       </p>
     </footer>
+    </section>
   </main>
 
   <div
