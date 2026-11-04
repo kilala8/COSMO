@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌸鼻くそわっしょい🌸 ✧ Neon Edition ✧</title>
+<style>
+  html,body{
+    margin:0;padding:0;overflow:hidden;height:100%;
+    background:linear-gradient(270deg,#070720,#1f0a2a,#0a2f38,#1a0a38,#070720);
+    background-size:1200% 1200%;
+    animation:g 30s ease infinite;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  @keyframes g{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  #back-link {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 3000;
+    background: rgba(255, 122, 217, 0.25);
+    color: #4de1ff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
+    border: 1px solid #4de1ff;
+    text-shadow: 0 0 8px #4de1ff;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  #back-link:hover {
+    transform: scale(1.05);
+    background: rgba(255, 122, 217, 0.45);
+    box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+  }
+
+  .snow{
+    position:absolute;pointer-events:none;font-size:22px;animation:snowfall linear forwards;
+    color: #4de1ff; text-shadow: 0 0 10px #4de1ff, 0 0 20px #ff7ad9;
+  }
+  @keyframes snowfall{
+    0%{transform:translateY(-100px) translateX(0) rotate(0deg);opacity:0}
+    10%{opacity:0.95}
+    100%{transform:translateY(calc(100vh + 100px)) translateX(var(--swing)) rotate(360deg);opacity:0}
+  }
+
+  .poop-container {
+    position:absolute; width: 30px; height: 30px; 
+    display: flex; align-items: center; justify-content: center;
+    will-change: transform; pointer-events: auto;
+  }
+
+  .poop-inner {
+    font-size: 24px; position: relative; z-index: 2; cursor: pointer;
+    filter: drop-shadow(0 0 8px var(--glow-color, #ff7ad9));
+  }
+
+  .poop-light {
+    position: absolute; width: 28px; height: 28px; border-radius: 50%;
+    filter: blur(10px);
+    z-index: 1; opacity: 0.9;
+  }
+
+  .face{
+    position:absolute;font-size:45px;color:#fff;
+    text-shadow:0 0 15px #ff7ad9, 0 0 30px #4de1ff;
+    pointer-events:none;z-index:100;
+  }
+</style>
+</head>
+<body>
+
+<a href="../game.html" id="back-link">( 👁️ _ 👁️ )戻る❓</a>
+
+<script>
+"use strict";
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.tagName === "IMG") {
+    e.preventDefault();
+  }
+});
+
+const poops = [];
+const neonGlowColors = ["#ff7ad9", "#4de1ff", "#b68cff", "#b6ff5c", "#ffe84a", "#ff36bd"];
+let mouseX = 0, mouseY = 0;
+let isMouseActive = false;
+
+for(let i=0; i<250; i++){ 
+  const container = document.createElement('div');
+  container.className = 'poop-container';
+  
+  const glowColor = neonGlowColors[Math.floor(Math.random() * neonGlowColors.length)];
+
+  const light = document.createElement('div');
+  light.className = 'poop-light';
+  light.style.backgroundColor = glowColor;
+  
+  const inner = document.createElement('div');
+  inner.className = 'poop-inner';
+  inner.style.setProperty('--glow-color', glowColor);
+  inner.innerText = '💩';
+
+  container.appendChild(light);
+  container.appendChild(inner);
+  
+  const p = {
+    el: container,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: Math.random() * 1.4 - 0.7,
+    vy: Math.random() * 1.4 - 0.7
+  };
+  
+  document.body.appendChild(container);
+  poops.push(p);
+}
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  isMouseActive = true;
+  clearTimeout(window.mouseTimer);
+  window.mouseTimer = setTimeout(()=> isMouseActive = false, 1000);
+});
+
+function snow(){
+  for(let i=0; i<4; i++){
+    const s = document.createElement('div');
+    s.className='snow';
+    s.innerText = ['❄','❅','❆','✴','✿','✨','✧'][Math.floor(Math.random()*7)];
+    s.style.left = Math.random() * window.innerWidth + 'px';
+    const dur = Math.random() * 8 + 10;
+    s.style.animationDuration = dur +'s';
+    s.style.setProperty('--swing', (Math.random() * 200 - 100) + 'px');
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), dur * 1000);
+  }
+}
+setInterval(snow, 800);
+
+function animate(){
+  poops.forEach(p => {
+    if(isMouseActive){
+      p.x += (mouseX - p.x) * 0.04;
+      p.y += (mouseY - p.y) * 0.04;
+    } else {
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+      if(p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+    }
+    p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, 0)`;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+document.addEventListener('click', e => {
+  if (e.target.id === 'back-link') return;
+
+  let hit = false;
+  poops.forEach(p => {
+    const dx = e.clientX - p.x;
+    const dy = e.clientY - p.y;
+    if(dx*dx + dy*dy < 4000) hit = true;
+  });
+
+  if(hit){
+    const f = document.createElement('div');
+    f.className='face';
+    f.innerText = Math.random() < 0.1 ? '( 👁️ _ 👁️ )' : '（ 👁️_ゝ👁️）✨';
+    f.style.left = e.clientX + 'px';
+    f.style.top = e.clientY + 'px';
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 800);
+  }
+});
+</script>
+</body>
+</html>

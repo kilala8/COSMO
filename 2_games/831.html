@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥬 草と虹色回転菊 🥬</title>
+<style>
+  :root {
+    --pink: #ff7ad9;
+    --cyan: #4de1ff;
+    --yellow: #ffe84a;
+    --purple: #b68cff;
+    --green: #b6ff5c;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: #070720;
+  }
+
+  body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  }
+
+  #click-counter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: var(--cyan);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--cyan);
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  #hint {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 10000;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: rgba(8, 6, 32, 0.6);
+    color: var(--cyan);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-shadow: 0 0 8px var(--cyan);
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  #hint.hide {
+    opacity: 0;
+  }
+
+  #back-link {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 15000;
+    background: rgba(255, 122, 217, 0.25);
+    color: #4de1ff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
+    border: 1px solid #4de1ff;
+    text-shadow: 0 0 8px #4de1ff;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+
+  #back-link:hover,
+  #back-link:focus-visible {
+    transform: scale(1.05);
+    background: rgba(255, 122, 217, 0.45);
+    box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+    outline: none;
+  }
+
+  .cabbage-container {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    left: min(var(--x), calc(100% - var(--size)));
+    top: min(var(--y), calc(100% - var(--size)));
+    border-radius: 50%;
+    cursor: grab;
+    touch-action: none;
+    z-index: 10;
+  }
+
+  .cabbage-container.physics {
+    left: 0;
+    top: 0;
+    animation: none;
+    will-change: transform;
+  }
+
+  .cabbage-container.grabbed,
+  .kiku.grabbed {
+    cursor: grabbing;
+    z-index: 50;
+  }
+
+  .cabbage-container.grabbed .cabbage {
+    transform: scale(1.1);
+  }
+
+  .cabbage-container:focus-visible {
+    outline: 2px dashed var(--cyan);
+    outline-offset: 6px;
+    border-radius: 50%;
+  }
+
+  .cabbage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 25px #4de1ff);
+    animation: cabbageTilt 4s ease-in-out infinite alternate;
+  }
+
+  .cabbage svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .lobe {
+    transform-box: view-box;
+    transform-origin: 50px 52px;
+    animation: lobeSway 4.5s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i, 0) * -0.9s);
+  }
+
+  @keyframes lobeSway {
+    0% { transform: rotate(-2.5deg) scale(0.99); }
+    100% { transform: rotate(2.5deg) scale(1.025); }
+  }
+
+  .veggie-pop {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 36px;
+    filter: drop-shadow(0 0 12px var(--pink)) drop-shadow(0 0 20px var(--cyan));
+    animation: popOut 1000ms cubic-bezier(0.12, 0.8, 0.32, 1.2) forwards;
+  }
+
+  @keyframes popOut {
+    0% { opacity: 1; transform: translate(-50%, -50%) translate(0, 0) scale(0.3) rotate(0deg); }
+    50% { opacity: 1; transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(1.3) rotate(var(--rot)); }
+    100% { opacity: 0; transform: translate(-50%, -50%) translate(calc(var(--tx) * 1.3), calc(var(--ty) + 40px)) scale(0.6) rotate(calc(var(--rot) * 1.5)); }
+  }
+
+  .kiku {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: var(--size, 120px);
+    height: var(--size, 120px);
+    border-radius: 50%;
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+    animation: bloomKiku 0.9s ease-out;
+  }
+
+  .kiku svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 5px var(--glow)) drop-shadow(0 0 14px var(--glow));
+  }
+
+  .kiku.leaving {
+    pointer-events: none;
+    animation: leaveKiku 0.6s ease-in forwards;
+  }
+
+  @keyframes bloomKiku {
+    0% { opacity: 0; scale: 0; }
+    100% { opacity: 1; scale: 1; }
+  }
+
+  @keyframes leaveKiku {
+    0% { opacity: 1; scale: 1; }
+    100% { opacity: 0; scale: 0.2; }
+  }
+
+  .giant-kiku {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(360px, 90vmin);
+    aspect-ratio: 1;
+    pointer-events: none;
+    z-index: 20;
+    transform: translate(-50%, -50%);
+    animation: giantSpin 1.2s linear infinite;
+  }
+
+  .giant-kiku svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 22px rgba(182, 140, 255, 0.8));
+  }
+
+  @keyframes giantSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .kiku-layer {
+    animation: kikuColorCycle 3s linear infinite;
+  }
+  .kiku-layer.l1 { animation-delay: 0s; }
+  .kiku-layer.l2 { animation-delay: -0.6s; }
+  .kiku-layer.l3 { animation-delay: -1.2s; }
+  .kiku-layer.l4 { animation-delay: -1.8s; }
+  .kiku-layer.l5 { animation-delay: -2.4s; }
+
+  @keyframes kikuColorCycle {
+    0% { fill: #ff2a5f; stroke: #ff7ad9; }
+    16% { fill: #b68cff; stroke: #d8b4fe; }
+    33% { fill: #2a6bff; stroke: #4de1ff; }
+    50% { fill: #00f0ff; stroke: #a1ffce; }
+    66% { fill: #b6ff5c; stroke: #ffe84a; }
+    83% { fill: #ffe84a; stroke: #ff2a5f; }
+    100% { fill: #ff2a5f; stroke: #ff7ad9; }
+  }
+
+  #reward-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(92vw, 520px);
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 30000;
+    background: rgba(8, 6, 32, 0.95);
+    border: 3px solid var(--pink);
+    box-shadow: 0 0 30px var(--pink), inset 0 0 20px var(--cyan);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  #reward-modal.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #reward-modal h1 {
+    font-size: 1.8rem;
+    color: var(--yellow);
+    text-shadow: 0 0 15px var(--yellow);
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+
+  #reward-modal .ratatouille {
+    font-size: 80px;
+    animation: bounce 1s infinite alternate;
+  }
+
+  #reward-modal .close-hint {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+  }
+
+  @keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
+  }
+
+  .rain-veggie {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 20000;
+    font-size: 42px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    animation: rainDown var(--duration) linear forwards;
+  }
+
+  @keyframes rainDown {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+  }
+
+  .c-1 { --size: 140px; --x: 15%; --y: 15%; animation: f1 12s infinite alternate ease-in-out; }
+  .c-2 { --size: 90px;  --x: 75%; --y: 10%; animation: f2 9s infinite alternate ease-in-out; }
+  .c-3 { --size: 120px; --x: 80%; --y: 65%; animation: f3 11s infinite alternate ease-in-out; }
+  .c-4 { --size: 85px;  --x: 12%; --y: 75%; animation: f4 10s infinite alternate ease-in-out; }
+  .c-5 { --size: 110px; --x: 48%; --y: 45%; animation: f5 13s infinite alternate ease-in-out; }
+  .c-6 { --size: 100px; --x: 42%; --y: 25%; animation: f6 11s infinite alternate ease-in-out; }
+  .c-7 { --size: 130px; --x: 30%; --y: 60%; animation: f7 14s infinite alternate ease-in-out; }
+  .c-8 { --size: 75px;  --x: 82%; --y: 35%; animation: f8 8s infinite alternate ease-in-out; }
+  .c-9 { --size: 115px; --x: 55%; --y: 80%; animation: f9 12s infinite alternate ease-in-out; }
+  .c-10{ --size: 95px;  --x: 8%;  --y: 50%; animation: f10 10s infinite alternate ease-in-out; }
+
+  @keyframes f1 { 0%{transform:translate(-20px,0);} 100%{transform:translate(30px,40px) rotate(10deg);} }
+  @keyframes f2 { 0%{transform:translate(0,0);} 100%{transform:translate(-40px,30px) rotate(-12deg);} }
+  @keyframes f3 { 0%{transform:translate(0,0);} 100%{transform:translate(-30px,-50px) rotate(8deg);} }
+  @keyframes f4 { 0%{transform:translate(0,0);} 100%{transform:translate(40px,-30px) rotate(-15deg);} }
+  @keyframes f5 { 0%{transform:translate(0,0);} 100%{transform:translate(-20px,30px) rotate(5deg);} }
+  @keyframes f6 { 0%{transform:translate(0,0);} 100%{transform:translate(30px,-20px) rotate(-8deg);} }
+  @keyframes f7 { 0%{transform:translate(0,0);} 100%{transform:translate(-40px,-30px) rotate(12deg);} }
+  @keyframes f8 { 0%{transform:translate(0,0);} 100%{transform:translate(-20px,40px) rotate(-10deg);} }
+  @keyframes f9 { 0%{transform:translate(0,0);} 100%{transform:translate(30px,-40px) rotate(6deg);} }
+  @keyframes f10{ 0%{transform:translate(0,0);} 100%{transform:translate(25px,25px) rotate(-5deg);} }
+
+  @keyframes cabbageTilt { 0%{scale:0.95; rotate:-5deg;} 100%{scale:1.05; rotate:5deg;} }
+
+  @media (prefers-reduced-motion: reduce) {
+    .giant-kiku { animation-duration: 8s; }
+    .kiku-layer { animation-duration: 12s; }
+    .lobe { animation-duration: 14s; }
+  }
+</style>
+</head>
+<body>
+
+  <div id="click-counter">🥬 CLICK: 0 (周期: 0/129)</div>
+
+  <div id="hint">✋ キャベツも菊も、ドラッグして投げると転がるよ</div>
+
+  <a href="../game.html" id="back-link">( 👁️ _ 👁️ )戻る❓</a>
+
+  <div id="reward-modal" role="dialog" aria-label="ご褒美">
+    <h1>おめでとう‼️<br>よく耐えましたね‼️<br>ご褒美のラタトイユです‼️</h1>
+    <div class="ratatouille">🍲✨</div>
+    <div class="close-hint">✦ タップして閉じる ✦</div>
+  </div>
+
+<script>
+  const CYCLE_LENGTH = 129;
+
+  const BLOOM_CLICKS = new Set([3, 5, 9, 13, 17, 25, 33, 41, 49, 65, 81, 97, 113, 129]);
+
+  const GIANT_KIKU_THRESHOLD = 21;
+
+  const MAX_KIKU = 24;
+
+  const FINALE_INTERVAL_MS = 10000;
+
+  const neonColors = ["#ff2a5f", "#2a6bff", "#ff7ad9", "#00f0ff", "#b6ff5c", "#ffe84a", "#b68cff"];
+  const veggies = ["🍅", "🫑", "🥕", "🥑", "🥖", "🥬", "🌽", "🍆"];
+
+  let totalClicks = 0;
+  let cycleClicks = 0;
+  let kikuCount = 0;
+  let giantKikuActive = false;
+  const kikuList = [];      
+
+  const counterEl = document.getElementById("click-counter");
+  const modal = document.getElementById("reward-modal");
+
+  const randomItem = (list) => list[Math.floor(Math.random() * list.length)];
+
+  const reduceMotion = window.matchMedia
+    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    : false;
+
+  const DAMPING = 1.1;
+  const RESTITUTION = 0.82;
+  const IDLE_SPEED = 10;
+  const ROLL_FACTOR = 0.7;
+  const MAX_THROW_SPEED = 3200;
+  const DRAG_THRESHOLD = 6;
+
+  const bodies = [];
+  const hintEl = document.getElementById("hint");
+
+  function addBody(el, x, y, size, spin) {
+    const body = {
+      el,
+      x, y,
+      vx: 0, vy: 0,
+      half: size / 2,
+      r: size * 0.46,
+      mass: size * size,
+      angle: 0,
+      spin: spin || 0,
+      phase: Math.random() * 100,
+      dragging: false,
+      removed: false,
+      suppressClick: false
+    };
+
+    el._body = body;
+    bodies.push(body);
+    attachDrag(body);
+    renderBody(body);
+    return body;
+  }
+
+  function removeBody(body) {
+    if (!body) return;
+    body.removed = true;
+    const i = bodies.indexOf(body);
+    if (i >= 0) bodies.splice(i, 1);
+  }
+
+  function renderBody(b) {
+    b.el.style.transform =
+      `translate(${(b.x - b.half).toFixed(1)}px, ${(b.y - b.half).toFixed(1)}px) rotate(${b.angle.toFixed(1)}deg)`;
+  }
+
+  function updateDragVelocity(b) {
+    const now = performance.now();
+    b.samples = b.samples.filter((s) => now - s.t < 100);
+
+    if (b.samples.length < 2) {
+      b.vx = 0;
+      b.vy = 0;
+      return;
+    }
+
+    const first = b.samples[0];
+    const last = b.samples[b.samples.length - 1];
+    const dt = (last.t - first.t) / 1000;
+
+    if (dt < 0.008) {
+      b.vx = 0;
+      b.vy = 0;
+      return;
+    }
+
+    let vx = (last.x - first.x) / dt;
+    let vy = (last.y - first.y) / dt;
+    const speed = Math.hypot(vx, vy);
+
+    if (speed > MAX_THROW_SPEED) {
+      vx *= MAX_THROW_SPEED / speed;
+      vy *= MAX_THROW_SPEED / speed;
+    }
+
+    b.vx = vx;
+    b.vy = vy;
+  }
+
+  function attachDrag(b) {
+    const el = b.el;
+
+    el.addEventListener("pointerdown", (e) => {
+      if (b.dragging || b.removed) return;
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+
+      b.dragging = true;
+      b.dragMoved = false;
+      b.suppressClick = false;
+      b.pointerId = e.pointerId;
+      b.grabDX = b.x - e.clientX;
+      b.grabDY = b.y - e.clientY;
+      b.startX = e.clientX;
+      b.startY = e.clientY;
+      b.samples = [{ t: performance.now(), x: e.clientX, y: e.clientY }];
+      b.vx = 0;
+      b.vy = 0;
+
+      try { el.setPointerCapture(e.pointerId); } catch (err) {}
+      el.classList.add("grabbed");
+    });
+
+    el.addEventListener("pointermove", (e) => {
+      if (!b.dragging || e.pointerId !== b.pointerId) return;
+
+      if (!b.dragMoved && Math.hypot(e.clientX - b.startX, e.clientY - b.startY) > DRAG_THRESHOLD) {
+        b.dragMoved = true;
+        hintEl.classList.add("hide");
+      }
+
+      if (b.dragMoved) {
+        b.x = e.clientX + b.grabDX;
+        b.y = e.clientY + b.grabDY;
+        b.samples.push({ t: performance.now(), x: e.clientX, y: e.clientY });
+      }
+    });
+
+    const release = (e) => {
+      if (!b.dragging || e.pointerId !== b.pointerId) return;
+
+      b.dragging = false;
+      el.classList.remove("grabbed");
+
+      if (b.dragMoved) {
+        updateDragVelocity(b);
+        b.suppressClick = true;
+      } else {
+        b.vx = 0;
+        b.vy = 0;
+      }
+    };
+
+    el.addEventListener("pointerup", release);
+    el.addEventListener("pointercancel", release);
+  }
+
+  function resolveCollisions() {
+    for (let i = 0; i < bodies.length; i++) {
+      for (let j = i + 1; j < bodies.length; j++) {
+        const a = bodies[i];
+        const b = bodies[j];
+        const minDist = a.r + b.r;
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq >= minDist * minDist) continue;
+
+        let dist = Math.sqrt(distSq);
+        let nx, ny;
+
+        if (dist < 0.01) {
+          const angle = Math.random() * Math.PI * 2;
+          nx = Math.cos(angle);
+          ny = Math.sin(angle);
+          dist = 0.01;
+        } else {
+          nx = dx / dist;
+          ny = dy / dist;
+        }
+
+        const invA = a.dragging ? 0 : 1 / a.mass;
+        const invB = b.dragging ? 0 : 1 / b.mass;
+        const invSum = invA + invB;
+        if (!invSum) continue;
+
+        const push = Math.max(minDist - dist - 0.5, 0) * 0.5 / invSum;
+        a.x -= nx * push * invA;
+        a.y -= ny * push * invA;
+        b.x += nx * push * invB;
+        b.y += ny * push * invB;
+
+        const vn = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny;
+        if (vn < 0) {
+          const impulse = -(1 + RESTITUTION) * vn / invSum;
+          a.vx -= impulse * invA * nx;
+          a.vy -= impulse * invA * ny;
+          b.vx += impulse * invB * nx;
+          b.vy += impulse * invB * ny;
+        }
+      }
+    }
+  }
+
+  function bounceOffWalls(b, W, H) {
+    if (W > b.r * 2) {
+      if (b.x < b.r) {
+        b.x = b.r;
+        if (b.vx < 0) b.vx = -b.vx * RESTITUTION;
+      } else if (b.x > W - b.r) {
+        b.x = W - b.r;
+        if (b.vx > 0) b.vx = -b.vx * RESTITUTION;
+      }
+    }
+
+    if (H > b.r * 2) {
+      if (b.y < b.r) {
+        b.y = b.r;
+        if (b.vy < 0) b.vy = -b.vy * RESTITUTION;
+      } else if (b.y > H - b.r) {
+        b.y = H - b.r;
+        if (b.vy > 0) b.vy = -b.vy * RESTITUTION;
+      }
+    }
+  }
+
+  function stepPhysics(dt, seconds) {
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+    const damp = 1 - Math.exp(-DAMPING * dt);
+
+    for (const b of bodies) {
+      if (b.dragging) {
+        updateDragVelocity(b);
+      } else {
+        const idleX = reduceMotion ? 0 : Math.cos(seconds * 0.35 + b.phase) * IDLE_SPEED;
+        const idleY = reduceMotion ? 0 : Math.sin(seconds * 0.27 + b.phase * 1.7) * IDLE_SPEED;
+
+        b.vx += (idleX - b.vx) * damp;
+        b.vy += (idleY - b.vy) * damp;
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+      }
+
+      const rolling = (b.vx / b.r) * (180 / Math.PI) * ROLL_FACTOR;
+      b.angle = (b.angle + (rolling + (reduceMotion ? 0 : b.spin)) * dt) % 360;
+    }
+
+    resolveCollisions();
+
+    for (const b of bodies) {
+      bounceOffWalls(b, W, H);
+      renderBody(b);
+    }
+  }
+
+  let lastFrame = performance.now();
+
+  function physicsLoop(now) {
+    const dt = Math.min((now - lastFrame) / 1000, 1 / 30);
+    lastFrame = now;
+    if (dt > 0) stepPhysics(dt, now / 1000);
+    requestAnimationFrame(physicsLoop);
+  }
+
+  requestAnimationFrame(physicsLoop);
+
+  const CAB_CX = 50, CAB_CY = 52;
+
+  function cabXY(x, y, deg) {
+    const t = deg * Math.PI / 180;
+    return [
+      CAB_CX + x * Math.cos(t) - y * Math.sin(t),
+      CAB_CY + x * Math.sin(t) + y * Math.cos(t)
+    ];
+  }
+
+  function polar(r, aDeg) {
+    const a = aDeg * Math.PI / 180;
+    return [r * Math.sin(a), -r * Math.cos(a)];
+  }
+
+  function lobeShape(R, wide, amp, phase, rot) {
+    const cy = -R * 0.55, ry = R * 0.5, rx = R * wide;
+    const N = 44;
+    const pts = [];
+
+    for (let i = 0; i < N; i++) {
+      const t = (i / N) * Math.PI * 2;
+      let x = rx * Math.sin(t);
+      let y = cy - ry * Math.cos(t);
+
+      const outer = (1 + Math.cos(t)) / 2;
+      const wave = amp * outer * Math.sin(t * 9 + phase * Math.PI / 180);
+      const nx = x / rx, ny = (y - cy) / ry;
+      const len = Math.hypot(nx, ny) || 1;
+      x += (nx / len) * wave;
+      y += (ny / len) * wave;
+
+      pts.push([x, y]);
+    }
+
+    return pts.map(([x, y], i) => {
+      const [px, py] = cabXY(x, y, rot);
+      return `${i ? "L" : "M"}${px.toFixed(1)},${py.toFixed(1)}`;
+    }).join(" ") + " Z";
+  }
+
+  function lobeVeins(R, rot) {
+    const P = (x, y) => cabXY(x, y, rot).map((v) => v.toFixed(1)).join(",");
+
+    let rib = `M${P(0, -R * 0.12)} L${P(0, -R * 0.95)}`;
+    let side = "";
+
+    [0.28, 0.43, 0.58, 0.72].forEach((f, i) => {
+      const len = R * (0.3 - i * 0.045);
+      [-1, 1].forEach((dir) => {
+        const y0 = -R * (f + (dir === 1 ? 0.05 : 0));
+        side += `M${P(0, y0)} Q${P(dir * len * 0.45, y0 - R * 0.02)} ${P(dir * len, y0 - R * 0.17)} `;
+      });
+    });
+
+    return { rib, side };
+  }
+
+  function buildLobes(count, R, wide, amp, rotOffset, jitter, fill, startIndex) {
+    let out = "";
+    for (let i = 0; i < count; i++) {
+      const rot = i * (360 / count) + rotOffset;
+      const shape = lobeShape(R, wide, amp, jitter + i * 30, rot);
+      const veins = lobeVeins(R, rot);
+
+      out += `<g class="lobe" style="--i:${startIndex + i}">
+        <path d="${shape}" fill="none" stroke="rgba(6,70,40,0.4)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="${shape}" fill="${fill}" stroke="rgba(214,255,206,0.65)" stroke-width="0.7" stroke-linejoin="round"/>
+        <path d="${veins.side}" fill="none" stroke="#f1ffd0" stroke-opacity="0.6" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="${veins.rib}" fill="none" stroke="#f4ffd8" stroke-opacity="0.85" stroke-width="1.7" stroke-linecap="round"/>
+      </g>`;
+    }
+    return out;
+  }
+
+  function buildCabbage(index) {
+    const jitter = index * 41;
+    const tilt = (index % 3) * 9;
+
+    const outer = buildLobes(5, 44, 0.54, 2.2, tilt, jitter, "url(#cabOuter)", 0);
+    const inner = buildLobes(5, 32, 0.56, 1.8, tilt + 36, jitter + 15, "url(#cabInner)", 5);
+
+    let wraps = "";
+    for (let k = 0; k < 3; k++) {
+      const rot = k * 120 + tilt;
+      const [x0, y0] = cabXY(-10, 3, rot);
+      const [cx, cy] = cabXY(-4, -12, rot);
+      const [x1, y1] = cabXY(9, -9, rot);
+      wraps += `M${x0.toFixed(1)},${y0.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${x1.toFixed(1)},${y1.toFixed(1)} `;
+    }
+
+    return `
+      <div class="cabbage">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="${CAB_CX}" cy="${CAB_CY}" r="36" fill="#157a44"/>
+          ${outer}
+          ${inner}
+          <circle cx="${CAB_CX}" cy="${CAB_CY}" r="15" fill="url(#cabHead)" stroke="rgba(214,255,206,0.6)" stroke-width="0.6"/>
+          <path d="${wraps}" fill="none" stroke="rgba(70,160,80,0.75)" stroke-width="0.9" stroke-linecap="round"/>
+          <ellipse cx="44" cy="46" rx="6.5" ry="3.6" transform="rotate(-30 44 46)" fill="#fff" fill-opacity="0.4"/>
+        </svg>
+      </div>
+    `;
+  }
+
+  document.body.insertAdjacentHTML("afterbegin", `
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <radialGradient id="cabOuter" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="46">
+          <stop offset="0" stop-color="#7fdc72"/><stop offset="0.6" stop-color="#34c05a"/><stop offset="1" stop-color="#1b9150"/>
+        </radialGradient>
+        <radialGradient id="cabInner" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="34">
+          <stop offset="0" stop-color="#d4ff9a"/><stop offset="0.6" stop-color="#8bee86"/><stop offset="1" stop-color="#4fd36b"/>
+        </radialGradient>
+        <radialGradient id="cabHead" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="16">
+          <stop offset="0" stop-color="#fbffdc"/><stop offset="0.7" stop-color="#d3ff9d"/><stop offset="1" stop-color="#a0ec86"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  `);
+
+  for (let i = 1; i <= 10; i++) {
+    const container = document.createElement("div");
+    container.className = `cabbage-container c-${i}`;
+    container.setAttribute("role", "button");
+    container.setAttribute("aria-label", "キャベツ");
+    container.tabIndex = 0;
+    container.innerHTML = buildCabbage(i);
+
+    container.addEventListener("click", () => {
+      if (container._body && container._body.suppressClick) {
+        container._body.suppressClick = false;
+        return;
+      }
+      clickCabbage(container);
+    });
+    container.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        clickCabbage(container);
+      }
+    });
+
+    document.body.appendChild(container);
+  }
+
+  document.querySelectorAll(".cabbage-container").forEach((el) => {
+    const size = el.offsetWidth;
+    const x = el.offsetLeft + size / 2;
+    const y = el.offsetTop + size / 2;
+
+    el.classList.add("physics");
+    addBody(el, x, y, size, 0);
+  });
+
+  function clickCabbage(cabbage) {
+    totalClicks++;
+    cycleClicks++;
+
+    counterEl.textContent = `🥬 CLICK: ${totalClicks} (周期: ${cycleClicks}/${CYCLE_LENGTH})`;
+
+    popVeggies(cabbage);
+
+    if (BLOOM_CLICKS.has(cycleClicks)) {
+      spawnKiku();
+    }
+
+    if (cycleClicks >= CYCLE_LENGTH) {
+      cycleClicks = 0;
+    }
+  }
+
+  function popVeggies(cabbage) {
+    const rect = cabbage.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const count = 3 + Math.floor(Math.random() * 3);
+
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("div");
+      el.className = "veggie-pop";
+      el.textContent = randomItem(veggies);
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 70 + Math.random() * 100;
+      const rot = (Math.random() - 0.5) * 360;
+
+      el.style.left = `${centerX}px`;
+      el.style.top = `${centerY}px`;
+      el.style.setProperty("--tx", `${Math.cos(angle) * distance}px`);
+      el.style.setProperty("--ty", `${Math.sin(angle) * distance}px`);
+      el.style.setProperty("--rot", `${rot}deg`);
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1000);
+    }
+  }
+
+  function petalPath(length, width) {
+    const n = (v) => v.toFixed(2);
+    return [
+      "M0,0",
+      `C${n(width)},${n(-length * 0.3)} ${n(width)},${n(-length * 0.8)} ${n(width * 0.55)},${n(-length * 0.95)}`,
+      `Q0,${n(-length * 1.04)} ${n(-width * 0.55)},${n(-length * 0.95)}`,
+      `C${n(-width)},${n(-length * 0.8)} ${n(-width)},${n(-length * 0.3)} 0,0Z`
+    ].join(" ");
+  }
+
+  const KIKU_LAYERS = [
+    { count: 22, length: 47, width: 3.4, offset: 0,   opacity: 0.45 },
+    { count: 20, length: 39, width: 3.8, offset: 0.5, opacity: 0.6 },
+    { count: 16, length: 30, width: 4.0, offset: 0,   opacity: 0.75 },
+    { count: 14, length: 21, width: 3.8, offset: 0.5, opacity: 0.88 },
+    { count: 10, length: 12, width: 3.2, offset: 0,   opacity: 1 }
+  ];
+
+  function buildKikuSvg(colorCode, rainbow) {
+    const layers = KIKU_LAYERS.map((layer, index) => {
+      const step = 360 / layer.count;
+      let petals = "";
+
+      for (let i = 0; i < layer.count; i++) {
+        const angle = ((i + layer.offset) * step).toFixed(1);
+        petals += `<path d="${petalPath(layer.length, layer.width)}" transform="rotate(${angle})"/>`;
+      }
+
+      const attrs = rainbow
+        ? `class="kiku-layer l${index + 1}" fill-opacity="${layer.opacity}"`
+        : `fill="${colorCode}" fill-opacity="${layer.opacity}" stroke="${colorCode}"`;
+
+      return `<g ${attrs}>${petals}</g>`;
+    }).join("");
+
+    return `
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="translate(50 50)" stroke-width="0.6" stroke-linejoin="round">
+          ${layers}
+          <circle r="${rainbow ? 6 : 4.5}" fill="${rainbow ? "#ffffff" : "#fff6a8"}" stroke="none"/>
+        </g>
+      </svg>
+    `;
+  }
+
+  function spawnKiku() {
+    kikuCount++;
+    const color = randomItem(neonColors);
+
+    const size = 90 + Math.random() * 70;
+
+    const kiku = document.createElement("div");
+    kiku.className = "kiku";
+    kiku.style.setProperty("--size", `${size}px`);
+    kiku.style.setProperty("--glow", color);
+    kiku.innerHTML = buildKikuSvg(color, false);
+
+    document.body.appendChild(kiku);
+    kikuList.push(kiku);
+
+    const spin = (Math.random() < 0.5 ? -1 : 1) * (25 + Math.random() * 45);
+    addBody(
+      kiku,
+      window.innerWidth * (0.1 + Math.random() * 0.8),
+      window.innerHeight * (0.1 + Math.random() * 0.8),
+      size,
+      spin
+    );
+
+    while (kikuList.length > MAX_KIKU) {
+      const oldest = kikuList.shift();
+      oldest.classList.add("leaving");
+      removeBody(oldest._body);
+      setTimeout(() => oldest.remove(), 700);
+    }
+
+    if (kikuCount >= GIANT_KIKU_THRESHOLD && !giantKikuActive) {
+      spawnGiantKiku();
+    }
+  }
+
+  function spawnGiantKiku() {
+    giantKikuActive = true;
+
+    const giant = document.createElement("div");
+    giant.className = "giant-kiku";
+    giant.innerHTML = buildKikuSvg("#ffffff", true);
+    document.body.appendChild(giant);
+
+    setInterval(() => {
+      if (!document.hidden) triggerRatatouilleFinale();
+    }, FINALE_INTERVAL_MS);
+  }
+
+  function triggerRatatouilleFinale() {
+    modal.classList.add("show");
+
+    for (let i = 0; i < 150; i++) {
+      setTimeout(() => {
+        const duration = 2 + Math.random() * 3;
+        const el = document.createElement("div");
+        el.className = "rain-veggie";
+        el.textContent = randomItem(veggies);
+        el.style.left = `${Math.random() * 100}vw`;
+        el.style.fontSize = `${30 + Math.random() * 30}px`;
+        el.style.setProperty("--duration", `${duration}s`);
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), duration * 1000 + 200);
+      }, i * 60);
+    }
+  }
+
+  function closeRewardModal() {
+    modal.classList.remove("show");
+  }
+
+  modal.addEventListener("click", closeRewardModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeRewardModal();
+  });
+</script>
+</body>
+</html>
