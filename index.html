@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#070720">
 <title>✨🪐( ´ᯅ` )🌎✨</title>
 
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
 <style>
 :root {
   --bg: #000;
@@ -366,7 +375,6 @@ h1 {
 .nav-button.half { grid-column: span 3; }
 .nav-button.half:nth-child(5) { --btn-color: #ffe84a; }
 
-/* オンマウスで、ネオンの虹色にぼわぁ〜と変わり続ける */
 @keyframes neonRainbowGlow {
   0%   { filter: hue-rotate(0deg)   brightness(1);    }
   50%  { filter: hue-rotate(180deg) brightness(1.18); }
@@ -764,6 +772,49 @@ footer {
 
 .big-frame { animation: frameBorderShift 8s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+
+@view-transition { navigation: auto; }
+
+.big-frame,
+.outer-container { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame,
+.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+
+.big-frame::before,
+.outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after,
+.outer-container::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame, .outer-container,
+  .big-frame::before, .big-frame::after,
+  .outer-container::before, .outer-container::after { animation: none !important; }
+}
 </style>
 </head>
 
@@ -831,7 +882,7 @@ footer {
     <a class="nav-button" href="game.html">⭐️ あそび場</a>
     <a class="nav-button" href="mori.html">🌳 森の小さなレストラン</a>
     <a class="nav-button half rainbow" href="oekaki.html">🎨 お絵描き 🖍️</a>
-    <span class="nav-button half rainbow is-disabled" aria-disabled="true" title="準備中だよ">🌎 星がたり <small class="soon">準備中</small></span>
+    <a class="nav-button half rainbow" href="ho4.html">🌎 星がたり</a>
     <a class="nav-button wide" href="nikki.html">📖 にーとの日記 ✏️</a>
   </nav>
 
@@ -876,7 +927,7 @@ footer {
   <section class="section" id="updates">
     <h2>✦ UPDATE LOG ✦</h2>
     <ul class="history">
-      <li><time datetime="2026-11-04">2026.11.04</time> 🆕‼️ 「🌎星がたり」準備中(　´〜`　)🍘</li>
+      <li><time datetime="2026-11-04">2026.11.04</time> 🆕‼️ 「🌎星がたり」設置(　´〜`　)🍘</li>
       <li><time datetime="2026-10-31">2026.10.31</time> 🪐 サイトデザイン大幅改変｡°(°´ᯅ`°)°｡</li>
       <li><time datetime="2026-10-28">2026.10.28</time> 🌎「プロフィール」を作り直したよ(　´〜`　)</li>
       <li><time datetime="2026-10-26">2026.10.26</time> 🪐「あそび場」に「🥬草花の戯れ🌼」あげた</li>

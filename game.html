@@ -6,6 +6,16 @@
 <meta name="theme-color" content="#070720">
 <title> 🪐 </title>
 
+<script>
+/* 光る動きの位相を時計に合わせ、ページを切り替えても途切れないようにする */
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
 <style>
 :root {
   --bg: #000;
@@ -555,6 +565,48 @@ h1 {
   100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
 }
 
+@view-transition { navigation: auto; }
+
+.big-frame,
+.outer-container { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame,
+.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+
+.big-frame::before,
+.outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after,
+.outer-container::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame, .outer-container,
+  .big-frame::before, .big-frame::after,
+  .outer-container::before, .outer-container::after { animation: none !important; }
+}
 </style>
 </head>
 
@@ -590,44 +642,44 @@ h1 {
       <div class="site-card">
         <h3>チョコボール先輩(PC推奨)</h3>
         <p>…何を見せられているんだろう</p>
-        <a class="card-button" href="1_games/123.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/123.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>ステルス卓上計算機🌸</h3>
         <p>Xに投稿する為だけに存在する意味のないページ。</p>
-        <a class="card-button" href="1_games/444.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/444.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>金運が上がるサイト</h3>
         <p>（ 👁️_ゝ👁️）ノ💞✨</p>
-        <a class="card-button" href="1_games/5555.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/5555.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>ゴミ虫と彼岸花🐞</h3>
         <p>…何をやらされているんだろう</p>
-        <a class="card-button" href="1_games/5364.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/5364.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>鼻くそわっしょい</h3>
         <p>(☝︎ ՞ਊ ՞)☝︎〜〜❄️</p>
-        <a class="card-button" href="1_games/8793.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/8793.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>眉モーメント集</h3>
         <p>（ 👁️_ゝ👁️）ぶるっ</p>
-        <a class="card-button" href="1_games/88.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/88.html">🌟 のぞく</a>
       </div>
 
       <div class="site-card">
         <h3>🥬 草花の戯れ 🌼</h3>
         <p>❣️NEW❣️</p>
         <p>良質な無駄を目指してみた</p>
-        <a class="card-button" href="1_games/831.html">🌟 のぞく</a>
+        <a class="card-button" href="2_games/831.html">🌟 のぞく</a>
       </div>
     </div>
 
