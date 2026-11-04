@@ -313,7 +313,7 @@ h1 {
 
 .nav-buttons {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 13px;
   margin-top: 25px;
 }
@@ -322,6 +322,7 @@ h1 {
 
 .nav-button {
   --btn-color: #ff65c3;
+  grid-column: span 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,6 +362,45 @@ h1 {
 }
 
 .nav-button.wide:nth-child(4) { --btn-color: #b68cff; }
+
+.nav-button.half { grid-column: span 3; }
+.nav-button.half:nth-child(5) { --btn-color: #ffe84a; }
+
+/* オンマウスで、ネオンの虹色にぼわぁ〜と変わり続ける */
+@keyframes neonRainbowGlow {
+  0%   { filter: hue-rotate(0deg)   brightness(1);    }
+  50%  { filter: hue-rotate(180deg) brightness(1.18); }
+  100% { filter: hue-rotate(360deg) brightness(1);    }
+}
+
+.nav-button.rainbow:hover,
+.nav-button.rainbow:focus-visible {
+  animation: neonRainbowGlow 5s linear infinite;
+}
+
+.nav-button.is-disabled {
+  position: relative;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-style: dashed;
+  opacity: 0.7;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.nav-button.is-disabled:hover,
+.nav-button.is-disabled:focus-visible {
+  transform: none;
+  opacity: 0.9;
+}
+
+.nav-button .soon {
+  padding: 1px 9px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
 
 .sub-links {
   display: flex;
@@ -637,6 +677,7 @@ footer {
   .section { padding: 19px 14px; }
   .big-frame .section { padding: 20px 0 0; }
   .nav-buttons { grid-template-columns: 1fr; }
+  .nav-button, .nav-button.half, .nav-button.wide { grid-column: 1 / -1; }
   .nav-button { min-height: 54px; }
   #visitor-counter { padding: 12px 14px; }
   .visitor-counter-digit {
@@ -789,7 +830,8 @@ footer {
     <a class="nav-button" href="hello.html">🪐 HELLO</a>
     <a class="nav-button" href="game.html">⭐️ あそび場</a>
     <a class="nav-button" href="mori.html">🌳 森の小さなレストラン</a>
-    <a class="nav-button wide" href="oekaki.html">🎨 お絵描き 🖍️</a>
+    <a class="nav-button half rainbow" href="oekaki.html">🎨 お絵描き 🖍️</a>
+    <span class="nav-button half rainbow is-disabled" aria-disabled="true" title="準備中だよ">🌎 星がたり <small class="soon">準備中</small></span>
     <a class="nav-button wide" href="nikki.html">📖 にーとの日記 ✏️</a>
   </nav>
 
