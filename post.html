@@ -773,6 +773,19 @@ h1 {
   font-weight: bold;
 }
 
+.preview-content .note-quote {
+  display: block;
+  margin: 14px 0;
+  padding: 12px 18px;
+  border-left: 4px solid var(--cyan);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--cyan) 9%, transparent);
+  box-shadow: inset 0 0 14px color-mix(in srgb, var(--cyan) 12%, transparent);
+  color: #dff6ff;
+  font-size: 0.97em;
+  line-height: 1.8;
+}
+
 .preview-content .inline-img {
   display: block;
   margin: 14px auto;
@@ -1057,10 +1070,11 @@ h1 {
             <button type="button" class="tool-btn" data-tag="url">🔗 リンク</button>
             <button type="button" class="tool-btn" data-tag="youtube">▶️ YouTube</button>
             <button type="button" class="tool-btn" data-tag="twitter">𝕏 ポスト</button>
+            <button type="button" class="tool-btn" data-tag="quote">❝ 引用枠</button>
           </div>
           <textarea id="content" rows="10" required></textarea>
           <p class="field-note">
-            リンク: [url=https://〜]表示する文字[/url] ／ YouTube: [youtube]動画のURL[/youtube] ／ X埋め込み: [x]ポストのURL[/x]<br>
+            リンク: [url=https://〜]表示する文字[/url] ／ YouTube: [youtube]動画のURL[/youtube] ／ X埋め込み: [x]ポストのURL[/x] ／ 引用枠: [quote]引用したい文章[/quote]<br>
             画像: 上の画像の「📌 本文に入れる」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。本文に入れなかった画像は、これまでどおり本文の上にまとめて出るよ。
           </p>
         </div>
@@ -1222,6 +1236,8 @@ function formatContentWithTags(rawText, options = {}) {
   do {
     prev = escaped;
     escaped = escaped
+      .replace(/\n?\[quote\]([\s\S]*?)\[\/quote\]\n?/g, (match, inner) =>
+        `<blockquote class="note-quote">${inner.replace(/^\n+|\n+$/g, '')}</blockquote>`)
       .replace(/\[b\]([\s\S]*?)\[\/b\]/g,
         '<strong style="font-weight: bold; text-shadow: 0 0 6px currentColor;">$1</strong>')
       .replace(/\[color=([^\]]*?)\]([\s\S]*?)\[\/color\]/g, (match, value, inner) => {
@@ -1605,12 +1621,14 @@ document.querySelectorAll('.tool-btn').forEach(btn => {
       } else if (tag === 'twitter') {
         replacement = `\n[x]${url}[/x]\n`;
       }
+    } else if (tag === 'quote') {
+      replacement = `\n[quote]${selected || '引用したい文章'}[/quote]\n`;
     }
 
     contentInput.value = text.substring(0, start) + replacement + text.substring(end);
     contentInput.focus();
     
-    if (tag === 'youtube' || tag === 'twitter') {
+    if (tag === 'youtube' || tag === 'twitter' || tag === 'quote') {
       const caret = start + replacement.length;
       contentInput.setSelectionRange(caret, caret);
     } else {
