@@ -781,6 +781,51 @@ h1 {
 @media (max-width: 380px) {
   .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
 }
+
+/* ===== 用語メモ ===== */
+.glossary {
+  margin: 0 0 1.6em;
+  padding: 16px 20px 4px;
+  border: 1px solid rgba(182, 140, 255, 0.55);
+  border-radius: 14px;
+  background: rgba(8, 8, 32, 0.45);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.2), inset 0 0 14px rgba(182, 140, 255, 0.12);
+}
+
+.story .glossary-title {
+  margin: 0 0 12px;
+  color: #eadcff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.glossary dl { margin: 0; }
+
+.glossary dt {
+  margin: 0 0 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.glossary dd {
+  margin: 0 0 16px;
+  color: #efe8ff;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.glossary dd strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+@media (max-width: 600px) {
+  .glossary { padding: 14px 14px 2px; }
+}
 </style>
 </head>
 
@@ -833,6 +878,32 @@ h1 {
           <img src="file/HD189733b.webp" width="300" height="300" alt="青く渦巻く惑星HD 189733 bの絵" decoding="async">
         </a>
       </figure>
+
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt>系外惑星（けいがいわくせい）</dt>
+          <dd>太陽系の外にある惑星のことです。太陽ではなく、<strong>ほかの恒星のまわり</strong>を回っています。</dd>
+
+          <dt>光年（こうねん）</dt>
+          <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。</dd>
+
+          <dt>主星（しゅせい）・恒星（こうせい）</dt>
+          <dd>惑星がまわりを回っている、中心の星のことを「主星」といいます。太陽のように、自分で光り輝いている星が「恒星」です。</dd>
+
+          <dt>ホット・ジュピター</dt>
+          <dd>木星のような巨大なガス惑星なのに、<strong>主星のすぐ近くを回っているため、とても高温になっている惑星</strong>のことです。HD 189733 b は、主星までの距離が約470万km。水星と太陽の距離（<span style="white-space: nowrap;">約5,790万km</span>）よりずっと近いんです。</dd>
+
+          <dt>ケイ酸塩（けいさんえん）</dt>
+          <dd>ケイ素と酸素を含む物質で、地球では岩石や砂、そしてガラスの材料になっているものです。この惑星の大気では、これが細かい粒になって漂っていると考えられています。</dd>
+
+          <dt>潮汐固定（ちょうせきこてい）</dt>
+          <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
+
+          <dt>トランジット</dt>
+          <dd>惑星が、主星の前を横切る現象のことです。このとき主星の光がほんの少し暗くなり、惑星の大気を通りぬけた光を分析すると、大気の成分や温度などを調べることができます。</dd>
+        </dl>
+      </div>
 
       <h3><span class="num">1</span>どこにある惑星？</h3>
       <ul>
