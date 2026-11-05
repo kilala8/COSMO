@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#070720">
 <title>🌎 星がたり ✧ HD 189733 b</title>
 
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
 <style>
 :root {
   --bg: #000;
@@ -662,15 +671,115 @@ h1 {
 }
 
 .big-frame { animation: frameBorderShift 8s linear infinite; }
-.big-frame > :not(.hero) { animation: fadeIn 1.6s ease; }
-@media (prefers-reduced-motion: reduce) {
-  .big-frame > :not(.hero) { animation: none !important; }
+
+.story figure.star-figure a {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
+.story figure.star-figure img { cursor: pointer; }
+
+.story figure.star-figure img.is-pop {
+  animation:
+    starFloat 5s ease-in-out infinite alternate,
+    star-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes star-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 @view-transition { navigation: auto; }
+
+.big-frame,
+.outer-container { view-transition-name: site-frame; }
 .hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame,
+.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+
+.big-frame::before,
+.outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after,
+.outer-container::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame, .outer-container,
+  .big-frame::before, .big-frame::after,
+  .outer-container::before, .outer-container::after { animation: none !important; }
+}
+
+.story { word-break: auto-phrase; }
+.story p,
+.story li,
+.closing p { text-wrap: pretty; }
+.story-title,
+.story h3,
+.story .big-caption { text-wrap: balance; }
+
+.story-title {
+  padding-bottom: 14px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff7ad9, #4de1ff 60%, transparent) 1;
+}
+
+.story .lead {
+  margin-bottom: 0.8em;
+  line-height: 1.95;
+}
+
+.story figure.star-figure { margin: 22px 0 6px; }
+
+.story h3 {
+  margin: 56px 0 18px;
+  letter-spacing: 0.03em;
+}
+
+.data-table tbody tr:nth-child(even) { background: rgba(182, 140, 255, 0.07); }
+.data-table td { font-variant-numeric: tabular-nums; }
+
+.closing p {
+  margin-bottom: 1em;
+  line-height: 1.95;
+}
+.closing p:has(> .source-link) { margin-bottom: 0.4em; }
+.source-link { padding: 4px 0; }
+
+@media (max-width: 600px) {
+  .data-table th { width: 38%; }
+  .story h3 { margin: 44px 0 16px; }
+  .story figure.star-figure { margin-top: 16px; }
+}
+
+@media (max-width: 380px) {
+  .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
 }
 </style>
 </head>
@@ -716,11 +825,13 @@ h1 {
         HD 189733 b（HD189733b）。これは太陽系の外にある惑星、いわゆる「系外惑星」の中でもかなり有名で、しかも見た目のインパクトがすごい天体です。
       </p>
       <p class="lead">
-        一言でいうと、<strong>見た目は青々として美しいのに、とんでもなく過酷な環境をもつ巨大ガス惑星</strong>なんです。
+        一言でいうと、<strong>見た目は青々として美しいのに、とんでもなく過酷な環境をもつ巨大ガス惑星</strong>どす(　´〜`　)。
       </p>
 
       <figure class="star-figure">
-        <img src="file/HD189733b.webp" width="300" height="300" alt="青く渦巻く惑星HD 189733 bの絵" decoding="async">
+        <a href="../ho4.html" aria-label="星がたりの入り口へ戻る">
+          <img src="file/HD189733b.webp" width="300" height="300" alt="青く渦巻く惑星HD 189733 bの絵" decoding="async">
+        </a>
       </figure>
 
       <h3><span class="num">1</span>どこにある惑星？</h3>
@@ -1257,6 +1368,40 @@ document.addEventListener("click", (event) => {
     setTimeout(() => {
       window.location.href = href;
     }, 350);
+  });
+})();
+
+(() => {
+  const img = document.querySelector(".star-figure img");
+  const link = img && img.closest("a");
+  if (!link) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let pending = false;
+
+  link.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    if (pending) return;
+    pending = true;
+
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+    if (window.createLogoSparkles) window.createLogoSparkles(img.getBoundingClientRect());
+
+    setTimeout(() => { window.location.href = href; }, 350);
+  });
+
+  window.addEventListener("pageshow", () => {
+    pending = false;
+    img.classList.remove("is-pop");
   });
 })();
 </script>
