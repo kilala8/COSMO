@@ -7,7 +7,15 @@
 <title>🌎 星がたり</title>
 
 <script>
-/* 光る動きの位相を時計に合わせ、ページを切り替えても途切れないようにする */
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
+<script>
 (function () {
   var t = Date.now() / 1000, st = document.documentElement.style;
   st.setProperty("--sync-8",  -(t % 8)   + "s");
@@ -577,26 +585,63 @@ h1 {
 
 .big-frame { animation: frameBorderShift 8s linear infinite; }
 
-
-/* ===== 画面切り替え：ヘッダ・ロゴ・枠は固定し、枠の中だけ切り替える ===== */
 @view-transition { navigation: auto; }
 
 .big-frame,
 .outer-container { view-transition-name: site-frame; }
 .hero-banner { view-transition-name: site-header; }
 
-/* 枠とヘッダの位置・大きさが同じなら動かない。違うときだけ、なめらかに合わせる */
 ::view-transition-group(site-frame),
 ::view-transition-group(site-header) {
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
 
-/* ヘッダの絵が違うページ（ho4など）へ移るときは、ゆっくり溶け合わせる */
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
-/* 枠の光・ロゴの光は、ページをまたいでも同じタイミングで続ける */
+.big-frame,
+.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+
+.big-frame::before,
+.outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after,
+.outer-container::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame, .outer-container,
+  .big-frame::before, .big-frame::after,
+  .outer-container::before, .outer-container::after { animation: none !important; }
+}
+@view-transition { navigation: auto; }
+
+.big-frame,
+.outer-container { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
 .big-frame,
 .outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
 
@@ -670,6 +715,14 @@ h1 {
         </span>
         <span class="star-name">HD 189733 b</span>
         <span class="star-sub">ガラスの雨が降る青い星</span>
+      </a>
+      <a class="star-card" href="2_ho4/ton618.html">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/ton-chan.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">TON 618</span>
+        <span class="star-sub">太陽系が入っちゃう、とんちゃん</span>
       </a>
     </nav>
 
