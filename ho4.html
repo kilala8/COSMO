@@ -669,6 +669,123 @@ h1 {
   .big-frame::before, .big-frame::after,
   .outer-container::before, .outer-container::after { animation: none !important; }
 }
+
+/* ===== シェアボタン（index.html と同じ作り） ===== */
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(8,6,32,0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(12,10,40,.7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary-top {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 0;
+}
+
+.glossary-btn {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(120px, 32vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
 </style>
 </head>
 
@@ -707,6 +824,13 @@ h1 {
       <p class="hub-note">気になる星に触れてみて✨</p>
     </section>
 
+    <div class="glossary-top">
+      <a class="glossary-btn" href="2_ho4/yogo.html" aria-label="専門用語集を見る">
+        <img src="2_ho4/file/yogo.webp" alt="専門用語集" decoding="async" draggable="false"
+             onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+      </a>
+    </div>
+
     <nav class="star-grid" aria-label="星がたり一覧">
       <a class="star-card" href="2_ho4/hd189733b.html">
         <span class="star-img-wrap">
@@ -722,9 +846,26 @@ h1 {
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">TON 618</span>
-        <span class="star-sub">太陽系が入っちゃう、とんちゃん</span>
+        <span class="star-sub">とても大きな「とんちゃん」です</span>
+      </a>
+      <a class="star-card" href="2_ho4/toi1452b.html">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/toi1452b.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">TOI-1452 b</span>
+        <span class="star-sub">「陸無し水惑星」かもしれない星</span>
       </a>
     </nav>
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
 
     <div class="page-back-wrap">
       <a href="index.html" class="page-back" aria-label="戻る">
@@ -1241,6 +1382,43 @@ document.addEventListener("click", (event) => {
       delete card.dataset.going;
     });
   });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KINOKO_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
 })();
 </script>
 </body>
