@@ -191,14 +191,6 @@ h1 {
   100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
 }
 
-@keyframes fluffy-bounce {
-  0%   { transform: scale(1); }
-  30%  { transform: scale(1.35) rotate(-3deg); }
-  60%  { transform: scale(0.92) rotate(2deg); }
-  80%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
 .logo-sparkle-particle {
   position: fixed;
   pointer-events: none;
@@ -218,46 +210,6 @@ h1 {
   }
 }
 
-.dosei-container {
-  margin: 32px auto 8px;
-  display: inline-block;
-  cursor: pointer;
-  animation: floatDosei 4s ease-in-out infinite alternate;
-  transition: transform 0.3s ease;
-}
-
-.dosei-container:hover {
-  transform: scale(1.05);
-}
-
-.dosei-container.is-pop {
-  animation: fluffy-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes floatDosei {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-8px);
-  }
-}
-
-.neon-dosei {
-  max-width: 100%;
-  height: auto;
-  max-height: 90px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px #ff7ad9) drop-shadow(0 0 20px #4de1ff);
-}
-
-.message {
-  margin: 24px auto;
-  color: #e7dcff;
-  line-height: 2;
-  font-size: 1rem;
-}
-
 @media (max-width: 600px) {
   main {
     padding-top: 25px;
@@ -268,10 +220,7 @@ h1 {
     --frame-y: 22px;
     padding: 22px 14px 24px;
   }
-  
-  .neon-dosei {
-    max-height: 70px;
-  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -396,15 +345,6 @@ h1 {
   max-width: 780px;
   margin: 0 auto;
   text-align: left;
-}
-
-.story-label {
-  margin: 0 0 8px;
-  color: var(--cyan);
-  font-size: 0.85rem;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-  text-shadow: 0 0 8px var(--cyan);
 }
 
 .story-title {
@@ -832,8 +772,7 @@ h1 {
 
 @view-transition { navigation: auto; }
 
-.big-frame,
-.outer-container { view-transition-name: site-frame; }
+.big-frame { view-transition-name: site-frame; }
 .hero-banner { view-transition-name: site-header; }
 
 ::view-transition-group(site-frame),
@@ -845,14 +784,11 @@ h1 {
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
-.big-frame,
-.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.big-frame { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
 
-.big-frame::before,
-.outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+.big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
 
-.big-frame::after,
-.outer-container::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+.big-frame::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
 
 #mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
 
@@ -868,9 +804,9 @@ h1 {
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) { animation: none !important; }
-  .big-frame, .outer-container,
-  .big-frame::before, .big-frame::after,
-  .outer-container::before, .outer-container::after { animation: none !important; }
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after { animation: none !important; }
 }
 
 .story { word-break: auto-phrase; }
@@ -1131,7 +1067,7 @@ h1 {
   <section class="big-frame">
     <header class="hero">
       <div class="hero-banner">
-        <img src="file/ho4.webp"
+        <img width="1200" height="398" fetchpriority="high" src="file/ho4.webp"
              alt=""
              aria-hidden="true"
              class="hero-bg"
@@ -1141,7 +1077,7 @@ h1 {
              class="logo-link"
              id="logoLink"
              aria-label="星がたりの入り口へ戻る">
-            <img src="file/ho4_logo.webp"
+            <img width="700" height="209" src="file/ho4_logo.webp"
                  alt="星がたり（入り口へ戻る）"
                  class="title-img"
                  id="logoImg"
@@ -1155,7 +1091,7 @@ h1 {
     <article class="story">
       <div class="glossary-top">
         <a class="glossary-btn" href="yogo.html" aria-label="専門用語集を見る">
-          <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+          <img width="700" height="263" src="file/yogo.webp" alt="専門用語集" draggable="false"
                onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
         </a>
       </div>
@@ -1324,7 +1260,7 @@ h1 {
         </dl>
         <p class="glossary-more">
           <a class="glossary-btn" href="yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
-            <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+            <img width="700" height="263" loading="lazy" decoding="async" src="file/yogo.webp" alt="専門用語集" draggable="false"
                  onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
           </a>
         </p>
@@ -1342,7 +1278,7 @@ h1 {
 
     <div class="page-back-wrap">
       <a href="../ho4.html" class="page-back" aria-label="戻る">
-        <img src="file/back.webp" alt="戻る" draggable="false">
+        <img width="200" height="200" loading="lazy" decoding="async" src="file/back.webp" alt="戻る" draggable="false">
       </a>
     </div>
   </section>
@@ -1695,7 +1631,7 @@ document.addEventListener("click", (event) => {
 (() => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const targets = document.querySelectorAll(".title-img, .dosei-container");
+  const targets = document.querySelectorAll(".title-img");
   const colors = ["#ff65c3", "#b6ff5c", "#62f7ff", "#b68cff", "#ffb85c", "#ffe84a"];
   const marks = ["✦", "✧", "✨"];
 
@@ -1750,34 +1686,6 @@ document.addEventListener("click", (event) => {
         timer = null;
       }
     });
-  });
-})();
-
-(() => {
-  const container = document.getElementById("dosei-btn");
-  if (!container) return;
-
-  let pending = false;
-
-  container.addEventListener("click", () => {
-    if (pending) return;
-    pending = true;
-
-    container.classList.remove("is-pop");
-    void container.offsetWidth;
-    container.classList.add("is-pop");
-
-    if (window.playBounceSound) window.playBounceSound();
-    if (window.createLogoSparkles) window.createLogoSparkles(container.getBoundingClientRect());
-
-    window.setTimeout(() => {
-      window.location.href = "prof.html";
-    }, 350);
-  });
-
-  window.addEventListener("pageshow", () => {
-    pending = false;
-    container.classList.remove("is-pop");
   });
 })();
 
