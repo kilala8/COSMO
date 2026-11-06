@@ -962,9 +962,162 @@ h1 {
   text-shadow: 0 0 8px #ff7ad9;
 }
 
+.story > .glossary:last-child { margin-top: 28px; }
+
 @media (max-width: 600px) {
   .glossary { padding: 14px 14px 2px; }
 }
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(8,6,32,0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(12,10,40,.7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary dt a {
+  color: inherit;
+  text-decoration: underline dotted rgba(77, 225, 255, 0.7);
+  text-underline-offset: 4px;
+}
+
+.glossary dt a:hover,
+.glossary dt a:focus-visible {
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+}
+
+.glossary-more a {
+  color: #eadcff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.glossary-more a:hover,
+.glossary-more a:focus-visible {
+  color: #fff;
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  text-align: center;
+  line-height: 0;
+  margin: 8px 0 18px;
+}
+
+.glossary-btn {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(160px, 48vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.story .glossary-top {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+  line-height: 0;
+}
+
+.glossary-top .glossary-btn img { width: min(110px, 30vw); }
 </style>
 </head>
 
@@ -1000,6 +1153,12 @@ h1 {
     </header>
 
     <article class="story">
+      <div class="glossary-top">
+        <a class="glossary-btn" href="yogo.html" aria-label="専門用語集を見る">
+          <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+               onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+        </a>
+      </div>
       <h2 class="story-title">
         TON 618（とんちゃん）
         <small>太陽系がすっぽり入る、超巨大ブラックホール</small>
@@ -1017,23 +1176,6 @@ h1 {
           <img src="file/ton-chan.webp" width="300" height="300" alt="とんちゃん（TON 618）の絵（タップで入り口へ）" decoding="async">
         </a>
       </figure>
-
-      <div class="glossary">
-        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
-        <dl>
-          <dt>赤方偏移（せきほうへんい）</dt>
-          <dd>遠い天体の光が、宇宙の膨張によって波長を引き伸ばされ、本来より<strong>赤っぽい（波長の長い）側にずれる</strong>現象です。ずれが大きい（数字が大きい）ほど、遠くにあって、それだけ昔の姿を見ていることになります。TON 618の「2.219」は、光の波長が<strong>約3.2倍</strong>（1＋2.219倍）に引き伸ばされている、という意味です。</dd>
-
-          <dt>シュヴァルツシルト半径</dt>
-          <dd>ブラックホールの「黒い部分」の<strong>半径</strong>です。ブラックホールの質量だけで決まる大きさで、重いほど大きくなります。回転しないブラックホールの場合は、下の「事象の地平面」の半径と同じ大きさになります。</dd>
-
-          <dt>事象の地平面（事象の地平線）</dt>
-          <dd>「ここから内側に入ると、光でさえ外に出てこられなくなる」という、戻れない境目のことです。壁や固い表面があるわけではなく、あくまで「境界」です。降着円盤（ブラックホールのまわりを回りながら落ち込んでいく、ガスの光の輪）は、この境目よりも外側で光っています。</dd>
-
-          <dt>AU（天文単位）</dt>
-          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
-        </dl>
-      </div>
 
       <h3><span class="num">1</span>基本プロフィール</h3>
       <table class="data-table">
@@ -1164,7 +1306,39 @@ h1 {
         <p><a class="source-link" href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA：ブラックホールの解説ページ ↗</a></p>
         <p><a class="source-link" href="https://en.wikipedia.org/wiki/TON_618" target="_blank" rel="noopener noreferrer">Wikipedia：TON 618 ↗</a></p>
       </div>
+
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="yogo.html#赤方偏移">赤方偏移（せきほうへんい）</a></dt>
+          <dd>遠い天体の光が、宇宙の膨張によって波長を引き伸ばされ、本来より<strong>赤っぽい（波長の長い）側にずれる</strong>現象です。ずれが大きい（数字が大きい）ほど、遠くにあって、それだけ昔の姿を見ていることになります。TON 618の「2.219」は、光の波長が<strong>約3.2倍</strong>（1＋2.219倍）に引き伸ばされている、という意味です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#シュヴァルツシルト半径">シュヴァルツシルト半径</a></dt>
+          <dd>ブラックホールの「黒い部分」の<strong>半径</strong>です。ブラックホールの質量だけで決まる大きさで、重いほど大きくなります。回転しないブラックホールの場合は、下の「事象の地平面」の半径と同じ大きさになります。</dd>
+
+          <dt><a class="term-link" href="yogo.html#事象の地平面">事象の地平面（事象の地平線）</a></dt>
+          <dd>「ここから内側に入ると、光でさえ外に出てこられなくなる」という、戻れない境目のことです。壁や固い表面があるわけではなく、あくまで「境界」です。降着円盤（ブラックホールのまわりを回りながら落ち込んでいく、ガスの光の輪）は、この境目よりも外側で光っています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#天文単位">AU（天文単位）</a></dt>
+          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
+      </div>
     </article>
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
 
     <div class="page-back-wrap">
       <a href="../ho4.html" class="page-back" aria-label="戻る">
@@ -1664,6 +1838,43 @@ document.addEventListener("click", (event) => {
     pending = false;
     img.classList.remove("is-pop");
   });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KINOKO_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
 })();
 </script>
 </body>

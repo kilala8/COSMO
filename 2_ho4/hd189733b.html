@@ -782,7 +782,6 @@ h1 {
   .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
 }
 
-/* ===== 用語メモ ===== */
 .glossary {
   margin: 0 0 1.6em;
   padding: 16px 20px 4px;
@@ -823,9 +822,162 @@ h1 {
   text-shadow: 0 0 8px #ff7ad9;
 }
 
+.story > .glossary:last-child { margin-top: 28px; }
+
 @media (max-width: 600px) {
   .glossary { padding: 14px 14px 2px; }
 }
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(8,6,32,0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(12,10,40,.7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary dt a {
+  color: inherit;
+  text-decoration: underline dotted rgba(77, 225, 255, 0.7);
+  text-underline-offset: 4px;
+}
+
+.glossary dt a:hover,
+.glossary dt a:focus-visible {
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+}
+
+.glossary-more a {
+  color: #eadcff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.glossary-more a:hover,
+.glossary-more a:focus-visible {
+  color: #fff;
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  text-align: center;
+  line-height: 0;
+  margin: 8px 0 18px;
+}
+
+.glossary-btn {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(160px, 48vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.story .glossary-top {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+  line-height: 0;
+}
+
+.glossary-top .glossary-btn img { width: min(110px, 30vw); }
 </style>
 </head>
 
@@ -861,6 +1013,12 @@ h1 {
     </header>
 
     <article class="story">
+      <div class="glossary-top">
+        <a class="glossary-btn" href="yogo.html" aria-label="専門用語集を見る">
+          <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+               onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+        </a>
+      </div>
       <h2 class="story-title">
         HD 189733 b
         <small>見た目と中身が正反対な巨大ガス惑星</small>
@@ -878,32 +1036,6 @@ h1 {
           <img src="file/HD189733b.webp" width="300" height="300" alt="青く渦巻く惑星HD 189733 bの絵" decoding="async">
         </a>
       </figure>
-
-      <div class="glossary">
-        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
-        <dl>
-          <dt>系外惑星（けいがいわくせい）</dt>
-          <dd>太陽系の外にある惑星のことです。太陽ではなく、<strong>ほかの恒星のまわり</strong>を回っています。</dd>
-
-          <dt>光年（こうねん）</dt>
-          <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。</dd>
-
-          <dt>主星（しゅせい）・恒星（こうせい）</dt>
-          <dd>惑星がまわりを回っている、中心の星のことを「主星」といいます。太陽のように、自分で光り輝いている星が「恒星」です。</dd>
-
-          <dt>ホット・ジュピター</dt>
-          <dd>木星のような巨大なガス惑星なのに、<strong>主星のすぐ近くを回っているため、とても高温になっている惑星</strong>のことです。HD 189733 b は、主星までの距離が約470万km。水星と太陽の距離（<span style="white-space: nowrap;">約5,790万km</span>）よりずっと近いんです。</dd>
-
-          <dt>ケイ酸塩（けいさんえん）</dt>
-          <dd>ケイ素と酸素を含む物質で、地球では岩石や砂、そしてガラスの材料になっているものです。この惑星の大気では、これが細かい粒になって漂っていると考えられています。</dd>
-
-          <dt>潮汐固定（ちょうせきこてい）</dt>
-          <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
-
-          <dt>トランジット</dt>
-          <dd>惑星が、主星の前を横切る現象のことです。このとき主星の光がほんの少し暗くなり、惑星の大気を通りぬけた光を分析すると、大気の成分や温度などを調べることができます。</dd>
-        </dl>
-      </div>
 
       <h3><span class="num">1</span>どこにある惑星？</h3>
       <ul>
@@ -974,7 +1106,48 @@ h1 {
         <p>NASAの解説ページも置いておきます。</p>
         <p><a class="source-link" href="https://science.nasa.gov/exoplanet-catalog/hd-189733-b/" target="_blank" rel="noopener noreferrer">NASA：HD 189733 b 惑星カタログ ↗</a></p>
       </div>
+
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="yogo.html#系外惑星">系外惑星（けいがいわくせい）</a></dt>
+          <dd>太陽系の外にある惑星のことです。太陽ではなく、<strong>ほかの恒星のまわり</strong>を回っています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#光年">光年（こうねん）</a></dt>
+          <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#主星">主星（しゅせい）・恒星（こうせい）</a></dt>
+          <dd>惑星がまわりを回っている、中心の星のことを「主星」といいます。太陽のように、自分で光り輝いている星が「恒星」です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#ホット・ジュピター">ホット・ジュピター</a></dt>
+          <dd>木星のような巨大なガス惑星なのに、<strong>主星のすぐ近くを回っているため、とても高温になっている惑星</strong>のことです。HD 189733 b は、主星までの距離が約470万km。水星と太陽の距離（<span style="white-space: nowrap;">約5,790万km</span>）よりずっと近いんです。</dd>
+
+          <dt><a class="term-link" href="yogo.html#ケイ酸塩">ケイ酸塩（けいさんえん）</a></dt>
+          <dd>ケイ素と酸素を含む物質で、地球では岩石や砂、そしてガラスの材料になっているものです。この惑星の大気では、これが細かい粒になって漂っていると考えられています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#潮汐固定">潮汐固定（ちょうせきこてい）</a></dt>
+          <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
+
+          <dt><a class="term-link" href="yogo.html#トランジット">トランジット</a></dt>
+          <dd>惑星が、主星の前を横切る現象のことです。このとき主星の光がほんの少し暗くなり、惑星の大気を通りぬけた光を分析すると、大気の成分や温度などを調べることができます。</dd>
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img src="file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
+      </div>
     </article>
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
 
     <div class="page-back-wrap">
       <a href="../ho4.html" class="page-back" aria-label="戻る">
@@ -1474,6 +1647,43 @@ document.addEventListener("click", (event) => {
     pending = false;
     img.classList.remove("is-pop");
   });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KINOKO_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
 })();
 </script>
 </body>
