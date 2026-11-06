@@ -406,13 +406,6 @@ h1 {
   to   { opacity: 0.25; }
 }
 
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .big-frame,
   .big-frame::before,
@@ -423,8 +416,14 @@ h1 {
   .big-frame::after { opacity: 0.4; }
 }
 
-.big-frame { animation: fadeIn 1.6s ease, frameBorderShift 8s linear infinite; }
+.big-frame { animation: fadeIn 1.6s ease; }
 @media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
 </style>
 </head>
 

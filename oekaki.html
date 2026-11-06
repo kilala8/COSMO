@@ -654,7 +654,7 @@
   backdrop-filter: blur(3px);
   position: relative;
   isolation: isolate;
-  animation: frameBorderShift 8s linear infinite;
+  animation: none;
 }
 
 .big-frame::before,
@@ -685,12 +685,6 @@
 
 @keyframes frameGlowA { from { opacity: 0.35; } to { opacity: 1; } }
 @keyframes frameGlowB { from { opacity: 1; } to { opacity: 0.25; } }
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
 
 @media (max-width: 600px) {
   .page { padding: 25px 0 40px; }
@@ -790,7 +784,6 @@
   100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
 }
 
-
 @view-transition { navigation: auto; }
 
 .big-frame,
@@ -807,7 +800,7 @@
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
 .big-frame,
-.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.outer-container { animation: none; }
 
 .big-frame::before,
 .outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
@@ -832,6 +825,12 @@
   .big-frame, .outer-container,
   .big-frame::before, .big-frame::after,
   .outer-container::before, .outer-container::after { animation: none !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
 }
 </style>
 </head>

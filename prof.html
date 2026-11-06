@@ -455,13 +455,6 @@ img {
   to   { opacity: 0.25; }
 }
 
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .panel-card,
   .panel-card::before,
@@ -472,7 +465,7 @@ img {
   .panel-card::after { opacity: 0.4; }
 }
 
-.panel-card { animation: fadeIn 1.6s ease, frameBorderShift 8s linear infinite; }
+.panel-card { animation: fadeIn 1.6s ease; }
 @media (prefers-reduced-motion: reduce) { .panel-card { animation: none !important; } }
 
 .page {
@@ -497,7 +490,7 @@ img {
   backdrop-filter: blur(3px);
   position: relative;
   isolation: isolate;
-  animation: frameBorderShift 8s linear infinite;
+  animation: none;
   text-align: center;
 }
 
@@ -654,7 +647,7 @@ img {
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
 .big-frame,
-.outer-container { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.outer-container { animation: none; }
 
 .big-frame::before,
 .outer-container::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
@@ -679,6 +672,15 @@ img {
   .big-frame, .outer-container,
   .big-frame::before, .big-frame::after,
   .outer-container::before, .outer-container::after { animation: none !important; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame,
+  .panel-card { border-color: #b68cff; }
+  .big-frame::before,
+  .panel-card::before { border: 2px solid #ff7ad9; }
+  .big-frame::after,
+  .panel-card::after { border: 2px solid #4de1ff; }
 }
 </style>
 </head>
@@ -753,7 +755,7 @@ img {
       </div>
       <div class="info-item">
         <span class="info-label">体重</span>
-        <span class="info-value">80kg<br>（…を目指して減量中）</span>
+        <span class="info-value">80kg（…を目指して減量中）</span>
       </div>
       <div class="info-item">
         <span class="info-label">握力</span>

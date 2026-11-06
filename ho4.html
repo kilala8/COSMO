@@ -281,13 +281,6 @@ h1 {
   to   { opacity: 0.25; }
 }
 
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .big-frame,
   .big-frame::before,
@@ -514,7 +507,7 @@ h1 {
   .star-name { font-size: 0.92rem; }
 }
 
-.big-frame { animation: frameBorderShift 8s linear infinite; }
+.big-frame { animation: none; }
 
 @view-transition { navigation: auto; }
 
@@ -530,7 +523,7 @@ h1 {
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
-.big-frame { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.big-frame { animation: none; }
 
 .big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
 
@@ -568,7 +561,7 @@ h1 {
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
-.big-frame { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.big-frame { animation: none; }
 
 .big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
 
@@ -707,6 +700,12 @@ h1 {
   outline: 2px dashed #4de1ff;
   outline-offset: 4px;
   border-radius: 12px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
 }
 </style>
 </head>

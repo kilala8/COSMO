@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
 <meta name="robots" content="noindex, nofollow">
-<title>BLOG 投稿・4tagaki管理</title>
+<title>📖 BLOG 投稿 ✏️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -976,13 +976,6 @@ h1 {
   to   { opacity: 0.25; }
 }
 
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .big-frame,
   .big-frame::before,
@@ -993,8 +986,14 @@ h1 {
   .big-frame::after { opacity: 0.4; }
 }
 
-.big-frame { animation: fadeIn 1.6s ease, frameBorderShift 8s linear infinite; }
+.big-frame { animation: fadeIn 1.6s ease; }
 @media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
 </style>
 </head>
 
