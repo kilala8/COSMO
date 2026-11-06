@@ -281,13 +281,6 @@ h1 {
   to   { opacity: 0.25; }
 }
 
-@keyframes frameBorderShift {
-  0%   { border-color: #ff7ad9; }
-  33%  { border-color: #b68cff; }
-  66%  { border-color: #4de1ff; }
-  100% { border-color: #ff7ad9; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .big-frame,
   .big-frame::before,
@@ -517,7 +510,7 @@ h1 {
 
 }
 
-.big-frame { animation: frameBorderShift 8s linear infinite; }
+.big-frame { animation: none; }
 
 .story figure.star-figure a {
   display: block;
@@ -554,7 +547,7 @@ h1 {
 ::view-transition-old(site-header),
 ::view-transition-new(site-header) { animation-duration: 0.5s; }
 
-.big-frame { animation: frameBorderShift 8s linear var(--sync-8, 0s) infinite; }
+.big-frame { animation: none; }
 
 .big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
 
@@ -940,6 +933,12 @@ dl.terms .term:last-child > dd { border-bottom: none; }
 .term[hidden],
 .idx-group[hidden],
 .no-result[hidden] { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
 </style>
 </head>
 
