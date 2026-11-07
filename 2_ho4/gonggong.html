@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070720">
+<title>🌎 星がたり ✧ ゴンゴン（Gonggong）</title>
+
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
+<style>
+:root {
+  --bg: #000;
+  --pink: #ff7ad9;
+  --cyan: #4de1ff;
+  --yellow: #ffe84a;
+  --purple: #b68cff;
+}
+
+:root {
+  --neon-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='408' height='408' viewBox='0 0 408 408'%3E%3Cstyle%3E.pl%7Bfill:var(--c);stroke:var(--e);stroke-width:1.2%7D.rg%7Bfill:none;stroke:var(--e);stroke-width:2.2;stroke-linecap:round%7D%3C/style%3E%3Cdefs%3E%3Cg id='p'%3E%3Cellipse class='rg' cx='0' cy='0' rx='21' ry='5.6'/%3E%3Ccircle class='pl' cx='0' cy='0' r='11'/%3E%3Cpath class='rg' d='M-21 0A21 5.6 0 0 0 21 0'/%3E%3C/g%3E%3Cg id='d'%3E%3Ccircle cx='-4' cy='-4.5' r='1.9'/%3E%3Ccircle cx='3.5' cy='-6' r='1.3'/%3E%3Ccircle cx='5.5' cy='-0.5' r='1.5'/%3E%3Ccircle cx='-1' cy='1.5' r='1'/%3E%3C/g%3E%3Cfilter id='g' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='5' result='b'/%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='0.8' result='s'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='s'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='408' height='408' fill='%23030305'/%3E%3Cg filter='url(%23g)'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)' style='--c:%23592b4c;--e:%23743863'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 51) scale(1.9) rotate(14)' style='--c:%23030305;--e:%232b6274'%3E%3Cuse href='%23p'/%3E%3Cg fill='%232b6274'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)' style='--c:%232c5943;--e:%23397457'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 51) scale(1.9) rotate(20)' style='--c:%23030305;--e:%23746d30'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23746d30'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 153) scale(1.9) rotate(12)' style='--c:%23030305;--e:%23397457'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23397457'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)' style='--c:%23595425;--e:%23746d30'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 153) scale(1.9) rotate(-6)' style='--c:%23030305;--e:%23743863'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23743863'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)' style='--c:%23214c59;--e:%232b6274'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)' style='--c:%23592b4c;--e:%23743863'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 255) scale(1.9) rotate(-20)' style='--c:%23030305;--e:%232b6274'%3E%3Cuse href='%23p'/%3E%3Cg fill='%232b6274'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)' style='--c:%232c5943;--e:%23397457'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 255) scale(1.9) rotate(-12)' style='--c:%23030305;--e:%23746d30'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23746d30'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 357) scale(1.9) rotate(-14)' style='--c:%23030305;--e:%23397457'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23397457'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)' style='--c:%23595425;--e:%23746d30'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 357) scale(1.9) rotate(10)' style='--c:%23030305;--e:%23743863'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23743863'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)' style='--c:%23214c59;--e:%232b6274'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23030305'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f8edff;
+  background-color: var(--bg);
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
+
+#mycelium,
+#spore-canvas,
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#mycelium {
+  z-index: 0;
+  opacity: 0.3;
+  background:
+    radial-gradient(ellipse at 15% 25%, #642cff33, transparent 45%),
+    radial-gradient(ellipse at 85% 65%, #ff36bd22, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, #00eaff1a, transparent 40%);
+  animation: myceliumGlow 9s ease-in-out infinite alternate;
+}
+
+#spore-canvas {
+  z-index: 1;
+}
+
+#stars {
+  z-index: 1;
+}
+
+@keyframes myceliumGlow {
+  from { opacity: 0.18; }
+  to { opacity: 0.48; }
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: min(1040px, 93%);
+  margin: 0 auto;
+  padding: 55px 0 65px;
+}
+
+.big-frame {
+  --frame-x: 22px;
+  --frame-y: 30px;
+  padding: var(--frame-y) var(--frame-x);
+  border: 2px solid #ff7ad9;
+  border-radius: 24px;
+  background: rgba(8, 6, 32, 0.42);
+  box-shadow:
+    0 0 15px #ff7ad988,
+    0 0 35px #ff3dc844,
+    inset 0 0 25px #b68cff33;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 1.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin: 0 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.title-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  cursor: pointer;
+  animation: neonBowaa 12s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.title-img:hover {
+  transform: scale(1.03);
+}
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out infinite;
+}
+
+@keyframes title-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(-3deg); }
+  60%  { transform: scale(0.93) rotate(2deg); }
+  80%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes neonBowaa {
+  0%   { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+  12.5% { filter: drop-shadow(0 0 10px #ff7ad9) drop-shadow(0 0 24px #ff3dc8) drop-shadow(0 0 46px #b68cff99); }
+  25%  { filter: drop-shadow(0 0 3px #4de1ffaa) drop-shadow(0 0 8px #00bfff66); }
+  37.5% { filter: drop-shadow(0 0 10px #4de1ff) drop-shadow(0 0 24px #00bfff) drop-shadow(0 0 46px #4de1ff99); }
+  50%  { filter: drop-shadow(0 0 3px #b6ff5caa) drop-shadow(0 0 8px #70f10066); }
+  62.5% { filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 24px #70f100) drop-shadow(0 0 46px #b6ff5c99); }
+  75%  { filter: drop-shadow(0 0 3px #b68cffaa) drop-shadow(0 0 8px #9d4edd66); }
+  87.5% { filter: drop-shadow(0 0 10px #b68cff) drop-shadow(0 0 24px #9d4edd) drop-shadow(0 0 46px #ffe84a88); }
+  100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+}
+
+.logo-sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 100;
+  animation: pop-particle 0.6s ease-out forwards;
+}
+
+@keyframes pop-particle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 25px;
+  }
+
+  .big-frame {
+    --frame-x: 14px;
+    --frame-y: 22px;
+    padding: 22px 14px 24px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  *, *::before, *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+.big-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.big-frame::before,
+.big-frame::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.big-frame::before {
+  box-shadow:
+    0 0 22px 3px #ff7ad9,
+    0 0 52px 6px #ff3dc8aa,
+    inset 0 0 30px #ff7ad966;
+  animation: frameGlowA 3.4s ease-in-out infinite alternate;
+}
+
+.big-frame::after {
+  box-shadow:
+    0 0 22px 3px #4de1ff,
+    0 0 52px 6px #b68cffaa,
+    inset 0 0 30px #4de1ff55;
+  animation: frameGlowB 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes frameGlowA {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+
+@keyframes frameGlowB {
+  from { opacity: 1; }
+  to   { opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after {
+    animation: none !important;
+  }
+  .big-frame::before { opacity: 0.7; }
+  .big-frame::after { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+.hero-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: calc(var(--frame-y) * -1) calc(var(--frame-x) * -1) 14px;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  border-bottom: 2px solid rgba(255, 122, 217, 0.7);
+  box-shadow: 0 6px 18px rgba(255, 122, 217, 0.28);
+}
+
+.hero-bg {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-banner h1 {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  width: min(520px, 88%);
+  margin: 0;
+  display: block;
+  line-height: 0;
+}
+
+.hero {
+  padding: 0;
+  text-align: center;
+}
+
+.hero-banner .title-img {
+  display: block;
+  width: 100%;
+  max-height: none;
+  margin: 0 auto;
+}
+
+.story {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.story-title {
+  margin: 0 0 22px;
+  color: #fff;
+  font-size: clamp(1.5rem, 4.6vw, 2.1rem);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px #ff7ad9, 0 0 24px #4de1ff;
+}
+
+.story-title small {
+  display: block;
+  margin-top: 8px;
+  color: #e7dcff;
+  font-size: 0.5em;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story p {
+  margin: 0 0 1.2em;
+  color: #efe8ff;
+  font-size: 1rem;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.story strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story .lead {
+  font-size: 1.05rem;
+}
+
+.story h3 {
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px dashed rgba(255, 122, 217, 0.55);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-shadow: 0 0 10px #4de1ff;
+}
+
+.story h3 .num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: rgba(255, 232, 74, 0.12);
+  color: var(--yellow);
+  font-size: 0.85rem;
+  text-shadow: 0 0 8px var(--yellow);
+  box-shadow: 0 0 10px #ffe84a66;
+}
+
+.story ul {
+  margin: 0 0 1.2em;
+  padding: 14px 20px 14px 38px;
+  border: 1px solid rgba(77, 225, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(8, 8, 32, 0.45);
+  box-shadow: inset 0 0 14px rgba(77, 225, 255, 0.1);
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.story li::marker {
+  color: var(--pink);
+}
+
+.story figure {
+  margin: 8px 0 26px;
+}
+
+.story figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(182, 140, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
+}
+
+.story figure.star-figure img {
+  width: min(300px, 70%);
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 0 12px #4de1ff) drop-shadow(0 0 26px #ff7ad9aa);
+  animation: starFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes starFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+.story figcaption {
+  margin-top: 8px;
+  color: #b9aedb;
+  font-size: 0.78rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+.data-table {
+  width: 100%;
+  margin: 0 0 24px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(8, 8, 32, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 122, 217, 0.25);
+  line-height: 1.6;
+}
+
+.data-table tr:last-child th,
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table th {
+  width: 40%;
+  color: var(--cyan);
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.data-table td {
+  color: #fff;
+  text-align: right;
+}
+
+.data-table thead th,
+.data-table thead td {
+  background: rgba(182, 140, 255, 0.22);
+  color: #fff;
+  font-weight: bold;
+}
+
+.note {
+  margin: 0 0 1.4em;
+  padding: 14px 18px;
+  border-left: 4px solid var(--yellow);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 232, 74, 0.09);
+  box-shadow: inset 0 0 14px rgba(255, 232, 74, 0.1);
+  color: #fff8d6;
+  line-height: 1.9;
+}
+
+.story hr {
+  margin: 48px 0 32px;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7ad9, #4de1ff, #b68cff, transparent);
+  box-shadow: 0 0 10px #ff7ad988;
+}
+
+.closing {
+  padding: 20px 22px 6px;
+  border: 2px solid rgba(77, 225, 255, 0.7);
+  border-radius: 18px;
+  background: rgba(8, 8, 32, 0.5);
+  box-shadow: 0 0 18px rgba(77, 225, 255, 0.35), inset 0 0 16px rgba(182, 140, 255, 0.2);
+}
+
+.closing .closing-lead {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.source-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: rgba(77, 225, 255, 0.5);
+  text-underline-offset: 5px;
+  text-shadow: 0 0 8px rgba(77, 225, 255, 0.6);
+}
+
+.source-link:hover,
+.source-link:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 12px var(--pink);
+  outline: none;
+}
+
+.page-back-wrap {
+  margin: 40px 0 0;
+  text-align: center;
+  line-height: 0;
+}
+
+.page-back {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-back img {
+  display: block;
+  width: min(140px, 44vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.page-back:hover img,
+.page-back:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.page-back:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.page-back img.is-pop {
+  animation: back-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes back-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.35) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .story h3 { margin-top: 38px; font-size: 1.12rem; }
+  .data-table th, .data-table td { padding: 10px 12px; font-size: 0.92rem; }
+  .closing { padding: 16px 16px 4px; }
+}
+
+.big-frame { animation: none; }
+
+.story figure.star-figure a {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.story figure.star-figure img { cursor: pointer; }
+
+.story figure.star-figure img.is-pop {
+  animation:
+    starFloat 5s ease-in-out infinite alternate,
+    star-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes star-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.story .big-number {
+  margin: 6px 0 2px;
+  color: #fff;
+  font-size: clamp(2.4rem, 10vw, 3.6rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-align: center;
+  text-shadow: 0 0 12px #ff7ad9, 0 0 28px #4de1ff;
+}
+
+.story .big-number small {
+  margin-left: 0.3em;
+  color: #e7dcff;
+  font-size: 0.4em;
+  font-weight: normal;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story .big-caption {
+  margin: 0 0 22px;
+  color: #b9aedb;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  margin: 0 0 1.6em 8px;
+  padding: 0;
+  list-style: none;
+  border-left: 3px solid rgba(77, 225, 255, 0.6);
+  box-shadow: -4px 0 12px -6px rgba(77, 225, 255, 0.6);
+}
+
+.timeline li {
+  position: relative;
+  padding: 2px 0 20px 26px;
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.timeline li:last-child { padding-bottom: 4px; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: #070720;
+  box-shadow: 0 0 10px var(--yellow);
+}
+
+.timeline .year {
+  display: block;
+  color: var(--yellow);
+  font-size: 1.08rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--yellow);
+}
+
+.stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.stat-name {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #4de1ff;
+}
+
+.badge {
+  padding: 4px 12px;
+  border: 1px solid rgba(182, 140, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(182, 140, 255, 0.2);
+  color: #eadcff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 1.8em;
+}
+
+.stat {
+  padding: 14px 12px;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(8, 8, 32, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+  text-align: center;
+}
+
+.stat span { display: block; }
+
+.stat .label {
+  color: var(--cyan);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.stat .value {
+  margin: 4px 0 2px;
+  color: #fff;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-shadow: 0 0 10px #ff7ad9;
+}
+
+.stat .unit {
+  color: #b9aedb;
+  font-size: 0.8rem;
+}
+
+.closing .source-link { margin-bottom: 8px; }
+
+@media (max-width: 600px) {
+  .stat-grid { gap: 10px; }
+  .stat { padding: 12px 8px; }
+}
+
+@view-transition { navigation: auto; }
+
+.big-frame { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame { animation: none; }
+
+.big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after { animation: none !important; }
+}
+
+.story { word-break: auto-phrase; }
+.story p,
+.story li,
+.closing p { text-wrap: pretty; }
+.story-title,
+.story h3,
+.story .big-caption,
+.stat .label { text-wrap: balance; }
+
+.story-title {
+  padding-bottom: 14px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff7ad9, #4de1ff 60%, transparent) 1;
+}
+
+.story .lead {
+  margin-bottom: 0.8em;
+  line-height: 1.95;
+}
+
+.story figure.star-figure { margin: 22px 0 6px; }
+
+.story h3 {
+  margin: 56px 0 18px;
+  letter-spacing: 0.03em;
+}
+
+.data-table tbody tr:nth-child(even) { background: rgba(182, 140, 255, 0.07); }
+.data-table td { font-variant-numeric: tabular-nums; }
+
+.timeline { margin-top: 22px; }
+
+.closing p {
+  margin-bottom: 1em;
+  line-height: 1.95;
+}
+.closing p:has(> .source-link) { margin-bottom: 0.4em; }
+.source-link { padding: 4px 0; }
+
+@media (max-width: 600px) {
+  .data-table th { width: 38%; }
+  .story h3 { margin: 44px 0 16px; }
+  .story figure.star-figure { margin-top: 16px; }
+}
+
+@media (max-width: 380px) {
+  .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
+}
+
+.glossary {
+  margin: 0 0 1.6em;
+  padding: 16px 20px 4px;
+  border: 1px solid rgba(182, 140, 255, 0.55);
+  border-radius: 14px;
+  background: rgba(8, 8, 32, 0.45);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.2), inset 0 0 14px rgba(182, 140, 255, 0.12);
+}
+
+.story .glossary-title {
+  margin: 0 0 12px;
+  color: #eadcff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.glossary dl { margin: 0; }
+
+.glossary dt {
+  margin: 0 0 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.glossary dd {
+  margin: 0 0 16px;
+  color: #efe8ff;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.glossary dd strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story > .glossary:last-child { margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .glossary { padding: 14px 14px 2px; }
+}
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(8,6,32,0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(12,10,40,.7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary dt a {
+  color: inherit;
+  text-decoration: underline dotted rgba(77, 225, 255, 0.7);
+  text-underline-offset: 4px;
+}
+
+.glossary dt a:hover,
+.glossary dt a:focus-visible {
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+}
+
+.glossary-more a {
+  color: #eadcff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.glossary-more a:hover,
+.glossary-more a:focus-visible {
+  color: #fff;
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  text-align: center;
+  line-height: 0;
+  margin: 8px 0 18px;
+}
+
+.glossary-btn {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(160px, 48vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.story .glossary-top {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+  line-height: 0;
+}
+
+.glossary-top .glossary-btn img { width: min(110px, 30vw); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
+</style>
+</head>
+
+<body>
+<div id="background-image" aria-hidden="true"></div>
+<div id="mycelium" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
+<canvas id="spore-canvas" aria-hidden="true"></canvas>
+
+<main>
+  <section class="big-frame">
+    <header class="hero">
+      <div class="hero-banner">
+        <img width="1200" height="398" fetchpriority="high" src="file/ho4.webp"
+             alt=""
+             aria-hidden="true"
+             class="hero-bg"
+             onerror="this.style.display='none'">
+        <h1>
+          <a href="../ho4.html"
+             class="logo-link"
+             id="logoLink"
+             aria-label="星がたりの入り口へ戻る">
+            <img width="700" height="209" src="file/ho4_logo.webp"
+                 alt="星がたり（入り口へ戻る）"
+                 class="title-img"
+                 id="logoImg"
+                 decoding="async"
+                 draggable="false">
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <article class="story">
+      <div class="glossary-top">
+        <a class="glossary-btn" href="yogo.html" aria-label="専門用語集を見る">
+          <img width="700" height="263" src="file/yogo.webp" alt="専門用語集" draggable="false"
+               onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+        </a>
+      </div>
+      <h2 class="story-title">
+        ゴンゴン（Gonggong）
+        <small>太陽系の果てにいる、赤く巨大な氷の天体</small>
+      </h2>
+
+      <p class="lead">
+        ゴンゴン（225088 Gonggong）、かつての仮符号は「2007 OR10」。</p>
+      <p class="lead">海王星よりもはるか遠くを回る、<strong>赤くて大きな氷の天体</strong>様です（　´ᯅ`　）</p>
+      <p class="lead">
+        一言でいうと、<strong>約547年かけて太陽のまわりをぐるっと回る、準惑星の有力候補</strong>という天体様です。
+      </p>
+
+      <figure class="star-figure">
+        <a href="../ho4.html" aria-label="星がたりの入り口へ戻る">
+          <img src="file/gonggong.webp" width="300" height="300" alt="ゴンゴンの絵（タップで入り口へ）" decoding="async">
+        </a>
+      </figure>
+
+      <h3><span class="num">1</span>基本プロフィール</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>項目</th><td>情報</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>正式名称</th><td>(225088) Gonggong</td></tr>
+          <tr><th>日本語名</th><td>ゴンゴン</td></tr>
+          <tr><th>仮符号</th><td>2007 OR10</td></tr>
+          <tr><th>分類</th><td>太陽系外縁天体・散乱円盤天体（準惑星の有力候補）</td></tr>
+          <tr><th>発見日</th><td>2007年7月17日</td></tr>
+          <tr><th>発見場所</th><td>アメリカ・パロマー天文台</td></tr>
+          <tr><th>発見者</th><td>ミーガン・シュワンブ、マイケル・ブラウン、デビッド・ラビノウィッツ</td></tr>
+          <tr><th>命名</th><td>2020年2月</td></tr>
+          <tr><th>大きさ</th><td>直径 約1,230km（推定値）</td></tr>
+          <tr><th>公転周期</th><td>約547年</td></tr>
+          <tr><th>衛星</th><td>湘流（シャンリウ）</td></tr>
+        </tbody>
+      </table>
+      <p>名前がつく前の「2007 OR10」は、<strong>名前ではなく、発見の記録番号のようなもの</strong>です。「2007」は見つかった年で、「OR10」は、その年のどの時期に何番目に見つかったかを表しています。</p>
+      <p>そして「ゴンゴン」は、中国神話に登場する水神「共工（ゴンゴン）」にちなんだ名前です。</p>
+
+      <h3><span class="num">2</span>どこにいる天体なの？</h3>
+      <p>ゴンゴンは、海王星のさらに外側にいます。</p>
+      <p>太陽からの距離は、場所によってものすごく変わります。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>位置</th><td>太陽からの距離</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>近日点</th><td>約33 AU（約50億km）</td></tr>
+          <tr><th>遠日点</th><td>約100 AU（約150億km）</td></tr>
+          <tr><th>軌道長半径</th><td>約67 AU</td></tr>
+          <tr><th>海王星の軌道半径</th><td>約30 AU</td></tr>
+        </tbody>
+      </table>
+      <p>近日点は太陽にいちばん近づく所、遠日点はいちばん遠ざかる所のことです。</p>
+      <p>1 AUは、地球と太陽の平均距離（約1億5,000万km）です。</p>
+      <p>つまりゴンゴンは、太陽から約50億kmのところまで近づくこともあれば、約150億kmも離れることもあるんです( ´ᯅ` )</p>
+      <p>太陽の光が地球に届くまでは約8分20秒ですが、ゴンゴンの近日点では<strong>約4.6時間</strong>、遠日点では<strong>約14時間</strong>もかかります。</p>
+      <p>ちなみに冥王星でも、遠日点は約49 AU。ゴンゴンは、その<strong>約2倍</strong>の遠さまで行きます。</p>
+
+      <h3><span class="num">3</span>軌道：ものすごく楕円形</h3>
+      <p>ゴンゴンの公転軌道は、かなり細長い楕円です。</p>
+      <ul>
+        <li><strong>軌道離心率</strong>：約0.5</li>
+        <li><strong>軌道傾斜角</strong>：約31°</li>
+        <li><strong>公転周期</strong>：約547年</li>
+      </ul>
+      <p>太陽系の惑星の多くは、ほぼ平らな面の上を回っています。それに対してゴンゴンは、軌道の面が大きく傾いています。</p>
+      <p>さらに、海王星との間には<strong>3：10の軌道共鳴</strong>があるとされています。海王星が太陽を10周する間に、ゴンゴンはおよそ3周する関係です。</p>
+      <p>ゴンゴンが最後に近日点を通ったのは、1857年ごろ。いまは太陽から遠ざかっている最中で、いちばん遠い所（遠日点）に着くのは、2130年代ごろの見込みです。</p>
+      <p class="note">軌道の数字は、観測が進むたびに少しずつ更新されます。資料によって、公転周期が約547〜554年のように、少し違って書かれていることがあります。</p>
+
+      <h3><span class="num">4</span>大きさ：冥王星の半分くらい</h3>
+      <p class="big-number">約1,230<small>km</small></p>
+      <p class="big-caption">ゴンゴンの直径（推定値）。</p>
+      <p>比べてみると……</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>天体</th><td>直径</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>地球</th><td>約12,742km</td></tr>
+          <tr><th>月</th><td>約3,475km</td></tr>
+          <tr><th>冥王星</th><td>約2,377km</td></tr>
+          <tr><th>ゴンゴン</th><td>約1,230km</td></tr>
+          <tr><th>カロン</th><td>約1,212km（冥王星の衛星）</td></tr>
+        </tbody>
+      </table>
+      <p>ゴンゴンは冥王星より小さいものの、冥王星の衛星カロンとほぼ同じ大きさで、太陽系外縁部ではかなり大型の天体です。</p>
+      <p>質量は約1.75×10²¹kgで、月の約2.4％。平均密度は約1.7g/cm³（水の約1.7倍）と推定されていて、氷と岩石が混ざった内部構造をもつ可能性があります。</p>
+      <p class="note">ここは少し面白いところです。ゴンゴンの大きさの推定値は、変わってきました。2016年ごろには約1,535kmと見積もられていましたが、その後の研究で、約1,230kmに見直されています。</p>
+
+      <h3><span class="num">5</span>なぜ赤いの？</h3>
+      <p>ゴンゴンは、太陽系外縁天体の中でも、特に赤い天体の一つとして知られています。</p>
+      <p>この赤色には、表面にある有機物が関係している可能性があります。</p>
+      <p>太陽系外縁部の天体は、長い時間をかけて、太陽からの紫外線や宇宙線にさらされます。すると、表面の物質が化学変化を起こして、<strong>赤褐色の有機物（ソリン）</strong>ができることがあります。</p>
+      <p>ゴンゴンの赤い色も、こうした表面の化学の影響を受けていると考えられています。</p>
+      <p class="note">ちなみに発見したチームは、最初ゴンゴンを白い氷の天体だと予想して、「白雪姫（Snow White）」という愛称で呼んでいました。ところが、実際には真っ赤だったので、この愛称は使われなくなりました（　´_ゝ`）</p>
+
+      <h3><span class="num">6</span>水の氷とメタンの可能性</h3>
+      <p>ゴンゴンの表面には、水の氷があると考えられています。</p>
+      <p>観測では水の氷に特徴的な吸収が確認されていて、過去に内部から水が噴き出す<strong>氷火山活動</strong>が起きた可能性も指摘されています。</p>
+      <p>また、メタンが表面にある可能性もあります。</p>
+      <p class="note"><strong>ただし、メタンは直接の検出が十分ではなく、現時点では推測を含みます。</strong></p>
+
+      <h3><span class="num">7</span>衛星「湘流（シャンリウ）」</h3>
+      <p>ゴンゴンには、<strong>湘流（Xiangliu）</strong>という衛星があります。</p>
+      <ul>
+        <li>発見：2010年9月にハッブル宇宙望遠鏡が撮った画像に写っていた</li>
+        <li>発見方法：過去のハッブル宇宙望遠鏡の画像を解析</li>
+        <li>発表：2016年10月</li>
+        <li>命名：2020年2月</li>
+        <li>公転周期：約25日</li>
+        <li>軌道の距離：約24,000km</li>
+      </ul>
+      <p>湘流はゴンゴンよりずっと小さく、直径100km未満と推定されています。いつも同じ面をゴンゴンに向けている（潮汐固定）と考えられています。</p>
+      <p>ゴンゴンの自転は、約22時間または約45時間（どちらなのかは、まだ決着していません）と、太陽系外縁天体の中でもゆっくりめです。湘流の潮汐力が関係している可能性も考えられています。</p>
+
+      <h3><span class="num">8</span>名前の由来</h3>
+      <p>ゴンゴンと湘流の名前は、中国神話に登場する存在に由来します。</p>
+      <ul>
+        <li><strong>ゴンゴン（共工）</strong>：洪水を引き起こす水神</li>
+        <li><strong>湘流（相柳）</strong>：九つの頭を持つ毒蛇の怪物</li>
+      </ul>
+      <p>相柳は、神話では共工に仕える存在として描かれています。</p>
+      <p>ちなみに「ゴンゴン」という名前は、2019年に発見チームが一般の人たちから投票を募って、3つの候補（ゴンゴン、ホレ、ヴィリ）の中から選ばれました。2020年2月に、国際天文学連合の委員会に承認されています。</p>
+      <p>洪水を起こす水神と、毒蛇の部下……。この組み合わせ、天体の名前としてかなりインパクトがありますね。</p>
+
+      <h3><span class="num">9</span>ゴンゴンは準惑星なの？</h3>
+      <p>ここは大事なところです。</p>
+      <p>ゴンゴンは<strong>準惑星候補</strong>として広く扱われていますが、現在、国際天文学連合（IAU）によって正式に準惑星として認定された天体ではありません。</p>
+      <p>IAUが準惑星として認めているのは、ケレス、冥王星、ハウメア、マケマケ、エリスの5つだけです。</p>
+      <p>準惑星になるには、ただ大きいだけではなく、次のような条件があります。</p>
+      <ul>
+        <li>太陽のまわりを公転していること</li>
+        <li>球形に近い形を保てるだけの重力をもつこと</li>
+        <li>軌道のまわりの天体を、一掃していないこと</li>
+        <li>衛星ではないこと</li>
+      </ul>
+      <p>ゴンゴンは、球形に近い形を保てるだけの大きさをもつと考えられていて、準惑星の有力候補です。</p>
+
+      <hr>
+
+      <h3><span class="num">10</span>ゴンゴンの特徴まとめ</h3>
+      <ul>
+        <li>太陽から最大約100 AUも離れる</li>
+        <li>約547年かけて太陽を1周する</li>
+        <li>直径約1,230kmの巨大な氷天体</li>
+        <li>太陽系外縁天体でも特に赤い</li>
+        <li>水の氷やメタンが存在する可能性</li>
+        <li>衛星「湘流」を持つ</li>
+        <li>中国神話の水神「共工」に由来する名前</li>
+        <li>準惑星の有力候補</li>
+      </ul>
+      <div class="stat-head">
+        <span class="stat-name">ゴンゴン</span>
+        <span class="badge">太陽系外縁の大型天体</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <span class="label">直径（推定値）</span>
+          <span class="value">約1,230</span>
+          <span class="unit">km</span>
+        </div>
+        <div class="stat">
+          <span class="label">公転周期</span>
+          <span class="value">約547</span>
+          <span class="unit">年</span>
+        </div>
+        <div class="stat">
+          <span class="label">太陽からの最大距離</span>
+          <span class="value">約100</span>
+          <span class="unit">AU</span>
+        </div>
+        <div class="stat">
+          <span class="label">平均密度</span>
+          <span class="value">約1.7</span>
+          <span class="unit">g/cm³</span>
+        </div>
+      </div>
+
+      <div class="closing">
+        <p class="closing-lead">ゴンゴン、素敵ですよね〜（　´ᯅ`　）✨</p>
+        <p><strong>赤い色・遠すぎる軌道・神話由来の名前・衛星持ち</strong>と、キャラクター性を作る材料が、これでもかというほど豊富だし、私としてはなんと言っても、YouTubeの「はじめ_宇宙動画」さんでおなじみ、「あのゴンゴン」というスラングですよね笑</p>
+        <p>彼の動画でゴンゴンのことを知ったのですが、改めて調べてみると、本当に面白い存在であることが判明。興奮しとる次第です。</p>
+        <p>しかも「準惑星の有力候補」という、まだ正式には決まっていない立ち位置も、なんだか未来の可能性を感じさせて、大変結構なことだと思います(´ᯅ`)</p>
+        <p>軌道を一周するのに、約547年。私たちが生きている間に、ゴンゴンが遠日点にたどり着くのを見届けることはできませんが、観測はこれからも続いていきます。</p>
+        <p>遠すぎて、まだまだわからないことだらけの天体です。大きさの推定値が変わったように、新しい発見があるたびに、ゴンゴンの姿は少しずつ変わっていくのかもしれません。</p>
+        <p>解説ページも置いておきます。</p>
+        <p><a class="source-link" href="https://en.wikipedia.org/wiki/Gonggong_(dwarf_planet)" target="_blank" rel="noopener noreferrer">Wikipedia：Gonggong ↗</a></p>
+        <p><a class="source-link" href="https://en.wikipedia.org/wiki/Xiangliu_(moon)" target="_blank" rel="noopener noreferrer">Wikipedia：Xiangliu（湘流） ↗</a></p>
+        <p><a class="source-link" href="https://johnstonsarchive.net/astro/astmoons/am-225088.html" target="_blank" rel="noopener noreferrer">Johnston's Archive：Gonggongと湘流の詳細データ ↗</a></p>
+      </div>
+
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="yogo.html#太陽系外縁天体">太陽系外縁天体（たいようけいがいえんてんたい）</a></dt>
+          <dd>海王星より外側の軌道を回る天体の総称です。冥王星やエリス、そしてゴンゴンも、この仲間です。氷と岩石でできたものが多く、「TNO」と略されることもあります。</dd>
+
+          <dt><a class="term-link" href="yogo.html#散乱円盤天体">散乱円盤天体（さんらんえんばんてんたい）</a></dt>
+          <dd>太陽系外縁天体のうち、海王星の重力の影響で軌道が大きく乱された（散らばった）と考えられているグループです。軌道が細長く、大きく傾いたものが多いのが特徴で、ゴンゴンもこの仲間に分類されています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#準惑星">準惑星（じゅんわくせい）</a></dt>
+          <dd>太陽のまわりを回っていて、自分の重力でほぼ丸い形になっているものの、軌道のまわりの天体を一掃できていない天体です。2006年に国際天文学連合（IAU）が定義し、正式に認められているのは、ケレス・冥王星・ハウメア・マケマケ・エリスの5つです（2026年時点）。ゴンゴンは「準惑星の有力候補」として扱われています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#仮符号">仮符号（かりふごう）</a></dt>
+          <dd>見つかったばかりの天体につけられる、仮の名前（番号）です。「2007 OR10」の「2007」は発見された年で、「OR10」は、その年のどの時期に何番目に見つかったかを表します。軌道が確定すると小惑星番号（ゴンゴンは225088）がつき、さらに名前がつくこともあります。</dd>
+
+          <dt><a class="term-link" href="yogo.html#天文単位">AU（天文単位）</a></dt>
+          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#近日点">近日点（きんじつてん）</a></dt>
+          <dd>太陽のまわりを楕円で回る天体が、太陽にいちばん近づく地点（またはその距離）です。ゴンゴンの近日点は約33 AUで、冥王星がいるあたりの距離です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#遠日点">遠日点（えんじつてん）</a></dt>
+          <dd>太陽のまわりを楕円で回る天体が、太陽からいちばん遠ざかる地点（またはその距離）です。ゴンゴンの遠日点は約100 AU（約150億km）で、冥王星の遠日点（約49 AU）の約2倍です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#軌道離心率">軌道離心率（きどうりしんりつ）</a></dt>
+          <dd>軌道が、円からどれだけつぶれているかを表す数字です。0なら真円で、1に近づくほど細長い楕円になります。地球は約0.02でほとんど円ですが、ゴンゴンは約0.5と、かなり細長い軌道です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#軌道傾斜角">軌道傾斜角（きどうけいしゃかく）</a></dt>
+          <dd>軌道の面が、基準になる面に対して何度傾いているかを表す角度です。ふつうは黄道面（地球が太陽のまわりを回る軌道の平面）を基準にします。ゴンゴンは約31°も傾いていて、惑星たちと比べると、かなり大きく傾いた軌道です。</dd>
+
+          <dt><a class="term-link" href="yogo.html#軌道共鳴">軌道共鳴（きどうきょうめい）</a></dt>
+          <dd>2つの天体の公転周期が、簡単な整数の比になっている関係のことです。ゴンゴンと海王星は「3：10」の関係にあるとされていて、海王星が太陽を10周する間に、ゴンゴンがおよそ3周します。決まったタイミングでおたがいに重力を及ぼし合うので、軌道に影響が出ます。</dd>
+
+          <dt><a class="term-link" href="yogo.html#ソリン">ソリン（tholin）</a></dt>
+          <dd>紫外線や宇宙線の影響で、メタンなどの簡単な分子がつながってできる、赤茶色っぽい複雑な有機物のことです。冥王星やゴンゴンなどの、赤い色の原因のひとつではないかと考えられています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#氷火山活動">氷火山活動（こおりかざんかつどう）</a></dt>
+          <dd>溶けた岩ではなく、水やアンモニアなどの「氷の成分」が、地下から噴き出す火山活動のことです。ゴンゴンでは、過去にそうした活動があった可能性が指摘されています。</dd>
+
+          <dt><a class="term-link" href="yogo.html#潮汐固定">潮汐固定（ちょうせきこてい）</a></dt>
+          <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img width="700" height="263" loading="lazy" decoding="async" src="file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
+      </div>
+      </div>
+    </article>
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
+
+    <div class="page-back-wrap">
+      <a href="../ho4.html" class="page-back" aria-label="戻る">
+        <img width="180" height="180" loading="lazy" decoding="async" src="file/chi9.webp" alt="戻る" draggable="false">
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.tagName === "IMG") {
+    e.preventDefault();
+  }
+});
+
+(() => {
+  const logoLink = document.getElementById("logoLink");
+  const logoImg = document.getElementById("logoImg");
+
+  if (!logoLink || !logoImg) return;
+
+  function playBounceSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+
+      osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.12);
+
+      gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.18);
+    } catch (e) {
+    }
+  }
+
+  function createLogoSparkles(rect) {
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const colors = ['#ffe84a', '#ff7ad9', '#4de1ff', '#b6ff5c', '#ffffff'];
+
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'logo-sparkle-particle';
+      
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = centerX + 'px';
+      p.style.top = centerY + 'px';
+
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 70 + 30;
+      p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 600);
+    }
+  }
+
+  logoLink.addEventListener("click", (e) => {
+    const href = logoLink.getAttribute("href");
+    if (href && href !== "#") {
+      e.preventDefault();
+
+      logoImg.classList.remove("is-pop");
+      void logoImg.offsetWidth; 
+      logoImg.classList.add("is-pop");
+
+      playBounceSound();
+      createLogoSparkles(logoImg.getBoundingClientRect());
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 350);
+    }
+  });
+
+  window.playBounceSound = playBounceSound;
+  window.createLogoSparkles = createLogoSparkles;
+})();
+
+(() => {
+  const canvas = document.getElementById("spore-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 0;
+  let lastFrame = 0;
+
+  let width = 0;
+  let height = 0;
+  let spores = [];
+  let mouseX = 0;
+  let mouseY = 0;
+  let animationId = null;
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff", "#b6ff5c"];
+
+  const GLOW = {};
+  const STAR = {};
+
+  function glowSprite(color) {
+    if (GLOW[color]) return GLOW[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, color + "dd");
+    grad.addColorStop(0.25, color + "77");
+    grad.addColorStop(0.6, color + "22");
+    grad.addColorStop(1, color + "00");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 64, 64);
+    return (GLOW[color] = c);
+  }
+
+  function starSprite(color) {
+    if (STAR[color]) return STAR[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    g.translate(32, 32);
+    g.shadowColor = color;
+    g.shadowBlur = 8;
+    const grad = g.createRadialGradient(0, 0, 0, 0, 0, 26);
+    grad.addColorStop(0, "#ffffff");
+    grad.addColorStop(0.3, color);
+    grad.addColorStop(1, color + "bb");
+    g.fillStyle = grad;
+    g.beginPath();
+    g.moveTo(0, -26);
+    g.quadraticCurveTo(2.5, -2.5, 26, 0);
+    g.quadraticCurveTo(2.5, 2.5, 0, 26);
+    g.quadraticCurveTo(-2.5, 2.5, -26, 0);
+    g.quadraticCurveTo(-2.5, -2.5, 0, -26);
+    g.closePath();
+    g.fill();
+    return (STAR[color] = c);
+  }
+
+  function drawSpore(ctx, sp, x, y, advance) {
+    if (advance) sp.tw += sp.twSpeed;
+    const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
+    const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
+
+    if (sp.star) {
+      const size = (9 + sp.size * 4.5) * (0.55 + 0.75 * flash);
+      const halo = size * 1.6;
+      ctx.globalAlpha = a * 0.55;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a * 1.25);
+      ctx.drawImage(starSprite(sp.color), x - size, y - size, size * 2, size * 2);
+    } else {
+      const halo = 5 + sp.size * 3.2 + flash * 7;
+      ctx.globalAlpha = a * 0.8;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a + 0.2);
+      ctx.fillStyle = sp.color;
+      ctx.beginPath();
+      ctx.arc(x, y, sp.size * (0.8 + 0.5 * flash), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function createSpore(randomY = false) {
+    return {
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : height + 10,
+      size: Math.random() * 2.1 + 0.5,
+      speed: Math.random() * 0.55 + 0.12,
+      drift: (Math.random() - 0.5) * 0.45,
+      alpha: Math.random() * 0.5 + 0.35,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      phase: Math.random() * Math.PI * 2,
+      tw: Math.random() * Math.PI * 2,
+      twSpeed: 0.03 + Math.random() * 0.07,
+      star: Math.random() < 0.2
+    };
+  }
+
+  function render(advance) {
+    ctx.clearRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "lighter";
+    for (const spore of spores) {
+      drawSpore(ctx, spore, spore.x + mouseX * 0.012, spore.y + mouseY * 0.012, advance);
+    }
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+  }
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, IS_TOUCH ? 1.5 : 2);
+    const prevWidth = width;
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * ratio);
+    canvas.height = Math.round(height * ratio);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    if (!spores.length || width !== prevWidth) {
+      const count = Math.min(180, Math.max(60, Math.floor((width * height) / 8500)));
+      const total = IS_TOUCH ? Math.ceil(count * 0.6) : count;
+      spores = Array.from({ length: total }, () => createSpore(true));
+    }
+
+    if (reduceMotion) render(false);
+  }
+
+  function animate(now) {
+    if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
+    if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    lastFrame = now || 0;
+
+    for (const spore of spores) {
+      spore.phase += 0.015;
+      spore.x += spore.drift + Math.sin(spore.phase) * 0.12;
+      spore.y -= spore.speed;
+
+      if (spore.y < -10) Object.assign(spore, createSpore(false));
+      if (spore.x < -10) spore.x = width + 10;
+      if (spore.x > width + 10) spore.x = -10;
+    }
+
+    render(true);
+    animationId = requestAnimationFrame(animate);
+  }
+
+  function stopAnimation() {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
+  function startAnimation() {
+    stopAnimation();
+    if (reduceMotion) render(false);
+    else animationId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+    startAnimation();
+  }, { passive: true });
+
+  window.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX - width / 2;
+    mouseY = event.clientY - height / 2;
+  }, { passive: true });
+
+  resize();
+  startAnimation();
+})();
+
+(() => {
+  const container = document.getElementById("stars");
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").matches ? 25 : 50); i++) {
+    const star = document.createElement("span");
+
+    star.textContent = "✦";
+    star.setAttribute("aria-hidden", "true");
+
+    Object.assign(star.style, {
+      position: "absolute",
+      left: Math.random() * 100 + "%",
+      top: Math.random() * 100 + "%",
+      color: i % 2 ? "#4de1ff" : "#ff7ad9",
+      fontSize: Math.random() * 9 + 5 + "px",
+      opacity: String(Math.random() * 0.55 + 0.12),
+      textShadow: "0 0 8px currentColor",
+      animation: `starBlink ${Math.random() * 3 + 2}s ease-in-out infinite alternate`,
+      animationDelay: Math.random() * -5 + "s"
+    });
+
+    fragment.appendChild(star);
+  }
+
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes starBlink {
+      from { opacity: 0.12; }
+      to { opacity: 0.85; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  container.appendChild(fragment);
+})();
+
+document.addEventListener("click", (event) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff"];
+
+  for (let i = 0; i < 6; i++) {
+    const spark = document.createElement("span");
+    const angle = Math.PI * 2 * i / 6;
+    const distance = 18 + Math.random() * 24;
+
+    spark.textContent = "✦";
+
+    Object.assign(spark.style, {
+      position: "fixed",
+      left: event.clientX + "px",
+      top: event.clientY + "px",
+      zIndex: "99",
+      pointerEvents: "none",
+      color: colors[i % colors.length],
+      fontSize: "13px",
+      textShadow: "0 0 8px currentColor",
+      transition: "transform 550ms ease-out, opacity 550ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      spark.style.transform =
+        `translate(${Math.cos(angle) * distance}px,${Math.sin(angle) * distance}px)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 650);
+  }
+});
+
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const targets = document.querySelectorAll(".title-img");
+  const colors = ["#ff65c3", "#b6ff5c", "#62f7ff", "#b68cff", "#ffb85c", "#ffe84a"];
+  const marks = ["✦", "✧", "✨"];
+
+  function sparkle(element) {
+    const rect = element.getBoundingClientRect();
+    const spark = document.createElement("span");
+
+    spark.textContent = marks[Math.floor(Math.random() * marks.length)];
+
+    const sparkLeft = rect.left + window.scrollX + Math.random() * rect.width;
+    const sparkTop = rect.top + window.scrollY + Math.random() * rect.height;
+
+    Object.assign(spark.style, {
+      position: "absolute",
+      left: sparkLeft + "px",
+      top: sparkTop + "px",
+      zIndex: "9999",
+      pointerEvents: "none",
+      color: colors[Math.floor(Math.random() * colors.length)],
+      fontSize: (9 + Math.random() * 10) + "px",
+      textShadow: "0 0 8px currentColor",
+      opacity: "1",
+      transition: "transform 750ms ease-out, opacity 750ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      const dx = (Math.random() - 0.5) * 44;
+      const dy = -(18 + Math.random() * 32);
+      const rot = (Math.random() - 0.5) * 180;
+      spark.style.transform =
+        `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 800);
+  }
+
+  targets.forEach((element) => {
+    let timer = null;
+
+    element.addEventListener("mouseenter", () => {
+      if (timer) return;
+      sparkle(element);
+      timer = window.setInterval(() => sparkle(element), 90);
+    });
+
+    element.addEventListener("mouseleave", () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    });
+  });
+})();
+
+(() => {
+  const link = document.querySelector(".page-back");
+  const img = link && link.querySelector("img");
+  if (!link || !img) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  link.addEventListener("click", (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 350);
+  });
+})();
+
+(() => {
+  const img = document.querySelector(".star-figure img");
+  const link = img && img.closest("a");
+  if (!link) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let pending = false;
+
+  link.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    if (pending) return;
+    pending = true;
+
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+    if (window.createLogoSparkles) window.createLogoSparkles(img.getBoundingClientRect());
+
+    setTimeout(() => { window.location.href = href; }, 350);
+  });
+
+  window.addEventListener("pageshow", () => {
+    pending = false;
+    img.classList.remove("is-pop");
+  });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KINOKO_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
+})();
+</script>
+</body>
+</html>
