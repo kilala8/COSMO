@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
 <meta name="robots" content="noindex, nofollow">
-<title>📖 BLOG 投稿 ✏️</title>
+<title>✏️ 日記を書く</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -898,6 +898,114 @@ h1 {
 .tool-btn.bold-btn { font-weight: 900; }
 .tool-btn.big-btn  { font-size: 1.05rem; }
 
+.preview-content .align-center { display: block; text-align: center; }
+.preview-content .align-right { display: block; text-align: right; }
+
+#restore-banner .item-actions { margin-top: 10px; }
+#autosave-note { text-align: center; min-height: 1.4em; }
+
+.tool-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border: 1px dashed #b68cff88;
+  border-radius: 8px;
+}
+
+.tool-group-label {
+  color: #bdb5d8;
+  font-size: 0.72rem;
+  font-weight: bold;
+}
+
+.tool-btn.small-btn { font-size: 0.72rem; }
+
+.color-panel {
+  display: grid;
+  gap: 10px;
+  margin: 2px 0 6px;
+  padding: 12px;
+  border: 1px solid var(--purple);
+  border-radius: 12px;
+  background: rgba(12, 10, 40, 0.85);
+  box-shadow: 0 0 14px rgba(182, 140, 255, 0.25);
+}
+
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.swatch {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 2px solid var(--c);
+  border-radius: 50%;
+  background: var(--c);
+  cursor: pointer;
+  box-shadow:
+    0 0 8px var(--c),
+    0 0 18px color-mix(in srgb, var(--c) 60%, transparent);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.swatch:hover,
+.swatch:focus-visible {
+  transform: scale(1.18);
+  box-shadow:
+    0 0 12px var(--c),
+    0 0 28px var(--c);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.color-custom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.color-custom label {
+  color: var(--cyan);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.color-custom input[type="color"] {
+  width: 44px;
+  height: 32px;
+  padding: 0;
+  border: 1.5px solid var(--purple);
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+}
+
+.image-size-select {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--lime);
+  border-radius: 7px;
+  background: #070720;
+  color: var(--lime);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.preview-content .inline-img.size-s img {
+  width: min(100%, 200px);
+  max-height: none;
+}
+
+.preview-content .inline-img.size-m img {
+  width: min(100%, 380px);
+  max-height: none;
+}
+
 @media (max-width: 960px) {
   #post-section {
     grid-template-columns: minmax(0, 1fr);
@@ -1004,7 +1112,7 @@ h1 {
 
 <main>
   <section class="big-frame">
-    <h1>🪐BLOG 管理エリア🌎</h1>
+    <h1>🪐日記を書きましょう🌎</h1>
 
     <div id="login-section">
       <form id="login-form">
@@ -1026,6 +1134,14 @@ h1 {
       </div>
 
       <form id="post-form">
+        <div id="restore-banner" class="edit-banner hidden" role="alert">
+          <span id="restore-text"></span>
+          <div class="item-actions">
+            <button type="button" class="mini-btn" id="restore-yes">📝 復元する</button>
+            <button type="button" class="mini-btn delete" id="restore-no">🗑️ 捨てる</button>
+          </div>
+        </div>
+
         <div id="edit-banner" class="edit-banner hidden"></div>
 
         <div class="field">
@@ -1052,29 +1168,49 @@ h1 {
           <div id="image-list" class="image-list hidden" aria-live="polite"></div>
 
           <input type="file" id="imageFile" accept="image/*" multiple>
-          <p class="field-note" id="image-note">最大10枚まで。何回かに分けて追加してもOK。◀ ▶ で並べ替え、✕ で外せるよ。本文の好きな場所に入れるには、本文でカーソルを置いてから「📌 本文に入れる」を押してね。</p>
+          <p class="field-note" id="image-note">最大10枚まで。何回かに分けて追加してもOK。◀ ▶ で並べ替え、✕ で外せるよ。本文の好きな場所に入れるには、本文でカーソルを置いてから、大きさ（小・中・大）をえらんで「📌 本文に入れる」を押してね。</p>
         </div>
 
         <div class="field">
           <label for="content">本文✏️</label>
           <div class="editor-toolbar">
-            <button type="button" class="tool-btn bold-btn" data-tag="b">太字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ff7ad9" style="--c: #ff7ad9" title="ピンク文字">ピンク文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#4de1ff" style="--c: #4de1ff" title="青文字">青文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ffe84a" style="--c: #ffe84a" title="黄文字">黄文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ff7a7a" style="--c: #ff7a7a" title="赤文字">赤文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#b6ff5c" style="--c: #b6ff5c" title="緑文字">緑文字</button>
+            <button type="button" class="tool-btn bold-btn" data-tag="b" title="太字（Ctrl+B）">太字</button>
+            <button type="button" class="tool-btn" id="color-toggle" aria-expanded="false" aria-controls="color-panel" title="文字の色をえらぶ">🎨 色</button>
+            <button type="button" class="tool-btn small-btn" data-tag="size" data-val="0.85em">小さめ</button>
             <button type="button" class="tool-btn big-btn" data-tag="size" data-val="1.3em">大きめ</button>
+            <button type="button" class="tool-btn big-btn" data-tag="size" data-val="1.7em">特大</button>
             <button type="button" class="tool-btn" data-tag="img">🖼️ 画像</button>
+            <span class="tool-group" role="group" aria-label="画像サイズ">
+              <span class="tool-group-label">画像サイズ</span>
+              <button type="button" class="tool-btn" data-tag="imgsize" data-val="s" title="カーソルのある画像を小サイズに">小</button>
+              <button type="button" class="tool-btn" data-tag="imgsize" data-val="m" title="カーソルのある画像を中サイズに">中</button>
+              <button type="button" class="tool-btn" data-tag="imgsize" data-val="l" title="カーソルのある画像を大サイズに">大</button>
+            </span>
             <button type="button" class="tool-btn" data-tag="url">🔗 リンク</button>
             <button type="button" class="tool-btn" data-tag="youtube">▶️ YouTube</button>
             <button type="button" class="tool-btn" data-tag="twitter">𝕏 ポスト</button>
             <button type="button" class="tool-btn" data-tag="quote">❝ 引用枠</button>
+            <span class="tool-group" role="group" aria-label="文字の配置">
+              <span class="tool-group-label">配置</span>
+              <button type="button" class="tool-btn" data-tag="align" data-val="center" title="選んだ文字（選ばなければ今の行）を中央寄せ">中央</button>
+              <button type="button" class="tool-btn" data-tag="align" data-val="right" title="選んだ文字（選ばなければ今の行）を右寄せ">右寄せ</button>
+              <button type="button" class="tool-btn" data-tag="align" data-val="left" title="中央・右寄せを解除">左（解除）</button>
+            </span>
+            <button type="button" class="tool-btn" data-tag="clear" title="選んだ部分の装飾（太字・色・サイズ・配置・引用枠・リンク）を消す">🧹 装飾を消す</button>
+          </div>
+          <div id="color-panel" class="color-panel hidden" role="group" aria-label="文字の色">
+            <div id="color-swatches" class="color-swatches"></div>
+            <div class="color-custom">
+              <label for="custom-color">好きな色</label>
+              <input type="color" id="custom-color" value="#ff7ad9">
+              <button type="button" class="tool-btn" id="custom-color-apply">この色にする</button>
+            </div>
+            <p class="field-note">文字を選んでから色をえらぶと、その部分に色がつくよ。色のついた部分を選び直して別の色をえらぶと、色が入れ替わるよ。</p>
           </div>
           <textarea id="content" rows="10" required></textarea>
           <p class="field-note">
             リンク: [url=https://〜]表示する文字[/url] ／ YouTube: [youtube]動画のURL[/youtube] ／ X埋め込み: [x]ポストのURL[/x] ／ 引用枠: [quote]引用したい文章[/quote]<br>
-            画像: 上の画像の「📌 本文に入れる」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。本文に入れなかった画像は、これまでどおり本文の上にまとめて出るよ。
+            画像: 上の画像の「📌 本文に入れる」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。大きさは [img=1:s]（小）／[img=1:m]（中）／[img=1:l]（大・ふつう）。印にカーソルを置いて「画像サイズ」の 小・中・大 を押しても変えられるよ。本文に入れなかった画像は、これまでどおり本文の上にまとめて出るよ。
           </p>
         </div>
 
@@ -1101,9 +1237,11 @@ h1 {
         <div class="field">
           <label class="checkbox-field">
             <input type="checkbox" id="isDraft">
-            📝 4tagakiとして保存する
+            📝 4tagaki保存
           </label>
         </div>
+
+        <p class="field-note" id="autosave-note" aria-live="polite"></p>
 
         <button type="submit" id="submit-btn" class="submit-btn">🪐 保存する</button>
         <button type="button" id="cancel-btn" class="cancel-btn hidden">↩️ 編集をやめる</button>
@@ -1194,8 +1332,9 @@ function escapeAttr(value) {
     .replace(/>/g, '&gt;');
 }
 
-function buildInlineImageHtml(src, number) {
-  return `<span class="inline-img"><img src="${escapeAttr(src)}" alt="${number}枚目の画像"></span>`;
+function buildInlineImageHtml(src, number, size) {
+  const cls = (size === 's' || size === 'm') ? ` size-${size}` : '';
+  return `<span class="inline-img${cls}"><img src="${escapeAttr(src)}" alt="${number}枚目の画像"></span>`;
 }
 
 function buildLinkHtml(url, label) {
@@ -1237,6 +1376,8 @@ function formatContentWithTags(rawText, options = {}) {
     escaped = escaped
       .replace(/\n?\[quote\]([\s\S]*?)\[\/quote\]\n?/g, (match, inner) =>
         `<blockquote class="note-quote">${inner.replace(/^\n+|\n+$/g, '')}</blockquote>`)
+      .replace(/\n?\[(center|right)\]([\s\S]*?)\[\/\1\]\n?/g, (match, dir, inner) =>
+        `<div class="align-${dir}">${inner.replace(/^\n+|\n+$/g, '')}</div>`)
       .replace(/\[b\]([\s\S]*?)\[\/b\]/g,
         '<strong style="font-weight: bold; text-shadow: 0 0 6px currentColor;">$1</strong>')
       .replace(/\[color=([^\]]*?)\]([\s\S]*?)\[\/color\]/g, (match, value, inner) => {
@@ -1270,9 +1411,9 @@ function formatContentWithTags(rawText, options = {}) {
       const url = href.trim();
       return TWITTER_URL.test(url) ? buildTwitterHtml(url, embed) : match;
     })
-    .replace(/\n?\[img=(\d+)\]\n?/g, (match, n) => {
+    .replace(/\n?\[img=(\d+)(?::([sml]))?\]\n?/g, (match, n, size) => {
       const src = images[parseInt(n, 10) - 1];
-      return src ? buildInlineImageHtml(src, n) : match;
+      return src ? buildInlineImageHtml(src, n, size) : match;
     });
 
   return escaped;
@@ -1314,27 +1455,79 @@ function imageSrc(item) {
 
 function usedImageNumbers() {
   const used = new Set();
-  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)\]/g)) {
+  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)(?::[sml])?\]/g)) {
     const n = parseInt(m[1], 10);
     if (n >= 1 && n <= imageItems.length) used.add(n);
   }
   return used;
 }
 
-function remapImageTags(mapFn) {
-  const text = contentInput.value;
-  const next = text.replace(/(\n?)\[img=(\d+)\](\n?)/g, (match, lead, n, trail) => {
-    const to = mapFn(parseInt(n, 10));
-    if (to === null) return (lead && trail) ? '\n' : '';
-    return `${lead}[img=${to}]${trail}`;
-  });
-  if (next !== text) contentInput.value = next;
+// 本文を書き換えても、ページと本文欄のスクロール位置・カーソル位置を保つ
+function keepView(fn) {
+  const winX = window.scrollX;
+  const winY = window.scrollY;
+  const areaTop = contentInput.scrollTop;
+  const hadFocus = document.activeElement === contentInput;
+  const selStart = contentInput.selectionStart;
+  const selEnd = contentInput.selectionEnd;
+
+  const result = fn();
+
+  const restore = () => {
+    contentInput.scrollTop = areaTop;
+    window.scrollTo({ left: winX, top: winY, behavior: 'instant' });
+  };
+  if (hadFocus && result !== 'custom-selection') {
+    contentInput.setSelectionRange(selStart, selEnd);
+  }
+  restore();
+  requestAnimationFrame(restore);
+  return result;
 }
 
-function insertImageTag(index) {
+function replaceContentRange(start, end, replacement, selStart, selEnd) {
+  keepView(() => {
+    contentInput.focus({ preventScroll: true });
+    contentInput.setSelectionRange(start, end);
+
+    let done = false;
+    try {
+      done = document.execCommand('insertText', false, replacement);
+    } catch (error) {
+      done = false;
+    }
+    if (!done) {
+      contentInput.setRangeText(replacement, start, end, 'end');
+    }
+
+    contentInput.setSelectionRange(selStart, selEnd);
+    return 'custom-selection';
+  });
+  updatePreview();
+  scheduleAutosave();
+}
+
+function remapImageTags(mapFn) {
+  const text = contentInput.value;
+  const next = text.replace(/(\n?)\[img=(\d+)((?::[sml])?)\](\n?)/g, (match, lead, n, size, trail) => {
+    const to = mapFn(parseInt(n, 10));
+    if (to === null) return (lead && trail) ? '\n' : '';
+    return `${lead}[img=${to}${size}]${trail}`;
+  });
+  if (next !== text) keepView(() => { contentInput.value = next; });
+}
+
+const IMAGE_SIZE_LABEL = { s: '小', m: '中', l: '大' };
+
+function imageTag(number, size) {
+  return (size === 's' || size === 'm') ? `[img=${number}:${size}]` : `[img=${number}]`;
+}
+
+function insertImageTag(index, size) {
   if (index < 0 || index >= imageItems.length) return;
 
-  const tag = `[img=${index + 1}]`;
+  const useSize = size || imageItems[index].insertSize || 'l';
+  const tag = imageTag(index + 1, useSize);
   const text = contentInput.value;
   const start = contentInput.selectionStart;
   const end = contentInput.selectionEnd;
@@ -1345,13 +1538,9 @@ function insertImageTag(index) {
   const trail = after.startsWith('\n') ? '' : '\n';
   const inserted = lead + tag + trail;
 
-  contentInput.value = before + inserted + after;
   const caret = before.length + inserted.length;
-  contentInput.focus();
-  contentInput.setSelectionRange(caret, caret);
-
-  updatePreview();
-  setStatus(`🖼️ ${index + 1}枚目を本文に入れたよ`, 'success');
+  replaceContentRange(start, end, inserted, caret, caret);
+  setStatus(`🖼️ ${index + 1}枚目を（${IMAGE_SIZE_LABEL[useSize]}サイズで）本文に入れたよ`, 'success');
 }
 
 function askAndInsertImage() {
@@ -1374,7 +1563,7 @@ function askAndInsertImage() {
 
 function refreshImageUsage() {
   const counts = {};
-  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)\]/g)) {
+  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)(?::[sml])?\]/g)) {
     const n = parseInt(m[1], 10);
     counts[n] = (counts[n] || 0) + 1;
   }
@@ -1470,6 +1659,9 @@ function makeImageButton(label, title, onClick, extraClass) {
   button.setAttribute('aria-label', title);
   if (extraClass) button.className = extraClass;
   button.addEventListener('click', onClick);
+  if (extraClass === 'image-insert') {
+    button.addEventListener('mousedown', (e) => e.preventDefault());
+  }
   return button;
 }
 
@@ -1509,7 +1701,20 @@ function renderImageList() {
     used.className = 'image-used hidden';
     box.appendChild(used);
 
-    box.appendChild(makeImageButton('📌 本文に入れる', `${index + 1}枚目を本文のカーソル位置に入れる`, () => insertImageTag(index), 'image-insert'));
+    const sizeSelect = document.createElement('select');
+    sizeSelect.className = 'image-size-select';
+    sizeSelect.setAttribute('aria-label', `${index + 1}枚目を本文に入れるときの大きさ`);
+    [['s', '小サイズ'], ['m', '中サイズ'], ['l', '大サイズ']].forEach(([value, label]) => {
+      const opt = document.createElement('option');
+      opt.value = value;
+      opt.textContent = label;
+      sizeSelect.appendChild(opt);
+    });
+    sizeSelect.value = item.insertSize || 'l';
+    sizeSelect.addEventListener('change', () => { item.insertSize = sizeSelect.value; });
+    box.appendChild(sizeSelect);
+
+    box.appendChild(makeImageButton('📌 本文に入れる', `${index + 1}枚目を本文のカーソル位置に入れる`, () => insertImageTag(index, item.insertSize || 'l'), 'image-insert'));
 
     imageListBox.appendChild(box);
   });
@@ -1575,66 +1780,282 @@ contentInput.addEventListener('input', schedulePreview);
 dateInput.addEventListener('input', schedulePreview);
 fileInput.addEventListener('change', () => addImageFiles(fileInput.files));
 
-document.querySelectorAll('.tool-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const tag = btn.getAttribute('data-tag');
-    const val = btn.getAttribute('data-val');
+const NEON_COLORS = [
+  ['ネオンピンク', '#ff7ad9'],
+  ['ホットピンク', '#ff3dc8'],
+  ['ネオンレッド', '#ff5c7a'],
+  ['ネオンオレンジ', '#ffa94d'],
+  ['ネオンイエロー', '#ffe84a'],
+  ['ネオンライム', '#b6ff5c'],
+  ['ネオングリーン', '#3dffa0'],
+  ['ネオンシアン', '#4de1ff'],
+  ['ネオンブルー', '#5c9dff'],
+  ['ネオンパープル', '#b68cff'],
+  ['ホワイト', '#ffffff']
+];
 
-    if (tag === 'img') {
-      askAndInsertImage();
+function changeImageTagSize(size) {
+  const text = contentInput.value;
+  const selStart = contentInput.selectionStart;
+  const selEnd = contentInput.selectionEnd;
+
+  const hits = Array.from(text.matchAll(/\[img=(\d+)(?::[sml])?\]/g))
+    .filter(m => m.index <= selEnd && m.index + m[0].length >= selStart);
+
+  if (!hits.length) {
+    setStatus('❌ 大きさを変えたい画像の印（[img=1] など）にカーソルを置いてね', 'error');
+    return;
+  }
+
+  const from = hits[0].index;
+  const last = hits[hits.length - 1];
+  const to = last.index + last[0].length;
+  const replaced = text.slice(from, to)
+    .replace(/\[img=(\d+)(?::[sml])?\]/g, (m, num) => imageTag(num, size));
+
+  replaceContentRange(from, to, replaced, from, from + replaced.length);
+  setStatus(`🖼️ 画像を${IMAGE_SIZE_LABEL[size]}サイズにしたよ`, 'success');
+}
+
+function applyAlign(dir) {
+  const text = contentInput.value;
+  let start = contentInput.selectionStart;
+  let end = contentInput.selectionEnd;
+
+  if (start === end) {
+    const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+    const nextBreak = text.indexOf('\n', end);
+    start = lineStart;
+    end = nextBreak === -1 ? text.length : nextBreak;
+  }
+
+  const inner = text.slice(start, end);
+  const before = /\[(center|right)\]$/.exec(text.slice(0, start));
+  const wrapped = before && text.slice(end).startsWith(`[/${before[1]}]`);
+
+  if (wrapped) {
+    const from = start - before[0].length;
+    const to = end + `[/${before[1]}]`.length;
+    if (dir === 'left') {
+      replaceContentRange(from, to, inner, from, from + inner.length);
+    } else {
+      const open = `[${dir}]`;
+      replaceContentRange(from, to, `${open}${inner}[/${dir}]`, from + open.length, from + open.length + inner.length);
+    }
+    return;
+  }
+
+  if (dir === 'left') {
+    setStatus('❌ 中央・右寄せを外したい文字を選ぶか、その行にカーソルを置いてね', 'error');
+    return;
+  }
+
+  const body = inner || (dir === 'center' ? '中央に置く文章' : '右に置く文章');
+  const lead = (start === 0 || text[start - 1] === '\n') ? '' : '\n';
+  const trail = (end >= text.length || text[end] === '\n') ? '' : '\n';
+  const open = `[${dir}]`;
+  const replacement = `${lead}${open}${body}[/${dir}]${trail}`;
+  const selStart = start + lead.length + open.length;
+
+  replaceContentRange(start, end, replacement, selStart, selStart + body.length);
+}
+
+function clearDecoration() {
+  const text = contentInput.value;
+  const start = contentInput.selectionStart;
+  const end = contentInput.selectionEnd;
+
+  if (start === end) {
+    setStatus('❌ 装飾を消したい部分を選んでね', 'error');
+    return;
+  }
+
+  const OPEN_AT_END = /\[(b|center|right|quote|(?:color|size)=[^\]]*|url(?:=[^\]]*)?)\]$/;
+  let from = start;
+  let to = end;
+
+  for (;;) {
+    const m = OPEN_AT_END.exec(text.slice(0, from));
+    if (!m) break;
+    const close = `[/${m[1].split('=')[0]}]`;
+    if (!text.slice(to).startsWith(close)) break;
+    from -= m[0].length;
+    to += close.length;
+  }
+
+  const original = text.slice(from, to);
+  const stripped = original.replace(
+    /\[\/(?:b|color|size|url|center|right|quote)\]|\[(?:b|center|right|quote|(?:color|size)=[^\]]*|url(?:=[^\]]*)?)\]/g,
+    ''
+  );
+
+  if (stripped === original) {
+    setStatus('消せる装飾は見つからなかったよ', '');
+    return;
+  }
+
+  replaceContentRange(from, to, stripped, from, from + stripped.length);
+  setStatus('🧹 装飾を消したよ', 'success');
+}
+
+function applyTool(tag, val) {
+  if (tag === 'img') {
+    askAndInsertImage();
+    return;
+  }
+
+  if (tag === 'imgsize') {
+    changeImageTagSize(val);
+    return;
+  }
+
+  if (tag === 'align') {
+    applyAlign(val);
+    return;
+  }
+
+  if (tag === 'clear') {
+    clearDecoration();
+    return;
+  }
+
+  const start = contentInput.selectionStart;
+  const end = contentInput.selectionEnd;
+  const text = contentInput.value;
+  const selected = text.substring(start, end);
+
+  let replacement = '';
+  let inner = '';
+  let openLen = 0;
+  let caretAtEnd = false;
+  let rangeStart = start;
+  let rangeEnd = end;
+
+  if (tag === 'b') {
+    inner = selected || '太字のテキスト';
+    replacement = `[b]${inner}[/b]`;
+    openLen = 3;
+  } else if (tag === 'color' || tag === 'size') {
+    const open = `[${tag}=${val}]`;
+    inner = selected || (tag === 'color' ? '色付きテキスト' : '大きなテキスト');
+    replacement = `${open}${inner}[/${tag}]`;
+    openLen = open.length;
+
+    const closeStr = `[/${tag}]`;
+    const before = new RegExp('\\[' + tag + '=[^\\]]*\\]$').exec(text.slice(0, start));
+    if (before && text.slice(end).startsWith(closeStr)) {
+      rangeStart = start - before[0].length;
+      rangeEnd = end + closeStr.length;
+    }
+  } else if (tag === 'url' || tag === 'youtube' || tag === 'twitter') {
+    const fromSelection = /^https?:\/\//.test(selected.trim()) ? selected.trim() : '';
+    let asked = 'リンク先のURL（https:// から）';
+    if (tag === 'youtube') asked = 'YouTubeのURL';
+    if (tag === 'twitter') asked = 'X（Twitter）のポストURL（https://x.com/.../status/...）';
+
+    const url = (tag !== 'url' && fromSelection) ||
+      (window.prompt(asked, 'https://') || '').trim();
+
+    if (!url || url === 'https://') return;
+
+    if (/[\s\]]/.test(url)) {
+      setStatus('❌ URLに空白や ] は使えないよ', 'error');
       return;
     }
 
-    const start = contentInput.selectionStart;
-    const end = contentInput.selectionEnd;
-    const text = contentInput.value;
-    const selected = text.substring(start, end);
-
-    let replacement = '';
-    if (tag === 'b') {
-      replacement = `[b]${selected || '太字のテキスト'}[/b]`;
-    } else if (tag === 'color') {
-      replacement = `[color=${val}]${selected || '色付きテキスト'}[/color]`;
-    } else if (tag === 'size') {
-      replacement = `[size=${val}]${selected || '大きなテキスト'}[/size]`;
-    } else if (tag === 'url' || tag === 'youtube' || tag === 'twitter') {
-      const fromSelection = /^https?:\/\//.test(selected.trim()) ? selected.trim() : '';
-      let asked = 'リンク先のURL（https:// から）';
-      if (tag === 'youtube') asked = 'YouTubeのURL';
-      if (tag === 'twitter') asked = 'X（Twitter）のポストURL（https://x.com/.../status/...）';
-
-      const url = (tag !== 'url' && fromSelection) ||
-        (window.prompt(asked, 'https://') || '').trim();
-
-      if (!url || url === 'https://') return;
-
-      if (/[\s\]]/.test(url)) {
-        setStatus('❌ URLに空白や ] は使えないよ', 'error');
-        return;
-      }
-
-      if (tag === 'url') {
-        replacement = `[url=${url}]${selected || 'リンクの文字'}[/url]`;
-      } else if (tag === 'youtube') {
-        replacement = `\n[youtube]${url}[/youtube]\n`;
-      } else if (tag === 'twitter') {
-        replacement = `\n[x]${url}[/x]\n`;
-      }
-    } else if (tag === 'quote') {
-      replacement = `\n[quote]${selected || '引用したい文章'}[/quote]\n`;
-    }
-
-    contentInput.value = text.substring(0, start) + replacement + text.substring(end);
-    contentInput.focus();
-    
-    if (tag === 'youtube' || tag === 'twitter' || tag === 'quote') {
-      const caret = start + replacement.length;
-      contentInput.setSelectionRange(caret, caret);
+    if (tag === 'url') {
+      const open = `[url=${url}]`;
+      inner = selected || 'リンクの文字';
+      replacement = `${open}${inner}[/url]`;
+      openLen = open.length;
+    } else if (tag === 'youtube') {
+      replacement = `\n[youtube]${url}[/youtube]\n`;
+      caretAtEnd = true;
     } else {
-      contentInput.setSelectionRange(start, start + replacement.length);
+      replacement = `\n[x]${url}[/x]\n`;
+      caretAtEnd = true;
     }
-    updatePreview();
+  } else if (tag === 'quote') {
+    inner = selected || '引用したい文章';
+    replacement = `\n[quote]${inner}[/quote]\n`;
+    openLen = '\n[quote]'.length;
+    caretAtEnd = !!selected;
+  } else {
+    return;
+  }
+
+  let selStart;
+  let selEnd;
+  if (caretAtEnd) {
+    selStart = selEnd = rangeStart + replacement.length;
+  } else {
+    selStart = rangeStart + openLen;
+    selEnd = selStart + inner.length;
+  }
+
+  replaceContentRange(rangeStart, rangeEnd, replacement, selStart, selEnd);
+}
+
+document.querySelectorAll('.tool-btn[data-tag]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applyTool(btn.getAttribute('data-tag'), btn.getAttribute('data-val'));
   });
+});
+
+document.querySelectorAll('.editor-toolbar .tool-btn, #color-panel .tool-btn').forEach(btn => {
+  btn.addEventListener('mousedown', (e) => e.preventDefault());
+});
+
+const colorPanel = document.getElementById('color-panel');
+const colorToggle = document.getElementById('color-toggle');
+const colorSwatches = document.getElementById('color-swatches');
+const customColorInput = document.getElementById('custom-color');
+const customColorApply = document.getElementById('custom-color-apply');
+
+function setColorPanel(open) {
+  colorPanel.classList.toggle('hidden', !open);
+  colorToggle.setAttribute('aria-expanded', String(open));
+}
+
+NEON_COLORS.forEach(([name, hex]) => {
+  const swatch = document.createElement('button');
+  swatch.type = 'button';
+  swatch.className = 'swatch';
+  swatch.style.setProperty('--c', hex);
+  swatch.title = name;
+  swatch.setAttribute('aria-label', name + ' にする');
+  swatch.addEventListener('mousedown', (e) => e.preventDefault());
+  swatch.addEventListener('click', () => {
+    applyTool('color', hex);
+    setColorPanel(false);
+  });
+  colorSwatches.appendChild(swatch);
+});
+
+colorToggle.addEventListener('click', () => {
+  setColorPanel(colorPanel.classList.contains('hidden'));
+});
+
+customColorApply.addEventListener('click', () => {
+  applyTool('color', customColorInput.value);
+  setColorPanel(false);
+});
+
+document.addEventListener('click', (e) => {
+  if (colorPanel.classList.contains('hidden')) return;
+  if (e.target.closest('#color-panel') || e.target.closest('#color-toggle')) return;
+  setColorPanel(false);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setColorPanel(false);
+});
+
+contentInput.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.key.toLowerCase() === 'b') {
+    e.preventDefault();
+    applyTool('b');
+  }
 });
 
 function setStatus(message, type) {
@@ -1673,6 +2094,9 @@ function updateUI(session) {
     setTimeout(fetchPosts, 0);
   } else {
     cancelEdit();
+    draftOffered = false;
+    pendingDraft = null;
+    restoreBanner.classList.add('hidden');
     loginSection.classList.remove('hidden');
     postSection.classList.add('hidden');
     setStatus('ログインしてください 🔑', '');
@@ -1788,6 +2212,7 @@ async function fetchPosts() {
   allPosts = posts || [];
   updateCategoryDatalist(allPosts);
   renderLists();
+  offerDraftRestore();
 }
 
 function updateCategoryDatalist(posts) {
@@ -1966,11 +2391,14 @@ function cancelEdit() {
   editBanner.classList.add('hidden');
   editBanner.textContent = '';
   cancelBtn.classList.add('hidden');
-  submitBtn.textContent = '🌎 保存する';
+  submitBtn.textContent = '🪐 保存する';
   updatePreview();
 }
 
-cancelBtn.addEventListener('click', cancelEdit);
+cancelBtn.addEventListener('click', () => {
+  clearSavedDraft();
+  cancelEdit();
+});
 
 postForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -2051,8 +2479,122 @@ postForm.addEventListener('submit', async (e) => {
   for (const url of removedImageUrls) await removeImageFile(url);
 
   setStatus('✨ 保存完了しました！', 'success');
+  clearSavedDraft();
   cancelEdit();
   fetchPosts();
+});
+
+// ===== 書きかけの自動保存（このブラウザの中だけに保存。画像は保存されません） =====
+const DRAFT_KEY = 'kinoko-blog-draft-v1';
+const restoreBanner = document.getElementById('restore-banner');
+const restoreText = document.getElementById('restore-text');
+const autosaveNote = document.getElementById('autosave-note');
+
+let autosaveTimer = null;
+let pendingDraft = null;
+let draftOffered = false;
+
+function draftStorageKey() {
+  return `${DRAFT_KEY}:${currentUserId || 'anon'}`;
+}
+
+function loadSavedDraft() {
+  try {
+    const raw = localStorage.getItem(draftStorageKey());
+    return raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function clearSavedDraft() {
+  clearTimeout(autosaveTimer);
+  autosaveTimer = null;
+  try {
+    localStorage.removeItem(draftStorageKey());
+  } catch (error) {
+  }
+  autosaveNote.textContent = '';
+}
+
+function saveDraftNow() {
+  if (pendingDraft) return;
+  if (!titleInput.value.trim() && !contentInput.value.trim()) return;
+
+  const data = {
+    title: titleInput.value,
+    category: categoryInput.value,
+    content: contentInput.value,
+    date: dateInput.value,
+    isDraft: draftCheckbox.checked,
+    editingId: editingPost ? editingPost.id : null,
+    savedAt: Date.now()
+  };
+
+  try {
+    localStorage.setItem(draftStorageKey(), JSON.stringify(data));
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    autosaveNote.textContent = `💾 書きかけを自動保存したよ（${hh}:${mm}）`;
+  } catch (error) {
+    autosaveNote.textContent = '⚠️ 自動保存できませんでした';
+  }
+}
+
+function scheduleAutosave() {
+  clearTimeout(autosaveTimer);
+  autosaveTimer = setTimeout(saveDraftNow, 800);
+}
+
+[titleInput, categoryInput, contentInput, dateInput].forEach(el => {
+  el.addEventListener('input', scheduleAutosave);
+});
+draftCheckbox.addEventListener('change', scheduleAutosave);
+
+function offerDraftRestore() {
+  if (draftOffered) return;
+  draftOffered = true;
+
+  const d = loadSavedDraft();
+  if (!d || !(String(d.title || '').trim() || String(d.content || '').trim())) return;
+  if (titleInput.value || contentInput.value) return;
+
+  pendingDraft = d;
+  const when = d.savedAt ? new Date(d.savedAt).toLocaleString('ja-JP') : '前回';
+  const editing = d.editingId !== null && d.editingId !== undefined ? '（記事の編集中でした）' : '';
+  restoreText.textContent =
+    `💾 ${when} の書きかけが残っているよ${editing}。復元する？（画像は復元されないので、必要なら追加し直してね）`;
+  restoreBanner.classList.remove('hidden');
+}
+
+document.getElementById('restore-yes').addEventListener('click', () => {
+  const d = pendingDraft;
+  if (!d) return;
+  pendingDraft = null;
+  restoreBanner.classList.add('hidden');
+
+  const post = (d.editingId !== null && d.editingId !== undefined)
+    ? allPosts.find(p => String(p.id) === String(d.editingId))
+    : null;
+
+  if (post) startEdit(post);
+  else cancelEdit();
+
+  titleInput.value = d.title || '';
+  categoryInput.value = d.category || '';
+  contentInput.value = d.content || '';
+  dateInput.value = d.date || '';
+  draftCheckbox.checked = !!d.isDraft;
+
+  updatePreview();
+  setStatus('📝 書きかけを復元したよ', 'success');
+});
+
+document.getElementById('restore-no').addEventListener('click', () => {
+  pendingDraft = null;
+  restoreBanner.classList.add('hidden');
+  clearSavedDraft();
 });
 
 checkAuth();

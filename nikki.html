@@ -755,6 +755,36 @@ h1 {
   margin: 14px auto;
 }
 
+.post-content .align-center { display: block; text-align: center; }
+.post-content .align-right { display: block; text-align: right; }
+
+.post-content .image-button.size-s {
+  width: min(100%, 200px);
+}
+
+.post-content .image-button.size-m {
+  width: min(100%, 380px);
+}
+
+.post-content .image-button.size-s img,
+.post-content .image-button.size-m img {
+  width: 100%;
+  max-height: none;
+}
+
+.post-content .note-quote {
+  display: block;
+  margin: 14px 0;
+  padding: 12px 18px;
+  border-left: 4px solid var(--cyan);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--cyan) 9%, transparent);
+  box-shadow: inset 0 0 14px color-mix(in srgb, var(--cyan) 12%, transparent);
+  color: #dff6ff;
+  font-size: 0.97em;
+  line-height: 1.8;
+}
+
 .post-content a {
   color: var(--cyan);
   text-decoration: underline;
@@ -1762,6 +1792,10 @@ function formatContentWithTags(rawText, options = {}) {
   do {
     prev = escaped;
     escaped = escaped
+      .replace(/\n?\[quote\]([\s\S]*?)\[\/quote\]\n?/g, (match, inner) =>
+        `<blockquote class="note-quote">${inner.replace(/^\n+|\n+$/g, '')}</blockquote>`)
+      .replace(/\n?\[(center|right)\]([\s\S]*?)\[\/\1\]\n?/g, (match, dir, inner) =>
+        `<div class="align-${dir}">${inner.replace(/^\n+|\n+$/g, '')}</div>`)
       .replace(/\[b\]([\s\S]*?)\[\/b\]/g,
         '<strong style="font-weight: bold; text-shadow: 0 0 6px currentColor;">$1</strong>')
       .replace(/\[color=([^\]]*?)\]([\s\S]*?)\[\/color\]/g, (match, value, inner) => {
@@ -1795,10 +1829,10 @@ function formatContentWithTags(rawText, options = {}) {
       const url = href.trim();
       return TWITTER_URL.test(url) ? buildTwitterHtml(url) : match;
     })
-    .replace(/\n?\[img=(\d+)\]\n?/g, (match, n) => {
+    .replace(/\n?\[img=(\d+)(?::([sml]))?\]\n?/g, (match, n, size) => {
       const index = parseInt(n, 10) - 1;
       return images[index]
-        ? `<span class="inline-img-slot" data-img="${index}"></span>`
+        ? `<span class="inline-img-slot" data-img="${index}" data-size="${size || 'l'}"></span>`
         : match;
     });
 
@@ -1847,7 +1881,7 @@ function buildPostCard(post) {
   const totalImages = allImages.length;
 
   const usedInline = new Set();
-  for (const m of String(post.content || '').matchAll(/\[img=(\d+)\]/g)) {
+  for (const m of String(post.content || '').matchAll(/\[img=(\d+)(?::[sml])?\]/g)) {
     const index = parseInt(m[1], 10) - 1;
     if (allImages[index]) usedInline.add(index);
   }
@@ -1855,10 +1889,10 @@ function buildPostCard(post) {
   const imageUrls = allImages.filter((url, index) => url && !usedInline.has(index));
   const imageCaption = (index) => `${titleText}（${index + 1}/${totalImages}）`;
 
-  function createImageButton(url, caption) {
+  function createImageButton(url, caption, size) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'image-button';
+    button.className = 'image-button' + ((size === 's' || size === 'm') ? ` size-${size}` : '');
     button.setAttribute('aria-label', caption + ' を拡大表示');
 
     const img = document.createElement('img');
@@ -1900,7 +1934,7 @@ function buildPostCard(post) {
 
   content.querySelectorAll('.inline-img-slot').forEach((slot) => {
     const index = parseInt(slot.dataset.img, 10);
-    slot.replaceWith(createImageButton(allImages[index], imageCaption(index)));
+    slot.replaceWith(createImageButton(allImages[index], imageCaption(index), slot.dataset.size));
   });
 
   card.appendChild(content);
