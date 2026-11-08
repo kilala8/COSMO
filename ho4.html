@@ -409,17 +409,15 @@ h1 {
   align-items: center;
   gap: 8px;
   padding: 18px 12px 16px;
-  border: 2px solid var(--card-color);
+  border: none;
   border-radius: 18px;
-  background: rgba(8, 8, 32, 0.5);
-  box-shadow:
-    0 0 14px color-mix(in srgb, var(--card-color) 55%, transparent),
-    inset 0 0 12px color-mix(in srgb, var(--card-color) 18%, transparent);
+  background: none;
+  box-shadow: none;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .star-card:nth-child(4n+2) { --card-color: #4de1ff; }
@@ -429,10 +427,7 @@ h1 {
 .star-card:hover,
 .star-card:focus-visible {
   transform: translateY(-6px) scale(1.03);
-  box-shadow:
-    0 0 22px var(--card-color),
-    0 0 40px color-mix(in srgb, var(--card-color) 60%, transparent),
-    inset 0 0 16px color-mix(in srgb, var(--card-color) 30%, transparent);
+  box-shadow: none;
   outline: none;
 }
 
