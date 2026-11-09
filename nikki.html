@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
-<title>KINOKO-BLOG</title>
+<title>KILALA-BLOG</title>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script>
@@ -1490,7 +1490,7 @@ button.yt-facade {
            onerror="this.style.display='none'">
       <h1>
         <a href="index.html" class="title-link" id="titleLink">
-          <img src="1_files/b_kilala.webp" alt="KINOKO-BLOG 日記" class="neon-nikki-title" id="titleImg" decoding="async">
+          <img src="1_files/b_kilala.webp" alt="KILALA-BLOG 日記" class="neon-nikki-title" id="titleImg" decoding="async">
         </a>
       </h1>
     </div>
@@ -1957,8 +1957,8 @@ function buildPostCard(post) {
   xBtn.className = 'share-btn';
   xBtn.target = '_blank';
   xBtn.rel = 'noopener noreferrer';
-  const xText = encodeURIComponent(`「${titleText}」 - KINOKO-BLOG`);
-  xBtn.href = `https://twitter.com/intent/tweet?text=${xText}&url=${encodeURIComponent(currentUrl)}&hashtags=KINOKO_BLOG`;
+  const xText = encodeURIComponent(`「${titleText}」 - KILALA-BLOG`);
+  xBtn.href = `https://twitter.com/intent/tweet?text=${xText}&url=${encodeURIComponent(currentUrl)}&hashtags=KILALA_BLOG`;
   xBtn.innerHTML = '𝕏 Post';
   shareArea.appendChild(xBtn);
 
@@ -1966,7 +1966,7 @@ function buildPostCard(post) {
   lineBtn.className = 'share-btn';
   lineBtn.target = '_blank';
   lineBtn.rel = 'noopener noreferrer';
-  const lineText = encodeURIComponent(`「${titleText}」 - KINOKO-BLOG\n${currentUrl}`);
+  const lineText = encodeURIComponent(`「${titleText}」 - KILALA-BLOG\n${currentUrl}`);
   lineBtn.href = `https://line.me/R/msg/text/?${lineText}`;
   lineBtn.innerHTML = '💬 LINE';
   shareArea.appendChild(lineBtn);
@@ -2239,7 +2239,7 @@ function showSinglePost(posts, id) {
     return;
   }
 
-  document.title = `${post.title || '無題'} - KINOKO-BLOG`;
+  document.title = `${post.title || '無題'} - KILALA-BLOG`;
 
   container.insertAdjacentElement('beforebegin', makeBackLink('top'));
   container.replaceChildren(buildPostCard(post), makeBackLink('bottom'));
