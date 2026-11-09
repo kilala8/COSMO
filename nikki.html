@@ -1698,7 +1698,11 @@ function sortNewestFirst(posts) {
   const list = [...posts];
 
   if (list.some((post) => post.created_at)) {
-    list.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+    list.sort((a, b) => {
+      const diff = new Date(b.created_at || 0) - new Date(a.created_at || 0);
+      if (diff !== 0) return diff;
+      return a.id < b.id ? 1 : a.id > b.id ? -1 : 0;
+    });
   } else if (list.some((post) => post.id !== undefined && post.id !== null)) {
     list.sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0));
   }

@@ -2159,7 +2159,18 @@ function toDateInputValue(value) {
   return `${y}-${m}-${d}`;
 }
 
-function dateValueToIso(value) {
+function dateValueToIso(value, originalIso) {
+  const now = new Date();
+  const isToday = value === toDateInputValue(now.toISOString());
+
+  if (originalIso && toDateInputValue(originalIso) === value) {
+    const orig = new Date(originalIso);
+    const isTodayNoon = isToday && orig.getHours() === 12 && orig.getMinutes() === 0 && orig.getSeconds() === 0;
+    if (!isTodayNoon) return originalIso;
+  }
+
+  if (isToday) return now.toISOString();
+
   return new Date(`${value}T12:00:00`).toISOString();
 }
 
@@ -2414,7 +2425,7 @@ postForm.addEventListener('submit', async (e) => {
   const category = categoryInput.value.trim();
   const content = contentInput.value;
   const isDraft = draftCheckbox.checked;
-  const dateVal = dateInput.value ? dateValueToIso(dateInput.value) : new Date().toISOString();
+  const dateVal = dateInput.value ? dateValueToIso(dateInput.value, editingPost && editingPost.created_at) : new Date().toISOString();
 
   const newCount = imageItems.filter(item => item.kind === 'new').length;
   const uploadedUrls = [];
