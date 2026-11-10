@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
 <meta name="robots" content="noindex, nofollow">
-<title>📖 BLOG 投稿 ✏️</title>
+<title>✏️日記を書く</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -111,7 +111,6 @@ main {
     0 0 15px #ff7ad988,
     0 0 35px #ff3dc844,
     inset 0 0 25px #b68cff33;
-  backdrop-filter: blur(3px);
   animation: fadeIn 1.6s ease;
 }
 
@@ -993,6 +992,74 @@ h1 {
   .big-frame::before { border: 2px solid #ff7ad9; }
   .big-frame::after { border: 2px solid #4de1ff; }
 }
+
+/* ===== 文字の大きさ / パレット / 画像サイズ ===== */
+.tool-btn.size-btn { font-weight: bold; }
+.tool-btn.size-btn1 { font-size: 0.9rem; }
+.tool-btn.size-btn2 { font-size: 1.05rem; }
+.tool-btn.size-btn3 { font-size: 1.25rem; }
+.tool-btn.palette-toggle[aria-expanded="true"] {
+  background: var(--purple);
+  color: #070720;
+  border-color: #fff;
+}
+
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+  gap: 9px;
+  margin-bottom: 8px;
+  padding: 12px;
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+  background: rgba(8, 8, 32, 0.85);
+}
+
+.color-palette .palette-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #a6a0bc;
+  font-size: 0.75rem;
+}
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 8px var(--c), 0 0 16px color-mix(in srgb, var(--c) 50%, transparent);
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.swatch:hover,
+.swatch:focus-visible {
+  transform: scale(1.15);
+  border-color: #fff;
+  outline: none;
+}
+
+.image-insert-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.image-insert-row .image-insert {
+  padding: 5px 0;
+}
+
+.preview-content .inline-img.sz-s img,
+.preview-content .inline-img.sz-m img {
+  width: min(100%, 380px);
+  max-height: none;
+}
+.preview-content .inline-img.sz-s img { width: min(100%, 200px); }
+
+.preview-content .align-center { display: block; text-align: center; }
+.preview-content .align-right { display: block; text-align: right; }
 </style>
 </head>
 
@@ -1003,7 +1070,7 @@ h1 {
 
 <main>
   <section class="big-frame">
-    <h1>🪐BLOG 管理エリア🌎</h1>
+    <h1>🪐日記を書く🌎</h1>
 
     <div id="login-section">
       <form id="login-form">
@@ -1051,29 +1118,29 @@ h1 {
           <div id="image-list" class="image-list hidden" aria-live="polite"></div>
 
           <input type="file" id="imageFile" accept="image/*" multiple>
-          <p class="field-note" id="image-note">最大10枚まで。何回かに分けて追加してもOK。◀ ▶ で並べ替え、✕ で外せるよ。本文の好きな場所に入れるには、本文でカーソルを置いてから「📌 本文に入れる」を押してね。</p>
+          <p class="field-note" id="image-note">最大10枚まで。何回かに分けて追加してもOK。◀ ▶ で並べ替え、✕ で外せるよ。本文の好きな場所に入れるには、本文でカーソルを置いてから、画像の下の「📌 小・中・大」を押してね。</p>
         </div>
 
         <div class="field">
           <label for="content">本文✏️</label>
           <div class="editor-toolbar">
             <button type="button" class="tool-btn bold-btn" data-tag="b">太字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ff7ad9" style="--c: #ff7ad9" title="ピンク文字">ピンク文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#4de1ff" style="--c: #4de1ff" title="青文字">青文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ffe84a" style="--c: #ffe84a" title="黄文字">黄文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#ff7a7a" style="--c: #ff7a7a" title="赤文字">赤文字</button>
-            <button type="button" class="tool-btn color-btn" data-tag="color" data-val="#b6ff5c" style="--c: #b6ff5c" title="緑文字">緑文字</button>
-            <button type="button" class="tool-btn big-btn" data-tag="size" data-val="1.3em">大きめ</button>
+            <button type="button" class="tool-btn palette-toggle" data-tag="palette" aria-expanded="false" aria-controls="color-palette">🎨 文字色</button>
+            <button type="button" class="tool-btn size-btn size-btn1" data-tag="size" data-val="1.3em" title="文字を大きく">大</button>
+            <button type="button" class="tool-btn size-btn size-btn2" data-tag="size" data-val="1.7em" title="文字を特大に">特大</button>
+            <button type="button" class="tool-btn size-btn size-btn3" data-tag="size" data-val="2.3em" title="文字を超特大に">超特大</button>
             <button type="button" class="tool-btn" data-tag="img">🖼️ 画像</button>
+            <button type="button" class="tool-btn" data-tag="imgsize" title="カーソルに一番近い画像の大きさを 小→中→大 と切り替える">↔ 画像サイズ</button>
             <button type="button" class="tool-btn" data-tag="url">🔗 リンク</button>
             <button type="button" class="tool-btn" data-tag="youtube">▶️ YouTube</button>
             <button type="button" class="tool-btn" data-tag="twitter">𝕏 ポスト</button>
             <button type="button" class="tool-btn" data-tag="quote">❝ 引用枠</button>
           </div>
+          <div id="color-palette" class="color-palette hidden" role="group" aria-label="文字色のパレット"></div>
           <textarea id="content" rows="10" required></textarea>
           <p class="field-note">
             リンク: [url=https://〜]表示する文字[/url] ／ YouTube: [youtube]動画のURL[/youtube] ／ X埋め込み: [x]ポストのURL[/x] ／ 引用枠: [quote]引用したい文章[/quote]<br>
-            画像: 上の画像の「📌 本文に入れる」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。本文に入れなかった画像は、これまでどおり本文の上にまとめて出るよ。
+            画像: 上の画像の「📌 小・中・大」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。大きさは [img=1:s]（小）[img=1:m]（中）で、印なしは大。入れたあとは「↔ 画像サイズ」で切り替えられるよ。本文に入れなかった画像は、本文の上にまとめて出るよ。
           </p>
         </div>
 
@@ -1081,6 +1148,7 @@ h1 {
           <label for="postDate">日付📅</label>
           <input type="date" id="postDate">
           <p class="field-note">
+            空のままなら、保存したその日の、その時刻で記録されるよ（時刻は画面には出ないよ）。昔の日付にしたいときだけ選んでね。
           </p>
         </div>
 
@@ -1193,8 +1261,9 @@ function escapeAttr(value) {
     .replace(/>/g, '&gt;');
 }
 
-function buildInlineImageHtml(src, number) {
-  return `<span class="inline-img"><img src="${escapeAttr(src)}" alt="${number}枚目の画像"></span>`;
+function buildInlineImageHtml(src, number, size) {
+  const cls = (size === 's' || size === 'm') ? ` sz-${size}` : '';
+  return `<span class="inline-img${cls}"><img src="${escapeAttr(src)}" alt="${number}枚目の画像" decoding="async"></span>`;
 }
 
 function buildLinkHtml(url, label) {
@@ -1236,6 +1305,8 @@ function formatContentWithTags(rawText, options = {}) {
     escaped = escaped
       .replace(/\n?\[quote\]([\s\S]*?)\[\/quote\]\n?/g, (match, inner) =>
         `<blockquote class="note-quote">${inner.replace(/^\n+|\n+$/g, '')}</blockquote>`)
+      .replace(/\n?\[(center|right)\]([\s\S]*?)\[\/\1\]\n?/g, (match, dir, inner) =>
+        `<div class="align-${dir}">${inner.replace(/^\n+|\n+$/g, '')}</div>`)
       .replace(/\[b\]([\s\S]*?)\[\/b\]/g,
         '<strong style="font-weight: bold; text-shadow: 0 0 6px currentColor;">$1</strong>')
       .replace(/\[color=([^\]]*?)\]([\s\S]*?)\[\/color\]/g, (match, value, inner) => {
@@ -1269,9 +1340,9 @@ function formatContentWithTags(rawText, options = {}) {
       const url = href.trim();
       return TWITTER_URL.test(url) ? buildTwitterHtml(url, embed) : match;
     })
-    .replace(/\n?\[img=(\d+)\]\n?/g, (match, n) => {
+    .replace(/\n?\[img=(\d+)(?::([sml]))?\]\n?/g, (match, n, size) => {
       const src = images[parseInt(n, 10) - 1];
-      return src ? buildInlineImageHtml(src, n) : match;
+      return src ? buildInlineImageHtml(src, n, size) : match;
     });
 
   return escaped;
@@ -1307,12 +1378,56 @@ let removedImageUrls = [];
 let previewSignature = '';
 
 function imageSrc(item) {
-  return item.kind === 'new' ? item.objectUrl : item.url;
+  return item.kind === 'new' ? (item.thumbUrl || item.objectUrl) : item.url;
+}
+
+const THUMB_MAX = 1000;
+async function makeThumbUrl(file) {
+  if (!file || file.size < 500 * 1024) return null;
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) return null;
+
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, THUMB_MAX / Math.max(bitmap.width, bitmap.height));
+    if (scale >= 1) {
+      bitmap.close && bitmap.close();
+      return null;
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close && bitmap.close();
+
+    const type = file.type === 'image/jpeg' ? 'image/jpeg' : 'image/webp';
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, type, 0.82));
+    return blob ? URL.createObjectURL(blob) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function attachThumb(item) {
+  makeThumbUrl(item.file).then(url => {
+    if (!url) return;
+    if (!imageItems.includes(item)) {
+      URL.revokeObjectURL(url);
+      return;
+    }
+    item.thumbUrl = url;
+    renderImageList();
+    updatePreview();
+  });
+}
+
+function revokeItemUrls(item) {
+  if (item.objectUrl) URL.revokeObjectURL(item.objectUrl);
+  if (item.thumbUrl) URL.revokeObjectURL(item.thumbUrl);
 }
 
 function usedImageNumbers() {
   const used = new Set();
-  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)\]/g)) {
+  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)(?::[sml])?\]/g)) {
     const n = parseInt(m[1], 10);
     if (n >= 1 && n <= imageItems.length) used.add(n);
   }
@@ -1321,18 +1436,18 @@ function usedImageNumbers() {
 
 function remapImageTags(mapFn) {
   const text = contentInput.value;
-  const next = text.replace(/(\n?)\[img=(\d+)\](\n?)/g, (match, lead, n, trail) => {
+  const next = text.replace(/(\n?)\[img=(\d+)(:[sml])?\](\n?)/g, (match, lead, n, sz, trail) => {
     const to = mapFn(parseInt(n, 10));
     if (to === null) return (lead && trail) ? '\n' : '';
-    return `${lead}[img=${to}]${trail}`;
+    return `${lead}[img=${to}${sz || ''}]${trail}`;
   });
   if (next !== text) contentInput.value = next;
 }
 
-function insertImageTag(index) {
+function insertImageTag(index, size) {
   if (index < 0 || index >= imageItems.length) return;
 
-  const tag = `[img=${index + 1}]`;
+  const tag = (size === 's' || size === 'm') ? `[img=${index + 1}:${size}]` : `[img=${index + 1}]`;
   const text = contentInput.value;
   const start = contentInput.selectionStart;
   const end = contentInput.selectionEnd;
@@ -1342,13 +1457,9 @@ function insertImageTag(index) {
   const lead = before && !before.endsWith('\n') ? '\n' : '';
   const trail = after.startsWith('\n') ? '' : '\n';
   const inserted = lead + tag + trail;
+  const caret = start + inserted.length;
 
-  contentInput.value = before + inserted + after;
-  const caret = before.length + inserted.length;
-  contentInput.focus();
-  contentInput.setSelectionRange(caret, caret);
-
-  updatePreview();
+  applyEdit(start, end, inserted, caret, caret);
   setStatus(`🖼️ ${index + 1}枚目を本文に入れたよ`, 'success');
 }
 
@@ -1372,7 +1483,7 @@ function askAndInsertImage() {
 
 function refreshImageUsage() {
   const counts = {};
-  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)\]/g)) {
+  for (const m of String(contentInput.value || '').matchAll(/\[img=(\d+)(?::[sml])?\]/g)) {
     const n = parseInt(m[1], 10);
     counts[n] = (counts[n] || 0) + 1;
   }
@@ -1387,9 +1498,7 @@ function refreshImageUsage() {
 }
 
 function resetImageItems(urls) {
-  imageItems.forEach(item => {
-    if (item.objectUrl) URL.revokeObjectURL(item.objectUrl);
-  });
+  imageItems.forEach(revokeItemUrls);
 
   imageItems = (urls || []).map(url => ({ kind: 'existing', url }));
   removedImageUrls = [];
@@ -1408,7 +1517,9 @@ function addImageFiles(fileList) {
       skipped++;
       return;
     }
-    imageItems.push({ kind: 'new', file, objectUrl: URL.createObjectURL(file) });
+    const item = { kind: 'new', file, objectUrl: URL.createObjectURL(file), thumbUrl: null };
+    imageItems.push(item);
+    attachThumb(item);
   });
 
   fileInput.value = '';
@@ -1441,7 +1552,7 @@ function removeImageAt(index) {
   if (!item) return;
 
   if (item.kind === 'new') {
-    URL.revokeObjectURL(item.objectUrl);
+    revokeItemUrls(item);
   } else {
     removedImageUrls.push(item.url);
   }
@@ -1487,6 +1598,7 @@ function renderImageList() {
     const img = document.createElement('img');
     img.src = imageSrc(item);
     img.alt = `${index + 1}枚目の画像`;
+    img.decoding = 'async';
     box.appendChild(img);
 
     const actions = document.createElement('div');
@@ -1507,7 +1619,14 @@ function renderImageList() {
     used.className = 'image-used hidden';
     box.appendChild(used);
 
-    box.appendChild(makeImageButton('📌 本文に入れる', `${index + 1}枚目を本文のカーソル位置に入れる`, () => insertImageTag(index), 'image-insert'));
+    const insertRow = document.createElement('div');
+    insertRow.className = 'image-insert-row';
+    [['小', 's'], ['中', 'm'], ['大', 'l']].forEach(([label, size]) => {
+      const b = makeImageButton(`📌${label}`, `${index + 1}枚目を本文のカーソル位置に「${label}」サイズで入れる`, () => insertImageTag(index, size), 'image-insert');
+      b.addEventListener('mousedown', (e) => e.preventDefault());
+      insertRow.appendChild(b);
+    });
+    box.appendChild(insertRow);
 
     imageListBox.appendChild(box);
   });
@@ -1536,35 +1655,51 @@ function updateImagePreview() {
     const img = document.createElement('img');
     img.src = imageSrc(item);
     img.alt = 'プレビュー画像';
+    img.decoding = 'async';
     previewImgBox.appendChild(img);
   });
 
   previewImgBox.classList.remove('hidden');
 }
 
+let lastPreviewKey = '';
+let lastContentHtml = null;
+
+function todayDotText() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}.${m}.${d}`;
+}
+
 function updatePreview() {
+  const srcs = imageItems.map(imageSrc);
+  const key = [titleInput.value, categoryInput.value, contentInput.value, dateInput.value, srcs.join('|')].join('\u0001');
+  if (key === lastPreviewKey) return;
+  lastPreviewKey = key;
+
   previewTitle.textContent = titleInput.value || 'タイトルがここに表示されるよ';
   previewCategory.textContent = '🏷️ ' + (categoryInput.value || '未分類');
-  previewContent.innerHTML = formatContentWithTags(contentInput.value, { embed: false, images: imageItems.map(imageSrc) }) || '本文の見た目がここにリアルタイム反映されるよ！';
 
-  if (dateInput.value) {
-    previewDate.textContent = dateInput.value.replace(/-/g, '.');
-  } else {
-    const now = new Date();
-    const y = now.getFullYear();
-    const m = String(now.getMonth() + 1).padStart(2, '0');
-    const d = String(now.getDate()).padStart(2, '0');
-    previewDate.textContent = `${y}.${m}.${d}`;
+  const html = formatContentWithTags(contentInput.value, { embed: false, images: srcs }) || '本文の見た目がここにリアルタイム反映されるよ！';
+  if (html !== lastContentHtml) {
+    lastContentHtml = html;
+    previewContent.innerHTML = html;
   }
+
+  previewDate.textContent = dateInput.value ? dateInput.value.replace(/-/g, '.') : todayDotText();
 
   updateImagePreview();
   refreshImageUsage();
 }
 
 let previewTimer = null;
+let typingUntil = 0;
 function schedulePreview() {
   clearTimeout(previewTimer);
-  previewTimer = setTimeout(updatePreview, 150);
+  previewTimer = setTimeout(updatePreview, 250);
+  typingUntil = performance.now() + 1200;
 }
 
 titleInput.addEventListener('input', schedulePreview);
@@ -1573,33 +1708,178 @@ contentInput.addEventListener('input', schedulePreview);
 dateInput.addEventListener('input', schedulePreview);
 fileInput.addEventListener('change', () => addImageFiles(fileInput.files));
 
+function applyEdit(start, end, replacement, selStart, selEnd) {
+  const ta = contentInput;
+  const taScroll = ta.scrollTop;
+  const winX = window.scrollX;
+  const winY = window.scrollY;
+
+  ta.focus({ preventScroll: true });
+  ta.setSelectionRange(start, end);
+
+  let ok = false;
+  try {
+    ok = document.execCommand('insertText', false, replacement);
+  } catch (error) {
+    ok = false;
+  }
+  if (!ok || ta.value.slice(start, start + replacement.length) !== replacement) {
+    ta.setRangeText(replacement, start, end, 'end');
+  }
+
+  ta.setSelectionRange(selStart, selEnd);
+  ta.scrollTop = taScroll;
+  window.scrollTo({ left: winX, top: winY, behavior: 'instant' });
+
+  updatePreview();
+}
+
+function wrapSelection(open, close, placeholder, block) {
+  const text = contentInput.value;
+  const start = contentInput.selectionStart;
+  const end = contentInput.selectionEnd;
+  const selected = text.slice(start, end);
+  const inner = selected || placeholder;
+
+  let lead = '';
+  let trail = '';
+  if (block) {
+    lead = start > 0 && text[start - 1] !== '\n' ? '\n' : '';
+    trail = text[end] === '\n' ? '' : '\n';
+  }
+
+  const replacement = lead + open + inner + close + trail;
+  const innerStart = start + lead.length + open.length;
+
+  if (selected) {
+    const caret = start + replacement.length;
+    applyEdit(start, end, replacement, caret, caret);
+  } else {
+    applyEdit(start, end, replacement, innerStart, innerStart + inner.length);
+  }
+}
+
+function insertBlockLine(line) {
+  const text = contentInput.value;
+  const start = contentInput.selectionStart;
+  const end = contentInput.selectionEnd;
+  const lead = start > 0 && text[start - 1] !== '\n' ? '\n' : '';
+  const trail = text[end] === '\n' ? '' : '\n';
+  const replacement = lead + line + trail;
+  const caret = start + replacement.length;
+  applyEdit(start, end, replacement, caret, caret);
+}
+
+function cycleImageSize() {
+  const text = contentInput.value;
+  const pos = contentInput.selectionStart;
+  const re = /\[img=(\d+)(?::([sml]))?\]/g;
+
+  let target = null;
+  let best = Infinity;
+  let m;
+  while ((m = re.exec(text))) {
+    const s0 = m.index;
+    const e0 = s0 + m[0].length;
+    const dist = pos < s0 ? s0 - pos : (pos > e0 ? pos - e0 : 0);
+    if (dist < best) {
+      best = dist;
+      target = { s: s0, e: e0, n: m[1], size: m[2] || 'l' };
+    }
+  }
+
+  if (!target) {
+    setStatus('❌ 本文に画像が入ってないよ。先に「📌 小・中・大」で入れてね', 'error');
+    return;
+  }
+
+  const next = { s: 'm', m: 'l', l: 's' }[target.size];
+  const tag = next === 'l' ? `[img=${target.n}]` : `[img=${target.n}:${next}]`;
+  const label = { s: '小', m: '中', l: '大' }[next];
+  const delta = tag.length - (target.e - target.s);
+  const newPos = pos >= target.e ? pos + delta : (pos > target.s ? target.s + tag.length : pos);
+
+  applyEdit(target.s, target.e, tag, newPos, newPos);
+  setStatus(`🖼️ ${target.n}枚目の画像を「${label}」にしたよ`, 'success');
+}
+
+const NEON_COLORS = [
+  ['#ff2d95', 'ホットピンク'], ['#ff7ad9', 'ピンク'], ['#ff4d6d', 'ローズ'], ['#ff3131', 'ネオンレッド'],
+  ['#ff6a00', 'ネオンオレンジ'], ['#ff9d2e', 'アンバー'], ['#ffe84a', 'イエロー'], ['#f5ff3d', 'レモン'],
+  ['#b6ff5c', 'ライム'], ['#39ff14', 'ネオングリーン'], ['#00ff9c', 'エメラルド'], ['#2bffd5', 'ターコイズ'],
+  ['#00e5ff', 'シアン'], ['#4de1ff', 'スカイ'], ['#1fa2ff', 'ブルー'], ['#4d7cff', 'ロイヤルブルー'],
+  ['#3d5afe', 'インディゴ'], ['#9d4dff', 'バイオレット'], ['#b68cff', 'ラベンダー'], ['#e0aaff', 'ライラック'],
+  ['#d400ff', 'ネオンパープル'], ['#ff00e5', 'マゼンタ'], ['#ffffff', 'ホワイト'], ['#cfd8ff', 'ムーンライト']
+];
+
+const palette = document.getElementById('color-palette');
+const paletteToggle = document.querySelector('.palette-toggle');
+
+(function buildPalette() {
+  const fragment = document.createDocumentFragment();
+  NEON_COLORS.forEach(([hex, name]) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'swatch';
+    b.style.setProperty('--c', hex);
+    b.title = `${name} ${hex}`;
+    b.setAttribute('aria-label', `${name}の文字にする`);
+    b.dataset.val = hex;
+    b.addEventListener('mousedown', (e) => e.preventDefault());
+    b.addEventListener('click', () => wrapSelection(`[color=${hex}]`, '[/color]', '色付きテキスト', false));
+    fragment.appendChild(b);
+  });
+
+  const note = document.createElement('p');
+  note.className = 'palette-note';
+  note.textContent = '文字を選んでから色を押すと、その文字に色がつくよ。';
+  fragment.appendChild(note);
+  palette.appendChild(fragment);
+})();
+
+function togglePalette() {
+  const willOpen = palette.classList.contains('hidden');
+  palette.classList.toggle('hidden', !willOpen);
+  paletteToggle.setAttribute('aria-expanded', String(willOpen));
+}
+
 document.querySelectorAll('.tool-btn').forEach(btn => {
+  btn.addEventListener('mousedown', (e) => e.preventDefault());
+
   btn.addEventListener('click', () => {
     const tag = btn.getAttribute('data-tag');
     const val = btn.getAttribute('data-val');
+
+    if (tag === 'palette') {
+      togglePalette();
+      return;
+    }
 
     if (tag === 'img') {
       askAndInsertImage();
       return;
     }
 
-    const start = contentInput.selectionStart;
-    const end = contentInput.selectionEnd;
-    const text = contentInput.value;
-    const selected = text.substring(start, end);
+    if (tag === 'imgsize') {
+      cycleImageSize();
+      return;
+    }
 
-    let replacement = '';
     if (tag === 'b') {
-      replacement = `[b]${selected || '太字のテキスト'}[/b]`;
-    } else if (tag === 'color') {
-      replacement = `[color=${val}]${selected || '色付きテキスト'}[/color]`;
+      wrapSelection('[b]', '[/b]', '太字のテキスト', false);
     } else if (tag === 'size') {
-      replacement = `[size=${val}]${selected || '大きなテキスト'}[/size]`;
+      wrapSelection(`[size=${val}]`, '[/size]', '大きなテキスト', false);
+    } else if (tag === 'quote') {
+      wrapSelection('[quote]', '[/quote]', '引用したい文章', true);
     } else if (tag === 'url' || tag === 'youtube' || tag === 'twitter') {
+      const selected = contentInput.value.slice(contentInput.selectionStart, contentInput.selectionEnd);
       const fromSelection = /^https?:\/\//.test(selected.trim()) ? selected.trim() : '';
       let asked = 'リンク先のURL（https:// から）';
       if (tag === 'youtube') asked = 'YouTubeのURL';
       if (tag === 'twitter') asked = 'X（Twitter）のポストURL（https://x.com/.../status/...）';
+
+      const savedStart = contentInput.selectionStart;
+      const savedEnd = contentInput.selectionEnd;
 
       const url = (tag !== 'url' && fromSelection) ||
         (window.prompt(asked, 'https://') || '').trim();
@@ -1611,27 +1891,16 @@ document.querySelectorAll('.tool-btn').forEach(btn => {
         return;
       }
 
-      if (tag === 'url') {
-        replacement = `[url=${url}]${selected || 'リンクの文字'}[/url]`;
-      } else if (tag === 'youtube') {
-        replacement = `\n[youtube]${url}[/youtube]\n`;
-      } else if (tag === 'twitter') {
-        replacement = `\n[x]${url}[/x]\n`;
-      }
-    } else if (tag === 'quote') {
-      replacement = `\n[quote]${selected || '引用したい文章'}[/quote]\n`;
-    }
+      contentInput.setSelectionRange(savedStart, savedEnd);
 
-    contentInput.value = text.substring(0, start) + replacement + text.substring(end);
-    contentInput.focus();
-    
-    if (tag === 'youtube' || tag === 'twitter' || tag === 'quote') {
-      const caret = start + replacement.length;
-      contentInput.setSelectionRange(caret, caret);
-    } else {
-      contentInput.setSelectionRange(start, start + replacement.length);
+      if (tag === 'url') {
+        wrapSelection(`[url=${url}]`, '[/url]', 'リンクの文字', false);
+      } else if (tag === 'youtube') {
+        insertBlockLine(`[youtube]${url}[/youtube]`);
+      } else {
+        insertBlockLine(`[x]${url}[/x]`);
+      }
     }
-    updatePreview();
   });
 });
 
@@ -1728,8 +1997,22 @@ function toDateInputValue(value) {
   return `${y}-${m}-${d}`;
 }
 
-function dateValueToIso(value) {
-  return new Date(`${value}T12:00:00`).toISOString();
+function resolveCreatedAt(isDraft) {
+  const now = new Date();
+  const picked = dateInput.value;
+  const original = editingPost && editingPost.created_at ? new Date(editingPost.created_at) : null;
+  const originalValid = original && !Number.isNaN(original.getTime());
+
+  const publishingDraftNow = editingPost && editingPost.is_published === false && !isDraft;
+  const dateUnchanged = originalValid && picked && toDateInputValue(editingPost.created_at) === picked;
+
+  if (publishingDraftNow && (!picked || dateUnchanged)) return now.toISOString();
+  if (originalValid && (!picked || dateUnchanged)) return original.toISOString();
+  if (!picked) return now.toISOString();
+
+  const [y, m, d] = picked.split('-').map(Number);
+  const base = originalValid ? original : now;
+  return new Date(y, m - 1, d, base.getHours(), base.getMinutes(), base.getSeconds()).toISOString();
 }
 
 function formatDate(value) {
@@ -1979,7 +2262,7 @@ postForm.addEventListener('submit', async (e) => {
   const category = categoryInput.value.trim();
   const content = contentInput.value;
   const isDraft = draftCheckbox.checked;
-  const dateVal = dateInput.value ? dateValueToIso(dateInput.value) : new Date().toISOString();
+  const dateVal = resolveCreatedAt(isDraft);
 
   const newCount = imageItems.filter(item => item.kind === 'new').length;
   const uploadedUrls = [];
@@ -2063,7 +2346,7 @@ checkAuth();
 
   const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 0;
+  const FRAME_MS = 1000 / 30;
   let lastFrame = 0;
 
   let width = 0;
@@ -2180,7 +2463,7 @@ checkAuth();
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
     if (!spores.length || width !== prevWidth) {
-      const count = Math.min(180, Math.max(60, Math.floor((width * height) / 8500)));
+      const count = Math.min(90, Math.max(40, Math.floor((width * height) / 14000)));
       const total = IS_TOUCH ? Math.ceil(count * 0.6) : count;
       spores = Array.from({ length: total }, () => createSpore(true));
     }
@@ -2191,6 +2474,7 @@ checkAuth();
   function animate(now) {
     if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
     if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (typeof typingUntil !== 'undefined' && performance.now() < typingUntil) { animationId = requestAnimationFrame(animate); return; }
     lastFrame = now || 0;
 
     for (const spore of spores) {
