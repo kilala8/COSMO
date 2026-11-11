@@ -702,6 +702,66 @@ h1 {
   .big-frame::before { border: 2px solid #ff7ad9; }
   .big-frame::after { border: 2px solid #4de1ff; }
 }
+
+.star-index { display: block; }
+.star-group { max-width: 900px; margin: 0 auto 30px; }
+.star-group:last-child { margin-bottom: 0; }
+.group-title {
+  position: relative;
+  margin: 0 0 6px;
+  padding-bottom: 14px;
+  text-align: center;
+  font-size: clamp(1.2rem, 4.4vw, 1.55rem);
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  isolation: isolate;
+}
+.group-title span {
+  color: #ff7ad9;
+  text-shadow: 0 0 8px #ff7ad9aa, 0 0 18px #4de1ff66;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .group-title span {
+    padding: 0 0.1em;
+    background: linear-gradient(90deg, #ff7ad9, #4de1ff, #b68cff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 0 5px rgba(182, 140, 255, 0.75));
+  }
+}
+.group-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(420px, 90%);
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, #ff7ad9, #4de1ff, #b68cff, transparent);
+  box-shadow: 0 0 10px #ff7ad988;
+}
+.group-title::before {
+  content: "";
+  position: absolute;
+  inset: -4px 18% 4px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 55%, rgba(182, 140, 255, 0.34), rgba(77, 225, 255, 0.12) 45%, transparent 72%);
+  animation: groupGlow 3.4s ease-in-out var(--sync-34, 0s) infinite alternate;
+}
+@keyframes groupGlow { from { opacity: 0.35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .group-title::before { animation: none; opacity: 0.7; }
+}
+.sun-fallback {
+  background: radial-gradient(circle at 35% 30%, #fff 0%, #ffe84a 24%, #ff9a3c 62%, #c2410c 100%);
+  box-shadow: 0 0 22px #ffb347, inset -8px -8px 16px rgba(80, 20, 0, 0.45);
+}
+.sun-fallback::after { display: none; }
 </style>
 </head>
 
@@ -747,7 +807,36 @@ h1 {
       </a>
     </div>
 
-    <nav class="star-grid" aria-label="星がたり一覧">
+    <nav class="star-index" aria-label="星がたり一覧">
+      <section class="star-group" aria-labelledby="grp1">
+        <h2 class="group-title" id="grp1"><span>太陽系</span></h2>
+        <div class="star-grid">
+      <a class="star-card" href="2_ho4/taiyo.html">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/taiyo.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback sun-fallback'}))">
+        </span>
+        <span class="star-name">太陽☀️</span>
+        <span class="star-sub">俺たちのTHE SUN</span>
+      </a>
+        </div>
+      </section>
+      <section class="star-group" aria-labelledby="grp2">
+        <h2 class="group-title" id="grp2"><span>太陽系外縁部</span></h2>
+        <div class="star-grid">
+      <a class="star-card" href="2_ho4/gonggong.html">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/gonggong.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">あのゴンゴン</span>
+        <span class="star-sub">太陽系の果てを回る、赤い氷の星</span>
+      </a>
+        </div>
+      </section>
+      <section class="star-group" aria-labelledby="grp3">
+        <h2 class="group-title" id="grp3"><span>系外惑星</span></h2>
+        <div class="star-grid">
       <a class="star-card" href="2_ho4/hd189733b.html">
         <span class="star-img-wrap">
           <img src="2_ho4/file/HD189733b.webp" alt="" decoding="async"
@@ -755,14 +844,6 @@ h1 {
         </span>
         <span class="star-name">HD 189733 b</span>
         <span class="star-sub">ガラスの雨が降る青い星</span>
-      </a>
-      <a class="star-card" href="2_ho4/ton618.html">
-        <span class="star-img-wrap">
-          <img src="2_ho4/file/ton-chan.webp" alt="" decoding="async"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
-        </span>
-        <span class="star-name">TON 618</span>
-        <span class="star-sub">とんちゃん</span>
       </a>
       <a class="star-card" href="2_ho4/toi1452b.html">
         <span class="star-img-wrap">
@@ -772,14 +853,11 @@ h1 {
         <span class="star-name">TOI-1452 b</span>
         <span class="star-sub">「陸無し水惑星」かもしれない星</span>
       </a>
-      <a class="star-card" href="2_ho4/gonggong.html">
-        <span class="star-img-wrap">
-          <img src="2_ho4/file/gonggong.webp" alt="" decoding="async"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
-        </span>
-        <span class="star-name">あのゴンゴン</span>
-        <span class="star-sub">太陽系の果てを回る、赤い氷の星</span>
-      </a>
+        </div>
+      </section>
+      <section class="star-group" aria-labelledby="grp4">
+        <h2 class="group-title" id="grp4"><span>恒星</span></h2>
+        <div class="star-grid">
       <a class="star-card" href="2_ho4/vycma.html">
         <span class="star-img-wrap">
           <img src="2_ho4/file/vycma.webp" alt="" decoding="async"
@@ -796,6 +874,21 @@ h1 {
         <span class="star-name">UY Scuti</span>
         <span class="star-sub">「宇宙最大」を返上させられた、赤い星</span>
       </a>
+        </div>
+      </section>
+      <section class="star-group" aria-labelledby="grp5">
+        <h2 class="group-title" id="grp5"><span>ブラックホール</span></h2>
+        <div class="star-grid">
+      <a class="star-card" href="2_ho4/ton618.html">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/ton-chan.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">TON 618</span>
+        <span class="star-sub">とんちゃん</span>
+      </a>
+        </div>
+      </section>
     </nav>
 
     <div class="site-share-area">
