@@ -1101,7 +1101,7 @@ h1 {
 
       <p class="lead">
         UY Scuti（たて座UY星）は、地球から約6,000光年はなれた、<strong>たて座の方向にある赤色超巨星</strong>です。</p>
-      <p class="lead">かつて「既知の恒星で最大級」として世界的に知られるようになりましたが、いまは見積もりが大きく見直されています。<strong>星そのものではなく、「測り方」が変わった事でサイズが変わったという身の上</strong>が、なんか哀れでで好きです。</p>
+      <p class="lead">かつて「既知の恒星で最大級」として世界的に知られるようになりましたが、いまは見積もりが大きく見直されています。<strong>星そのものではなく、「測り方」が変わった事でサイズが変わったという身の上</strong>が、なんか哀れで好きです。</p>
       <p>かわいいですよね（　´ᯅ`　）</p>
 
       <figure class="star-figure">
@@ -1440,7 +1440,8 @@ document.addEventListener("dragstart", (e) => {
 
   const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 0;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
   let lastFrame = 0;
 
   let width = 0;
@@ -1495,7 +1496,7 @@ document.addEventListener("dragstart", (e) => {
   }
 
   function drawSpore(ctx, sp, x, y, advance) {
-    if (advance) sp.tw += sp.twSpeed;
+    if (advance) sp.tw += sp.twSpeed * STEP;
     const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
     const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
 
@@ -1568,12 +1569,13 @@ document.addEventListener("dragstart", (e) => {
   function animate(now) {
     if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
     if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
     lastFrame = now || 0;
 
     for (const spore of spores) {
-      spore.phase += 0.015;
-      spore.x += spore.drift + Math.sin(spore.phase) * 0.12;
-      spore.y -= spore.speed;
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
 
       if (spore.y < -10) Object.assign(spore, createSpore(false));
       if (spore.x < -10) spore.x = width + 10;
