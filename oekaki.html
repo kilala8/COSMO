@@ -195,10 +195,15 @@
       }
     }
 
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      animation: twinkle 3s infinite ease-in-out;
+    }
     .star {
       position: absolute;
       border-radius: 50%;
-      animation: twinkle 3s infinite ease-in-out;
     }
 
     @keyframes twinkle {
@@ -1013,6 +1018,8 @@
     const bgWrap = document.getElementById("background-wrap");
     const NEON_COLORS = ['#ff7ad9', '#4de1ff', '#ffe84a', '#b68cff'];
 
+    const starsLayer = document.createElement("div");
+    starsLayer.className = "stars-layer";
     for (let i = 0; i < STAR_COUNT; i++) {
       const star = document.createElement("div");
       star.classList.add("star");
@@ -1025,8 +1032,9 @@
       star.style.left = Math.random() * 100 + "%";
       star.style.top = Math.random() * 100 + "%";
 
-      bgWrap.appendChild(star);
+      starsLayer.appendChild(star);
     }
+    bgWrap.appendChild(starsLayer);
 
     (() => {
       let targetX = 0;

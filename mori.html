@@ -240,10 +240,15 @@
       filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
     }
 
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      animation: twinkle 3s infinite ease-in-out;
+    }
     .star {
       position: absolute;
       border-radius: 50%;
-      animation: twinkle 3s infinite ease-in-out;
     }
 
     @keyframes twinkle {
@@ -632,8 +637,9 @@ function starSprite(color) {
   return (STAR[color] = c);
 }
 
+let STEP = 1;
 function drawSpore(ctx, sp, x, y, advance) {
-  if (advance) sp.tw += sp.twSpeed;
+  if (advance) sp.tw += sp.twSpeed * STEP;
   const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
   const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
 
@@ -695,16 +701,18 @@ function drawAll(advance) {
 }
 
 function draw(now) {
-  if (document.hidden || (IS_TOUCH && now - lastFrame < 33)) {
+  if (now === undefined) now = performance.now();
+  if (document.hidden || (now - lastFrame < (IS_TOUCH ? 33 : 31))) {
     requestAnimationFrame(draw);
     return;
   }
+  if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
   lastFrame = now || 0;
   const t = Date.now();
 
   spores.forEach(s => {
-    s.x += Math.sin(t * 0.0001 + s.y) * 0.1 * s.z;
-    s.y += Math.cos(t * 0.00005 + s.x) * 0.1 * s.z;
+    s.x += Math.sin(t * 0.0001 + s.y) * 0.1 * s.z * STEP;
+    s.y += Math.cos(t * 0.00005 + s.x) * 0.1 * s.z * STEP;
 
     if (s.x < 0) s.x = w;
     if (s.x > w) s.x = 0;
@@ -720,6 +728,7 @@ window.addEventListener("resize", resize);
 resize();
 if (!reduceMotion) draw();
 
+let pmx = 0, pmy = 0, pmRaf = 0;
 document.addEventListener("mousemove", (e) => {
   const moveX =
     (e.clientX / window.innerWidth - 0.5) * 30;
@@ -727,8 +736,11 @@ document.addEventListener("mousemove", (e) => {
   const moveY =
     (e.clientY / window.innerHeight - 0.5) * 30;
 
-  bgWrap.style.transform =
-    `translate(${-moveX}px,${-moveY}px)`;
+  pmx = moveX; pmy = moveY;
+  if (!pmRaf) pmRaf = requestAnimationFrame(() => {
+    pmRaf = 0;
+    bgWrap.style.transform = `translate(${-pmx}px,${-pmy}px)`;
+  });
 });
 
 document.addEventListener('click', (e) => {
@@ -873,6 +885,8 @@ function checkAnswers() {
   }
 }
 
+const starsLayer = document.createElement("div");
+starsLayer.className = "stars-layer";
 for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").matches ? 25 : 50); i++) {
   const star = document.createElement("div");
   star.classList.add("star");
@@ -890,8 +904,9 @@ for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").match
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
 
-  bgWrap.appendChild(star);
+  starsLayer.appendChild(star);
 }
+bgWrap.appendChild(starsLayer);
 </script>
 
 <script>

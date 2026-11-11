@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
@@ -2392,7 +2393,8 @@ document.addEventListener('dragstart', (event) => {
 
   const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 0;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
   let lastFrame = 0;
 
   let width = 0;
@@ -2447,7 +2449,7 @@ document.addEventListener('dragstart', (event) => {
   }
 
   function drawSpore(ctx, sp, x, y, advance) {
-    if (advance) sp.tw += sp.twSpeed;
+    if (advance) sp.tw += sp.twSpeed * STEP;
     const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
     const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
 
@@ -2520,12 +2522,13 @@ document.addEventListener('dragstart', (event) => {
   function animate(now) {
     if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
     if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
     lastFrame = now || 0;
 
     for (const spore of spores) {
-      spore.phase += 0.015;
-      spore.x += spore.drift + Math.sin(spore.phase) * 0.12;
-      spore.y -= spore.speed;
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
 
       if (spore.y < -10) Object.assign(spore, createSpore(false));
       if (spore.x < -10) spore.x = width + 10;

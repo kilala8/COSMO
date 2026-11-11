@@ -785,12 +785,12 @@ img {
   <section class="panel-card area-history">
     <h2 class="panel-title title-history">らら来歴</h2>
     <div class="history-text">
-      <p>幼い頃から友達が少なく、勉強もマルチタスクも苦手だったため、お絵描きとタイピングに打ち込んでそれなりに上達する。</p>
+      <p>幼い頃から友達が少なく、勉強もマルチタスクも超苦手だったため、お絵描きとタイピングに打ち込んでそれなりに上達する。</p>
       <p>美術系専門学校を卒業後、なんとなくゲーム会社に就職。しかし、雇用契約書もないまま1日15時間以上の在宅労働を半年間続け、給料をもらえる気配もなかったため退職。これを機に親との関係も悪化し、実家を出て、祖父母宅に居候しながら契約社員としてコールセンターで働き始める。</p>
       <p>怒ったお客さんを宥めるのが得意だったせいで、苦情処理の二次対応ばかり任され、こころを病んで就業継続が困難に。本当は長期間休みたかったものの、無職でいるのも居心地が悪く、「葬式代だけは貯めておこう」とフリーアルバイトマンに転身。</p>
       <p>しかし、行く先々でマルチタスクの苦手さが問題になり、発達障害を疑われて検査を受けた結果、ごりっごりのADHD／ASDと判明。知能の偏りも大きく、一般企業での就業に影響するワーキングメモリは70と、平均値を下回っていた。</p>
-      <p>現在は、親族が一人もいなくなった中、それなりに貯まった「葬式代」を崩しながら、無職暮らし中。</p>
-      <p>SNSからは離れつつ、自分の創作を人様に見て頂ける可能性を模索するため、プラットフォームを自作中。</p>
+      <p>現在は、親族が一人もいなくなった中、それなりに貯まった「葬式代」を崩しながら、SNS以外のWEB上での自己表現手段を模索するため、プラットフォームを自作中。</p>
+      <p>無職ですヽ( ´ᯅ`；)ノ</p>
     </div>
   </section>
 
@@ -815,7 +815,7 @@ img {
       </div>
       <div class="info-item">
         <span class="info-label">制作環境</span>
-        <span class="info-value">3年前のまっきゅぶっきゅ</span>
+        <span class="info-value">3年前のMacBook Air</span>
       </div>
       <div class="info-item">
         <span class="info-label">好きな画材</span>
@@ -823,7 +823,7 @@ img {
       </div>
       <div class="info-item">
         <span class="info-label">好きな音楽</span>
-        <span class="info-value">サカナクション、Björk、昭和の歌謡曲、テクノ全般、ゲーム音楽、小川さんのパイプオルガン曲</span>
+        <span class="info-value">サカナクション、Björk、中田ヤスタカ、昭和の歌謡曲、テクノ全般、ゲーム音楽、小川さんのオルガン曲などなど</span>
       </div>
     </div>
   </section>
@@ -849,7 +849,8 @@ document.addEventListener("dragstart", (e) => {
 
   const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 0;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
   let lastFrame = 0;
 
   let width = 0;
@@ -904,7 +905,7 @@ document.addEventListener("dragstart", (e) => {
   }
 
   function drawSpore(ctx, sp, x, y, advance) {
-    if (advance) sp.tw += sp.twSpeed;
+    if (advance) sp.tw += sp.twSpeed * STEP;
     const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
     const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
 
@@ -977,12 +978,13 @@ document.addEventListener("dragstart", (e) => {
   function animate(now) {
     if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
     if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
     lastFrame = now || 0;
 
     for (const spore of spores) {
-      spore.phase += 0.015;
-      spore.x += spore.drift + Math.sin(spore.phase) * 0.12;
-      spore.y -= spore.speed;
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
 
       if (spore.y < -10) Object.assign(spore, createSpore(false));
       if (spore.x < -10) spore.x = width + 10;
