@@ -1053,6 +1053,27 @@ h1 {
   .big-frame::before { border: 2px solid #ff7ad9; }
   .big-frame::after { border: 2px solid #4de1ff; }
 }
+
+.oshi-video { margin: 22px 0 26px; }
+.oshi-label {
+  margin: 0 0 10px !important;
+  color: var(--pink);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad9aa;
+}
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid rgba(182, 140, 255, 0.7);
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
+}
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 </style>
 </head>
 
@@ -1237,6 +1258,12 @@ h1 {
         <p>そして私たちが生きる太陽系は、「天の川銀河」という大きな銀河の一部であることがわかっていますが、その中心にも、「いて座A＊（スター）」という大きなブラックホールがいます。</p>
         <p>つまり太陽系は「いて座A＊の周りを公転している銀河」ということになるのですが、その公転にかかる年月はおよそ２.5億年。この周期を「一銀河年」と呼びます（私の年齢も2.5億年ですが、これは２.5億年かけてブラックホールを一周する太陽系で生まれ育った存在だからです）。</p> 
         <p>面白いですよね〜(　´〜`　) ブラックホール、本当に好きです。まだまだ魅力的なブラックホールはたくさんあるので、今後もたくさんご紹介していきたいと思っています。</p>
+        <div class="oshi-video">
+          <p class="oshi-label">📺 私の推し動画 ✨</p>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/i3GIzBzNAAU" title="私の推し動画（YouTube）" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
         <p>解説ページも置いておきます。</p>
         <p><a class="source-link" href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA：ブラックホールの解説ページ ↗</a></p>
         <p><a class="source-link" href="https://en.wikipedia.org/wiki/TON_618" target="_blank" rel="noopener noreferrer">Wikipedia：TON 618 ↗</a></p>
