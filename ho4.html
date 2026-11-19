@@ -762,6 +762,67 @@ h1 {
   box-shadow: 0 0 22px #ffb347, inset -8px -8px 16px rgba(80, 20, 0, 0.45);
 }
 .sun-fallback::after { display: none; }
+
+@keyframes newFlow {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+
+@keyframes newGlow {
+  0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 3px #ff7ad9) drop-shadow(0 0 9px #4de1ff); }
+  100% { filter: hue-rotate(360deg) drop-shadow(0 0 3px #ff7ad9) drop-shadow(0 0 9px #4de1ff); }
+}
+
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0 0 0 .55em;
+  padding: 3px 9px;
+  border: 1px solid #ff7ad9aa;
+  border-radius: 999px;
+  background: rgba(7, 7, 32, .82);
+  font-size: .72rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .1em;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-shadow: none;
+  animation: newGlow 4s linear var(--sync-8, 0s) infinite;
+}
+
+.new-badge .new-text {
+  background: linear-gradient(90deg,
+    #ff65c3, #ffb85c, #ffe84a, #b6ff5c, #62f7ff, #4d9bff, #b68cff, #ff65c3);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: newFlow 3s linear infinite;
+}
+
+/* 星カード：絵の右上に、ちょこんと乗せる */
+.star-card[data-new] { position: relative; }
+
+.star-card .new-badge {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  z-index: 2;
+  margin: 0;
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .star-card .new-badge { top: 6px; right: 2px; padding: 2px 7px; font-size: .64rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-badge, .new-badge .new-text { animation: none !important; }
+}
 </style>
 </head>
 
@@ -889,6 +950,14 @@ h1 {
         </span>
         <span class="star-name">WR 102</span>
         <span class="star-sub">🔥(　´ᯅ`； )🔥</span>
+      </a>
+      <a class="star-card" href="2_ho4/etacarinae.html" data-new="2026-11-19">
+        <span class="star-img-wrap">
+          <img src="2_ho4/file/etacarinae.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">イータカリーナ</span>
+        <span class="star-sub">大噴火しても生き残った、宇宙の問題児</span>
       </a>
         </div>
       </section>
@@ -1450,6 +1519,34 @@ document.addEventListener("click", (event) => {
       }, 1800);
     });
   }
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const NEW_DAYS = 7;
+  const DAY = 86400000;
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  document.querySelectorAll("[data-new]").forEach((el) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(el.dataset.new || "");
+    if (!m) return;
+    const posted = new Date(+m[1], +m[2] - 1, +m[3]);
+    const days = Math.round((today - posted) / DAY);
+    const limit = parseInt(el.dataset.newDays, 10) || NEW_DAYS;
+    if (days < 0 || days >= limit) return;
+
+    const badge = document.createElement("span");
+    badge.className = "new-badge";
+    badge.setAttribute("aria-label", "新着");
+    badge.innerHTML = '✨<span class="new-text">NEW</span>✨';
+
+    const time = el.querySelector("time");
+    if (time) time.after(badge);
+    else el.append(badge);
+  });
 })();
 </script>
 </body>
