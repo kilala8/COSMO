@@ -235,6 +235,85 @@ img {
 .title-history { color: var(--pink); }
 .title-extra   { color: var(--yellow); }
 
+@keyframes neonTextFlow {
+  from { background-position: 0% 50%; }
+  to   { background-position: 200% 50%; }
+}
+@keyframes neonTextGlow {
+  0%   { filter: hue-rotate(0deg)   drop-shadow(0 0 3px #ff7ad9) drop-shadow(0 0 9px #4de1ff); }
+  100% { filter: hue-rotate(360deg) drop-shadow(0 0 3px #ff7ad9) drop-shadow(0 0 9px #4de1ff); }
+}
+
+.panel-title .rainbow-text {
+  background: linear-gradient(90deg,
+    #ff65c3, #ffb85c, #ffe84a, #b6ff5c, #62f7ff, #4d9bff, #b68cff, #ff65c3);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation:
+    neonTextFlow 3s linear infinite,
+    neonTextGlow 6s linear infinite;
+}
+
+.panel-title .title-emoji { text-shadow: none; }
+.panel-title .title-emoji:first-child { margin-right: 0.2em; }
+.panel-title .title-emoji:last-child  { margin-left: 0.2em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-title .rainbow-text { animation: none; }
+}
+
+.area-basic .info-item {
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.area-basic .info-item .info-label,
+.area-basic .info-item .info-value,
+.area-basic .info-item .gender-note {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .area-basic .info-item:hover {
+    background: var(--c, var(--purple));
+    box-shadow: 0 0 14px var(--c, var(--purple)), 0 0 26px var(--c, var(--purple));
+    transform: translateY(-2px);
+  }
+  .area-basic .info-item:hover .info-label,
+  .area-basic .info-item:hover .info-value,
+  .area-basic .info-item:hover .gender-note {
+    color: #070720;
+    text-shadow: none;
+  }
+  .area-basic .info-item:hover .gender-rainbow,
+  .area-basic .info-item:hover .birthday-countdown {
+    background: none;
+    -webkit-text-fill-color: #070720;
+    animation: none;
+  }
+}
+
+.area-basic .info-item.is-pressed {
+  background: var(--c, var(--purple));
+  box-shadow: 0 0 14px var(--c, var(--purple)), 0 0 26px var(--c, var(--purple));
+  transform: translateY(-2px);
+}
+.area-basic .info-item.is-pressed .info-label,
+.area-basic .info-item.is-pressed .info-value,
+.area-basic .info-item.is-pressed .gender-note {
+  color: #070720;
+  text-shadow: none;
+}
+.area-basic .info-item.is-pressed .gender-rainbow,
+.area-basic .info-item.is-pressed .birthday-countdown {
+  background: none;
+  -webkit-text-fill-color: #070720;
+  animation: none;
+}
+
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -721,11 +800,11 @@ img {
   </aside>
 
   <section class="panel-card area-basic">
-    <h2 class="panel-title title-basic">基本情報</h2>
+    <h2 class="panel-title title-basic"><span class="title-emoji" aria-hidden="true">🪐</span><span class="rainbow-text">基本情報</span><span class="title-emoji" aria-hidden="true">🌎</span></h2>
     <div class="info-grid">
       <div class="info-item">
         <span class="info-label">名前</span>
-        <span class="info-value">にーとの輝星（きらら）あるいは「まゆげちゃん」</span>
+        <span class="info-value gender-row"><span class="gender-rainbow">にーとの輝星（きらら）</span>
       </div>
       <div class="info-item">
         <span class="info-label">性別</span>
@@ -738,7 +817,7 @@ img {
       <div class="info-pair">
         <div class="info-item">
           <span class="info-label">誕生日</span>
-          <span class="info-value">6月15日</span>
+          <span class="info-value gender-row"><span class="gender-rainbow">6月15日</span>
         </div>
         <div class="info-item">
           <span class="info-label">誕生日まで</span>
@@ -777,13 +856,13 @@ img {
       </div>
       <div class="info-item full-width">
         <span class="info-label">恋愛経験</span>
-        <span class="info-value">無し（VIRGINよ）</span>
+        <span class="info-value gender-row"><span class="gender-rainbow">一切無し（完全なるVIRGIN）</span>
       </div>
     </div>
   </section>
 
   <section class="panel-card area-history">
-    <h2 class="panel-title title-history">らら来歴</h2>
+    <h2 class="panel-title title-history"><span class="rainbow-text">らら来歴</span><span class="title-emoji" aria-hidden="true">💫</span></h2>
     <div class="history-text">
       <p>幼い頃から友達が少なく、勉強もマルチタスクも超苦手だったため、お絵描きとタイピングに打ち込んでそれなりに上達する。</p>
       <p>美術系専門学校を卒業後、なんとなくゲーム会社に就職。しかし、雇用契約書もないまま1日15時間以上の在宅労働を半年間続け、給料をもらえる気配もなかったため退職。これを機に親との関係も悪化し、実家を出て、祖父母宅に居候しながら契約社員としてコールセンターで働き始める。</p>
@@ -795,7 +874,7 @@ img {
   </section>
 
   <section class="panel-card area-extra">
-    <h2 class="panel-title title-extra">追加情報</h2>
+    <h2 class="panel-title title-extra"><span class="rainbow-text">追加情報</span><span class="title-emoji" aria-hidden="true">✨</span></h2>
     <div class="extra-list">
       <div class="info-item">
         <span class="info-label">趣味</span>
@@ -811,7 +890,7 @@ img {
       </div>
       <div class="info-item">
         <span class="info-label">座右の銘</span>
-        <span class="info-value">生きてりゃなんとかなる</span>
+        <span class="info-value gender-row"><span class="gender-rainbow">生きてりゃなんとかなる</span>
       </div>
       <div class="info-item">
         <span class="info-label">制作環境</span>
@@ -1181,6 +1260,16 @@ document.addEventListener("dragstart", (e) => {
 
   update();
   setInterval(update, 1000);
+})();
+</script>
+<script>
+(() => {
+  document.querySelectorAll(".area-basic .info-item").forEach((el) => {
+    const on = (e) => { if (e.pointerType !== "mouse") el.classList.add("is-pressed"); };
+    const off = () => el.classList.remove("is-pressed");
+    el.addEventListener("pointerdown", on);
+    ["pointerup", "pointercancel", "pointerleave", "contextmenu"].forEach((t) => el.addEventListener(t, off));
+  });
 })();
 </script>
 </body>
