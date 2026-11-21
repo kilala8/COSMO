@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070720">
+<title>🌎 星がたり ✧ かにパルサー</title>
+
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
+<style>
+:root {
+  --bg: #000;
+  --pink: #ff7ad9;
+  --cyan: #4de1ff;
+  --yellow: #ffe84a;
+  --purple: #b68cff;
+}
+
+:root {
+  --neon-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='408' height='408' viewBox='0 0 408 408'%3E%3Cstyle%3E.pl%7Bfill:var(--c);stroke:var(--e);stroke-width:1.2%7D.rg%7Bfill:none;stroke:var(--e);stroke-width:2.2;stroke-linecap:round%7D%3C/style%3E%3Cdefs%3E%3Cg id='p'%3E%3Cellipse class='rg' cx='0' cy='0' rx='21' ry='5.6'/%3E%3Ccircle class='pl' cx='0' cy='0' r='11'/%3E%3Cpath class='rg' d='M-21 0A21 5.6 0 0 0 21 0'/%3E%3C/g%3E%3Cg id='d'%3E%3Ccircle cx='-4' cy='-4.5' r='1.9'/%3E%3Ccircle cx='3.5' cy='-6' r='1.3'/%3E%3Ccircle cx='5.5' cy='-0.5' r='1.5'/%3E%3Ccircle cx='-1' cy='1.5' r='1'/%3E%3C/g%3E%3Cfilter id='g' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='5' result='b'/%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='0.8' result='s'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='s'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='408' height='408' fill='%23000000'/%3E%3Cg filter='url(%23g)'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)' style='--c:%23542245;--e:%23803262'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 51) scale(1.9) rotate(14)' style='--c:%230d0617;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23317c80'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)' style='--c:%233e5126;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 51) scale(1.9) rotate(20)' style='--c:%230d0617;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23805c2e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 153) scale(1.9) rotate(12)' style='--c:%230d0617;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b802e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)' style='--c:%23543b26;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 153) scale(1.9) rotate(-6)' style='--c:%230d0617;--e:%23803262'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23803262'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)' style='--c:%23244e58;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)' style='--c:%2332284c;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 255) scale(1.9) rotate(-20)' style='--c:%230d0617;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23317c80'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)' style='--c:%233e5126;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 255) scale(1.9) rotate(-12)' style='--c:%230d0617;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23805c2e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 357) scale(1.9) rotate(-14)' style='--c:%230d0617;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b802e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)' style='--c:%23543b26;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 357) scale(1.9) rotate(10)' style='--c:%230d0617;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b4680'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)' style='--c:%2332284c;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%231d0d2a'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f8edff;
+  background-color: var(--bg);
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
+
+#mycelium,
+#spore-canvas,
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#mycelium {
+  z-index: 0;
+  opacity: 0.3;
+  background:
+    radial-gradient(ellipse at 15% 25%, #642cff33, transparent 45%),
+    radial-gradient(ellipse at 85% 65%, #ff36bd22, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, #00eaff1a, transparent 40%);
+  animation: myceliumGlow 9s ease-in-out infinite alternate;
+}
+
+#spore-canvas {
+  z-index: 1;
+}
+
+#stars {
+  z-index: 1;
+}
+
+@keyframes myceliumGlow {
+  from { opacity: 0.18; }
+  to { opacity: 0.48; }
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: min(1040px, 93%);
+  margin: 0 auto;
+  padding: 55px 0 65px;
+}
+
+.big-frame {
+  --frame-x: 22px;
+  --frame-y: 30px;
+  padding: var(--frame-y) var(--frame-x);
+  border: 2px solid #ff7ad9;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 0 15px #ff7ad988,
+    0 0 35px #ff3dc844,
+    inset 0 0 25px #b68cff33;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 1.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin: 0 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.title-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  cursor: pointer;
+  animation: neonBowaa 12s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.title-img:hover {
+  transform: scale(1.03);
+}
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out infinite;
+}
+
+@keyframes title-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(-3deg); }
+  60%  { transform: scale(0.93) rotate(2deg); }
+  80%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes neonBowaa {
+  0%   { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+  12.5% { filter: drop-shadow(0 0 10px #ff7ad9) drop-shadow(0 0 24px #ff3dc8) drop-shadow(0 0 46px #b68cff99); }
+  25%  { filter: drop-shadow(0 0 3px #4de1ffaa) drop-shadow(0 0 8px #00bfff66); }
+  37.5% { filter: drop-shadow(0 0 10px #4de1ff) drop-shadow(0 0 24px #00bfff) drop-shadow(0 0 46px #4de1ff99); }
+  50%  { filter: drop-shadow(0 0 3px #b6ff5caa) drop-shadow(0 0 8px #70f10066); }
+  62.5% { filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 24px #70f100) drop-shadow(0 0 46px #b6ff5c99); }
+  75%  { filter: drop-shadow(0 0 3px #b68cffaa) drop-shadow(0 0 8px #9d4edd66); }
+  87.5% { filter: drop-shadow(0 0 10px #b68cff) drop-shadow(0 0 24px #9d4edd) drop-shadow(0 0 46px #ffe84a88); }
+  100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+}
+
+.logo-sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 100;
+  animation: pop-particle 0.6s ease-out forwards;
+}
+
+@keyframes pop-particle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 25px;
+  }
+
+  .big-frame {
+    --frame-x: 14px;
+    --frame-y: 22px;
+    padding: 22px 14px 24px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  *, *::before, *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+.big-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.big-frame::before,
+.big-frame::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.big-frame::before {
+  box-shadow:
+    0 0 22px 3px #ff7ad9,
+    0 0 52px 6px #ff3dc8aa,
+    inset 0 0 30px #ff7ad966;
+  animation: frameGlowA 3.4s ease-in-out infinite alternate;
+}
+
+.big-frame::after {
+  box-shadow:
+    0 0 22px 3px #4de1ff,
+    0 0 52px 6px #b68cffaa,
+    inset 0 0 30px #4de1ff55;
+  animation: frameGlowB 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes frameGlowA {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+
+@keyframes frameGlowB {
+  from { opacity: 1; }
+  to   { opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after {
+    animation: none !important;
+  }
+  .big-frame::before { opacity: 0.7; }
+  .big-frame::after { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+.hero-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: calc(var(--frame-y) * -1) calc(var(--frame-x) * -1) 14px;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  border-bottom: 2px solid rgba(255, 122, 217, 0.7);
+  box-shadow: 0 6px 18px rgba(255, 122, 217, 0.28);
+}
+
+.hero-bg {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-banner h1 {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  width: min(520px, 88%);
+  margin: 0;
+  display: block;
+  line-height: 0;
+}
+
+.hero {
+  padding: 0;
+  text-align: center;
+}
+
+.hero-banner .title-img {
+  display: block;
+  width: 100%;
+  max-height: none;
+  margin: 0 auto;
+}
+
+.story {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.story-title {
+  margin: 0 0 22px;
+  color: #fff;
+  font-size: clamp(1.5rem, 4.6vw, 2.1rem);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px #ff7ad9, 0 0 24px #4de1ff;
+}
+
+.story-title small {
+  display: block;
+  margin-top: 8px;
+  color: #e7dcff;
+  font-size: 0.5em;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story p {
+  margin: 0 0 1.2em;
+  color: #efe8ff;
+  font-size: 1rem;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.story strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story .lead {
+  font-size: 1.05rem;
+}
+
+.story h3 {
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px dashed rgba(255, 122, 217, 0.55);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-shadow: 0 0 10px #4de1ff;
+}
+
+.story h3 .num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: rgba(255, 232, 74, 0.12);
+  color: var(--yellow);
+  font-size: 0.85rem;
+  text-shadow: 0 0 8px var(--yellow);
+  box-shadow: 0 0 10px #ffe84a66;
+}
+
+.story ul {
+  margin: 0 0 1.2em;
+  padding: 14px 20px 14px 38px;
+  border: 1px solid rgba(77, 225, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.45);
+  box-shadow: inset 0 0 14px rgba(77, 225, 255, 0.1);
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.story li::marker {
+  color: var(--pink);
+}
+
+.story figure {
+  margin: 8px 0 26px;
+}
+
+.story figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(182, 140, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
+}
+
+.story figure.star-figure img {
+  width: min(300px, 70%);
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 0 12px #4de1ff) drop-shadow(0 0 26px #ff7ad9aa);
+  animation: starFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes starFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+.story figcaption {
+  margin-top: 8px;
+  color: #b9aedb;
+  font-size: 0.78rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+.data-table {
+  width: 100%;
+  margin: 0 0 24px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 122, 217, 0.25);
+  line-height: 1.6;
+}
+
+.data-table tr:last-child th,
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table th {
+  width: 40%;
+  color: var(--cyan);
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.data-table td {
+  color: #fff;
+  text-align: right;
+}
+
+.data-table thead th,
+.data-table thead td {
+  background: rgba(182, 140, 255, 0.22);
+  color: #fff;
+  font-weight: bold;
+}
+
+.note {
+  margin: 0 0 1.4em;
+  padding: 14px 18px;
+  border-left: 4px solid var(--yellow);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 232, 74, 0.09);
+  box-shadow: inset 0 0 14px rgba(255, 232, 74, 0.1);
+  color: #fff8d6;
+  line-height: 1.9;
+}
+
+.story hr {
+  margin: 48px 0 32px;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7ad9, #4de1ff, #b68cff, transparent);
+  box-shadow: 0 0 10px #ff7ad988;
+}
+
+.closing {
+  padding: 20px 22px 6px;
+  border: 2px solid rgba(77, 225, 255, 0.7);
+  border-radius: 18px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 18px rgba(77, 225, 255, 0.35), inset 0 0 16px rgba(182, 140, 255, 0.2);
+}
+
+.closing .closing-lead {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.source-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: rgba(77, 225, 255, 0.5);
+  text-underline-offset: 5px;
+  text-shadow: 0 0 8px rgba(77, 225, 255, 0.6);
+}
+
+.source-link:hover,
+.source-link:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 12px var(--pink);
+  outline: none;
+}
+
+.page-back-wrap {
+  margin: 40px 0 0;
+  text-align: center;
+  line-height: 0;
+}
+
+.page-back {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-back img {
+  display: block;
+  width: min(140px, 44vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.page-back:hover img,
+.page-back:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.page-back:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.page-back img.is-pop {
+  animation: back-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes back-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.35) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .story h3 { margin-top: 38px; font-size: 1.12rem; }
+  .data-table th, .data-table td { padding: 10px 12px; font-size: 0.92rem; }
+  .closing { padding: 16px 16px 4px; }
+}
+
+.big-frame { animation: none; }
+
+.story figure.star-figure a {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.story figure.star-figure img { cursor: pointer; }
+
+.story figure.star-figure img.is-pop {
+  animation:
+    starFloat 5s ease-in-out infinite alternate,
+    star-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes star-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.story .big-number {
+  margin: 6px 0 2px;
+  color: #fff;
+  font-size: clamp(2.4rem, 10vw, 3.6rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-align: center;
+  text-shadow: 0 0 12px #ff7ad9, 0 0 28px #4de1ff;
+}
+
+.story .big-number small {
+  margin-left: 0.3em;
+  color: #e7dcff;
+  font-size: 0.4em;
+  font-weight: normal;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story .big-caption {
+  margin: 0 0 22px;
+  color: #b9aedb;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  margin: 0 0 1.6em 8px;
+  padding: 0;
+  list-style: none;
+  border-left: 3px solid rgba(77, 225, 255, 0.6);
+  box-shadow: -4px 0 12px -6px rgba(77, 225, 255, 0.6);
+}
+
+.timeline li {
+  position: relative;
+  padding: 2px 0 20px 26px;
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.timeline li:last-child { padding-bottom: 4px; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: #070720;
+  box-shadow: 0 0 10px var(--yellow);
+}
+
+.timeline .year {
+  display: block;
+  color: var(--yellow);
+  font-size: 1.08rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--yellow);
+}
+
+.stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.stat-name {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #4de1ff;
+}
+
+.badge {
+  padding: 4px 12px;
+  border: 1px solid rgba(182, 140, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(182, 140, 255, 0.2);
+  color: #eadcff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 1.8em;
+}
+
+.stat {
+  padding: 14px 12px;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+  text-align: center;
+}
+
+.stat span { display: block; }
+
+.stat .label {
+  color: var(--cyan);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.stat .value {
+  margin: 4px 0 2px;
+  color: #fff;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-shadow: 0 0 10px #ff7ad9;
+}
+
+.stat .unit {
+  color: #b9aedb;
+  font-size: 0.8rem;
+}
+
+.closing .source-link { margin-bottom: 8px; }
+
+@media (max-width: 600px) {
+  .stat-grid { gap: 10px; }
+  .stat { padding: 12px 8px; }
+}
+
+@view-transition { navigation: auto; }
+
+.big-frame { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame { animation: none; }
+
+.big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after { animation: none !important; }
+}
+
+.story { word-break: auto-phrase; }
+.story p,
+.story li,
+.closing p { text-wrap: pretty; }
+.story-title,
+.story h3,
+.story .big-caption,
+.stat .label { text-wrap: balance; }
+
+.story-title {
+  padding-bottom: 14px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff7ad9, #4de1ff 60%, transparent) 1;
+}
+
+.story .lead {
+  margin-bottom: 0.8em;
+  line-height: 1.95;
+}
+
+.story figure.star-figure { margin: 22px 0 6px; }
+
+.story h3 {
+  margin: 56px 0 18px;
+  letter-spacing: 0.03em;
+}
+
+.data-table tbody tr:nth-child(even) { background: rgba(182, 140, 255, 0.07); }
+.data-table td { font-variant-numeric: tabular-nums; }
+
+.timeline { margin-top: 22px; }
+
+.closing p {
+  margin-bottom: 1em;
+  line-height: 1.95;
+}
+.closing p:has(> .source-link) { margin-bottom: 0.4em; }
+.source-link { padding: 4px 0; }
+
+@media (max-width: 600px) {
+  .data-table th { width: 38%; }
+  .story h3 { margin: 44px 0 16px; }
+  .story figure.star-figure { margin-top: 16px; }
+}
+
+@media (max-width: 380px) {
+  .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
+}
+
+.glossary {
+  margin: 0 0 1.6em;
+  padding: 16px 20px 4px;
+  border: 1px solid rgba(182, 140, 255, 0.55);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.45);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.2), inset 0 0 14px rgba(182, 140, 255, 0.12);
+}
+
+.story .glossary-title {
+  margin: 0 0 12px;
+  color: #eadcff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.glossary dl { margin: 0; }
+
+.glossary dt {
+  margin: 0 0 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.glossary dd {
+  margin: 0 0 16px;
+  color: #efe8ff;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.glossary dd strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story > .glossary:last-child { margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .glossary { padding: 14px 14px 2px; }
+}
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(18, 10, 40, .7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary dt a {
+  color: inherit;
+  text-decoration: underline dotted rgba(77, 225, 255, 0.7);
+  text-underline-offset: 4px;
+}
+
+.glossary dt a:hover,
+.glossary dt a:focus-visible {
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+}
+
+.glossary-more a {
+  color: #eadcff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.glossary-more a:hover,
+.glossary-more a:focus-visible {
+  color: #fff;
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  text-align: center;
+  line-height: 0;
+  margin: 8px 0 18px;
+}
+
+.glossary-btn {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(160px, 48vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.story .glossary-top {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+  line-height: 0;
+}
+
+.glossary-top .glossary-btn img { width: min(110px, 30vw); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
+.formula {
+  margin: 0 0 1.4em;
+  padding: 12px 10px;
+  border: 1px dashed rgba(77, 225, 255, 0.6);
+  border-radius: 12px;
+  background: rgba(18, 10, 40, 0.5);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px var(--cyan);
+}
+.oshi-video { margin: 22px 0 26px; }
+.oshi-label {
+  margin: 0 0 10px !important;
+  color: var(--pink);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad9aa;
+}
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid rgba(182, 140, 255, 0.7);
+  border-radius: 14px;
+  background: #000;
+  box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
+}
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+
+<body>
+<div id="background-image" aria-hidden="true"></div>
+<div id="mycelium" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
+<canvas id="spore-canvas" aria-hidden="true"></canvas>
+
+<main>
+  <section class="big-frame">
+    <header class="hero">
+      <div class="hero-banner">
+        <img width="1200" height="398" fetchpriority="high" src="0_file/ho4.webp"
+             alt=""
+             aria-hidden="true"
+             class="hero-bg"
+             onerror="this.style.display='none'">
+        <h1>
+          <a href="../ho4.html"
+             class="logo-link"
+             id="logoLink"
+             aria-label="星がたりの入り口へ戻る">
+            <img width="700" height="209" src="0_file/ho4_logo.webp"
+                 alt="星がたり（入り口へ戻る）"
+                 class="title-img"
+                 id="logoImg"
+                 decoding="async"
+                 draggable="false">
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <article class="story">
+      <div class="glossary-top">
+        <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集を見る">
+          <img width="700" height="263" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+               onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+        </a>
+      </div>
+      <h2 class="story-title">
+        かにパルサー
+        <small>爆発しても踊ってない夜を知らない星</small>
+      </h2>
+
+      <p class="lead">かにパルサーは、おうし座の方向にある<strong>中性子星</strong>で、<strong>パルサー</strong>と呼ばれる天体です。正式な名前は、PSR B0531+21。</p>
+      <p class="lead">西暦1054年の<strong>超新星爆発</strong>で生まれ、<strong>かに星雲</strong>の中心にあります。1秒間に約30回も自転しながら、電磁波のパルスを宇宙へ送り続けている、まさに宇宙の天然パルス発生装置です。</p>
+
+      <figure class="star-figure">
+        <a href="../ho4.html" aria-label="星がたりの入り口へ戻る">
+          <img src="0_file/kani.webp" width="300" height="300" alt="かにパルサーの絵（タップで入り口へ）" decoding="async" onerror="this.closest('figure').style.display='none'">
+        </a>
+      </figure>
+
+      <h3><span class="num">1</span>基本情報</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>項目</th><td>情報</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>天体名</th><td>かにパルサー（Crab Pulsar）</td></tr>
+          <tr><th>パルサー番号</th><td>PSR B0531+21</td></tr>
+          <tr><th>別表記</th><td>PSR J0534+2200</td></tr>
+          <tr><th>分類</th><td>中性子星・パルサー</td></tr>
+          <tr><th>所属星座</th><td>おうし座</td></tr>
+          <tr><th>誕生</th><td>西暦1054年の超新星爆発</td></tr>
+          <tr><th>年齢</th><td>約970歳（2026年基準）</td></tr>
+          <tr><th>自転周期</th><td>約33.6ミリ秒</td></tr>
+          <tr><th>自転の速さ</th><td>約29.7回転／秒</td></tr>
+          <tr><th>質量</th><td>約1.4太陽質量程度</td></tr>
+          <tr><th>半径</th><td>約10〜12km程度</td></tr>
+          <tr><th>地球からの距離</th><td>約6,500光年</td></tr>
+          <tr><th>周囲の天体</th><td>かに星雲</td></tr>
+        </tbody>
+      </table>
+      <p class="note">距離は、資料や測定方法によって異なります。約6,000〜6,500光年くらいの値が使われているので、目安として見てください。質量と半径も、おおよその値です。</p>
+
+      <h3><span class="num">2</span>そもそもパルサーとは？</h3>
+      <p>パルサーとは、周期的に電磁波のパルスを出す<strong>中性子星</strong>のことです。中性子星は、大質量の星が超新星爆発を起こしたあとに残る、とても高密度な天体です。</p>
+      <ul>
+        <li>半径は約10〜12km程度</li>
+        <li>質量は、太陽に匹敵するほど重い</li>
+        <li>密度は、原子核に近いほど極端に高い</li>
+        <li>とても強い<strong>磁場</strong>を持っている</li>
+        <li>なかには、非常に高速で自転しているものがある</li>
+      </ul>
+      <p>パルサーは、磁極のあたりから電磁波のビームを出しています。自転でそのビームが宇宙を掃くと、地球からは周期的な信号として観測されます。いわば、<strong>宇宙の灯台</strong>です。</p>
+      <p>ただし、星そのものが点滅しているわけではありません。ビームが地球の方向を通るたびに、信号を受け取るので、点滅しているように見えるのです。</p>
+
+      <h3><span class="num">3</span>驚異的な回転速度</h3>
+      <p class="big-number">約33.6<small>ミリ秒で1回転</small></p>
+      <p class="big-caption">1ミリ秒 ＝ 1000分の1秒</p>
+      <ul>
+        <li>1回転：約0.0336秒</li>
+        <li>1秒間：約29.7回転</li>
+        <li>1分間：約1,780回転</li>
+        <li>1時間：約10万7,000回転</li>
+      </ul>
+      <p>半径を約10〜12kmとして計算すると、赤道のあたりは、秒速2,000km以上で動いている計算になります。直径20km余りの天体が、これだけの速さで回っているのです。</p>
+      <p>しかも、この速さは、生まれたときから一定だったわけではありません。超新星爆発のとき、恒星の中心部が急にぎゅっとつぶれる<strong>重力崩壊</strong>が起こります。すると、<strong>角運動量保存の法則</strong>によって、<strong>自転</strong>がぐんと速くなります。</p>
+      <p>フィギュアスケートの選手が、腕を縮めると回転が速くなるのと、似た原理です。巨大な星の中心部が、直径20km余りの高速回転天体に変わったのです。</p>
+
+      <h3><span class="num">4</span>何によって光っているの？</h3>
+      <p>ここが、とても大事なところです。かにパルサーのエネルギー源は、おもに<strong>自転の回転エネルギー</strong>です。</p>
+      <ul>
+        <li>強い磁場と高速回転によって、まわりの<strong>荷電粒子</strong>が加速される</li>
+        <li>その粒子が磁場の中を動くことで、電波からX線、ガンマ線まで、幅広い電磁波が出る</li>
+        <li>パルサーから流れ出す高エネルギーの粒子や磁場が、かに星雲へエネルギーを送りこむ</li>
+        <li>核融合で光る恒星とは、仕組みがまったくちがう</li>
+      </ul>
+      <p>現在のかにパルサーは、約4〜5×10<sup>38</sup> erg/s という、とても大きな割合で、回転エネルギーを失っています。これは、<strong>太陽光度</strong>の約10万倍にあたるエネルギーです。</p>
+
+      <p><strong>この数字は、どうやって出しているの？</strong></p>
+      <p>まず、「<strong>光度</strong>」は、星の光だけの話ではありません。<strong>1秒間に出ているエネルギーの量</strong>のことです。だから、星の光でも、パルサーが失っていく回転エネルギーでも、同じ単位（erg/s や W）で比べられます。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>項目</th><td>W（ワット）</td><td>erg/s</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>太陽の光度</th><td>約3.83×10<sup>26</sup> W</td><td>約3.83×10<sup>33</sup> erg/s</td></tr>
+          <tr><th>かにパルサーが失う回転エネルギー</th><td>約4〜5×10<sup>31</sup> W</td><td>約4〜5×10<sup>38</sup> erg/s</td></tr>
+        </tbody>
+      </table>
+      <p class="note">1 erg/s ＝ 10<sup>-7</sup> W（1000万分の1ワット）です。</p>
+      <p>同じ単位にそろえて、わり算をします。4〜5×10<sup>38</sup> ÷ 3.83×10<sup>33</sup> は、約10万。これが、「太陽光度の約10万倍」の中身です。</p>
+
+      <p><strong>ただし、パルサーの数字は、星の光度とは求め方がちがいます。</strong></p>
+      <p><a class="source-link" href="wr102.html">WR 102 のページ</a>では、<strong>ステファン・ボルツマンの法則</strong>（L ＝ 4πR²σT⁴）で、表面の広さと温度から光度を計算しました。これは、星の表面から出る光の光度です。</p>
+      <p>かにパルサーの数字は、表面温度からは出しません。<strong>自転がどれだけ遅くなっているか</strong>から出します。</p>
+      <ul>
+        <li>回っているものは、<strong>回転エネルギー</strong>を持っている</li>
+        <li>自転が遅くなると、そのぶんのエネルギーが、外へ出ていったことになる</li>
+        <li>1秒あたりに失う量を、<strong>スピンダウン光度</strong>と呼ぶ</li>
+        <li>自転周期と、周期が伸びていく速さを測れば、計算できる</li>
+      </ul>
+      <p class="formula">L<sub>spin</sub> ＝ 4π²I × (dP/dt) ÷ P³</p>
+      <p class="note">P は自転周期、dP/dt は周期が伸びる速さ（1秒あたり、何秒伸びるか）、I は<strong>慣性モーメント</strong>（回りにくさ）です。</p>
+      <p>かにパルサーでは、P ＝ 0.0336秒、dP/dt ＝ 約4.2×10<sup>-13</sup>（1年で約13マイクロ秒の伸びを、1秒あたりに直した値）です。I は、標準的な値の約10<sup>45</sup> g·cm² を使います。すると、<strong>約4×10<sup>38</sup> erg/s</strong> になり、冒頭の「約4〜5×10<sup>38</sup>」と、ほぼ合います。</p>
+      <p class="note">I は、中性子星の内部が分からないと決まらず、直接は測れません。そのため、仮定する値によって、答えにも幅が出ます。</p>
+      <p class="note">ほかのページに出てくる計算も含めて、考え方を<a class="source-link" href="0_keisan.html">計算のゆる解説</a>にまとめています。</p>
+
+      <h3><span class="num">5</span>かに星雲との関係</h3>
+      <p>かにパルサーのすごいところは、ただ高速で回っているだけではないことです。<strong>自分が生み出したエネルギーで、まわりの星雲を、いまも動かし続けている</strong>のです。</p>
+
+      <ul class="timeline">
+        <li><span class="year">1054年</span>超新星爆発が観測される。この爆発の残骸が、のちのかに星雲になる。</li>
+        <li><span class="year">1968年</span>かに星雲の中心で、電波のパルスを出す天体が見つかる。超新星残骸の中にパルサーがあることを示した、大切な発見になった。</li>
+        <li><span class="year">現在</span>約33.6ミリ秒の周期で自転しながら、かに星雲へエネルギーを送り続けている。</li>
+      </ul>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>場所</th><td>内容</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>中心</th><td>かにパルサー</td></tr>
+          <tr><th>内部</th><td>高エネルギーの粒子と磁場</td></tr>
+          <tr><th>青白い領域</th><td>シンクロトロン放射</td></tr>
+          <tr><th>オレンジ色のフィラメント</th><td>電離したガスなど</td></tr>
+          <tr><th>外側</th><td>超新星爆発による放出物</td></tr>
+        </tbody>
+      </table>
+      <p>パルサーから出た<strong>相対論的粒子</strong>が磁場の中を動くと、<strong>シンクロトロン放射</strong>によって青白い光を出します。このエネルギー供給のおかげで、かに星雲は、いまも明るく輝き、膨張を続けています。</p>
+
+      <h3><span class="num">6</span>かにパルサーの巨大パルス</h3>
+      <p>かにパルサーには、<strong>巨大パルス</strong>と呼ばれる、とても強い電波のパルスがあります。ふつうのパルスよりも、極端に強い信号が、短い時間に出る現象です。</p>
+      <p>なかには、ごく短い時間に、強烈なエネルギーが集中するものもあります。巨大パルスは、パルサーの電磁場や、粒子の加速のしくみを調べるための、大切な手がかりです。</p>
+      <p>また、かにパルサーは、電波だけでなく、可視光・X線・ガンマ線などでも、パルスが観測されています。</p>
+
+      <h3><span class="num">7</span>少しずつ減速している</h3>
+      <p>かにパルサーは、生まれたときよりも、いまのほうが自転が遅くなっています。回転エネルギーを、電磁波や粒子の運動エネルギーとして、宇宙空間へ出しているからです。</p>
+      <p>現在の自転周期は約33.6ミリ秒ですが、時間とともに、少しずつ長くなっています。その伸びは、1年でおよそ13マイクロ秒（1マイクロ秒は100万分の1秒）。ほんのわずかですが、確実に遅くなっています。</p>
+      <p>さらに、かにパルサーには<strong>グリッチ</strong>という現象もあります。ふだんは少しずつ遅くなっている自転が、とつぜんわずかに速くなるのです。</p>
+      <ul>
+        <li>中性子星の内部にある<strong>超流動</strong>の部分と、固い地殻の関係が、原因のひとつと考えられている</li>
+        <li>グリッチを調べると、ふつうの物質とは大きくちがう、中性子星の内部の様子を探れる</li>
+      </ul>
+
+      <h3><span class="num">8</span>かにパルサーの科学的な重要性</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>研究分野</th><td>重要性</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>中性子星</th><td>超高密度の物質の物理を研究できる</td></tr>
+          <tr><th>パルサー</th><td>電磁波が出るしくみを調べられる</td></tr>
+          <tr><th>恒星の進化</th><td>超新星爆発のあとの天体を研究できる</td></tr>
+          <tr><th>高エネルギー天文学</th><td>粒子の加速や、高エネルギーの放射を研究できる</td></tr>
+          <tr><th>星雲の形成</th><td>パルサーがまわりへ送るエネルギーを調べられる</td></tr>
+          <tr><th>重力・相対論</th><td>強い重力の環境での物理を確かめられる</td></tr>
+        </tbody>
+      </table>
+      <p>かにパルサーは、パルサー研究の代表的な<strong>基準天体</strong>です。特に、生まれた年が歴史の記録から分かっているので、天体の進化と観測の結果を、直接つなげて考えられる貴重な存在です。</p>
+
+      <h3><span class="num">9</span>恒星の一生の中で見てみよう</h3>
+      <p>星がたりの、ほかのページと並べて読むと、大質量の星の一生が見えてきます。</p>
+      <ul>
+        <li><a class="source-link" href="etacarinae.html">イータカリーナ</a>：恒星の大噴火</li>
+        <li><a class="source-link" href="wr102.html">WR 102</a>：外層を失って、内側があらわになった恒星</li>
+        <li>かにパルサー：爆発のあとに残った、超高速回転の核</li>
+      </ul>
+      <p class="note">これは、一生の流れをたどるための並べ方です。3つは、それぞれ別の星で、同じ星の運命というわけではありません。</p>
+
+      <hr>
+
+      <h3><span class="num">10</span>かにパルサーのまとめ</h3>
+      <p>かにパルサーは、1054年の超新星爆発で生まれた、若い中性子星です。直径20km余りの天体なのに、約33.6ミリ秒という短い周期で回っています。</p>
+      <p>強い磁場と高速回転によって、電磁波や高エネルギーの粒子を出し、まわりのかに星雲へ、莫大なエネルギーを送っています。巨大パルスやグリッチを通して、中性子星の内部や、粒子の加速のしくみを調べる、大切な研究対象にもなっています。</p>
+      <div class="stat-head">
+        <span class="stat-name">かにパルサー</span>
+        <span class="badge">中性子星・パルサー</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <span class="label">地球からの距離</span>
+          <span class="value">約6,500</span>
+          <span class="unit">光年</span>
+        </div>
+        <div class="stat">
+          <span class="label">自転周期</span>
+          <span class="value">約33.6</span>
+          <span class="unit">ミリ秒</span>
+        </div>
+        <div class="stat">
+          <span class="label">自転の速さ</span>
+          <span class="value">約29.7</span>
+          <span class="unit">回転／秒</span>
+        </div>
+        <div class="stat">
+          <span class="label">誕生</span>
+          <span class="value">1054</span>
+          <span class="unit">年</span>
+        </div>
+      </div>
+
+      <div class="closing">
+        <p class="closing-lead">かにパルサーで、特に押さえておきたいのは、この3点です。</p>
+        <ul>
+          <li>超新星爆発のあとに残った、超高速で自転する中性子星であること</li>
+          <li>自転の回転エネルギーで、かに星雲を、いまも輝かせ続けていること</li>
+          <li>巨大パルスやグリッチなど、中性子星の内部を探る手がかりになること</li>
+        </ul>
+        <p>かにパルサーも、永遠に同じ勢いで輝き続けるわけではありません。ゆっくり減速しながら、まわりの星雲へエネルギーを送り続けています。</p>
+        <div class="oshi-video">
+          <p class="oshi-label">🎧 パルサーの音を聞いてみよう</p>
+          <div class="video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/rFWLmR-I6Ck" title="The Sounds of Pulsar Stars! (Part - 7)（YouTube）" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <p class="note">パルサーから届く電波のパルスを、音にした動画です（英語の動画です）。説明欄によると、かにパルサー（PSR B0531+21）をふくむ、6つのパルサーの音が入っています。</p>
+        <p>もっと詳しく知りたい方のために、解説ページを置いておきます。</p>
+        <p><a class="source-link" href="https://science.nasa.gov/missions/hubble/the-crab-nebula/" target="_blank" rel="noopener noreferrer">NASA：かに星雲 ↗</a></p>
+        <p><a class="source-link" href="https://chandra.si.edu/press/crabfact.html" target="_blank" rel="noopener noreferrer">チャンドラX線天文台：かにパルサーの解説 ↗</a></p>
+        <p><a class="source-link" href="https://academic.oup.com/mnrasl/article/505/1/L6/6226667" target="_blank" rel="noopener noreferrer">かにパルサーのグリッチに関する研究 ↗</a></p>
+      </div>
+
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="0_yogo.html#中性子星">中性子星（ちゅうせいしせい）</a></dt>
+          <dd>大きな星が超新星爆発を起こしたあとに残る、とても小さくて、とても重い天体です。中心部がぎゅうっとつぶれて、ほとんど中性子という粒だけでできた状態になっています。直径は20km前後ですが、質量は太陽の1〜2倍ほどもあります。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#パルサー">パルサー（ぱるさー）</a></dt>
+          <dd>規則正しい間隔で、電磁波のパルス（ぴかっ、ぴかっという信号）が届く中性子星です。磁極から出たビームが、自転によって灯台の光のように宇宙を掃き、地球に向いたときだけ信号として観測されます。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#超新星爆発">超新星爆発（ちょうしんせいばくはつ）</a></dt>
+          <dd>質量の大きな星が、一生の最後に起こす大爆発です。爆発した星は、ごく短い間、とても明るく輝きます。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="vycma.html">VYかにまよ</a><a class="src-chip" href="uyscuti.html">UY Scuti</a><a class="src-chip" href="wr102.html">WR 102</a><a class="src-chip" href="etacarinae.html">イータカリーナ</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#超新星残骸">超新星残骸（ちょうしんせいざんがい）</a></dt>
+          <dd>超新星爆発のあとに、宇宙空間へ広がっていくガスや塵などのことです。かに星雲が代表的な例です。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#かに星雲">かに星雲（かにせいうん）</a></dt>
+          <dd>おうし座の方向にある、西暦1054年の超新星爆発の残骸です。中心には、かにパルサーがあります。青白く光る部分と、オレンジ色のフィラメント（糸状の構造）が特徴です。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#太陽質量">太陽質量（たいようしつりょう）</a></dt>
+          <dd>天体の重さを表すための単位で、<strong>1太陽質量＝太陽1個分の質量</strong>です（約2×10<sup>30</sup>kg。地球の約33万倍）。「660億太陽質量」は、太陽660億個分の質量という意味です。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="ton618.html">TON 618</a><a class="src-chip" href="uyscuti.html">UY Scuti</a><a class="src-chip" href="wr102.html">WR 102</a><a class="src-chip" href="etacarinae.html">イータカリーナ</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#光年">光年（こうねん）</a></dt>
+          <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="hd189733b.html">HD 189733 b</a><a class="src-chip" href="toi1452b.html">TOI-1452 b</a><a class="src-chip" href="vycma.html">VYかにまよ</a><a class="src-chip" href="uyscuti.html">UY Scuti</a><a class="src-chip" href="wr102.html">WR 102</a><a class="src-chip" href="etacarinae.html">イータカリーナ</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#電磁波">電磁波（でんじは）</a></dt>
+          <dd>電気と磁気の波として、宇宙空間を伝わるものです。波の長さによって、電波、赤外線、可視光、X線、ガンマ線などに分けられます。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#電波">電波（でんぱ）</a></dt>
+          <dd>電磁波のなかで、波の長さが長いなかまです。ラジオや携帯電話にも使われています。パルサーは、電波のパルスとして見つかりました。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#可視光">可視光（かしこう）</a></dt>
+          <dd>人の目で見える光のことです。虹の7色が、可視光にあたります。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="hd189733b.html">HD 189733 b</a><a class="src-chip" href="taiyo.html">太陽</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#X線">X線（えっくすせん）</a></dt>
+          <dd>目に見えない光（電磁波）の一種で、とても高いエネルギーを持っています。銀河団のあいだに広がる、数千万℃をこえる高温のガスは、X線で観測されます。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="phoenixa.html">フェニックスA*</a><a class="src-chip" href="etacarinae.html">イータカリーナ</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#ガンマ線">ガンマ線（がんません）</a></dt>
+          <dd>電磁波のなかで、もっとも高いエネルギーを持つなかまです。目には見えません。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#自転">自転（じてん）</a></dt>
+          <dd>天体が、自分自身の軸を中心にくるくる回ることです。地球では、自転によって昼と夜が入れかわります。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="hd189733b.html">HD 189733 b</a><a class="src-chip" href="toi1452b.html">TOI-1452 b</a><a class="src-chip" href="gonggong.html">Gonggong</a><a class="src-chip" href="taiyo.html">太陽</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#重力崩壊">重力崩壊（じゅうりょくほうかい）</a></dt>
+          <dd>星の中心部が、自分の重力に耐えきれずに、つぶれていく現象です。超新星爆発や、ブラックホールができるきっかけになります。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="vycma.html">VYかにまよ</a><a class="src-chip" href="uyscuti.html">UY Scuti</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#角運動量保存の法則">角運動量保存の法則（かくうんどうりょうほぞんのほうそく）</a></dt>
+          <dd>回っているものは、外から力を受けなければ、回る勢いの量（角運動量）が変わらない、という物理の法則です。フィギュアスケートの選手が腕を縮めると回転が速くなるのは、この法則によります。星の中心がつぶれて小さくなると、自転がとても速くなります。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#磁場">磁場（じば）</a></dt>
+          <dd>磁石のまわりに広がる、磁力がはたらく空間のことです。中性子星は、地球とは比べものにならないほど強い磁場を持っていて、パルサーの電磁波や、粒子の加速に関係しています。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#荷電粒子">荷電粒子（かでんりゅうし）</a></dt>
+          <dd>電子や陽子のように、電気を帯びた粒のことです。磁場の中では、力を受けて動きが変わります。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#相対論的粒子">相対論的粒子（そうたいろんてきりゅうし）</a></dt>
+          <dd>光の速さに近い速さで飛んでいる粒子のことです。パルサーのまわりでは、電子などがこのような速さまで加速されると考えられています。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#シンクロトロン放射">シンクロトロン放射（しんくろとろんほうしゃ）</a></dt>
+          <dd>光の速さに近い速さで飛ぶ電子などが、磁場の中で曲げられるときに出す光（電磁波）です。かに星雲の青白く光る部分は、この放射だと考えられています。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#回転エネルギー">回転エネルギー（かいてんえねるぎー）</a></dt>
+          <dd>回っているものが持つ、運動のエネルギーです。かにパルサーは、この回転エネルギーを少しずつ失いながら、電磁波や高エネルギーの粒子を宇宙へ出しています。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#エルグ">エルグ（erg）</a></dt>
+          <dd>エネルギーの単位のひとつで、<strong>1 erg ＝ 1000万分の1ジュール</strong>です。「erg/s」は1秒あたりのエネルギー、つまり出力を表します。太陽の光度は、約3.8×10<sup>33</sup> erg/s です。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#光度">光度（こうど）</a></dt>
+          <dd>天体が、1秒間に出している光のエネルギーの量です。天体の「本当の明るさ」にあたり、地球からの距離は関係しません。TON 618 は約140兆個分の太陽に相当する光度をもつとされています。地球から見たときの明るさは見かけの等級で表します。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="ton618.html">TON 618</a><a class="src-chip" href="toi1452b.html">TOI-1452 b</a><a class="src-chip" href="vycma.html">VYかにまよ</a><a class="src-chip" href="uyscuti.html">UY Scuti</a><a class="src-chip" href="taiyo.html">太陽</a><a class="src-chip" href="wr102.html">WR 102</a><a class="src-chip" href="etacarinae.html">イータカリーナ</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#太陽光度">太陽光度（たいようこうど）</a></dt>
+          <dd>星の明るさ（光度）を表すための単位で、<strong>1太陽光度＝太陽1個分の光度</strong>です。「約38万太陽光度」は、太陽38万個分の明るさ、という意味です。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="wr102.html">WR 102</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#ステファン・ボルツマンの法則">ステファン・ボルツマンの法則（すてふぁん・ぼるつまんのほうそく）</a></dt>
+          <dd>星の明るさ（光度）が、表面の広さと、温度の4乗に比例することを表す法則です。<strong>L ＝ 4πR²σT⁴</strong> という式になります。半径が同じでも、温度が2倍になれば、光度は16倍になります。<span class="src-list"><span class="src-label">出てくる記事：</span><a class="src-chip" href="wr102.html">WR 102</a></span></dd>
+
+          <dt><a class="term-link" href="0_yogo.html#スピンダウン光度">スピンダウン光度（すぴんだうんこうど）</a></dt>
+          <dd>パルサーの自転が遅くなることで、1秒あたりに失われる回転エネルギーの量です。周期と、周期が伸びる速さから計算できます。星の表面から出る光の光度とは、求め方がちがいます。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#慣性モーメント">慣性モーメント（かんせいもーめんと）</a></dt>
+          <dd>回っているものの「回りにくさ」を表す量です。同じ速さで回っていても、重くて大きいものほど値が大きく、たくさんの回転エネルギーを持ちます。中性子星の値は直接は測れないので、標準的な値（約10<sup>45</sup> g·cm²）を使って計算します。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#巨大パルス">巨大パルス（きょだいぱるす）</a></dt>
+          <dd>ふつうのパルスよりも、ずっと強く出る、短い電波のパルスです。かにパルサーで有名で、パルサーの中で粒子がどう加速されているのかを調べる手がかりになります。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#グリッチ">グリッチ（ぐりっち）</a></dt>
+          <dd>少しずつ遅くなっているパルサーの自転が、とつぜんわずかに速くなる現象です。中性子星の内部にある超流動の部分と、固い地殻との関係が、原因のひとつと考えられています。</dd>
+
+          <dt><a class="term-link" href="0_yogo.html#超流動">超流動（ちょうりゅうどう）</a></dt>
+          <dd>摩擦がほとんどなく、さらさらと流れ続ける、特別な状態のことです。中性子星の内部には、この状態の部分があると考えられています。</dd>
+
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
+      </div>
+    </article>
+
+
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
+
+    <div class="page-back-wrap">
+      <a href="../ho4.html" class="page-back" aria-label="戻る">
+        <img width="180" height="180" loading="lazy" decoding="async" src="0_file/chi9.webp" alt="戻る" draggable="false">
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.tagName === "IMG") {
+    e.preventDefault();
+  }
+});
+
+(() => {
+  const logoLink = document.getElementById("logoLink");
+  const logoImg = document.getElementById("logoImg");
+
+  if (!logoLink || !logoImg) return;
+
+  function playBounceSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+
+      osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.12);
+
+      gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.18);
+    } catch (e) {
+    }
+  }
+
+  function createLogoSparkles(rect) {
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const colors = ['#ffe84a', '#ff7ad9', '#4de1ff', '#b6ff5c', '#ffffff'];
+
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'logo-sparkle-particle';
+      
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = centerX + 'px';
+      p.style.top = centerY + 'px';
+
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 70 + 30;
+      p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 600);
+    }
+  }
+
+  logoLink.addEventListener("click", (e) => {
+    const href = logoLink.getAttribute("href");
+    if (href && href !== "#") {
+      e.preventDefault();
+
+      logoImg.classList.remove("is-pop");
+      void logoImg.offsetWidth; 
+      logoImg.classList.add("is-pop");
+
+      playBounceSound();
+      createLogoSparkles(logoImg.getBoundingClientRect());
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 350);
+    }
+  });
+
+  window.playBounceSound = playBounceSound;
+  window.createLogoSparkles = createLogoSparkles;
+})();
+
+(() => {
+  const canvas = document.getElementById("spore-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
+  let lastFrame = 0;
+
+  let width = 0;
+  let height = 0;
+  let spores = [];
+  let mouseX = 0;
+  let mouseY = 0;
+  let animationId = null;
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff", "#b6ff5c"];
+
+  const GLOW = {};
+  const STAR = {};
+
+  function glowSprite(color) {
+    if (GLOW[color]) return GLOW[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, color + "dd");
+    grad.addColorStop(0.25, color + "77");
+    grad.addColorStop(0.6, color + "22");
+    grad.addColorStop(1, color + "00");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 64, 64);
+    return (GLOW[color] = c);
+  }
+
+  function starSprite(color) {
+    if (STAR[color]) return STAR[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    g.translate(32, 32);
+    g.shadowColor = color;
+    g.shadowBlur = 8;
+    const grad = g.createRadialGradient(0, 0, 0, 0, 0, 26);
+    grad.addColorStop(0, "#ffffff");
+    grad.addColorStop(0.3, color);
+    grad.addColorStop(1, color + "bb");
+    g.fillStyle = grad;
+    g.beginPath();
+    g.moveTo(0, -26);
+    g.quadraticCurveTo(2.5, -2.5, 26, 0);
+    g.quadraticCurveTo(2.5, 2.5, 0, 26);
+    g.quadraticCurveTo(-2.5, 2.5, -26, 0);
+    g.quadraticCurveTo(-2.5, -2.5, 0, -26);
+    g.closePath();
+    g.fill();
+    return (STAR[color] = c);
+  }
+
+  function drawSpore(ctx, sp, x, y, advance) {
+    if (advance) sp.tw += sp.twSpeed * STEP;
+    const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
+    const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
+
+    if (sp.star) {
+      const size = (9 + sp.size * 4.5) * (0.55 + 0.75 * flash);
+      const halo = size * 1.6;
+      ctx.globalAlpha = a * 0.55;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a * 1.25);
+      ctx.drawImage(starSprite(sp.color), x - size, y - size, size * 2, size * 2);
+    } else {
+      const halo = 5 + sp.size * 3.2 + flash * 7;
+      ctx.globalAlpha = a * 0.8;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a + 0.2);
+      ctx.fillStyle = sp.color;
+      ctx.beginPath();
+      ctx.arc(x, y, sp.size * (0.8 + 0.5 * flash), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function createSpore(randomY = false) {
+    return {
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : height + 10,
+      size: Math.random() * 2.1 + 0.5,
+      speed: Math.random() * 0.55 + 0.12,
+      drift: (Math.random() - 0.5) * 0.45,
+      alpha: Math.random() * 0.5 + 0.35,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      phase: Math.random() * Math.PI * 2,
+      tw: Math.random() * Math.PI * 2,
+      twSpeed: 0.03 + Math.random() * 0.07,
+      star: Math.random() < 0.2
+    };
+  }
+
+  function render(advance) {
+    ctx.clearRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "lighter";
+    for (const spore of spores) {
+      drawSpore(ctx, spore, spore.x + mouseX * 0.012, spore.y + mouseY * 0.012, advance);
+    }
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+  }
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, IS_TOUCH ? 1.5 : 2);
+    const prevWidth = width;
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * ratio);
+    canvas.height = Math.round(height * ratio);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    if (!spores.length || width !== prevWidth) {
+      const count = Math.min(180, Math.max(60, Math.floor((width * height) / 8500)));
+      const total = IS_TOUCH ? Math.ceil(count * 0.6) : count;
+      spores = Array.from({ length: total }, () => createSpore(true));
+    }
+
+    if (reduceMotion) render(false);
+  }
+
+  function animate(now) {
+    if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
+    if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
+    lastFrame = now || 0;
+
+    for (const spore of spores) {
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
+
+      if (spore.y < -10) Object.assign(spore, createSpore(false));
+      if (spore.x < -10) spore.x = width + 10;
+      if (spore.x > width + 10) spore.x = -10;
+    }
+
+    render(true);
+    animationId = requestAnimationFrame(animate);
+  }
+
+  function stopAnimation() {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
+  function startAnimation() {
+    stopAnimation();
+    if (reduceMotion) render(false);
+    else animationId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+    startAnimation();
+  }, { passive: true });
+
+  window.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX - width / 2;
+    mouseY = event.clientY - height / 2;
+  }, { passive: true });
+
+  resize();
+  startAnimation();
+})();
+
+(() => {
+  const container = document.getElementById("stars");
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").matches ? 25 : 50); i++) {
+    const star = document.createElement("span");
+
+    star.textContent = "✦";
+    star.setAttribute("aria-hidden", "true");
+
+    Object.assign(star.style, {
+      position: "absolute",
+      left: Math.random() * 100 + "%",
+      top: Math.random() * 100 + "%",
+      color: i % 2 ? "#4de1ff" : "#ff7ad9",
+      fontSize: Math.random() * 9 + 5 + "px",
+      opacity: String(Math.random() * 0.55 + 0.12),
+      textShadow: "0 0 8px currentColor",
+      animation: `starBlink ${Math.random() * 3 + 2}s ease-in-out infinite alternate`,
+      animationDelay: Math.random() * -5 + "s"
+    });
+
+    fragment.appendChild(star);
+  }
+
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes starBlink {
+      from { opacity: 0.12; }
+      to { opacity: 0.85; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  container.appendChild(fragment);
+})();
+
+document.addEventListener("click", (event) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff"];
+
+  for (let i = 0; i < 6; i++) {
+    const spark = document.createElement("span");
+    const angle = Math.PI * 2 * i / 6;
+    const distance = 18 + Math.random() * 24;
+
+    spark.textContent = "✦";
+
+    Object.assign(spark.style, {
+      position: "fixed",
+      left: event.clientX + "px",
+      top: event.clientY + "px",
+      zIndex: "99",
+      pointerEvents: "none",
+      color: colors[i % colors.length],
+      fontSize: "13px",
+      textShadow: "0 0 8px currentColor",
+      transition: "transform 550ms ease-out, opacity 550ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      spark.style.transform =
+        `translate(${Math.cos(angle) * distance}px,${Math.sin(angle) * distance}px)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 650);
+  }
+});
+
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const targets = document.querySelectorAll(".title-img");
+  const colors = ["#ff65c3", "#b6ff5c", "#62f7ff", "#b68cff", "#ffb85c", "#ffe84a"];
+  const marks = ["✦", "✧", "✨"];
+
+  function sparkle(element) {
+    const rect = element.getBoundingClientRect();
+    const spark = document.createElement("span");
+
+    spark.textContent = marks[Math.floor(Math.random() * marks.length)];
+
+    const sparkLeft = rect.left + window.scrollX + Math.random() * rect.width;
+    const sparkTop = rect.top + window.scrollY + Math.random() * rect.height;
+
+    Object.assign(spark.style, {
+      position: "absolute",
+      left: sparkLeft + "px",
+      top: sparkTop + "px",
+      zIndex: "9999",
+      pointerEvents: "none",
+      color: colors[Math.floor(Math.random() * colors.length)],
+      fontSize: (9 + Math.random() * 10) + "px",
+      textShadow: "0 0 8px currentColor",
+      opacity: "1",
+      transition: "transform 750ms ease-out, opacity 750ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      const dx = (Math.random() - 0.5) * 44;
+      const dy = -(18 + Math.random() * 32);
+      const rot = (Math.random() - 0.5) * 180;
+      spark.style.transform =
+        `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 800);
+  }
+
+  targets.forEach((element) => {
+    let timer = null;
+
+    element.addEventListener("mouseenter", () => {
+      if (timer) return;
+      sparkle(element);
+      timer = window.setInterval(() => sparkle(element), 90);
+    });
+
+    element.addEventListener("mouseleave", () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    });
+  });
+})();
+
+(() => {
+  const link = document.querySelector(".page-back");
+  const img = link && link.querySelector("img");
+  if (!link || !img) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  link.addEventListener("click", (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 350);
+  });
+})();
+
+(() => {
+  const img = document.querySelector(".star-figure img");
+  const link = img && img.closest("a");
+  if (!link) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let pending = false;
+
+  link.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    if (pending) return;
+    pending = true;
+
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+    if (window.createLogoSparkles) window.createLogoSparkles(img.getBoundingClientRect());
+
+    setTimeout(() => { window.location.href = href; }, 350);
+  });
+
+  window.addEventListener("pageshow", () => {
+    pending = false;
+    img.classList.remove("is-pop");
+  });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KILALA_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
+})();
+</script>
+</body>
+</html>
