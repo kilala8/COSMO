@@ -689,11 +689,10 @@ h1 {
   gap: 12px;
   align-items: center;
 }
-/* ロゴは「文字1つぶんの大きさ」をそろえる（文字数が多いロゴほど横幅を広くする） */
 .glossary-top.duo {
-  --logo-char: min(40px, 7vw);   /* 1文字ぶんの幅。ここを変えると2つ同時に大きさが変わる */
-  --yogo-chars: 5;               /* 専門用語集 */
-  --keisan-chars: 7;             /* 計算のゆる解説 */
+  --logo-char: min(40px, 7vw);
+  --yogo-chars: 5;
+  --keisan-chars: 7;
 }
 .glossary-top.duo .glossary-btn img {
   height: auto;
@@ -914,6 +913,14 @@ h1 {
         </span>
         <span class="star-name">あのゴンゴン</span>
         <span class="star-sub">太陽系の果てを回る、赤い氷の星</span>
+      </a>
+      <a class="star-card" href="2_ho4/makemake.html" data-new="2026-11-22">
+        <span class="star-img-wrap">
+          <img src="2_ho4/0_file/makemake.webp" alt="" decoding="async"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
+        </span>
+        <span class="star-name">まけまけ</span>
+        <span class="star-sub">太陽系の外れで、メタンの氷をまとう星</span>
       </a>
         </div>
       </section>
