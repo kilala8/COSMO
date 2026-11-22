@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070720">
+<title>🌎 星がたり ✧ ゆる計算解説</title>
+
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
+<style>
+:root {
+  --bg: #000;
+  --pink: #ff7ad9;
+  --cyan: #4de1ff;
+  --yellow: #ffe84a;
+  --purple: #b68cff;
+}
+
+:root {
+  --neon-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='408' height='408' viewBox='0 0 408 408'%3E%3Cstyle%3E.pl%7Bfill:var(--c);stroke:var(--e);stroke-width:1.2%7D.rg%7Bfill:none;stroke:var(--e);stroke-width:2.2;stroke-linecap:round%7D%3C/style%3E%3Cdefs%3E%3Cg id='p'%3E%3Cellipse class='rg' cx='0' cy='0' rx='21' ry='5.6'/%3E%3Ccircle class='pl' cx='0' cy='0' r='11'/%3E%3Cpath class='rg' d='M-21 0A21 5.6 0 0 0 21 0'/%3E%3C/g%3E%3Cg id='d'%3E%3Ccircle cx='-4' cy='-4.5' r='1.9'/%3E%3Ccircle cx='3.5' cy='-6' r='1.3'/%3E%3Ccircle cx='5.5' cy='-0.5' r='1.5'/%3E%3Ccircle cx='-1' cy='1.5' r='1'/%3E%3C/g%3E%3Cfilter id='g' x='-30%25' y='-30%25' width='160%25' height='160%25'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='5' result='b'/%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='0.8' result='s'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='s'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='408' height='408' fill='%23000000'/%3E%3Cg filter='url(%23g)'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)' style='--c:%23542245;--e:%23803262'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 51) scale(1.9) rotate(14)' style='--c:%230d0617;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23317c80'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)' style='--c:%233e5126;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 51) scale(1.9) rotate(20)' style='--c:%230d0617;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23805c2e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 153) scale(1.9) rotate(12)' style='--c:%230d0617;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b802e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)' style='--c:%23543b26;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 153) scale(1.9) rotate(-6)' style='--c:%230d0617;--e:%23803262'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23803262'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)' style='--c:%23244e58;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)' style='--c:%2332284c;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(153 255) scale(1.9) rotate(-20)' style='--c:%230d0617;--e:%23317c80'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23317c80'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)' style='--c:%233e5126;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(357 255) scale(1.9) rotate(-12)' style='--c:%230d0617;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%23805c2e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(51 357) scale(1.9) rotate(-14)' style='--c:%230d0617;--e:%235b802e'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b802e'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)' style='--c:%23543b26;--e:%23805c2e'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3Cg transform='translate(255 357) scale(1.9) rotate(10)' style='--c:%230d0617;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3Cg fill='%235b4680'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)' style='--c:%2332284c;--e:%235b4680'%3E%3Cuse href='%23p'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%231d0d2a'%3E%3Cg transform='translate(51 51) scale(1.9) rotate(-22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 51) scale(1.9) rotate(-8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 153) scale(1.9) rotate(-18)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 153) scale(1.9) rotate(24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(51 255) scale(1.9) rotate(16)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(255 255) scale(1.9) rotate(8)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(153 357) scale(1.9) rotate(22)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3Cg transform='translate(357 357) scale(1.9) rotate(-24)'%3E%3Cuse href='%23d'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #f8edff;
+  background-color: var(--bg);
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    Meiryo,
+    sans-serif;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
+
+#mycelium,
+#spore-canvas,
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#mycelium {
+  z-index: 0;
+  opacity: 0.3;
+  background:
+    radial-gradient(ellipse at 15% 25%, #642cff33, transparent 45%),
+    radial-gradient(ellipse at 85% 65%, #ff36bd22, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, #00eaff1a, transparent 40%);
+  animation: myceliumGlow 9s ease-in-out infinite alternate;
+}
+
+#spore-canvas {
+  z-index: 1;
+}
+
+#stars {
+  z-index: 1;
+}
+
+@keyframes myceliumGlow {
+  from { opacity: 0.18; }
+  to { opacity: 0.48; }
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: min(1040px, 93%);
+  margin: 0 auto;
+  padding: 55px 0 65px;
+}
+
+.big-frame {
+  --frame-x: 22px;
+  --frame-y: 30px;
+  padding: var(--frame-y) var(--frame-x);
+  border: 2px solid #ff7ad9;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 0 15px #ff7ad988,
+    0 0 35px #ff3dc844,
+    inset 0 0 25px #b68cff33;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 1.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin: 0 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.title-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  cursor: pointer;
+  animation: neonBowaa 12s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.title-img:hover {
+  transform: scale(1.03);
+}
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out infinite;
+}
+
+@keyframes title-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(-3deg); }
+  60%  { transform: scale(0.93) rotate(2deg); }
+  80%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes neonBowaa {
+  0%   { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+  12.5% { filter: drop-shadow(0 0 10px #ff7ad9) drop-shadow(0 0 24px #ff3dc8) drop-shadow(0 0 46px #b68cff99); }
+  25%  { filter: drop-shadow(0 0 3px #4de1ffaa) drop-shadow(0 0 8px #00bfff66); }
+  37.5% { filter: drop-shadow(0 0 10px #4de1ff) drop-shadow(0 0 24px #00bfff) drop-shadow(0 0 46px #4de1ff99); }
+  50%  { filter: drop-shadow(0 0 3px #b6ff5caa) drop-shadow(0 0 8px #70f10066); }
+  62.5% { filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 24px #70f100) drop-shadow(0 0 46px #b6ff5c99); }
+  75%  { filter: drop-shadow(0 0 3px #b68cffaa) drop-shadow(0 0 8px #9d4edd66); }
+  87.5% { filter: drop-shadow(0 0 10px #b68cff) drop-shadow(0 0 24px #9d4edd) drop-shadow(0 0 46px #ffe84a88); }
+  100% { filter: drop-shadow(0 0 3px #ff7ad9aa) drop-shadow(0 0 8px #ff3dc866); }
+}
+
+.logo-sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 100;
+  animation: pop-particle 0.6s ease-out forwards;
+}
+
+@keyframes pop-particle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 25px;
+  }
+
+  .big-frame {
+    --frame-x: 14px;
+    --frame-y: 22px;
+    padding: 22px 14px 24px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  *, *::before, *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+.big-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.big-frame::before,
+.big-frame::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.big-frame::before {
+  box-shadow:
+    0 0 22px 3px #ff7ad9,
+    0 0 52px 6px #ff3dc8aa,
+    inset 0 0 30px #ff7ad966;
+  animation: frameGlowA 3.4s ease-in-out infinite alternate;
+}
+
+.big-frame::after {
+  box-shadow:
+    0 0 22px 3px #4de1ff,
+    0 0 52px 6px #b68cffaa,
+    inset 0 0 30px #4de1ff55;
+  animation: frameGlowB 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes frameGlowA {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+
+@keyframes frameGlowB {
+  from { opacity: 1; }
+  to   { opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after {
+    animation: none !important;
+  }
+  .big-frame::before { opacity: 0.7; }
+  .big-frame::after { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) { .big-frame { animation: none !important; } }
+.hero-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: calc(var(--frame-y) * -1) calc(var(--frame-x) * -1) 14px;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  border-bottom: 2px solid rgba(255, 122, 217, 0.7);
+  box-shadow: 0 6px 18px rgba(255, 122, 217, 0.28);
+}
+
+.hero-bg {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.hero-banner h1 {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  width: min(520px, 88%);
+  margin: 0;
+  display: block;
+  line-height: 0;
+}
+
+.hero {
+  padding: 0;
+  text-align: center;
+}
+
+.hero-banner .title-img {
+  display: block;
+  width: 100%;
+  max-height: none;
+  margin: 0 auto;
+}
+
+.story {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.story-title {
+  margin: 0 0 22px;
+  color: #fff;
+  font-size: clamp(1.5rem, 4.6vw, 2.1rem);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px #ff7ad9, 0 0 24px #4de1ff;
+}
+
+.story-title small {
+  display: block;
+  margin-top: 8px;
+  color: #e7dcff;
+  font-size: 0.5em;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story p {
+  margin: 0 0 1.2em;
+  color: #efe8ff;
+  font-size: 1rem;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.story strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story .lead {
+  font-size: 1.05rem;
+}
+
+.story h3 {
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px dashed rgba(255, 122, 217, 0.55);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-shadow: 0 0 10px #4de1ff;
+}
+
+.story h3 .num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: rgba(255, 232, 74, 0.12);
+  color: var(--yellow);
+  font-size: 0.85rem;
+  text-shadow: 0 0 8px var(--yellow);
+  box-shadow: 0 0 10px #ffe84a66;
+}
+
+.story ul {
+  margin: 0 0 1.2em;
+  padding: 14px 20px 14px 38px;
+  border: 1px solid rgba(77, 225, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.45);
+  box-shadow: inset 0 0 14px rgba(77, 225, 255, 0.1);
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.story li::marker {
+  color: var(--pink);
+}
+
+.story figure {
+  margin: 8px 0 26px;
+}
+
+.story figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(182, 140, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
+}
+
+.story figure.star-figure img {
+  width: min(300px, 70%);
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 0 12px #4de1ff) drop-shadow(0 0 26px #ff7ad9aa);
+  animation: starFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes starFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+.story figcaption {
+  margin-top: 8px;
+  color: #b9aedb;
+  font-size: 0.78rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+.data-table {
+  width: 100%;
+  margin: 0 0 24px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 122, 217, 0.25);
+  line-height: 1.6;
+}
+
+.data-table tr:last-child th,
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table th {
+  width: 40%;
+  color: var(--cyan);
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.data-table td {
+  color: #fff;
+  text-align: right;
+}
+
+.data-table thead th,
+.data-table thead td {
+  background: rgba(182, 140, 255, 0.22);
+  color: #fff;
+  font-weight: bold;
+}
+
+.note {
+  margin: 0 0 1.4em;
+  padding: 14px 18px;
+  border-left: 4px solid var(--yellow);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 232, 74, 0.09);
+  box-shadow: inset 0 0 14px rgba(255, 232, 74, 0.1);
+  color: #fff8d6;
+  line-height: 1.9;
+}
+
+.story hr {
+  margin: 48px 0 32px;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff7ad9, #4de1ff, #b68cff, transparent);
+  box-shadow: 0 0 10px #ff7ad988;
+}
+
+.closing {
+  padding: 20px 22px 6px;
+  border: 2px solid rgba(77, 225, 255, 0.7);
+  border-radius: 18px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 18px rgba(77, 225, 255, 0.35), inset 0 0 16px rgba(182, 140, 255, 0.2);
+}
+
+.closing .closing-lead {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.source-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: rgba(77, 225, 255, 0.5);
+  text-underline-offset: 5px;
+  text-shadow: 0 0 8px rgba(77, 225, 255, 0.6);
+}
+
+.source-link:hover,
+.source-link:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 12px var(--pink);
+  outline: none;
+}
+
+.page-back-wrap {
+  margin: 40px 0 0;
+  text-align: center;
+  line-height: 0;
+}
+
+.page-back {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-back img {
+  display: block;
+  width: min(140px, 44vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.page-back:hover img,
+.page-back:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.page-back:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.page-back img.is-pop {
+  animation: back-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes back-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.35) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .story h3 { margin-top: 38px; font-size: 1.12rem; }
+  .data-table th, .data-table td { padding: 10px 12px; font-size: 0.92rem; }
+  .closing { padding: 16px 16px 4px; }
+}
+
+.big-frame { animation: none; }
+
+.story figure.star-figure a {
+  display: block;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.story figure.star-figure img { cursor: pointer; }
+
+.story figure.star-figure img.is-pop {
+  animation:
+    starFloat 5s ease-in-out infinite alternate,
+    star-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes star-boyon {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.story .big-number {
+  margin: 6px 0 2px;
+  color: #fff;
+  font-size: clamp(2.4rem, 10vw, 3.6rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-align: center;
+  text-shadow: 0 0 12px #ff7ad9, 0 0 28px #4de1ff;
+}
+
+.story .big-number small {
+  margin-left: 0.3em;
+  color: #e7dcff;
+  font-size: 0.4em;
+  font-weight: normal;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.story .big-caption {
+  margin: 0 0 22px;
+  color: #b9aedb;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  margin: 0 0 1.6em 8px;
+  padding: 0;
+  list-style: none;
+  border-left: 3px solid rgba(77, 225, 255, 0.6);
+  box-shadow: -4px 0 12px -6px rgba(77, 225, 255, 0.6);
+}
+
+.timeline li {
+  position: relative;
+  padding: 2px 0 20px 26px;
+  color: #efe8ff;
+  line-height: 1.9;
+}
+
+.timeline li:last-child { padding-bottom: 4px; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: #070720;
+  box-shadow: 0 0 10px var(--yellow);
+}
+
+.timeline .year {
+  display: block;
+  color: var(--yellow);
+  font-size: 1.08rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--yellow);
+}
+
+.stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.stat-name {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #4de1ff;
+}
+
+.badge {
+  padding: 4px 12px;
+  border: 1px solid rgba(182, 140, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(182, 140, 255, 0.2);
+  color: #eadcff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 1.8em;
+}
+
+.stat {
+  padding: 14px 12px;
+  border: 1px solid rgba(255, 122, 217, 0.6);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.5);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.25);
+  text-align: center;
+}
+
+.stat span { display: block; }
+
+.stat .label {
+  color: var(--cyan);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.stat .value {
+  margin: 4px 0 2px;
+  color: #fff;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: bold;
+  line-height: 1.3;
+  text-shadow: 0 0 10px #ff7ad9;
+}
+
+.stat .unit {
+  color: #b9aedb;
+  font-size: 0.8rem;
+}
+
+.closing .source-link { margin-bottom: 8px; }
+
+@media (max-width: 600px) {
+  .stat-grid { gap: 10px; }
+  .stat { padding: 12px 8px; }
+}
+
+@view-transition { navigation: auto; }
+
+.big-frame { view-transition-name: site-frame; }
+.hero-banner { view-transition-name: site-header; }
+
+::view-transition-group(site-frame),
+::view-transition-group(site-header) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) { animation-duration: 0.5s; }
+
+.big-frame { animation: none; }
+
+.big-frame::before { animation: frameGlowA 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+.big-frame::after { animation: frameGlowB 3.4s ease-in-out var(--sync-34, 0s) infinite alternate; }
+
+#mycelium { animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate; }
+
+.title-img { animation: neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite; }
+
+.title-img.is-pop {
+  animation:
+    title-boyon 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    neonBowaa 12s ease-in-out var(--sync-12, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  .big-frame,
+  .big-frame::before,
+  .big-frame::after { animation: none !important; }
+}
+
+.story { word-break: auto-phrase; }
+.story p,
+.story li,
+.closing p { text-wrap: pretty; }
+.story-title,
+.story h3,
+.story .big-caption,
+.stat .label { text-wrap: balance; }
+
+.story-title {
+  padding-bottom: 14px;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff7ad9, #4de1ff 60%, transparent) 1;
+}
+
+.story .lead {
+  margin-bottom: 0.8em;
+  line-height: 1.95;
+}
+
+.story figure.star-figure { margin: 22px 0 6px; }
+
+.story h3 {
+  margin: 56px 0 18px;
+  letter-spacing: 0.03em;
+}
+
+.data-table tbody tr:nth-child(even) { background: rgba(182, 140, 255, 0.07); }
+.data-table td { font-variant-numeric: tabular-nums; }
+
+.timeline { margin-top: 22px; }
+
+.closing p {
+  margin-bottom: 1em;
+  line-height: 1.95;
+}
+.closing p:has(> .source-link) { margin-bottom: 0.4em; }
+.source-link { padding: 4px 0; }
+
+@media (max-width: 600px) {
+  .data-table th { width: 38%; }
+  .story h3 { margin: 44px 0 16px; }
+  .story figure.star-figure { margin-top: 16px; }
+}
+
+@media (max-width: 380px) {
+  .data-table th, .data-table td { padding: 10px 9px; font-size: 0.86rem; }
+}
+
+.glossary {
+  margin: 0 0 1.6em;
+  padding: 16px 20px 4px;
+  border: 1px solid rgba(182, 140, 255, 0.55);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.45);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.2), inset 0 0 14px rgba(182, 140, 255, 0.12);
+}
+
+.story .glossary-title {
+  margin: 0 0 12px;
+  color: #eadcff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px #b68cff;
+}
+
+.glossary dl { margin: 0; }
+
+.glossary dt {
+  margin: 0 0 4px;
+  color: var(--cyan);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--cyan);
+}
+
+.glossary dd {
+  margin: 0 0 16px;
+  color: #efe8ff;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.glossary dd strong {
+  color: #fff;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+
+.story > .glossary:last-child { margin-top: 28px; }
+
+@media (max-width: 600px) {
+  .glossary { padding: 14px 14px 2px; }
+}
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  padding: 16px 12px;
+  border: 1px dashed #b68cffaa;
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  text-shadow: 0 0 8px #ff7ad980;
+  flex-basis: 100%;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(18, 10, 40, .7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #4de1ff4d;
+  transition: all .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-share-btn:hover,
+.site-share-btn:focus-visible {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.site-share-btn.line-btn {
+  border-color: #b6ff5c;
+  box-shadow: 0 0 8px #b6ff5c4d;
+}
+
+.site-share-btn.line-btn:hover,
+.site-share-btn.line-btn:focus-visible {
+  background: #b6ff5c;
+  color: #070720;
+  box-shadow: 0 0 16px #b6ff5c;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff7ad94d;
+}
+
+.site-share-btn.copy-btn:hover,
+.site-share-btn.copy-btn:focus-visible {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.glossary dt a {
+  color: inherit;
+  text-decoration: underline dotted rgba(77, 225, 255, 0.7);
+  text-underline-offset: 4px;
+}
+
+.glossary dt a:hover,
+.glossary dt a:focus-visible {
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+}
+
+.glossary-more a {
+  color: #eadcff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.glossary-more a:hover,
+.glossary-more a:focus-visible {
+  color: #fff;
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.story .glossary-more {
+  text-align: center;
+  line-height: 0;
+  margin: 8px 0 18px;
+}
+
+.glossary-btn {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.glossary-btn img {
+  display: block;
+  width: min(160px, 48vw);
+  height: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 122, 217, 0.55));
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.25s ease;
+}
+
+.glossary-btn:hover img,
+.glossary-btn:focus-visible img {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px #ff7ad9);
+}
+
+.glossary-btn:focus-visible {
+  outline: 2px dashed #4de1ff;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.story .glossary-top {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 12px;
+  line-height: 0;
+}
+
+.glossary-top .glossary-btn img { width: min(110px, 30vw); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .big-frame { border-color: #b68cff; }
+  .big-frame::before { border: 2px solid #ff7ad9; }
+  .big-frame::after { border: 2px solid #4de1ff; }
+}
+.formula {
+  margin: 0 0 1.4em;
+  padding: 12px 10px;
+  border: 1px dashed rgba(77, 225, 255, 0.6);
+  border-radius: 12px;
+  background: rgba(18, 10, 40, 0.5);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px var(--cyan);
+}
+</style>
+</head>
+
+<body>
+<div id="background-image" aria-hidden="true"></div>
+<div id="mycelium" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
+<canvas id="spore-canvas" aria-hidden="true"></canvas>
+
+<main>
+  <section class="big-frame">
+    <header class="hero">
+      <div class="hero-banner">
+        <img width="1200" height="398" fetchpriority="high" src="0_file/ho4.webp"
+             alt=""
+             aria-hidden="true"
+             class="hero-bg"
+             onerror="this.style.display='none'">
+        <h1>
+          <a href="../ho4.html"
+             class="logo-link"
+             id="logoLink"
+             aria-label="星がたりの入り口へ戻る">
+            <img width="700" height="209" src="0_file/ho4_logo.webp"
+                 alt="星がたり（入り口へ戻る）"
+                 class="title-img"
+                 id="logoImg"
+                 decoding="async"
+                 draggable="false">
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <article class="story">
+      <div class="glossary-top">
+        <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集を見る">
+          <img width="700" height="263" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+               onerror="this.replaceWith(document.createTextNode('📖 専門用語集'))">
+        </a>
+      </div>
+      <h2 class="story-title">
+        ゆる計算解説
+        <small>「×10²⁶」や「○倍」の中身を、ひとつずつ</small>
+      </h2>
+
+      <p class="lead">星がたりのページには、「約3.83×10²⁶ W」「半径909倍」「光が15秒で1周」など、数字がたくさん出てきます。でも、使われている計算は、ほとんどが<strong>かけ算とわり算</strong>です。</p>
+      <p class="lead">このページでは、その計算の意味を、ひとつずつ確かめます。気になったところだけ、拾い読みしてください。数字は、それぞれのページに載っている値を使っています。</p>
+
+      <h3>📌 もくじ</h3>
+      <ul>
+        <li><a class="source-link" href="#c1">1 大きな数の書き方（×10ⁿ）</a></li>
+        <li><a class="source-link" href="#c2">2 「○倍」と「○％」の読み方</a></li>
+        <li><a class="source-link" href="#c3">3 光が進む時間</a></li>
+        <li><a class="source-link" href="#c4">4 星の表面を光が1周する時間</a></li>
+        <li><a class="source-link" href="#c5">5 体積は「半径の3乗」で増える</a></li>
+        <li><a class="source-link" href="#c6">6 見かけの大きさから、本当の大きさを出す</a></li>
+        <li><a class="source-link" href="#c7">7 密度（質量 ÷ 体積）</a></li>
+        <li><a class="source-link" href="#c8">8 表面重力（質量 ÷ 半径²）</a></li>
+        <li><a class="source-link" href="#c9">9 受け取る光と、平衡温度</a></li>
+        <li><a class="source-link" href="#c10">10 星の光度（表面積 × 温度の4乗）</a></li>
+        <li><a class="source-link" href="#c11">11 見かけの等級</a></li>
+        <li><a class="source-link" href="#c12">12 質量がエネルギーになる（E＝mc²）</a></li>
+        <li><a class="source-link" href="#c13">13 公転周期（ケプラーの第3法則）</a></li>
+        <li><a class="source-link" href="#c14">14 質量放出の量</a></li>
+        <li><a class="source-link" href="#c15">15 ブラックホールの大きさ</a></li>
+        <li><a class="source-link" href="#c16">16 赤方偏移</a></li>
+        <li><a class="source-link" href="#c17">17 かにパルサーのエネルギー</a></li>
+      </ul>
+
+      <h3 id="c1"><span class="num">1</span>大きな数の書き方（×10ⁿ）</h3>
+      <p>天文学の数字は、とても大きかったり、とても小さかったりします。そこで、<strong>「×10ⁿ」</strong>という書き方を使います。10を n 回かける、という意味です。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>書き方</th><td>読み方</td></tr>
+        </thead>
+        <tbody>
+          <tr><th>10³</th><td>1,000（千）</td></tr>
+          <tr><th>10⁶</th><td>1,000,000（百万）</td></tr>
+          <tr><th>10⁹</th><td>10億</td></tr>
+          <tr><th>10¹²</th><td>1兆</td></tr>
+          <tr><th>10⁻³</th><td>1000分の1（ミリ）</td></tr>
+          <tr><th>10⁻⁶</th><td>100万分の1（マイクロ）</td></tr>
+        </tbody>
+      </table>
+      <p>マイナスがつくと、「小さい数」になります。たとえば、<strong>5.8×10⁻⁵</strong>は、0.000058。10万分の5.8、という意味です。</p>
+      <p class="note">「×10²⁶」のように、右上の数字が大きいほど、桁が多いということです。右上の数字が1つ増えるごとに、10倍になります。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="taiyo.html">太陽</a>・<a class="source-link" href="gonggong.html">あのゴンゴン</a>・<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="kani.html">かにパルサー</a></p>
+
+      <h3 id="c2"><span class="num">2</span>「○倍」と「○％」の読み方</h3>
+      <p>星がたりでは、<strong>太陽や地球を「1」にして、それと比べる</strong>書き方がよく出てきます。</p>
+      <ul>
+        <li>1太陽半径 ＝ 約70万km</li>
+        <li>1太陽質量 ＝ 太陽1個分の重さ（約2×10³⁰ kg）</li>
+        <li>1太陽光度 ＝ 太陽1個分の明るさ</li>
+        <li>1 AU ＝ 地球と太陽の平均距離（約1億5,000万km）</li>
+      </ul>
+      <p><strong>例：UY Scuti の半径は、何 AU？</strong></p>
+      <p>半径は太陽の約909倍です。909 × 70万km ＝ 約6億3,000万km。これを1 AU（1億5,000万km）でわると、約4.2 AU になります。UY Scuti のページに載っている「約4.2 AU」は、この計算です。</p>
+      <p>「○％」は、<strong>比べるもの ÷ 基準になるもの</strong>で出します。</p>
+      <p><strong>例：あのゴンゴンは、月の何％の重さ？</strong></p>
+      <p>あのゴンゴンの質量は約1.75×10²¹ kg、月は約7.35×10²² kg です。1.75×10²¹ ÷ 7.35×10²² ＝ 約0.024。つまり、<strong>約2.4％</strong>です。</p>
+      <p><strong>例：まけまけは、地球の直径の何％？</strong></p>
+      <p>まけまけの直径は約1,430km、地球は約12,742km です。1,430 ÷ 12,742 ＝ 約0.112。つまり、<strong>約11％</strong>です。冥王星（約2,377km）と比べると、1,430 ÷ 2,377 ＝ 約0.60。<strong>約6割</strong>になります。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="vycma.html">VYかにまよ</a>・<a class="source-link" href="makemake.html">まけまけ</a>・<a class="source-link" href="gonggong.html">あのゴンゴン</a>・<a class="source-link" href="hd189733b.html">HD 189733 b</a></p>
+
+      <h3 id="c3"><span class="num">3</span>光が進む時間（距離 ÷ 光の速さ）</h3>
+      <p>光の速さは、<strong>秒速約30万km</strong>です。距離が分かれば、光がかかる時間は、わり算で出せます。</p>
+      <p class="formula">時間 ＝ 距離 ÷ 光の速さ</p>
+      <p><strong>例：太陽の光が、地球に届く時間</strong></p>
+      <p>1億4,960万km ÷ 30万km/秒 ＝ 約500秒。つまり、<strong>約8分20秒</strong>です。</p>
+      <p><strong>例：あのゴンゴンの近日点（約33 AU）まで</strong></p>
+      <p>1 AU が約8分20秒なので、33 AU なら、その33倍。約275分、つまり<strong>約4.6時間</strong>です。遠日点（約100 AU）なら、約833分、つまり<strong>約14時間</strong>になります。</p>
+      <p><strong>例：まけまけ（平均で約45.8 AU）</strong></p>
+      <p>1 AU が約8分20秒なので、45.8 × 8分20秒 ＝ 約380分、つまり<strong>約6時間20分</strong>です。近日点（約38.5 AU）なら約5.3時間、遠日点（約52.8 AU）なら約7.3時間になります。</p>
+      <p class="note">「光年」は、<strong>光が1年で進む距離</strong>（約9.5兆km）のことです。時間ではなく、距離の単位です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="taiyo.html">太陽</a>・<a class="source-link" href="gonggong.html">あのゴンゴン</a>・<a class="source-link" href="makemake.html">まけまけ</a>・<a class="source-link" href="ton618.html">TON 618</a></p>
+
+      <h3 id="c4"><span class="num">4</span>星の表面を光が1周する時間（円周 ÷ 光の速さ）</h3>
+      <p>星をぐるっと1周する長さ（円周）は、<strong>2 × π × 半径</strong>です。それを光の速さでわれば、光が1周する時間が出ます。</p>
+      <p><strong>例：太陽</strong></p>
+      <p>2 × π × 70万km ＝ 約440万km。これを30万km/秒でわると、<strong>約15秒</strong>です。</p>
+      <p><strong>例：UY Scuti（半径909倍）</strong></p>
+      <p>半径が909倍なら、円周も909倍。時間も909倍になります。15秒の909倍で、約13,600秒。<strong>約3.7〜3.8時間</strong>です。VYかにまよ（半径1,420倍）なら、約5.8時間になります。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="vycma.html">VYかにまよ</a></p>
+
+      <h3 id="c5"><span class="num">5</span>体積は「半径の3乗」で増える</h3>
+      <p>球の体積は、<strong>半径を3回かけた数（3乗）</strong>に比例します。だから、半径が2倍になると、体積は 2×2×2 ＝ 8倍になります。</p>
+      <p><strong>例：UY Scuti</strong></p>
+      <p>半径が909倍なら、909 × 909 × 909 ＝ 約7億5,000万。体積は、<strong>約7億5,000万倍</strong>です。半径は約900倍なのに、体積は億の単位になります。VYかにまよ（1,420倍）なら、約29億倍です。</p>
+      <p><strong>例：TOI-1452 b</strong></p>
+      <p>半径が地球の約1.67倍なら、1.67 × 1.67 × 1.67 ＝ 約4.7。体積は<strong>地球の約4.7倍</strong>です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="vycma.html">VYかにまよ</a>・<a class="source-link" href="toi1452b.html">TOI-1452 b</a></p>
+
+      <h3 id="c6"><span class="num">6</span>見かけの大きさから、本当の大きさを出す</h3>
+      <p>遠くの星は、望遠鏡でも、小さな点のようにしか見えません。そこで、<strong>空で何度くらいの大きさに見えるか（角直径）</strong>を測ります。</p>
+      <p>同じ角度に見えていても、<strong>遠いものほど、本当は大きい</strong>ことになります。距離が2倍なら、本当の大きさも2倍です。</p>
+      <p class="formula">本当の大きさ ∝ 見かけの角度 × 距離</p>
+      <p>UY Scuti の半径が、約1,708倍から約909倍に変わったのは、<strong>距離の見積もりが変わった</strong>ことが大きな理由です。星が縮んだわけではありません。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="uyscuti.html">UY Scuti</a></p>
+
+      <h3 id="c7"><span class="num">7</span>密度（質量 ÷ 体積）</h3>
+      <p>密度は、<strong>どれだけぎゅっと詰まっているか</strong>を表します。質量を体積でわって出します。</p>
+      <p class="formula">密度 ＝ 質量 ÷ 体積</p>
+      <p>単位の「g/cm³」は、1立方センチメートルあたり何グラムか、という意味です。目安として、水は約1、岩石は約3、鉄は約8です。</p>
+      <p><strong>例：地球</strong></p>
+      <p>質量は約6.0×10²⁴ kg、体積は約1.08×10²¹ m³。わり算すると、約5,500 kg/m³、つまり<strong>約5.5 g/cm³</strong>です。</p>
+      <p><strong>例：TOI-1452 b</strong></p>
+      <p>質量は地球の約4.8倍で、体積は地球の約4.7倍です。だから、密度は地球の約 4.8 ÷ 4.7 ＝ 約1.02倍。5.5 × 1.02 ＝ <strong>約5.6 g/cm³</strong> になり、ページの値と合います。</p>
+      <p>密度が分かると、中身を考える手がかりになります。あのゴンゴンの約1.7 g/cm³ は、水より少し重いくらいです。岩石だけでは重すぎるので、氷が多く混ざっていそうだ、と考えられています。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="toi1452b.html">TOI-1452 b</a>・<a class="source-link" href="gonggong.html">あのゴンゴン</a></p>
+
+      <h3 id="c8"><span class="num">8</span>表面重力（質量 ÷ 半径²）</h3>
+      <p>惑星の表面で感じる重力は、<strong>質量が大きいほど強く</strong>、<strong>半径が大きいほど弱く</strong>なります。半径が大きいと、中心から表面までが遠くなるからです。</p>
+      <p class="formula">表面重力 ∝ 質量 ÷ 半径²</p>
+      <p><strong>例：TOI-1452 b（地球を1として）</strong></p>
+      <p>質量が4.8、半径が1.67なので、4.8 ÷ (1.67 × 1.67) ＝ 4.8 ÷ 2.79 ＝ <strong>約1.7</strong>。ページの「表面重力は地球の約1.7倍」は、この計算です。</p>
+      <p class="note">「単純な計算」というのは、地球との比だけで出している、という意味です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="toi1452b.html">TOI-1452 b</a></p>
+
+      <h3 id="c9"><span class="num">9</span>受け取る光と、平衡温度</h3>
+      <p>星から届く光の強さは、<strong>距離の2乗に反比例</strong>して弱くなります。距離が2倍なら、光は4分の1。3倍なら、9分の1です。</p>
+      <p class="formula">受け取る光 ＝ 星の光度 ÷ 距離²</p>
+      <p><strong>例：TOI-1452 b が受け取る光（太陽と地球を1として）</strong></p>
+      <p>主星の光度は、太陽の約0.7％（0.007）、軌道は約0.061 AU です。0.007 ÷ (0.061 × 0.061) ＝ 約1.9。ページの「地球の約1.8倍」と、ほぼ同じです（光度に0.6〜0.8％の幅があるので、少しずれます）。</p>
+      <p><strong>平衡温度</strong>は、「受け取る光のエネルギー」と「宇宙へ出す熱のエネルギー」が、つり合う温度です。</p>
+      <p>出す熱は、温度の<strong>4乗</strong>に比例します（次の章と同じ考え方です）。ということは、逆に、受け取る光が1.8倍でも、温度は<strong>4乗根</strong>（4回かけて1.8になる数）の約1.16倍にしか、上がりません。</p>
+      <p class="note">実際の温度は、反射率や大気（温室効果）で変わります。平衡温度は、それらを含まない目安の値です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="toi1452b.html">TOI-1452 b</a></p>
+
+      <h3 id="c10"><span class="num">10</span>星の光度（表面積 × 温度の4乗）</h3>
+      <p>星の光度は、<strong>表面積</strong>と<strong>温度の4乗</strong>に比例します。</p>
+      <p class="formula">L ＝ 4πR²σT⁴</p>
+      <p>R は半径、T は表面温度、σ（シグマ）は決まった数です。<strong>温度が2倍になると、光度は 2×2×2×2 ＝ 16倍</strong>になります。小さな星でも、温度がとても高ければ、明るくなれる理由です。</p>
+      <p>WR 102 は、半径が太陽の約0.52倍（表面積は約0.27倍）ですが、温度が太陽の約35倍。35を4乗した約140万に、0.27をかけると、光度は約39万倍になります。くわしい計算は、WR 102 のページに載っています。</p>
+      <p class="note">星の表面から出る光の光度と、パルサーが失う回転エネルギー（第17章）は、求め方がちがいます。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="wr102.html">WR 102</a>・<a class="source-link" href="makemake.html">まけまけ</a>・<a class="source-link" href="vycma.html">VYかにまよ</a>・<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="ton618.html">TON 618</a></p>
+
+      <h3 id="c11"><span class="num">11</span>見かけの等級</h3>
+      <p>等級は、<strong>地球から見たときの明るさ</strong>です。数字が<strong>小さいほど、明るい</strong>ので、注意してください。</p>
+      <ul>
+        <li>5等ちがうと、明るさは<strong>100倍</strong>ちがう</li>
+        <li>1等ちがうと、約2.5倍（5回かけると100倍になる数）</li>
+        <li>肉眼で見える限界は、およそ6等</li>
+      </ul>
+      <p><strong>例：WR 102（14.1等）</strong></p>
+      <p>肉眼の限界（6等）とは、8.1等ちがいます。2.5を8.1回かけると、約1,700。<strong>肉眼の限界の、約1,700分の1の明るさ</strong>です。だから、望遠鏡がないと見えません。</p>
+      <p><strong>例：まけまけの衛星 MK2（まけまけより約1,300倍暗い）</strong></p>
+      <p>逆向きにも使えます。2.5を何回かけると1,300になるかを考えると、約7.8回。つまり、MK2は、まけまけより<strong>約7.8等</strong>暗い、ということになります。</p>
+      <p class="note">見かけの等級は、星の「本当の明るさ（光度）」とは別です。遠いほど、暗く見えます。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="wr102.html">WR 102</a>・<a class="source-link" href="ton618.html">TON 618</a>・<a class="source-link" href="vycma.html">VYかにまよ</a>・<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="etacarinae.html">イータカリーナ</a></p>
+
+      <h3 id="c12"><span class="num">12</span>質量がエネルギーになる（E＝mc²）</h3>
+      <p>アインシュタインの式 <strong>E＝mc²</strong> は、質量（m）が、エネルギー（E）に変わることを表しています。c は光の速さです。</p>
+      <p class="formula">E ＝ m × c²</p>
+      <p>光の速さは、秒速3×10⁸ m。2乗すると、9×10¹⁶ です。ほんの少しの質量でも、とても大きなエネルギーになります。</p>
+      <p><strong>例：太陽は、毎秒どれだけのエネルギーを出している？</strong></p>
+      <p>太陽は、毎秒約400万トン（4×10⁹ kg）の質量を、エネルギーに変えています。4×10⁹ × 9×10¹⁶ ＝ 3.6×10²⁶。1秒あたりのエネルギーなので、約3.6×10²⁶ W です。太陽の光度（約3.83×10²⁶ W）に、近い値になります（「約400万トン」が概数なので、少しずれます）。</p>
+      <p class="note">W（ワット）は、1秒あたりのエネルギー（J：ジュール）です。「1 W ＝ 毎秒1 J」です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="taiyo.html">太陽</a></p>
+
+      <h3 id="c13"><span class="num">13</span>公転周期（ケプラーの第3法則）</h3>
+      <p>太陽のまわりを回る天体には、きれいな決まりがあります。<strong>公転周期（年）を2乗すると、軌道長半径（AU）を3乗した数になる</strong>のです。</p>
+      <p class="formula">周期² ＝ 軌道長半径³　（単位は、年と AU）</p>
+      <p><strong>例：あのゴンゴン（軌道長半径 約67 AU）</strong></p>
+      <p>67 × 67 × 67 ＝ 約30万。この平方根（2乗すると30万になる数）は、約548。<strong>約548年</strong>で、ページの「約547年」とほぼ同じです。</p>
+      <p><strong>例：まけまけ（約45.8 AU）</strong></p>
+      <p>45.8³ ＝ 約96,000。この平方根は約310。<strong>約310年</strong>です。ページの「約305年」とは、少しずれます。使う平均距離の値が、資料で少しちがうためです（305年なら、約45.3 AU にあたります）。</p>
+      <p><strong>例：海王星（約30 AU）</strong></p>
+      <p>30³ ＝ 27,000 で、平方根は約164。海王星は、約164年で太陽を1周します。</p>
+      <p class="note">この簡単な形は、「太陽のまわり」で、「年と AU」を使うときの話です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="gonggong.html">あのゴンゴン</a>・<a class="source-link" href="makemake.html">まけまけ</a></p>
+
+      <h3 id="c14"><span class="num">14</span>質量放出の量</h3>
+      <p>星が手放すガスの量は、「1年あたり、太陽質量の何倍か」で表されます。これを、身近な単位に直してみましょう。</p>
+      <p><strong>例：UY Scuti</strong></p>
+      <p>1年に、太陽質量の約5.8×10⁻⁵倍（約0.0058％）です。太陽質量は、地球の約33万倍。5.8×10⁻⁵ × 33万 ＝ 約19。つまり、<strong>毎年、地球約19個分</strong>のガスを手放している計算になります。</p>
+      <p class="note">考え方は、単位をそろえてから、かけ算をするだけです。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="uyscuti.html">UY Scuti</a>・<a class="source-link" href="wr102.html">WR 102</a>・<a class="source-link" href="etacarinae.html">イータカリーナ</a></p>
+
+      <h3 id="c15"><span class="num">15</span>ブラックホールの大きさ（シュヴァルツシルト半径）</h3>
+      <p>ブラックホールの「黒い部分」の半径は、<strong>質量に比例</strong>します。</p>
+      <p class="formula">R ＝ 2GM ÷ c²</p>
+      <p>M は質量、G は重力定数、c は光の速さです。太陽と同じ質量なら、R は約3kmです。質量が○倍になれば、半径も○倍になります。</p>
+      <p><strong>例：TON 618（約660億太陽質量）</strong></p>
+      <p>3km × 660億 ＝ 約2×10¹¹ km。これを1 AU（1.5×10⁸ km）でわって、約1,300 AU。これが<strong>シュヴァルツシルト半径</strong>です。直径は、その2倍で、約2,600 AU です。</p>
+      <p>海王星の軌道の直径は、約60 AU（30 AU × 2）。2,600 ÷ 60 ＝ 約43。ページの「海王星の軌道直径の約43倍」は、この計算です。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="ton618.html">TON 618</a></p>
+
+      <h3 id="c16"><span class="num">16</span>赤方偏移</h3>
+      <p>遠い天体の光は、宇宙が広がるあいだに、波長が引き伸ばされます。この伸びを表す数が、<strong>赤方偏移 z</strong> です。</p>
+      <p class="formula">波長は、(1 ＋ z) 倍になる</p>
+      <p><strong>例：TON 618（z ＝ 2.219）</strong></p>
+      <p>1 ＋ 2.219 ＝ 3.219。光の波長は、<strong>約3.2倍</strong>に引き伸ばされています。z が大きいほど、遠くて、昔の姿を見ていることになります。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="ton618.html">TON 618</a></p>
+
+      <h3 id="c17"><span class="num">17</span>かにパルサーのエネルギー</h3>
+      <p>かにパルサーの「約4〜5×10³⁸ erg/s」は、星の表面から出る光ではなく、<strong>自転が遅くなる分の、回転エネルギー</strong>から出します。単位の換算（W と erg/s）や、式の意味は、かにパルサーのページにまとめています。</p>
+      <p class="note">出てくるページ：<a class="source-link" href="kani.html">かにパルサー</a></p>
+
+      <hr>
+
+      <h3>まとめ</h3>
+      <p>星がたりの計算は、むずかしそうに見えて、じつは次の3つの形がほとんどです。</p>
+      <ul>
+        <li><strong>比べる</strong>：太陽や地球を「1」にして、何倍か、何％かを見る</li>
+        <li><strong>べき乗</strong>：半径の3乗（体積）、距離の2乗（光の強さ）、温度の4乗（明るさ）</li>
+        <li><strong>単位をそろえる</strong>：km、AU、W、erg/s などを、同じ単位にしてから、わり算する</li>
+      </ul>
+      <p class="note">ここで出した数は、概算です。ページの値と少しずれるのは、元の数字が推定値で、幅があるからです。</p>
+      <p class="note">天文学の数字は、観測が進むと、見直されることがあります。ここで使った値も、それぞれのページの記述が基準です。</p>
+    </article>
+
+
+
+    <div class="site-share-area">
+      <span class="site-share-label">🪐 SHARE 🌎</span>
+      <a id="share-x" class="site-share-btn"
+         target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+      <a id="share-line" class="site-share-btn line-btn"
+         target="_blank" rel="noopener noreferrer">💬 LINE</a>
+      <button id="share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+    </div>
+
+    <div class="page-back-wrap">
+      <a href="../ho4.html" class="page-back" aria-label="戻る">
+        <img width="180" height="180" loading="lazy" decoding="async" src="0_file/chi9.webp" alt="戻る" draggable="false">
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("dragstart", (e) => {
+  if (e.target.tagName === "IMG") {
+    e.preventDefault();
+  }
+});
+
+(() => {
+  const logoLink = document.getElementById("logoLink");
+  const logoImg = document.getElementById("logoImg");
+
+  if (!logoLink || !logoImg) return;
+
+  function playBounceSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+
+      osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.12);
+
+      gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.18);
+    } catch (e) {
+    }
+  }
+
+  function createLogoSparkles(rect) {
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const colors = ['#ffe84a', '#ff7ad9', '#4de1ff', '#b6ff5c', '#ffffff'];
+
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'logo-sparkle-particle';
+      
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.left = centerX + 'px';
+      p.style.top = centerY + 'px';
+
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 70 + 30;
+      p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 600);
+    }
+  }
+
+  logoLink.addEventListener("click", (e) => {
+    const href = logoLink.getAttribute("href");
+    if (href && href !== "#") {
+      e.preventDefault();
+
+      logoImg.classList.remove("is-pop");
+      void logoImg.offsetWidth; 
+      logoImg.classList.add("is-pop");
+
+      playBounceSound();
+      createLogoSparkles(logoImg.getBoundingClientRect());
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 350);
+    }
+  });
+
+  window.playBounceSound = playBounceSound;
+  window.createLogoSparkles = createLogoSparkles;
+})();
+
+(() => {
+  const canvas = document.getElementById("spore-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
+  let lastFrame = 0;
+
+  let width = 0;
+  let height = 0;
+  let spores = [];
+  let mouseX = 0;
+  let mouseY = 0;
+  let animationId = null;
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff", "#b6ff5c"];
+
+  const GLOW = {};
+  const STAR = {};
+
+  function glowSprite(color) {
+    if (GLOW[color]) return GLOW[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, color + "dd");
+    grad.addColorStop(0.25, color + "77");
+    grad.addColorStop(0.6, color + "22");
+    grad.addColorStop(1, color + "00");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 64, 64);
+    return (GLOW[color] = c);
+  }
+
+  function starSprite(color) {
+    if (STAR[color]) return STAR[color];
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d");
+    g.translate(32, 32);
+    g.shadowColor = color;
+    g.shadowBlur = 8;
+    const grad = g.createRadialGradient(0, 0, 0, 0, 0, 26);
+    grad.addColorStop(0, "#ffffff");
+    grad.addColorStop(0.3, color);
+    grad.addColorStop(1, color + "bb");
+    g.fillStyle = grad;
+    g.beginPath();
+    g.moveTo(0, -26);
+    g.quadraticCurveTo(2.5, -2.5, 26, 0);
+    g.quadraticCurveTo(2.5, 2.5, 0, 26);
+    g.quadraticCurveTo(-2.5, 2.5, -26, 0);
+    g.quadraticCurveTo(-2.5, -2.5, 0, -26);
+    g.closePath();
+    g.fill();
+    return (STAR[color] = c);
+  }
+
+  function drawSpore(ctx, sp, x, y, advance) {
+    if (advance) sp.tw += sp.twSpeed * STEP;
+    const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
+    const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
+
+    if (sp.star) {
+      const size = (9 + sp.size * 4.5) * (0.55 + 0.75 * flash);
+      const halo = size * 1.6;
+      ctx.globalAlpha = a * 0.55;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a * 1.25);
+      ctx.drawImage(starSprite(sp.color), x - size, y - size, size * 2, size * 2);
+    } else {
+      const halo = 5 + sp.size * 3.2 + flash * 7;
+      ctx.globalAlpha = a * 0.8;
+      ctx.drawImage(glowSprite(sp.color), x - halo, y - halo, halo * 2, halo * 2);
+      ctx.globalAlpha = Math.min(1, a + 0.2);
+      ctx.fillStyle = sp.color;
+      ctx.beginPath();
+      ctx.arc(x, y, sp.size * (0.8 + 0.5 * flash), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function createSpore(randomY = false) {
+    return {
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : height + 10,
+      size: Math.random() * 2.1 + 0.5,
+      speed: Math.random() * 0.55 + 0.12,
+      drift: (Math.random() - 0.5) * 0.45,
+      alpha: Math.random() * 0.5 + 0.35,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      phase: Math.random() * Math.PI * 2,
+      tw: Math.random() * Math.PI * 2,
+      twSpeed: 0.03 + Math.random() * 0.07,
+      star: Math.random() < 0.2
+    };
+  }
+
+  function render(advance) {
+    ctx.clearRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "lighter";
+    for (const spore of spores) {
+      drawSpore(ctx, spore, spore.x + mouseX * 0.012, spore.y + mouseY * 0.012, advance);
+    }
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+  }
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, IS_TOUCH ? 1.5 : 2);
+    const prevWidth = width;
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * ratio);
+    canvas.height = Math.round(height * ratio);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    if (!spores.length || width !== prevWidth) {
+      const count = Math.min(180, Math.max(60, Math.floor((width * height) / 8500)));
+      const total = IS_TOUCH ? Math.ceil(count * 0.6) : count;
+      spores = Array.from({ length: total }, () => createSpore(true));
+    }
+
+    if (reduceMotion) render(false);
+  }
+
+  function animate(now) {
+    if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
+    if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
+    lastFrame = now || 0;
+
+    for (const spore of spores) {
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
+
+      if (spore.y < -10) Object.assign(spore, createSpore(false));
+      if (spore.x < -10) spore.x = width + 10;
+      if (spore.x > width + 10) spore.x = -10;
+    }
+
+    render(true);
+    animationId = requestAnimationFrame(animate);
+  }
+
+  function stopAnimation() {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
+  function startAnimation() {
+    stopAnimation();
+    if (reduceMotion) render(false);
+    else animationId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+    startAnimation();
+  }, { passive: true });
+
+  window.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX - width / 2;
+    mouseY = event.clientY - height / 2;
+  }, { passive: true });
+
+  resize();
+  startAnimation();
+})();
+
+(() => {
+  const container = document.getElementById("stars");
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").matches ? 25 : 50); i++) {
+    const star = document.createElement("span");
+
+    star.textContent = "✦";
+    star.setAttribute("aria-hidden", "true");
+
+    Object.assign(star.style, {
+      position: "absolute",
+      left: Math.random() * 100 + "%",
+      top: Math.random() * 100 + "%",
+      color: i % 2 ? "#4de1ff" : "#ff7ad9",
+      fontSize: Math.random() * 9 + 5 + "px",
+      opacity: String(Math.random() * 0.55 + 0.12),
+      textShadow: "0 0 8px currentColor",
+      animation: `starBlink ${Math.random() * 3 + 2}s ease-in-out infinite alternate`,
+      animationDelay: Math.random() * -5 + "s"
+    });
+
+    fragment.appendChild(star);
+  }
+
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes starBlink {
+      from { opacity: 0.12; }
+      to { opacity: 0.85; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  container.appendChild(fragment);
+})();
+
+document.addEventListener("click", (event) => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const colors = ["#ff7ad9", "#4de1ff", "#ffe84a", "#b68cff"];
+
+  for (let i = 0; i < 6; i++) {
+    const spark = document.createElement("span");
+    const angle = Math.PI * 2 * i / 6;
+    const distance = 18 + Math.random() * 24;
+
+    spark.textContent = "✦";
+
+    Object.assign(spark.style, {
+      position: "fixed",
+      left: event.clientX + "px",
+      top: event.clientY + "px",
+      zIndex: "99",
+      pointerEvents: "none",
+      color: colors[i % colors.length],
+      fontSize: "13px",
+      textShadow: "0 0 8px currentColor",
+      transition: "transform 550ms ease-out, opacity 550ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      spark.style.transform =
+        `translate(${Math.cos(angle) * distance}px,${Math.sin(angle) * distance}px)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 650);
+  }
+});
+
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const targets = document.querySelectorAll(".title-img");
+  const colors = ["#ff65c3", "#b6ff5c", "#62f7ff", "#b68cff", "#ffb85c", "#ffe84a"];
+  const marks = ["✦", "✧", "✨"];
+
+  function sparkle(element) {
+    const rect = element.getBoundingClientRect();
+    const spark = document.createElement("span");
+
+    spark.textContent = marks[Math.floor(Math.random() * marks.length)];
+
+    const sparkLeft = rect.left + window.scrollX + Math.random() * rect.width;
+    const sparkTop = rect.top + window.scrollY + Math.random() * rect.height;
+
+    Object.assign(spark.style, {
+      position: "absolute",
+      left: sparkLeft + "px",
+      top: sparkTop + "px",
+      zIndex: "9999",
+      pointerEvents: "none",
+      color: colors[Math.floor(Math.random() * colors.length)],
+      fontSize: (9 + Math.random() * 10) + "px",
+      textShadow: "0 0 8px currentColor",
+      opacity: "1",
+      transition: "transform 750ms ease-out, opacity 750ms ease-out"
+    });
+
+    document.body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      const dx = (Math.random() - 0.5) * 44;
+      const dy = -(18 + Math.random() * 32);
+      const rot = (Math.random() - 0.5) * 180;
+      spark.style.transform =
+        `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
+      spark.style.opacity = "0";
+    });
+
+    window.setTimeout(() => spark.remove(), 800);
+  }
+
+  targets.forEach((element) => {
+    let timer = null;
+
+    element.addEventListener("mouseenter", () => {
+      if (timer) return;
+      sparkle(element);
+      timer = window.setInterval(() => sparkle(element), 90);
+    });
+
+    element.addEventListener("mouseleave", () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    });
+  });
+})();
+
+(() => {
+  const link = document.querySelector(".page-back");
+  const img = link && link.querySelector("img");
+  if (!link || !img) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  link.addEventListener("click", (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 350);
+  });
+})();
+
+(() => {
+  const img = document.querySelector(".star-figure img");
+  const link = img && img.closest("a");
+  if (!link) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let pending = false;
+
+  link.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const href = link.getAttribute("href");
+    if (!href || href === "#" || reduceMotion) return;
+
+    e.preventDefault();
+    if (pending) return;
+    pending = true;
+
+    img.classList.remove("is-pop");
+    void img.offsetWidth;
+    img.classList.add("is-pop");
+
+    if (window.playBounceSound) window.playBounceSound();
+    if (window.createLogoSparkles) window.createLogoSparkles(img.getBoundingClientRect());
+
+    setTimeout(() => { window.location.href = href; }, 350);
+  });
+
+  window.addEventListener("pageshow", () => {
+    pending = false;
+    img.classList.remove("is-pop");
+  });
+})();
+</script>
+<script>
+"use strict";
+
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
+  const shareText = document.title;
+  const shareX = document.getElementById("share-x");
+  const shareLine = document.getElementById("share-line");
+  const shareCopy = document.getElementById("share-copy");
+
+  if (shareX) {
+    shareX.href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}` +
+      `&url=${encodeURIComponent(currentUrl)}&hashtags=KILALA_ZONE`;
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      `https://line.me/R/msg/text/?${encodeURIComponent(shareText + "\n" + currentUrl)}`;
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
+})();
+</script>
+</body>
+</html>
