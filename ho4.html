@@ -840,6 +840,86 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .new-badge, .new-badge .new-text { animation: none !important; }
 }
+
+.genre-index {
+  max-width: 900px;
+  margin: 0 auto 28px;
+}
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.genre-jump {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 122, 217, 0.75);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 122, 217, 0.28), rgba(77, 225, 255, 0.2));
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+@media (hover: hover) {
+  .genre-jump:hover { background: var(--pink); color: #070720; box-shadow: 0 0 14px var(--pink); }
+}
+.genre-jump:active { background: var(--pink); color: #070720; }
+.to-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  width: fit-content;
+  margin: 16px auto 0;
+  padding: 8px 22px;
+  border: 2px solid var(--pink);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 122, 217, 0.32), rgba(182, 140, 255, 0.3), rgba(77, 225, 255, 0.28));
+  box-shadow: 0 0 12px rgba(255, 122, 217, 0.55);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.to-index .finger {
+  display: inline-block;
+  animation: fingerBob 1.4s ease-in-out infinite;
+}
+@keyframes fingerBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+@media (hover: hover) {
+  .to-index:hover {
+    transform: scale(1.06);
+    background: var(--pink);
+    color: #070720;
+    box-shadow: 0 0 18px var(--pink);
+  }
+}
+.to-index:active {
+  transform: scale(0.97);
+  background: var(--pink);
+  color: #070720;
+}
+@media (prefers-reduced-motion: reduce) {
+  .to-index .finger { animation: none; }
+}
 </style>
 </head>
 
@@ -888,6 +968,10 @@ h1 {
              onerror="this.replaceWith(document.createTextNode('🧮 計算のゆる解説'))">
       </a>
     </div>
+
+    <nav class="genre-index" id="genre-index" aria-label="ジャンル別の索引" hidden>
+      <ul class="genre-list" id="genre-list"></ul>
+    </nav>
 
     <nav class="star-index" aria-label="星がたり一覧">
       <section class="star-group" aria-labelledby="grp1">
@@ -1589,6 +1673,37 @@ document.addEventListener("click", (event) => {
     if (time) time.after(badge);
     else el.append(badge);
   });
+})();
+</script>
+<script>
+(() => {
+  const wrap = document.getElementById("genre-list");
+  const box = document.getElementById("genre-index");
+  if (!wrap || !box) return;
+  document.querySelectorAll(".star-index .star-group").forEach((group) => {
+    const title = group.querySelector(".group-title");
+    if (!title || !title.id || !group.querySelector(".star-card")) return;
+
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.className = "genre-jump";
+    a.href = "#" + title.id;
+    a.textContent = title.textContent.trim();
+    li.append(a);
+    wrap.append(li);
+
+    const back = document.createElement("a");
+    back.className = "to-index";
+    back.href = "#genre-index";
+    back.append("索引へ");
+    const finger = document.createElement("span");
+    finger.className = "finger";
+    finger.setAttribute("aria-hidden", "true");
+    finger.textContent = "☝️";
+    back.append(finger);
+    group.append(back);
+  });
+  if (wrap.children.length) box.hidden = false;
 })();
 </script>
 </body>
