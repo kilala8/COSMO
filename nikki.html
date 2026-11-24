@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070720">
-<title>KILALA-BLOG</title>
+<title>✨きららの日記💫</title>
 
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
 <script>
 window.twttr = (function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
@@ -1472,6 +1472,18 @@ button.yt-facade {
   .big-frame::before { border: 2px solid #ff7ad9; }
   .big-frame::after { border: 2px solid #4de1ff; }
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 </style>
 </head>
 
@@ -1491,20 +1503,21 @@ button.yt-facade {
            onerror="this.style.display='none'">
       <h1>
         <a href="index.html" class="title-link" id="titleLink">
-          <img src="1_files/b_kilala.webp" alt="KILALA-BLOG 日記" class="neon-nikki-title" id="titleImg" decoding="async">
+          <img src="1_files/b_kilala.webp" alt="✨きららの日記💫" class="neon-nikki-title" id="titleImg" decoding="async">
         </a>
       </h1>
     </div>
 
     <nav class="header-icons" aria-label="サイトのメニュー">
       
-      <a href="prof.html" class="header-icon profile-icon" aria-label="">
+      <a href="prof.html" class="header-icon profile-icon" aria-label="プロフィールへ">
         <img src="1_files/dosei.webp" alt="" class="header-icon-img" draggable="false">
       </a>
     </nav>
 
     <div class="layout">
       <div class="posts-col">
+        <h2 class="visually-hidden">記事一覧</h2>
         <div id="posts-container" aria-live="polite">
           <p class="message">読み込み中... ⏳</p>
         </div>
@@ -1563,7 +1576,7 @@ button.yt-facade {
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.109.0"></script>
 <script>
 "use strict";
 
@@ -1958,7 +1971,7 @@ function buildPostCard(post) {
   xBtn.className = 'share-btn';
   xBtn.target = '_blank';
   xBtn.rel = 'noopener noreferrer';
-  const xText = encodeURIComponent(`「${titleText}」 - KILALA-BLOG`);
+  const xText = encodeURIComponent(`「${titleText}」 - ✨きららの日記💫`);
   xBtn.href = `https://twitter.com/intent/tweet?text=${xText}&url=${encodeURIComponent(currentUrl)}&hashtags=KILALA_BLOG`;
   xBtn.innerHTML = '𝕏 Post';
   shareArea.appendChild(xBtn);
@@ -1967,7 +1980,7 @@ function buildPostCard(post) {
   lineBtn.className = 'share-btn';
   lineBtn.target = '_blank';
   lineBtn.rel = 'noopener noreferrer';
-  const lineText = encodeURIComponent(`「${titleText}」 - KILALA-BLOG\n${currentUrl}`);
+  const lineText = encodeURIComponent(`「${titleText}」 - ✨きららの日記💫\n${currentUrl}`);
   lineBtn.href = `https://line.me/R/msg/text/?${lineText}`;
   lineBtn.innerHTML = '💬 LINE';
   shareArea.appendChild(lineBtn);
@@ -2240,7 +2253,7 @@ function showSinglePost(posts, id) {
     return;
   }
 
-  document.title = `${post.title || '無題'} - KILALA-BLOG`;
+  document.title = `${post.title || '無題'} - ✨きららの日記💫`;
 
   container.insertAdjacentElement('beforebegin', makeBackLink('top'));
   container.replaceChildren(buildPostCard(post), makeBackLink('bottom'));
@@ -2573,7 +2586,7 @@ document.addEventListener('dragstart', (event) => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fragment = document.createDocumentFragment();
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < (window.matchMedia("(hover: none), (pointer: coarse)").matches ? 25 : 50); i++) {
     const star = document.createElement("span");
     star.textContent = "✦";
     star.setAttribute("aria-hidden", "true");
