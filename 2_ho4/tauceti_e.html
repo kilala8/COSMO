@@ -1065,101 +1065,43 @@ h1 {
   letter-spacing: 0.08em;
   text-shadow: 0 0 8px var(--cyan);
 }
-.glossary dt .plain { font-size: 0.85em; opacity: 0.85; }
-.people-box {
-  margin: 0 0 1.6em;
-  padding: 14px 18px 6px;
-  border: 1px dashed rgba(255, 122, 217, 0.6);
-  border-left: 5px solid #ff7ad9;
-  border-radius: 4px 18px 18px 4px;
-  background: rgba(40, 8, 34, 0.45);
-  box-shadow: 0 0 12px rgba(255, 122, 217, 0.22);
+
+.person-column {
+  margin: 22px 0 28px;
+  padding: 14px 16px 12px;
+  border: 1px dashed rgba(255, 122, 217, 0.65);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.55);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.25);
 }
-.story .people-title {
-  margin: 0 0 12px;
-  color: #ffd6f3;
-  font-size: 0.85rem;
-  font-weight: bold;
-  letter-spacing: 0.12em;
-  text-shadow: 0 0 8px #ff7ad9;
-}
-.people-box dl { margin: 0; }
-.people-box dt {
+.person-column .person-column-title {
   margin: 0 0 6px;
-  display: inline-block;
-  padding: 3px 12px;
-  border: 1px solid rgba(255, 232, 74, 0.7);
-  border-radius: 999px;
-  background: rgba(255, 232, 74, 0.08);
-  color: var(--yellow);
+  color: var(--pink);
+  font-size: 0.95rem;
   font-weight: bold;
-  text-shadow: 0 0 8px rgba(255, 232, 74, 0.7);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px #ff7ad9aa;
 }
-.people-box dt .plain {
+.person-list { margin: 0; padding: 0; }
+.person-list dt {
+  margin: 12px 0 3px;
+  color: var(--cyan);
+  font-weight: bold;
+}
+.person-list dt .person-orig {
   margin-left: 0.5em;
-  font-size: 0.78em;
+  font-size: 0.85em;
   font-weight: normal;
-  color: #ffe9a0;
-  text-shadow: none;
+  opacity: 0.85;
 }
-.people-box dd {
-  margin: 0 0 16px;
-  padding-left: 12px;
-  border-left: 2px dotted rgba(255, 122, 217, 0.5);
-  color: #f6eef4;
-  line-height: 1.9;
-  overflow-wrap: anywhere;
-  text-wrap: pretty;
+.person-list dd {
+  margin: 0 0 4px;
+  line-height: 1.8;
 }
-@media (max-width: 600px) {
-  .people-box { padding: 12px 12px 4px; }
-}
-.info-frame {
-  margin: 28px 0 1.6em;
-  border: 2px solid rgba(255, 122, 217, 0.75);
-  border-radius: 18px;
-  background: rgba(14, 6, 30, 0.6);
-  box-shadow: 0 0 14px rgba(255, 122, 217, 0.3), 0 0 26px rgba(182, 140, 255, 0.18), inset 0 0 16px rgba(182, 140, 255, 0.1);
-  overflow: hidden;
-}
-.info-frame .people-box,
-.info-frame .glossary {
-  margin: 0;
-  padding: 0 18px 6px;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-.info-frame .people-box dd { margin-bottom: 16px; }
-.info-frame .glossary {
-  border-top: 3px solid;
-  border-image: linear-gradient(90deg, #ff7ad9, #b68cff, #4de1ff) 1;
-}
-.story .info-frame .people-title,
-.story .info-frame .glossary-title {
-  margin: 0 -18px 16px;
-  padding: 11px 18px;
-  font-size: 1.05rem;
-  font-weight: bold;
-  letter-spacing: 0.14em;
-  color: #fff;
-}
-.story .info-frame .people-title {
-  background: linear-gradient(90deg, rgba(255, 122, 217, 0.45), rgba(255, 122, 217, 0.08));
-  border-bottom: 1px solid rgba(255, 122, 217, 0.7);
-  text-shadow: 0 0 10px #ff7ad9, 0 0 18px #ff7ad9;
-}
-.story .info-frame .glossary-title {
-  background: linear-gradient(90deg, rgba(77, 225, 255, 0.35), rgba(182, 140, 255, 0.1));
-  border-bottom: 1px solid rgba(77, 225, 255, 0.7);
-  text-shadow: 0 0 10px #4de1ff, 0 0 18px #4de1ff;
-}
-@media (max-width: 600px) {
-  .info-frame .people-box,
-  .info-frame .glossary { padding: 0 14px 4px; }
-  .story .info-frame .people-title,
-  .story .info-frame .glossary-title { margin: 0 -14px 14px; padding: 10px 14px; }
+.person-column .person-note {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 </style>
 </head>
@@ -1266,7 +1208,7 @@ h1 {
       <p>もうひとつの特徴は、<strong>金属量が少ない</strong>ことです。天文学の「金属」は、水素とヘリウムより重い元素すべてのことで、鉄だけではありません。タウ・セチは、鉄の量が、太陽の半分以下ともいわれています。</p>
 
       <h3><span class="num">3</span>2017年に推定された、惑星のプロフィール</h3>
-      <p>2017年、Fengさんたちの研究チームが、タウ・セチの視線速度のデータを解析し直し、4つの周期的な信号を、惑星候補として報告しました。そのうち、約160日の周期の信号が、タウ・セチ e でした。</p>
+      <p>2017年、Fabo Fengさんたちの研究チームが、タウ・セチの視線速度のデータを解析し直し、4つの周期的な信号を、惑星候補として報告しました。そのうち、約160日の周期の信号が、タウ・セチ e でした。</p>
       <table class="data-table">
         <thead>
           <tr><th>項目</th><td>2017年の推定値</td></tr>
@@ -1346,12 +1288,26 @@ h1 {
 
       <h3><span class="num">6</span>発見から否定までの経緯</h3>
       <ul class="timeline">
-        <li><span class="year">2012〜13年</span>Tuomiさんたちの研究チームが、複数の観測装置のデータを解析し、タウ・セチに5つの惑星候補があるかもしれないと報告。このうち、約168日の信号が、のちに「e」と呼ばれる。研究チーム自身も、惑星由来かどうかには、慎重だった。</li>
-        <li><span class="year">2017年</span>Fengさんたちが、視線速度データのノイズを、波長ごとに分析する方法などを使い、約20日、約49日、約160日、約640日の信号を、4つの惑星候補として報告。約160日の信号が、タウ・セチ e（約162.87日）になった。</li>
+        <li><span class="year">2012〜13年</span>ミッコ・トゥオミ（Mikko Tuomi）さんたちの研究チームが、複数の観測装置のデータを解析し、タウ・セチに5つの惑星候補があるかもしれないと報告。このうち、約168日の信号が、のちに「e」と呼ばれる。研究チーム自身も、惑星由来かどうかには、慎重だった。</li>
+        <li><span class="year">2017年</span>Fabo Fengさんたちが、視線速度データのノイズを、波長ごとに分析する方法などを使い、約20日、約49日、約160日、約640日の信号を、4つの惑星候補として報告。約160日の信号が、タウ・セチ e（約162.87日）になった。</li>
         <li><span class="year">2024〜25年</span>複数の研究で、これらの信号は、解析のくせや、主星の活動による見かけの変動かもしれない、と指摘される。</li>
-        <li><span class="year">2025年</span>Figueiraさんたちが、ヨーロッパ南天天文台（ESO）の超高精度の分光器<strong>ESPRESSO</strong>で、約5年間、2,400回以上観測したデータを解析。惑星の存在を裏づける信号は、見つからなかった。</li>
+        <li><span class="year">2025年</span>ペドロ・フィゲイラ（Pedro Figueira）さんたちが、ヨーロッパ南天天文台（ESO）の超高精度の分光器<strong>ESPRESSO</strong>で、約5年間、2,400回以上観測したデータを解析。惑星の存在を裏づける信号は、見つからなかった。</li>
         <li><span class="year">2026年4月9日</span>NASA Exoplanet Archive が、タウ・セチ e を「誤検出」に変更。惑星の一覧表から外れた（データは、システムの概要ページに残っている）。</li>
       </ul>
+
+      <aside class="person-column">
+        <p class="person-column-title">👤 人物コラム：この記事に出てくる3人の研究者</p>
+        <dl class="person-list">
+          <dt>ミッコ・トゥオミ<span class="person-orig">Mikko Tuomi</span></dt>
+          <dd>イギリスの<strong>ハートフォードシャー大学</strong>（University of Hertfordshire）の天文学者です。2012年に、タウ・セチに5つの惑星候補がある、と報告した研究の筆頭著者で、2017年の研究にも参加しています。</dd>
+          <dt>Fabo Feng</dt>
+          <dd>2017年に、タウ・セチの4つの惑星候補（e、f、g、h）を報告した論文の筆頭著者です。論文を出した当時は、ハートフォードシャー大学（イギリス）の研究者で、いまは中国の<strong>上海交通大学</strong>（Shanghai Jiao Tong University）の研究者として、論文が公開されています。名前は中国語の発音をローマ字にしたもので、カタカナの表記が定まっていないため、原綴りで書いています。</dd>
+          <dt>ペドロ・フィゲイラ<span class="person-orig">Pedro Figueira</span></dt>
+          <dd>ESPRESSO の開発と運用に深く関わる天文学者です。ヨーロッパ南天天文台（ESO）のチリの拠点で、ESPRESSO の担当の科学者（インストゥルメント・サイエンティスト）を務め、ポルトガルの天体物理学・宇宙科学研究所（IA）にも所属してきました。本人が公開している履歴書では、2022〜2025年はスイスのジュネーブ大学、2025年10月からは、スペインのアンダルシア天体物理学研究所に在籍しています。2025年に、ESPRESSO の約5年分のデータを解析した論文の、筆頭著者です。</dd>
+        </dl>
+        <p class="person-note">ミッコ・トゥオミさんとFabo Fengさんは、惑星候補を「提案した側」、ペドロ・フィゲイラさんは、より精度の高い装置で「確かめ直した側」の研究です。国籍や出身地は、資料では確認できなかったので、「どの研究機関の人か」で書いています。どの論文にも、たくさんの共同研究者がいますが、ここでは筆頭著者を紹介しました。</p>
+      </aside>
+
       <p>2025年のESPRESSOの観測は、100日以内の周期なら、約1.7地球質量以上の惑星を、ハビタブルゾーンなら、約2〜5地球質量の惑星を、見つけられる感度がありました。タウ・セチ e（最小質量3.93地球質量）は、本当にいたなら、見えるはずだった、ということになります。</p>
 
       <p><strong>タウ・セチ系の、ほかの惑星候補は？</strong></p>
@@ -1455,116 +1411,94 @@ h1 {
         <p>もっと詳しく知りたい方のために、データと論文を置いておきます。</p>
         <p><a class="source-link" href="https://exoplanetarchive.ipac.caltech.edu/overview/tau%20ceti" target="_blank" rel="noopener noreferrer">NASA Exoplanet Archive：Tau Ceti（英語） ↗</a></p>
         <p><a class="source-link" href="https://exoplanetarchive.ipac.caltech.edu/docs/exonews_archive.html" target="_blank" rel="noopener noreferrer">NASA Exoplanet Archive：2026年のニュース（英語） ↗</a></p>
-        <p><a class="source-link" href="https://doi.org/10.3847/1538-3881/aa83b4" target="_blank" rel="noopener noreferrer">Fengら（2017）：タウ・セチの4つの惑星候補（英語の論文） ↗</a></p>
+        <p><a class="source-link" href="https://doi.org/10.3847/1538-3881/aa83b4" target="_blank" rel="noopener noreferrer">Fabo Fengら（2017）：タウ・セチの4つの惑星候補（英語の論文） ↗</a></p>
       </div>
 
-      <div class="info-frame">
-        <div class="people-box">
-          <p class="people-title">👤 この記事に出てくる人物</p>
-          <dl>
-            <dt>Fengさん（Fabo Feng）<span class="plain">（2017年の研究チーム）</span></dt>
-            <dd>天文学者です。2017年に、タウ・セチの視線速度のデータを解析し直し、4つの周期的な信号を、惑星候補として報告した研究チームの一人です。</dd>
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="0_yogo.html#惑星候補">惑星候補（わくせいこうほ）</a></dt>
+          <dd>惑星らしい信号が見つかったものの、まだ「本物の惑星」とは確認されていない天体です。あとの観測で、本物と確認されることもあれば、見かけの信号だった（偽陽性）と分かることもあります。</dd>
 
-            <dt>ヨハネス・ケプラー<span class="plain">（ケプラーの法則の人）</span></dt>
-            <dd>ヨハネス・ケプラー（1571〜1630）は、ドイツの天文学者です。惑星の動きについての「ケプラーの3法則」を見つけたことで知られていて、この記事では、公転周期と軌道の大きさの関係を考えるときに登場します。</dd>
+          <dt><a class="term-link" href="0_yogo.html#スーパーアース">スーパーアース（）</a></dt>
+          <dd>地球より大きい惑星（質量でおよそ地球の1〜10倍）の分類名です。海王星ほど大きくはありません。<strong>地球と同じ環境、という意味ではありません。</strong></dd>
 
-            <dt>Tuomiさん（Mikko Tuomi）<span class="plain">（2012〜13年の研究チーム）</span></dt>
-            <dd>天文学者です。2012〜13年に、複数の観測装置のデータを解析し、タウ・セチに5つの惑星候補があるかもしれないと報告した研究チームの一人です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#光年">光年（こうねん）</a></dt>
+          <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。</dd>
 
-            <dt>Figueiraさん（Pedro Figueira）<span class="plain">（2025年の研究チーム）</span></dt>
-            <dd>天文学者です。2025年に、超高精度の分光器ESPRESSOで、約5年間・2,400回以上観測したデータを解析し、惑星の信号は見つからなかったと報告した研究チームの一人です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#主星">主星（しゅせい）</a></dt>
+          <dd>惑星がまわりを回っている、中心の星のことです。HD 189733 b にとっての「HD 189733」、TOI-1452 b にとっての「TOI-1452」のように、惑星ごとに決まります。</dd>
 
-            <dt>ウィリアム・ハーシェル<span class="plain">（ハーシェル宇宙望遠鏡の名前の由来）</span></dt>
-            <dd>ウィリアム・ハーシェル（1738〜1822）は、ドイツ生まれのイギリスの天文学者です。天王星を発見し、赤外線という「目に見えない光」の存在を見つけた人物でもあります。</dd>
-          </dl>
-        </div>
+          <dt><a class="term-link" href="0_yogo.html#視線速度法">視線速度法（しせんそくどほう）</a></dt>
+          <dd>惑星の重力で主星がわずかに揺れる動きを、光のドップラー効果（波長のずれ）から測る方法です。惑星の質量を調べられます。</dd>
 
-        <div class="glossary">
-          <p class="glossary-title">🔭 この記事に出てくる言葉</p>
-          <dl>
-            <dt><a class="term-link" href="0_yogo.html#惑星候補">惑星候補（わくせいこうほ）</a></dt>
-            <dd>惑星らしい信号が見つかったものの、まだ「本物の惑星」とは確認されていない天体です。あとの観測で、本物と確認されることもあれば、見かけの信号だった（偽陽性）と分かることもあります。</dd>
+          <dt><a class="term-link" href="0_yogo.html#ハビタブルゾーン">ハビタブルゾーン（）</a></dt>
+          <dd>主星からのエネルギーの条件から、惑星の表面に液体の水が存在できる可能性がある領域のことです。「そこに生命がいる」という意味ではありません。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#スーパーアース">スーパーアース（すーぱーあーす）</a></dt>
-            <dd>地球より大きい惑星（質量でおよそ地球の1〜10倍）の分類名です。海王星ほど大きくはありません。<strong>地球と同じ環境、という意味ではありません。</strong></dd>
+          <dt><a class="term-link" href="0_yogo.html#偽陽性">偽陽性（ぎようせい）</a></dt>
+          <dd>惑星ではないのに、惑星があるように見えてしまった信号のことです。「誤検出」ともいいます。恒星活動や、測定の誤差、解析のくせなどが原因になります。タウ・セチ e は、このように判断されました。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#光年">光年（こうねん）</a></dt>
-            <dd>光が1年かけて進む距離のことで、<strong>時間ではなく距離の単位</strong>です。1光年は約9兆5000億km。「64光年」は、光でも64年かかる距離という意味です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#主系列星">主系列星（しゅけいれつせい）</a></dt>
+          <dd>中心で水素の核融合をして輝いている星です。星の一生のなかで、いちばん長く安定している時期にあたります。太陽も、いまはこの段階です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#主星">主星（しゅせい）</a></dt>
-            <dd>惑星がまわりを回っている、中心の星のことです。HD 189733 b にとっての「HD 189733」、TOI-1452 b にとっての「TOI-1452」のように、惑星ごとに決まります。</dd>
+          <dt><a class="term-link" href="0_yogo.html#スペクトル型">スペクトル型（すぺくとるがた）</a></dt>
+          <dd>星の光を虹のように分けたもの（スペクトル）の特徴で、星を分類した名前です。O・B・A・F・G・K・M の順に、表面温度が低くなります。TOI-1452 の「M4〜M4.5 V」は、低温のM型星で、「V」は中心で核融合をしている星（主系列星）であることを表します。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#視線速度法">視線速度法（しせんそくどほう）</a></dt>
-            <dd>惑星の重力で主星がわずかに揺れる動きを、光のドップラー効果（波長のずれ）から測る方法です。惑星の質量を調べられます。</dd>
+          <dt><a class="term-link" href="0_yogo.html#ケルビン">ケルビン（K）（）</a></dt>
+          <dd>温度の単位です。<strong>0 K ＝ −273.15°C</strong>で、1 K の幅は1°Cの幅と同じです。たとえば TOI-1452 b の平衡温度「約326 K」は、約53°Cです。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#ハビタブルゾーン">ハビタブルゾーン（）</a></dt>
-            <dd>主星からのエネルギーの条件から、惑星の表面に液体の水が存在できる可能性がある領域のことです。「そこに生命がいる」という意味ではありません。</dd>
+          <dt><a class="term-link" href="0_yogo.html#太陽質量">太陽質量（たいようしつりょう）</a></dt>
+          <dd>天体の重さを表すための単位で、<strong>1太陽質量＝太陽1個分の質量</strong>です（約2×10<sup>30</sup>kg。地球の約33万倍）。「660億太陽質量」は、太陽660億個分の質量という意味です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#偽陽性">偽陽性（ぎようせい）</a></dt>
-            <dd>惑星ではないのに、惑星があるように見えてしまった信号のことです。「誤検出」ともいいます。恒星活動や、測定の誤差、解析のくせなどが原因になります。タウ・セチ e は、このように判断されました。</dd>
+          <dt><a class="term-link" href="0_yogo.html#太陽光度">太陽光度（たいようこうど）</a></dt>
+          <dd>星の明るさ（光度）を表すための単位で、<strong>1太陽光度＝太陽1個分の光度</strong>です。「約38万太陽光度」は、太陽38万個分の明るさ、という意味です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#主系列星">主系列星（しゅけいれつせい）</a></dt>
-            <dd>中心で水素の核融合をして輝いている星です。星の一生のなかで、いちばん長く安定している時期にあたります。太陽も、いまはこの段階です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#見かけの等級">見かけの等級（みかけのとうきゅう）</a></dt>
+          <dd>地球から見たときの、天体の明るさを表す数字です。<strong>数字が小さいほど明るく</strong>見えます。TON 618 は約15.9等で、とても遠いので、暗い天体として観測されます。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#スペクトル型">スペクトル型（すぺくとるがた）</a></dt>
-            <dd>星の光を虹のように分けたもの（スペクトル）の特徴で、星を分類した名前です。O・B・A・F・G・K・M の順に、表面温度が低くなります。TOI-1452 の「M4〜M4.5 V」は、低温のM型星で、「V」は中心で核融合をしている星（主系列星）であることを表します。</dd>
+          <dt><a class="term-link" href="0_yogo.html#金属量">金属量（きんぞくりょう）</a></dt>
+          <dd>星にふくまれる、水素とヘリウムより重い元素の割合です。天文学では、これらをぜんぶ「金属」と呼びます。鉄だけを指すわけではありません。金属量が多い星ほど、惑星ができやすい傾向がある、といわれています。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#ケルビン">ケルビン（K）（）</a></dt>
-            <dd>温度の単位です。<strong>0 K ＝ −273.15°C</strong>で、1 K の幅は1°Cの幅と同じです。たとえば TOI-1452 b の平衡温度「約326 K」は、約53°Cです。</dd>
+          <dt><a class="term-link" href="0_yogo.html#最小質量">最小質量（さいしょうしつりょう）</a></dt>
+          <dd>視線速度法で分かる、惑星の質量の下限です。軌道の傾きが分からないため、本当の質量は、最小質量と同じか、それより大きくなります。タウ・セチ e の「約3.93地球質量」も、最小質量です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#太陽質量">太陽質量（たいようしつりょう）</a></dt>
-            <dd>天体の重さを表すための単位で、<strong>1太陽質量＝太陽1個分の質量</strong>です（約2×10<sup>30</sup>kg。地球の約33万倍）。「660億太陽質量」は、太陽660億個分の質量という意味です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#軌道長半径">軌道長半径（きどうちょうはんけい）</a></dt>
+          <dd>惑星の軌道（だ円）の、いちばん長い直径の半分の長さのことで、主星からの平均的な距離の目安になります。TOI-1452 b は約0.061 AU（天文単位）です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#太陽光度">太陽光度（たいようこうど）</a></dt>
-            <dd>星の明るさ（光度）を表すための単位で、<strong>1太陽光度＝太陽1個分の光度</strong>です。「約38万太陽光度」は、太陽38万個分の明るさ、という意味です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）（てんもんたんい）</a></dt>
+          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#見かけの等級">見かけの等級（みかけのとうきゅう）</a></dt>
-            <dd>地球から見たときの、天体の明るさを表す数字です。<strong>数字が小さいほど明るく</strong>見えます。TON 618 は約15.9等で、とても遠いので、暗い天体として観測されます。</dd>
+          <dt><a class="term-link" href="0_yogo.html#公転周期">公転周期（こうてんしゅうき）</a></dt>
+          <dd>公転で、ぐるっと一周するのにかかる時間のことです。惑星にとっての「1年」の長さです。地球は約365日、HD 189733 b は約2.22日、TOI-1452 b は約11.06日です。まけまけは約305年、ゴンゴンは約547年です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#金属量">金属量（きんぞくりょう）</a></dt>
-            <dd>星にふくまれる、水素とヘリウムより重い元素の割合です。天文学では、これらをぜんぶ「金属」と呼びます。鉄だけを指すわけではありません。金属量が多い星ほど、惑星ができやすい傾向がある、といわれています。</dd>
+          <dt><a class="term-link" href="0_yogo.html#ケプラーの法則">ケプラーの法則（けぷらーのほうそく）</a></dt>
+          <dd>天体の軌道について、ケプラーが見つけた3つの法則です。とくに第3法則は、「太陽のまわりでは、公転周期（年）の2乗が、軌道長半径（AU）の3乗に等しい」というもの。衛星の軌道から、中心の天体の質量を計算するのにも使われます。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#最小質量">最小質量（さいしょうしつりょう）</a></dt>
-            <dd>視線速度法で分かる、惑星の質量の下限です。軌道の傾きが分からないため、本当の質量は、最小質量と同じか、それより大きくなります。タウ・セチ e の「約3.93地球質量」も、最小質量です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#反射率">反射率（アルベド）（はんしゃりつ）</a></dt>
+          <dd>惑星が、星の光をどれだけ反射するかを表す割合です。反射率が大きいほど、受け取る熱が減るので、温度が変わります。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#軌道長半径">軌道長半径（きどうちょうはんけい）</a></dt>
-            <dd>惑星の軌道（だ円）の、いちばん長い直径の半分の長さのことで、主星からの平均的な距離の目安になります。TOI-1452 b は約0.061 AU（天文単位）です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#共通重心">共通重心（きょうつうじゅうしん）</a></dt>
+          <dd>2つの天体が、お互いの重力で回り合うときの、回転の中心になる点です。惑星は恒星よりずっと軽いので、共通重心は恒星のすぐ近くにあります。恒星が、この点のまわりを小さく回る「揺れ」を測るのが、視線速度法です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）（てんもんたんい）</a></dt>
-            <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
+          <dt><a class="term-link" href="0_yogo.html#ドップラーシフト">ドップラーシフト（ドップラー効果）（どっぷらーしふと）</a></dt>
+          <dd>光を出す天体が動くと、光の波長がずれる現象です。近づくときは波長が短く、遠ざかるときは長くなります。惑星の重力で主星が揺れると、主星の光の波長がわずかにずれるので、これを測るのが視線速度法です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#公転周期">公転周期（こうてんしゅうき）</a></dt>
-            <dd>公転で、ぐるっと一周するのにかかる時間のことです。惑星にとっての「1年」の長さです。地球は約365日、HD 189733 b は約2.22日、TOI-1452 b は約11.06日です。まけまけは約305年、ゴンゴンは約547年です。</dd>
+          <dt><a class="term-link" href="0_yogo.html#恒星活動">恒星活動（こうせいかつどう）</a></dt>
+          <dd>星の表面で起きる、黒点、フレア、対流、磁気の活動などの、まとめた呼び方です。星のスペクトルを変化させるので、惑星の信号とよく似た見かけの変動を作り、惑星探しの邪魔になることがあります。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#ケプラーの法則">ケプラーの法則（けぷらーのほうそく）</a></dt>
-            <dd>天体の軌道について、ケプラーが見つけた3つの法則です。とくに第3法則は、「太陽のまわりでは、公転周期（年）の2乗が、軌道長半径（AU）の3乗に等しい」というもの。衛星の軌道から、中心の天体の質量を計算するのにも使われます。</dd>
+          <dt><a class="term-link" href="0_yogo.html#ESPRESSO">ESPRESSO</a></dt>
+          <dd>ヨーロッパ南天天文台（ESO）の、チリにある超大型望遠鏡（VLT）に取りつけられた、超高精度の分光器です。視線速度を、秒速10cm級の精度で測ることをめざして作られました。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#反射率">反射率（アルベド）（はんしゃりつ）</a></dt>
-            <dd>惑星が、星の光をどれだけ反射するかを表す割合です。反射率が大きいほど、受け取る熱が減るので、温度が変わります。</dd>
+          <dt><a class="term-link" href="0_yogo.html#デブリ円盤">デブリ円盤（でぶりえんばん）</a></dt>
+          <dd>惑星ができたあとに残った、細かい塵や岩石、氷などが、星のまわりを回っている円盤です。惑星系ができて、変わってきた歴史を調べる手がかりになります。タウ・セチのまわりにも、見つかっています。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#共通重心">共通重心（きょうつうじゅうしん）</a></dt>
-            <dd>2つの天体が、お互いの重力で回り合うときの、回転の中心になる点です。惑星は恒星よりずっと軽いので、共通重心は恒星のすぐ近くにあります。恒星が、この点のまわりを小さく回る「揺れ」を測るのが、視線速度法です。</dd>
-
-            <dt><a class="term-link" href="0_yogo.html#ドップラーシフト">ドップラーシフト（ドップラー効果）（どっぷらーしふと）</a></dt>
-            <dd>光を出す天体が動くと、光の波長がずれる現象です。近づくときは波長が短く、遠ざかるときは長くなります。惑星の重力で主星が揺れると、主星の光の波長がわずかにずれるので、これを測るのが視線速度法です。</dd>
-
-            <dt><a class="term-link" href="0_yogo.html#恒星活動">恒星活動（こうせいかつどう）</a></dt>
-            <dd>星の表面で起きる、黒点、フレア、対流、磁気の活動などの、まとめた呼び方です。星のスペクトルを変化させるので、惑星の信号とよく似た見かけの変動を作り、惑星探しの邪魔になることがあります。</dd>
-
-            <dt><a class="term-link" href="0_yogo.html#ESPRESSO">ESPRESSO</a></dt>
-            <dd>ヨーロッパ南天天文台（ESO）の、チリにある超大型望遠鏡（VLT）に取りつけられた、超高精度の分光器です。視線速度を、秒速10cm級の精度で測ることをめざして作られました。</dd>
-
-            <dt><a class="term-link" href="0_yogo.html#デブリ円盤">デブリ円盤（でぶりえんばん）</a></dt>
-            <dd>惑星ができたあとに残った、細かい塵や岩石、氷などが、星のまわりを回っている円盤です。惑星系ができて、変わってきた歴史を調べる手がかりになります。タウ・セチのまわりにも、見つかっています。</dd>
-
-          </dl>
-          <p class="glossary-more">
-            <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
-              <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
-                   onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
-            </a>
-          </p>
-        </div>
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
       </div>
     </article>
 

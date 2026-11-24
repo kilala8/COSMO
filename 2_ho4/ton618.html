@@ -1074,52 +1074,43 @@ h1 {
   box-shadow: 0 0 16px rgba(182, 140, 255, 0.45);
 }
 .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.info-frame {
-  margin: 28px 0 1.6em;
-  border: 2px solid rgba(255, 122, 217, 0.75);
-  border-radius: 18px;
-  background: rgba(14, 6, 30, 0.6);
-  box-shadow: 0 0 14px rgba(255, 122, 217, 0.3), 0 0 26px rgba(182, 140, 255, 0.18), inset 0 0 16px rgba(182, 140, 255, 0.1);
-  overflow: hidden;
+
+.person-column {
+  margin: 22px 0 28px;
+  padding: 14px 16px 12px;
+  border: 1px dashed rgba(255, 122, 217, 0.65);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.55);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.25);
 }
-.info-frame .people-box,
-.info-frame .glossary {
-  margin: 0;
-  padding: 0 18px 6px;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-.info-frame .people-box dd { margin-bottom: 16px; }
-.info-frame .glossary {
-  border-top: 3px solid;
-  border-image: linear-gradient(90deg, #ff7ad9, #b68cff, #4de1ff) 1;
-}
-.story .info-frame .people-title,
-.story .info-frame .glossary-title {
-  margin: 0 -18px 16px;
-  padding: 11px 18px;
-  font-size: 1.05rem;
+.person-column .person-column-title {
+  margin: 0 0 6px;
+  color: var(--pink);
+  font-size: 0.95rem;
   font-weight: bold;
-  letter-spacing: 0.14em;
-  color: #fff;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px #ff7ad9aa;
 }
-.story .info-frame .people-title {
-  background: linear-gradient(90deg, rgba(255, 122, 217, 0.45), rgba(255, 122, 217, 0.08));
-  border-bottom: 1px solid rgba(255, 122, 217, 0.7);
-  text-shadow: 0 0 10px #ff7ad9, 0 0 18px #ff7ad9;
+.person-list { margin: 0; padding: 0; }
+.person-list dt {
+  margin: 12px 0 3px;
+  color: var(--cyan);
+  font-weight: bold;
 }
-.story .info-frame .glossary-title {
-  background: linear-gradient(90deg, rgba(77, 225, 255, 0.35), rgba(182, 140, 255, 0.1));
-  border-bottom: 1px solid rgba(77, 225, 255, 0.7);
-  text-shadow: 0 0 10px #4de1ff, 0 0 18px #4de1ff;
+.person-list dt .person-orig {
+  margin-left: 0.5em;
+  font-size: 0.85em;
+  font-weight: normal;
+  opacity: 0.85;
 }
-@media (max-width: 600px) {
-  .info-frame .people-box,
-  .info-frame .glossary { padding: 0 14px 4px; }
-  .story .info-frame .people-title,
-  .story .info-frame .glossary-title { margin: 0 -14px 14px; padding: 10px 14px; }
+.person-list dd {
+  margin: 0 0 4px;
+  line-height: 1.8;
+}
+.person-column .person-note {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 </style>
 </head>
@@ -1232,6 +1223,15 @@ h1 {
           <tr><th>海王星の軌道半径</th><td>約30 AU</td></tr>
         </tbody>
       </table>
+
+      <aside class="person-column">
+        <p class="person-column-title">👤 人物コラム：シュヴァルツシルト半径の名前の由来</p>
+        <dl class="person-list">
+          <dt>カール・シュヴァルツシルト<span class="person-orig">Karl Schwarzschild（1873〜1916）</span></dt>
+          <dd>ドイツの天文学者・物理学者です。アインシュタインが一般相対性理論の方程式を発表した直後の1915年末から1916年にかけて、第一次世界大戦の戦地で計算を進め、その方程式の、最初の正確な解を見つけました。この解から、ブラックホールの「黒い部分」の半径が出てきます。その半径が、彼の名前をとって<strong>シュヴァルツシルト半径</strong>と呼ばれています。1916年に、42歳で亡くなりました。</dd>
+        </dl>
+      </aside>
+
       <p>つまり、事象の地平面の直径は、<strong>海王星の軌道直径の約43倍</strong>。</p>
       <p>太陽系の惑星たちを丸ごと飲み込んでも、まだまだ余裕がある規模です。</p>
 
@@ -1316,29 +1316,27 @@ h1 {
         <p><a class="source-link" href="https://en.wikipedia.org/wiki/TON_618" target="_blank" rel="noopener noreferrer">Wikipedia：TON 618 ↗</a></p>
       </div>
 
-      <div class="info-frame">
-        <div class="glossary">
-          <p class="glossary-title">🔭 この記事に出てくる言葉</p>
-          <dl>
-            <dt><a class="term-link" href="0_yogo.html#赤方偏移">赤方偏移（せきほうへんい）</a></dt>
-            <dd>遠い天体の光が、宇宙の膨張によって波長を引き伸ばされ、本来より<strong>赤っぽい（波長の長い）側にずれる</strong>現象です。ずれが大きい（数字が大きい）ほど、遠くにあって、それだけ昔の姿を見ていることになります。TON 618の「2.219」は、光の波長が<strong>約3.2倍</strong>（1＋2.219倍）に引き伸ばされている、という意味です。</dd>
+      <div class="glossary">
+        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+        <dl>
+          <dt><a class="term-link" href="0_yogo.html#赤方偏移">赤方偏移（せきほうへんい）</a></dt>
+          <dd>遠い天体の光が、宇宙の膨張によって波長を引き伸ばされ、本来より<strong>赤っぽい（波長の長い）側にずれる</strong>現象です。ずれが大きい（数字が大きい）ほど、遠くにあって、それだけ昔の姿を見ていることになります。TON 618の「2.219」は、光の波長が<strong>約3.2倍</strong>（1＋2.219倍）に引き伸ばされている、という意味です。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#シュヴァルツシルト半径">シュヴァルツシルト半径</a></dt>
-            <dd>ブラックホールの「黒い部分」の<strong>半径</strong>です。ブラックホールの質量だけで決まる大きさで、重いほど大きくなります。回転しないブラックホールの場合は、下の「事象の地平面」の半径と同じ大きさになります。</dd>
+          <dt><a class="term-link" href="0_yogo.html#シュヴァルツシルト半径">シュヴァルツシルト半径</a></dt>
+          <dd>ブラックホールの「黒い部分」の<strong>半径</strong>です。ブラックホールの質量だけで決まる大きさで、重いほど大きくなります。回転しないブラックホールの場合は、下の「事象の地平面」の半径と同じ大きさになります。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#事象の地平面">事象の地平面（事象の地平線）</a></dt>
-            <dd>「ここから内側に入ると、光でさえ外に出てこられなくなる」という、戻れない境目のことです。壁や固い表面があるわけではなく、あくまで「境界」です。降着円盤（ブラックホールのまわりを回りながら落ち込んでいく、ガスの光の輪）は、この境目よりも外側で光っています。</dd>
+          <dt><a class="term-link" href="0_yogo.html#事象の地平面">事象の地平面（事象の地平線）</a></dt>
+          <dd>「ここから内側に入ると、光でさえ外に出てこられなくなる」という、戻れない境目のことです。壁や固い表面があるわけではなく、あくまで「境界」です。降着円盤（ブラックホールのまわりを回りながら落ち込んでいく、ガスの光の輪）は、この境目よりも外側で光っています。</dd>
 
-            <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）</a></dt>
-            <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
-          </dl>
-          <p class="glossary-more">
-            <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
-              <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
-                   onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
-            </a>
-          </p>
-        </div>
+          <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）</a></dt>
+          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
+        </dl>
+        <p class="glossary-more">
+          <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+            <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+          </a>
+        </p>
       </div>
     </article>
 
