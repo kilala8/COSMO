@@ -1053,6 +1053,102 @@ h1 {
   .big-frame::before { border: 2px solid #ff7ad9; }
   .big-frame::after { border: 2px solid #4de1ff; }
 }
+.glossary dt .plain { font-size: 0.85em; opacity: 0.85; }
+.people-box {
+  margin: 0 0 1.6em;
+  padding: 14px 18px 6px;
+  border: 1px dashed rgba(255, 122, 217, 0.6);
+  border-left: 5px solid #ff7ad9;
+  border-radius: 4px 18px 18px 4px;
+  background: rgba(40, 8, 34, 0.45);
+  box-shadow: 0 0 12px rgba(255, 122, 217, 0.22);
+}
+.story .people-title {
+  margin: 0 0 12px;
+  color: #ffd6f3;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px #ff7ad9;
+}
+.people-box dl { margin: 0; }
+.people-box dt {
+  margin: 0 0 6px;
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid rgba(255, 232, 74, 0.7);
+  border-radius: 999px;
+  background: rgba(255, 232, 74, 0.08);
+  color: var(--yellow);
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 232, 74, 0.7);
+}
+.people-box dt .plain {
+  margin-left: 0.5em;
+  font-size: 0.78em;
+  font-weight: normal;
+  color: #ffe9a0;
+  text-shadow: none;
+}
+.people-box dd {
+  margin: 0 0 16px;
+  padding-left: 12px;
+  border-left: 2px dotted rgba(255, 122, 217, 0.5);
+  color: #f6eef4;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+@media (max-width: 600px) {
+  .people-box { padding: 12px 12px 4px; }
+}
+.info-frame {
+  margin: 28px 0 1.6em;
+  border: 2px solid rgba(255, 122, 217, 0.75);
+  border-radius: 18px;
+  background: rgba(14, 6, 30, 0.6);
+  box-shadow: 0 0 14px rgba(255, 122, 217, 0.3), 0 0 26px rgba(182, 140, 255, 0.18), inset 0 0 16px rgba(182, 140, 255, 0.1);
+  overflow: hidden;
+}
+.info-frame .people-box,
+.info-frame .glossary {
+  margin: 0;
+  padding: 0 18px 6px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.info-frame .people-box dd { margin-bottom: 16px; }
+.info-frame .glossary {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #ff7ad9, #b68cff, #4de1ff) 1;
+}
+.story .info-frame .people-title,
+.story .info-frame .glossary-title {
+  margin: 0 -18px 16px;
+  padding: 11px 18px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+.story .info-frame .people-title {
+  background: linear-gradient(90deg, rgba(255, 122, 217, 0.45), rgba(255, 122, 217, 0.08));
+  border-bottom: 1px solid rgba(255, 122, 217, 0.7);
+  text-shadow: 0 0 10px #ff7ad9, 0 0 18px #ff7ad9;
+}
+.story .info-frame .glossary-title {
+  background: linear-gradient(90deg, rgba(77, 225, 255, 0.35), rgba(182, 140, 255, 0.1));
+  border-bottom: 1px solid rgba(77, 225, 255, 0.7);
+  text-shadow: 0 0 10px #4de1ff, 0 0 18px #4de1ff;
+}
+@media (max-width: 600px) {
+  .info-frame .people-box,
+  .info-frame .glossary { padding: 0 14px 4px; }
+  .story .info-frame .people-title,
+  .story .info-frame .glossary-title { margin: 0 -14px 14px; padding: 10px 14px; }
+}
 </style>
 </head>
 
@@ -1288,54 +1384,76 @@ h1 {
         <p><a class="source-link" href="https://johnstonsarchive.net/astro/astmoons/am-225088.html" target="_blank" rel="noopener noreferrer">Johnston's Archive：Gonggongと湘流の詳細データ ↗</a></p>
       </div>
 
-      <div class="glossary">
-        <p class="glossary-title">🔭 この記事に出てくる言葉</p>
-        <dl>
-          <dt><a class="term-link" href="0_yogo.html#太陽系外縁天体">太陽系外縁天体（たいようけいがいえんてんたい）</a></dt>
-          <dd>海王星より外側の軌道を回る天体の総称です。冥王星やエリス、そしてゴンゴンも、この仲間です。氷と岩石でできたものが多く、「TNO」と略されることもあります。</dd>
+      <div class="info-frame">
+        <div class="people-box">
+          <p class="people-title">👤 この記事に出てくる人物</p>
+          <dl>
+            <dt>マイケル・ブラウン<span class="plain">（発見チームの中心人物）</span></dt>
+            <dd>マイケル・ブラウンは、アメリカの天文学者（カリフォルニア工科大学）で、太陽系外縁天体の探索で知られています。2005年にエリスを発見し、冥王星が準惑星に分類されるきっかけをつくった人物としても有名です。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#散乱円盤天体">散乱円盤天体（さんらんえんばんてんたい）</a></dt>
-          <dd>太陽系外縁天体のうち、海王星の重力の影響で軌道が大きく乱された（散らばった）と考えられているグループです。軌道が細長く、大きく傾いたものが多いのが特徴で、ゴンゴンもこの仲間に分類されています。</dd>
+            <dt>ミーガン・シュワンブ<span class="plain">（発見チームの一人）</span></dt>
+            <dd>ミーガン・シュワンブは、アメリカ出身の天文学者です。2007年のゴンゴン発見当時は大学院生で、ブラウンらのチームの一員として、画像からこの天体を見つけ出しました。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#準惑星">準惑星（じゅんわくせい）</a></dt>
-          <dd>太陽のまわりを回っていて、自分の重力でほぼ丸い形になっているものの、軌道のまわりの天体を一掃できていない天体です。2006年に国際天文学連合（IAU）が定義し、正式に認められているのは、ケレス・冥王星・ハウメア・マケマケ・エリスの5つです（2026年時点）。ゴンゴンは「準惑星の有力候補」として扱われています。</dd>
+            <dt>デイヴィッド・ラビノウィッツ<span class="plain">（発見チームの一人）</span></dt>
+            <dd>デイヴィッド・ラビノウィッツは、アメリカの天文学者（イェール大学）です。ブラウンらと共同で、太陽系外縁天体の探索を長く続けてきました。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#仮符号">仮符号（かりふごう）</a></dt>
-          <dd>見つかったばかりの天体につけられる、仮の名前（番号）です。「2007 OR10」の「2007」は発見された年で、「OR10」は、その年のどの時期に何番目に見つかったかを表します。軌道が確定すると小惑星番号（ゴンゴンは225088）がつき、さらに名前がつくこともあります。</dd>
+            <dt>はじめ_宇宙動画さん<span class="plain">（YouTuber）</span></dt>
+            <dd>YouTubeで宇宙の話題を扱っている、動画投稿者さんです。この記事を書いた私が、ゴンゴンのことを知るきっかけになった方で、「あのゴンゴン」というスラングも、ここから来ています。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）</a></dt>
-          <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
+            <dt>エドウィン・ハッブル<span class="plain">（ハッブル宇宙望遠鏡の名前の由来）</span></dt>
+            <dd>エドウィン・ハッブル（1889〜1953）は、アメリカの天文学者です。「天の川の外にも、別の銀河がある」ことを示し、さらに、遠い銀河ほど速く遠ざかっている（宇宙が膨張している）ことを明らかにしました。ハッブル宇宙望遠鏡は、彼にちなんだ名前です。</dd>
+          </dl>
+        </div>
 
-          <dt><a class="term-link" href="0_yogo.html#近日点">近日点（きんじつてん）</a></dt>
-          <dd>太陽のまわりを楕円で回る天体が、太陽にいちばん近づく地点（またはその距離）です。ゴンゴンの近日点は約33 AUで、冥王星がいるあたりの距離です。</dd>
+        <div class="glossary">
+          <p class="glossary-title">🔭 この記事に出てくる言葉</p>
+          <dl>
+            <dt><a class="term-link" href="0_yogo.html#太陽系外縁天体">太陽系外縁天体（たいようけいがいえんてんたい）</a></dt>
+            <dd>海王星より外側の軌道を回る天体の総称です。冥王星やエリス、そしてゴンゴンも、この仲間です。氷と岩石でできたものが多く、「TNO」と略されることもあります。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#遠日点">遠日点（えんじつてん）</a></dt>
-          <dd>太陽のまわりを楕円で回る天体が、太陽からいちばん遠ざかる地点（またはその距離）です。ゴンゴンの遠日点は約100 AU（約150億km）で、冥王星の遠日点（約49 AU）の約2倍です。</dd>
+            <dt><a class="term-link" href="0_yogo.html#散乱円盤天体">散乱円盤天体（さんらんえんばんてんたい）</a></dt>
+            <dd>太陽系外縁天体のうち、海王星の重力の影響で軌道が大きく乱された（散らばった）と考えられているグループです。軌道が細長く、大きく傾いたものが多いのが特徴で、ゴンゴンもこの仲間に分類されています。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#軌道離心率">軌道離心率（きどうりしんりつ）</a></dt>
-          <dd>軌道が、円からどれだけつぶれているかを表す数字です。0なら真円で、1に近づくほど細長い楕円になります。地球は約0.02でほとんど円ですが、ゴンゴンは約0.5と、かなり細長い軌道です。</dd>
+            <dt><a class="term-link" href="0_yogo.html#準惑星">準惑星（じゅんわくせい）</a></dt>
+            <dd>太陽のまわりを回っていて、自分の重力でほぼ丸い形になっているものの、軌道のまわりの天体を一掃できていない天体です。2006年に国際天文学連合（IAU）が定義し、正式に認められているのは、ケレス・冥王星・ハウメア・マケマケ・エリスの5つです（2026年時点）。ゴンゴンは「準惑星の有力候補」として扱われています。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#軌道傾斜角">軌道傾斜角（きどうけいしゃかく）</a></dt>
-          <dd>軌道の面が、基準になる面に対して何度傾いているかを表す角度です。ふつうは黄道面（地球が太陽のまわりを回る軌道の平面）を基準にします。ゴンゴンは約31°も傾いていて、惑星たちと比べると、かなり大きく傾いた軌道です。</dd>
+            <dt><a class="term-link" href="0_yogo.html#仮符号">仮符号（かりふごう）</a></dt>
+            <dd>見つかったばかりの天体につけられる、仮の名前（番号）です。「2007 OR10」の「2007」は発見された年で、「OR10」は、その年のどの時期に何番目に見つかったかを表します。軌道が確定すると小惑星番号（ゴンゴンは225088）がつき、さらに名前がつくこともあります。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#軌道共鳴">軌道共鳴（きどうきょうめい）</a></dt>
-          <dd>2つの天体の公転周期が、簡単な整数の比になっている関係のことです。ゴンゴンと海王星は「3：10」の関係にあるとされていて、海王星が太陽を10周する間に、ゴンゴンがおよそ3周します。決まったタイミングでおたがいに重力を及ぼし合うので、軌道に影響が出ます。</dd>
+            <dt><a class="term-link" href="0_yogo.html#天文単位">AU（天文単位）</a></dt>
+            <dd>太陽系の天体までの距離を表すための単位です。<strong>1 AU ＝ 地球と太陽の平均距離（<span style="white-space: nowrap;">約1億5000万km</span>）</strong>。たとえば海王星は、太陽から約30 AUのところを回っています。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#ソリン">ソリン（tholin）</a></dt>
-          <dd>紫外線や宇宙線の影響で、メタンなどの簡単な分子がつながってできる、赤茶色っぽい複雑な有機物のことです。冥王星やゴンゴンなどの、赤い色の原因のひとつではないかと考えられています。</dd>
+            <dt><a class="term-link" href="0_yogo.html#近日点">近日点（きんじつてん）</a></dt>
+            <dd>太陽のまわりを楕円で回る天体が、太陽にいちばん近づく地点（またはその距離）です。ゴンゴンの近日点は約33 AUで、冥王星がいるあたりの距離です。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#氷火山活動">氷火山活動（こおりかざんかつどう）</a></dt>
-          <dd>溶けた岩ではなく、水やアンモニアなどの「氷の成分」が、地下から噴き出す火山活動のことです。ゴンゴンでは、過去にそうした活動があった可能性が指摘されています。</dd>
+            <dt><a class="term-link" href="0_yogo.html#遠日点">遠日点（えんじつてん）</a></dt>
+            <dd>太陽のまわりを楕円で回る天体が、太陽からいちばん遠ざかる地点（またはその距離）です。ゴンゴンの遠日点は約100 AU（約150億km）で、冥王星の遠日点（約49 AU）の約2倍です。</dd>
 
-          <dt><a class="term-link" href="0_yogo.html#潮汐固定">潮汐固定（ちょうせきこてい）</a></dt>
-          <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
-        </dl>
-        <p class="glossary-more">
-          <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
-            <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
-                 onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
-          </a>
-        </p>
+            <dt><a class="term-link" href="0_yogo.html#軌道離心率">軌道離心率（きどうりしんりつ）</a></dt>
+            <dd>軌道が、円からどれだけつぶれているかを表す数字です。0なら真円で、1に近づくほど細長い楕円になります。地球は約0.02でほとんど円ですが、ゴンゴンは約0.5と、かなり細長い軌道です。</dd>
+
+            <dt><a class="term-link" href="0_yogo.html#軌道傾斜角">軌道傾斜角（きどうけいしゃかく）</a></dt>
+            <dd>軌道の面が、基準になる面に対して何度傾いているかを表す角度です。ふつうは黄道面（地球が太陽のまわりを回る軌道の平面）を基準にします。ゴンゴンは約31°も傾いていて、惑星たちと比べると、かなり大きく傾いた軌道です。</dd>
+
+            <dt><a class="term-link" href="0_yogo.html#軌道共鳴">軌道共鳴（きどうきょうめい）</a></dt>
+            <dd>2つの天体の公転周期が、簡単な整数の比になっている関係のことです。ゴンゴンと海王星は「3：10」の関係にあるとされていて、海王星が太陽を10周する間に、ゴンゴンがおよそ3周します。決まったタイミングでおたがいに重力を及ぼし合うので、軌道に影響が出ます。</dd>
+
+            <dt><a class="term-link" href="0_yogo.html#ソリン">ソリン（tholin）</a></dt>
+            <dd>紫外線や宇宙線の影響で、メタンなどの簡単な分子がつながってできる、赤茶色っぽい複雑な有機物のことです。冥王星やゴンゴンなどの、赤い色の原因のひとつではないかと考えられています。</dd>
+
+            <dt><a class="term-link" href="0_yogo.html#氷火山活動">氷火山活動（こおりかざんかつどう）</a></dt>
+            <dd>溶けた岩ではなく、水やアンモニアなどの「氷の成分」が、地下から噴き出す火山活動のことです。ゴンゴンでは、過去にそうした活動があった可能性が指摘されています。</dd>
+
+            <dt><a class="term-link" href="0_yogo.html#潮汐固定">潮汐固定（ちょうせきこてい）</a></dt>
+            <dd>主星の重力の影響で、惑星の<strong>自転の周期と公転の周期が同じになった状態</strong>です（自転は自分で回ること、公転は主星のまわりを回ること）。いつも同じ面を主星に向けているので、昼の側はずっと昼、夜の側はずっと夜になります。月が、地球にいつも同じ面を向けているのと同じ仕組みです。</dd>
+          </dl>
+          <p class="glossary-more">
+            <a class="glossary-btn" href="0_yogo.html" aria-label="専門用語集で、ほかの言葉も見る">
+              <img width="700" height="263" loading="lazy" decoding="async" src="0_file/yogo.webp" alt="専門用語集" draggable="false"
+                   onerror="this.replaceWith(document.createTextNode('📖 専門用語集で、ほかの言葉も見る →'))">
+            </a>
+          </p>
+        </div>
       </div>
       </div>
     </article>
