@@ -7,8 +7,17 @@
 <meta name="theme-color" content="#070720">
 <meta name="robots" content="noindex, nofollow">
 <title>✏️日記を書く</title>
+<script>
+(function () {
+  var t = Date.now() / 1000, st = document.documentElement.style;
+  st.setProperty("--sync-8",  -(t % 8)   + "s");
+  st.setProperty("--sync-12", -(t % 12)  + "s");
+  st.setProperty("--sync-18", -(t % 18)  + "s");
+  st.setProperty("--sync-34", -(t % 6.8) + "s");
+})();
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.109.0"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <style>
@@ -40,12 +49,6 @@ body {
   overflow-x: hidden;
   color: #f8edff;
   background-color: var(--bg);
-  background-image:
-    var(--neon-tile);
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 408px 408px;
   font-family:
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
@@ -61,6 +64,17 @@ select {
   font: inherit;
 }
 
+#background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--neon-tile);
+  background-repeat: repeat;
+  background-size: 408px 408px;
+  background-position: center;
+}
 #mycelium,
 #spore-canvas,
 #stars {
@@ -78,7 +92,7 @@ select {
     radial-gradient(ellipse at 15% 25%, #642cff33, transparent 45%),
     radial-gradient(ellipse at 85% 65%, #ff36bd22, transparent 45%),
     radial-gradient(ellipse at 50% 90%, #00eaff1a, transparent 40%);
-  animation: myceliumGlow 9s ease-in-out infinite alternate;
+  animation: myceliumGlow 9s ease-in-out var(--sync-18, 0s) infinite alternate;
 }
 
 #spore-canvas, #stars {
@@ -1065,6 +1079,7 @@ h1 {
 </head>
 
 <body>
+<div id="background-image" aria-hidden="true"></div>
 <div id="mycelium" aria-hidden="true"></div>
 <div id="stars" aria-hidden="true"></div>
 <canvas id="spore-canvas" aria-hidden="true"></canvas>
@@ -1109,8 +1124,6 @@ h1 {
             <option value="土星通信">
             <option value="つぶやき">
           </datalist>
-          <p class="field-note">
-          </p>
         </div>
 
         <div class="field">
@@ -1206,6 +1219,7 @@ h1 {
 const SUPABASE_URL = 'https://oqfqpzslduwynckdpqqx.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_1O773HFiGqD8A3FOKj5dSA_K2hVYUMh';
 const BUCKET = 'blog-images';
+const MIME_EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif', 'image/avif': 'avif', 'image/svg+xml': 'svg', 'image/heic': 'heic' };
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -2197,9 +2211,7 @@ async function deletePost(post) {
 
   setStatus('削除中... ⏳', '');
 
-  for (const url of parseImageUrls(post.image_url)) {
-    await removeImageFile(url);
-  }
+  const imageUrls = parseImageUrls(post.image_url);
 
   const { error } = await supabaseClient
     .from('posts')
@@ -2209,6 +2221,10 @@ async function deletePost(post) {
   if (error) {
     setStatus('❌ 削除に失敗しました: ' + error.message, 'error');
     return;
+  }
+
+  for (const url of imageUrls) {
+    await removeImageFile(url);
   }
 
   if (editingPost && editingPost.id === post.id) {
@@ -2256,6 +2272,16 @@ cancelBtn.addEventListener('click', cancelEdit);
 
 postForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  try {
+    await savePost();
+  } catch (error) {
+    console.error(error);
+    submitBtn.disabled = false;
+    setStatus('❌ 保存中にエラーが起きました: ' + (error && error.message ? error.message : error), 'error');
+  }
+});
+
+async function savePost() {
   submitBtn.disabled = true;
   setStatus('保存中... ⏳', '');
 
@@ -2279,7 +2305,8 @@ postForm.addEventListener('submit', async (e) => {
     uploadedCount++;
     setStatus(`画像をアップロード中... (${uploadedCount}/${newCount}) ⏳`, '');
 
-    const ext = item.file.name.split('.').pop();
+    const nameExt = (item.file.name.includes('.') ? item.file.name.split('.').pop() : '').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 5);
+    const ext = MIME_EXT[item.file.type] || nameExt || 'img';
     const filePath = `${currentUserId}/${makeId()}.${ext}`;
 
     const { error: uploadError } = await supabaseClient.storage
@@ -2335,7 +2362,7 @@ postForm.addEventListener('submit', async (e) => {
   setStatus('✨ 保存完了しました！', 'success');
   cancelEdit();
   fetchPosts();
-});
+}
 
 checkAuth();
 
@@ -2347,7 +2374,8 @@ checkAuth();
 
   const IS_TOUCH = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const FRAME_MS = 1000 / 30;
+  const FRAME_MS = IS_TOUCH ? 1000 / 30 : 1000 / 30 - 2;
+  let STEP = 1;
   let lastFrame = 0;
 
   let width = 0;
@@ -2402,7 +2430,7 @@ checkAuth();
   }
 
   function drawSpore(ctx, sp, x, y, advance) {
-    if (advance) sp.tw += sp.twSpeed;
+    if (advance) sp.tw += sp.twSpeed * STEP;
     const flash = Math.pow(0.5 + 0.5 * Math.sin(sp.tw), 3);
     const a = Math.min(1, sp.alpha + 0.25) * (0.3 + 0.7 * flash);
 
@@ -2464,7 +2492,7 @@ checkAuth();
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
     if (!spores.length || width !== prevWidth) {
-      const count = Math.min(90, Math.max(40, Math.floor((width * height) / 14000)));
+      const count = Math.min(180, Math.max(60, Math.floor((width * height) / 8500)));
       const total = IS_TOUCH ? Math.ceil(count * 0.6) : count;
       spores = Array.from({ length: total }, () => createSpore(true));
     }
@@ -2475,13 +2503,13 @@ checkAuth();
   function animate(now) {
     if (document.hidden) { animationId = requestAnimationFrame(animate); return; }
     if (FRAME_MS && now - lastFrame < FRAME_MS) { animationId = requestAnimationFrame(animate); return; }
-    if (typeof typingUntil !== 'undefined' && performance.now() < typingUntil) { animationId = requestAnimationFrame(animate); return; }
+    if (!IS_TOUCH) STEP = Math.min(3, Math.max(1, (now - lastFrame) / 16.667));
     lastFrame = now || 0;
 
     for (const spore of spores) {
-      spore.phase += 0.015;
-      spore.x += spore.drift + Math.sin(spore.phase) * 0.12;
-      spore.y -= spore.speed;
+      spore.phase += 0.015 * STEP;
+      spore.x += (spore.drift + Math.sin(spore.phase) * 0.12) * STEP;
+      spore.y -= spore.speed * STEP;
 
       if (spore.y < -10) Object.assign(spore, createSpore(false));
       if (spore.x < -10) spore.x = width + 10;
