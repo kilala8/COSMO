@@ -364,20 +364,16 @@ h1 {
   text-shadow: none;
 }
 
-.nav-button:nth-child(1) { --btn-color: #ff65c3; }
-.nav-button:nth-child(2) { --btn-color: #b6ff5c; }
+.nav-button:nth-child(2) { --btn-color: #ff65c3; }
 .nav-button:nth-child(3) { --btn-color: #b68cff; }
-.nav-button:nth-child(4) { --btn-color: #4d9bff; }
+.nav-button:nth-child(4) { --btn-color: #b6ff5c; }
 
 .nav-button.wide {
   grid-column: 1 / -1;
   --btn-color: #ffb85c;
 }
 
-.nav-button.wide:nth-child(4) { --btn-color: #b68cff; }
-
-.nav-button.half { grid-column: span 3; }
-.nav-button.half:nth-child(5) { --btn-color: #ffe84a; }
+.nav-button.wide.hoshi { --btn-color: #4d9bff; }
 
 @keyframes neonRainbowGlow {
   0%   { filter: hue-rotate(0deg)   brightness(1);    }
@@ -917,6 +913,118 @@ footer {
 }
 .intro .kira-emoji:nth-of-type(1) { animation-delay: -.3s; }
 .intro .kira-emoji:nth-of-type(3) { animation-delay: -1.1s; }
+
+.big-frame {
+  --tl-gap: 3px;
+  border: 1px solid #b6ff5c;
+  box-shadow:
+    0 0 4px #b6ff5c,
+    inset 0 0 14px #b6ff5c14;
+}
+
+.big-frame::before,
+.big-frame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 1;
+  background: none;
+}
+
+.big-frame::before {
+  inset: calc(-2px - var(--tl-gap));
+  border: 1px solid #ff7ad9;
+  border-radius: calc(25px + var(--tl-gap));
+  box-shadow:
+    0 0 3px #ff7ad9,
+    0 0 12px 1px rgba(255, 122, 217, .4),
+    0 0 28px 2px rgba(255, 61, 200, .22),
+    inset 0 0 18px rgba(255, 122, 217, .12);
+  animation: tlGlowPink 3.4s ease-in-out var(--sync-34, 0s) infinite alternate;
+}
+
+.big-frame::after {
+  inset: calc(-3px - 2 * var(--tl-gap));
+  border: 1px solid #4de1ff;
+  border-radius: calc(26px + 2 * var(--tl-gap));
+  box-shadow:
+    0 0 3px #4de1ff,
+    0 0 12px 1px rgba(77, 225, 255, .4),
+    0 0 28px 2px rgba(77, 225, 255, .22),
+    inset 0 0 18px rgba(77, 225, 255, .14);
+  animation: tlGlowOuter 3.4s ease-in-out var(--sync-34, 0s) infinite alternate;
+}
+
+@keyframes tlGlowOuter {
+  from {
+    box-shadow:
+      0 0 3px #4de1ff,
+      0 0 12px 1px rgba(77, 225, 255, .2),
+      0 0 28px 2px rgba(77, 225, 255, .12),
+      inset 0 0 18px rgba(77, 225, 255, .08);
+  }
+  to {
+    box-shadow:
+      0 0 3px #4de1ff,
+      0 0 12px 1px rgba(77, 225, 255, .55),
+      0 0 28px 2px rgba(77, 225, 255, .3),
+      inset 0 0 18px rgba(77, 225, 255, .18);
+  }
+}
+
+@keyframes tlGlowPink {
+  from {
+    box-shadow:
+      0 0 3px #ff7ad9,
+      0 0 12px 1px rgba(255, 122, 217, .55),
+      0 0 28px 2px rgba(255, 61, 200, .3),
+      inset 0 0 18px rgba(255, 122, 217, .16);
+  }
+  to {
+    box-shadow:
+      0 0 3px #ff7ad9,
+      0 0 12px 1px rgba(255, 122, 217, .15),
+      0 0 28px 2px rgba(255, 61, 200, .08),
+      inset 0 0 18px rgba(255, 122, 217, .05);
+  }
+}
+
+@media (max-width: 600px) {
+  .big-frame { --tl-gap: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .big-frame::before,
+  .big-frame::after { animation: none !important; }
+}
+
+.hero-banner {
+  --bl-gap: var(--tl-gap, 3px);
+  --bl-h: calc(3px + 2 * var(--bl-gap));
+  border-bottom: var(--bl-h) solid transparent;
+  background:
+    linear-gradient(to bottom,
+      #4de1ff 0 1px,
+      transparent 1px calc(1px + var(--bl-gap)),
+      #ff7ad9 calc(1px + var(--bl-gap)) calc(2px + var(--bl-gap)),
+      transparent calc(2px + var(--bl-gap)) calc(2px + 2 * var(--bl-gap)),
+      #b6ff5c calc(2px + 2 * var(--bl-gap)) var(--bl-h))
+    bottom / 100% var(--bl-h) no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  box-shadow: 0 4px 12px rgba(255, 122, 217, 0.2);
+  animation: tlBannerGlow 3.4s ease-in-out var(--sync-34, 0s) infinite alternate;
+}
+
+@keyframes tlBannerGlow {
+  from { box-shadow: 0 4px 12px rgba(255, 122, 217, 0.26); }
+  to   { box-shadow: 0 4px 12px rgba(77, 225, 255, 0.26); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner { animation: none !important; }
+}
 </style>
 </head>
 
@@ -943,7 +1051,7 @@ footer {
        rel="noopener noreferrer"
        aria-label="Xのプロフィールを開く">
       <img src="1_files/b_kilala.webp"
-           alt="キノコタイトル（Xへ）"
+           alt="輝星タイトル（Xへ）"
            class="title-img">
     </a>
   </h1>
@@ -981,10 +1089,12 @@ footer {
   </div>
 
   <nav class="nav-buttons" aria-label="メインメニュー">
-    <a class="nav-button half rainbow" href="hello.html">🪐HELLO</a>
-    <a class="nav-button half rainbow" href="game.html">⭐️ASOBI</a>
-    <a class="nav-button half rainbow" href="oekaki.html">🎨お絵描き</a>
-    <a class="nav-button half rainbow" href="ho4.html" data-new="2026-11-19">🌎星がたり</a>
+    <a class="nav-button wide hoshi rainbow kira-button" href="ho4.html" data-new="2026-11-19" aria-label="星がたり">
+      <span class="kira-emoji" aria-hidden="true">✨</span><span class="kira-emoji" aria-hidden="true">🌏</span><span class="kira-text">星 が た り</span><span class="kira-emoji" aria-hidden="true">🌍</span><span class="kira-emoji" aria-hidden="true">✨</span>
+    </a>
+    <a class="nav-button rainbow" href="hello.html">🪐HELLO</a>
+    <a class="nav-button rainbow" href="oekaki.html">🎨OEKAKI</a>
+    <a class="nav-button rainbow" href="game.html">⭐️ASOBI</a>
     <a class="nav-button wide rainbow kira-button" href="nikki.html" aria-label="きららの日記">
       <span class="kira-emoji" aria-hidden="true">✨</span><span class="kira-emoji" aria-hidden="true">💫</span><span class="kira-text">きららの日記</span><span class="kira-emoji" aria-hidden="true">💫</span><span class="kira-emoji" aria-hidden="true">✨</span>
     </a>
@@ -1056,7 +1166,7 @@ footer {
       <span id="visitor-counter-number">------</span>
     </div>
     <div id="visitor-counter-status" role="status" aria-live="polite">
-      CONNECTING TO THE SPORE NETWORK...
+      CONNECTING TO THE HOSHI NETWORK...
     </div>
   </section>
 
@@ -1089,7 +1199,7 @@ document.addEventListener("dragstart", (event) => {
   const shareLine = document.getElementById("share-line");
   const shareCopy = document.getElementById("share-copy");
 
-  const shareText = `${siteTitle}\n🪐きららのお家へようこそ( ´ᯅ\` )🌎`;
+  const shareText = `${siteTitle}\n🪐きららのお家へようこそ(´ᯅ`)🌎`;
 
   if (shareX) {
     shareX.href =
@@ -1560,7 +1670,7 @@ document.addEventListener("click", (event) => {
       header.className = "guestbook-entry-header";
 
       const author = document.createElement("strong");
-      author.textContent = entry.name || "ななしの胞子";
+      author.textContent = entry.name || "ななしの素粒子";
 
       const date = document.createElement("time");
       date.textContent = entry.date;
