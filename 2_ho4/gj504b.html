@@ -1054,53 +1054,7 @@ h1 {
   .big-frame::after { border: 2px solid #4de1ff; }
 }
 .glossary dt .plain { font-size: 0.85em; opacity: 0.85; }
-.people-box {
-  margin: 0 0 1.6em;
-  padding: 14px 18px 6px;
-  border: 1px dashed rgba(255, 122, 217, 0.6);
-  border-left: 5px solid #ff7ad9;
-  border-radius: 4px 18px 18px 4px;
-  background: rgba(40, 8, 34, 0.45);
-  box-shadow: 0 0 12px rgba(255, 122, 217, 0.22);
-}
-.story .people-title {
-  margin: 0 0 12px;
-  color: #ffd6f3;
-  font-size: 0.85rem;
-  font-weight: bold;
-  letter-spacing: 0.12em;
-  text-shadow: 0 0 8px #ff7ad9;
-}
-.people-box dl { margin: 0; }
-.people-box dt {
-  margin: 0 0 6px;
-  display: inline-block;
-  padding: 3px 12px;
-  border: 1px solid rgba(255, 232, 74, 0.7);
-  border-radius: 999px;
-  background: rgba(255, 232, 74, 0.08);
-  color: var(--yellow);
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(255, 232, 74, 0.7);
-}
-.people-box dt .plain {
-  margin-left: 0.5em;
-  font-size: 0.78em;
-  font-weight: normal;
-  color: #ffe9a0;
-  text-shadow: none;
-}
-.people-box dd {
-  margin: 0 0 16px;
-  padding-left: 12px;
-  border-left: 2px dotted rgba(255, 122, 217, 0.5);
-  color: #f6eef4;
-  line-height: 1.9;
-  overflow-wrap: anywhere;
-  text-wrap: pretty;
-}
 @media (max-width: 600px) {
-  .people-box { padding: 12px 12px 4px; }
 }
 .info-frame {
   margin: 28px 0 1.6em;
@@ -1110,33 +1064,9 @@ h1 {
   box-shadow: 0 0 14px rgba(255, 122, 217, 0.3), 0 0 26px rgba(182, 140, 255, 0.18), inset 0 0 16px rgba(182, 140, 255, 0.1);
   overflow: hidden;
 }
-.info-frame .people-box,
-.info-frame .glossary {
-  margin: 0;
-  padding: 0 18px 6px;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-.info-frame .people-box dd { margin-bottom: 16px; }
 .info-frame .glossary {
   border-top: 3px solid;
   border-image: linear-gradient(90deg, #ff7ad9, #b68cff, #4de1ff) 1;
-}
-.story .info-frame .people-title,
-.story .info-frame .glossary-title {
-  margin: 0 -18px 16px;
-  padding: 11px 18px;
-  font-size: 1.05rem;
-  font-weight: bold;
-  letter-spacing: 0.14em;
-  color: #fff;
-}
-.story .info-frame .people-title {
-  background: linear-gradient(90deg, rgba(255, 122, 217, 0.45), rgba(255, 122, 217, 0.08));
-  border-bottom: 1px solid rgba(255, 122, 217, 0.7);
-  text-shadow: 0 0 10px #ff7ad9, 0 0 18px #ff7ad9;
 }
 .story .info-frame .glossary-title {
   background: linear-gradient(90deg, rgba(77, 225, 255, 0.35), rgba(182, 140, 255, 0.1));
@@ -1144,10 +1074,44 @@ h1 {
   text-shadow: 0 0 10px #4de1ff, 0 0 18px #4de1ff;
 }
 @media (max-width: 600px) {
-  .info-frame .people-box,
-  .info-frame .glossary { padding: 0 14px 4px; }
-  .story .info-frame .people-title,
-  .story .info-frame .glossary-title { margin: 0 -14px 14px; padding: 10px 14px; }
+}
+
+.person-column {
+  margin: 22px 0 28px;
+  padding: 14px 16px 12px;
+  border: 1px dashed rgba(255, 122, 217, 0.65);
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.55);
+  box-shadow: 0 0 12px rgba(182, 140, 255, 0.25);
+}
+.person-column .person-column-title {
+  margin: 0 0 6px;
+  color: var(--pink);
+  font-size: 0.95rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px #ff7ad9aa;
+}
+.person-list { margin: 0; padding: 0; }
+.person-list dt {
+  margin: 12px 0 3px;
+  color: var(--cyan);
+  font-weight: bold;
+}
+.person-list dt .person-orig {
+  margin-left: 0.5em;
+  font-size: 0.85em;
+  font-weight: normal;
+  opacity: 0.85;
+}
+.person-list dd {
+  margin: 0 0 4px;
+  line-height: 1.8;
+}
+.person-column .person-note {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 </style>
 </head>
@@ -1263,7 +1227,16 @@ h1 {
       </ul>
       <p>こうした観測は、木星に近い温度の領域にある巨大惑星の大気を、理解するための手がかりになります。</p>
 
-      <h3><span class="num">7</span>惑星の形成に関する謎</h3>
+            <aside class="person-column">
+        <p class="person-column-title">👤 人物コラム：ジェームズ・ウェッブ宇宙望遠鏡の名前の由来</p>
+        <dl class="person-list">
+          <dt>ジェームズ・ウェッブ<span class="person-orig">James E. Webb（1906〜1992）</span></dt>
+          <dd>NASA（アメリカ航空宇宙局）の第2代長官です。アポロ計画を進めていた時期に長官を務めました。天文学者ではありませんが、宇宙科学の発展に力を尽くした人物として、<strong>ジェームズ・ウェッブ宇宙望遠鏡</strong>に名前が残っています。</dd>
+        </dl>
+        <p class="person-note">望遠鏡や観測装置の名前の由来になった人物を紹介しています。</p>
+      </aside>
+
+<h3><span class="num">7</span>惑星の形成に関する謎</h3>
       <p>もうひとつの謎は、<strong>どうやって、主星から約43.5 AUも離れた場所に巨大惑星ができたのか</strong>、という問題です。</p>
       <p>巨大惑星のできかたとして有名な<strong>コア集積モデル</strong>では、まず岩石や氷が集まって固体の核ができ、そのあとガスを大量にとりこんで成長すると考えます。ところが、主星から遠い場所では、物質が集まって巨大惑星になるまでに、時間がかかると考えられています。</p>
       <p>惑星ができたあとに、現在の軌道まで移動した可能性なども含めて、形成の過程には、未解明の部分が残されています。</p>
@@ -1314,13 +1287,6 @@ h1 {
       </div>
 
       <div class="info-frame">
-        <div class="people-box">
-          <p class="people-title">👤 この記事に出てくる人物</p>
-          <dl>
-            <dt>ジェームズ・ウェッブ<span class="plain">（ジェームズ・ウェッブ宇宙望遠鏡の名前の由来）</span></dt>
-            <dd>ジェームズ・ウェッブ（1906〜1992）は、NASA（アメリカ航空宇宙局）の第2代長官です。アポロ計画を進めていた時期に長官を務めました。天文学者ではありませんが、宇宙科学の発展に力を尽くした人物として、望遠鏡に名前が残っています。</dd>
-          </dl>
-        </div>
 
         <div class="glossary">
           <p class="glossary-title">🔭 この記事に出てくる言葉</p>
