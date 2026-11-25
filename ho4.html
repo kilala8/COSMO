@@ -896,6 +896,7 @@ h1 {
   transform: translateY(14px);
   visibility: hidden;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition:
     opacity 0.25s ease,
     transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -1843,18 +1844,65 @@ document.addEventListener("click", (event) => {
 (() => {
   const btn = document.getElementById("toTop");
   if (!btn) return;
+  const root = document.documentElement;
+  const getY = () => window.pageYOffset || root.scrollTop || document.body.scrollTop || 0;
+
   let ticking = false;
   const update = () => {
     ticking = false;
-    btn.classList.toggle("is-show", window.scrollY > 500);
+    btn.classList.toggle("is-show", getY() > 500);
   };
-  window.addEventListener("scroll", () => {
+  const onScroll = () => {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }, { passive: true });
-  btn.addEventListener("click", () => {
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  window.addEventListener("pageshow", update);
+
+  let rafId = 0;
+  const stop = () => {
+    if (!rafId) return;
+    cancelAnimationFrame(rafId);
+    rafId = 0;
+    root.style.scrollBehavior = "";
+  };
+  const jump = (y) => {
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+  };
+  const toTop = () => {
+    stop();
+    const start = getY();
+    if (start <= 0) return;
+    root.style.scrollBehavior = "auto";
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
-  });
+    if (calm) {
+      jump(0);
+      root.style.scrollBehavior = "";
+      return;
+    }
+    const dur = Math.min(900, Math.max(350, start / 4));
+    const t0 = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      jump(Math.round(start * (1 - e)));
+      if (p < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        rafId = 0;
+        jump(0);
+        root.style.scrollBehavior = "";
+      }
+    };
+    rafId = requestAnimationFrame(step);
+  };
+
+  ["touchstart", "wheel", "keydown"].forEach((ev) =>
+    window.addEventListener(ev, stop, { passive: true })
+  );
+  btn.addEventListener("click", toTop);
   update();
 })();
 </script>

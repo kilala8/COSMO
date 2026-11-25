@@ -873,6 +873,34 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .hero-banner { animation: none !important; }
 }
+
+.area-basic   { --pc: #ff7ad9; --pc-rgb: 255, 122, 217; }
+.area-extra   { --pc: #b6ff5c; --pc-rgb: 182, 255, 92; }
+.area-history { --pc: #4d9bff; --pc-rgb: 77, 155, 255; }
+
+.panel-card {
+  border: 2px solid var(--pc);
+  box-shadow:
+    0 0 6px rgba(var(--pc-rgb), .45),
+    inset 0 0 14px rgba(var(--pc-rgb), .1);
+}
+
+.panel-card::before {
+  border: none;
+  box-shadow:
+    0 0 10px 1px rgba(var(--pc-rgb), .3),
+    0 0 22px 2px rgba(var(--pc-rgb), .14);
+  animation: panelGlowSoft 3.4s ease-in-out infinite alternate;
+}
+
+.panel-card::after {
+  display: none;
+}
+
+@keyframes panelGlowSoft {
+  from { opacity: .6; }
+  to   { opacity: 1; }
+}
 </style>
 </head>
 

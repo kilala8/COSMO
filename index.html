@@ -253,6 +253,7 @@ h1 {
   display: flex;
   align-items: center;
   width: max-content;
+  will-change: transform;
   animation: marqueeScroll 18s linear infinite;
 }
 
@@ -266,6 +267,8 @@ h1 {
 
 .marquee-track img {
   display: inline-block;
+  flex: none;
+  max-width: none;
   width: auto;
   height: 28px;
   vertical-align: middle;
@@ -1199,7 +1202,7 @@ document.addEventListener("dragstart", (event) => {
   const shareLine = document.getElementById("share-line");
   const shareCopy = document.getElementById("share-copy");
 
-  const shareText = `${siteTitle}\n🪐きららのお家へようこそ(´ᯅ`)🌎`;
+  const shareText = `${siteTitle}\n🪐きららのお家へようこそ(´ᯅ\`)🌎`;
 
   if (shareX) {
     shareX.href =
@@ -1904,25 +1907,35 @@ window.addEventListener("DOMContentLoaded", () => {
   template.removeAttribute("aria-hidden");
 
   let lastWidth = 0;
+  let buildId = 0;
 
-  function imagesReady() {
-    const imgs = Array.from(track.querySelectorAll("img"));
+  function imagesReady(root) {
+    const imgs = Array.from(root.querySelectorAll("img"));
     return Promise.all(imgs.map((img) =>
-      img.complete ? Promise.resolve() : new Promise((resolve) => {
-        img.addEventListener("load", resolve, { once: true });
-        img.addEventListener("error", resolve, { once: true });
+      (img.complete && img.naturalWidth > 0) ? Promise.resolve() : new Promise((resolve) => {
+        const done = () => resolve();
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+        setTimeout(done, 3000);
       })
     ));
   }
 
-  function build() {
-    track.innerHTML = "";
+  async function build(retry = 0) {
+    const id = ++buildId;
     track.style.animation = "none";
+    track.innerHTML = "";
     const first = template.cloneNode(true);
     track.appendChild(first);
 
+    await imagesReady(first);
+    if (id !== buildId) return;
+
     const groupWidth = first.getBoundingClientRect().width;
-    if (!groupWidth) return;
+    if (!groupWidth || groupWidth < 60) {
+      if (retry < 5) setTimeout(() => build(retry + 1), 300);
+      return;
+    }
 
     const count = Math.ceil(marquee.clientWidth / groupWidth) + 2;
     for (let i = 1; i < count; i++) {
@@ -1936,12 +1949,16 @@ window.addEventListener("DOMContentLoaded", () => {
     lastWidth = marquee.clientWidth;
   }
 
-  imagesReady().then(build);
+  imagesReady(original).then(() => build());
 
   window.addEventListener("resize", () => {
     if (marquee.clientWidth === lastWidth) return;
-    imagesReady().then(build);
+    build();
   }, { passive: true });
+
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) build();
+  });
 })();
 </script>
 

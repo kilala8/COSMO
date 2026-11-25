@@ -1596,6 +1596,70 @@ button.yt-facade {
 @media (prefers-reduced-motion: reduce) {
   .hero-banner { animation: none !important; }
 }
+
+.to-top {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 9px 18px;
+  border: 2px solid var(--pink);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 122, 217, 0.5), rgba(182, 140, 255, 0.5), rgba(77, 225, 255, 0.45)), rgba(10, 4, 28, 0.82);
+  box-shadow: 0 0 12px rgba(255, 122, 217, 0.6);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    visibility 0s linear 0.25s,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.to-top.is-show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition-delay: 0s;
+}
+.to-top .finger {
+  display: inline-block;
+  animation: fingerBob 1.4s ease-in-out infinite;
+}
+@keyframes fingerBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+@media (hover: hover) {
+  .to-top.is-show:hover {
+    transform: scale(1.06);
+    background: var(--pink);
+    color: #070720;
+    box-shadow: 0 0 18px var(--pink);
+  }
+}
+.to-top.is-show:active {
+  transform: scale(0.96);
+  background: var(--pink);
+  color: #070720;
+}
+.to-top:focus-visible { outline: 2px dashed var(--cyan); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .to-top .finger { animation: none; }
+}
 </style>
 </head>
 
@@ -2950,6 +3014,73 @@ document.addEventListener('click', (event) => {
       window.location.href = href;
     }, 350);
   });
+})();
+</script>
+<button type="button" class="to-top" id="toTop" aria-label="ページのいちばん上へ戻る">ページトップへ<span class="finger" aria-hidden="true">☝️</span></button>
+<script>
+(() => {
+  const btn = document.getElementById("toTop");
+  if (!btn) return;
+  const root = document.documentElement;
+  const getY = () => window.pageYOffset || root.scrollTop || document.body.scrollTop || 0;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    btn.classList.toggle("is-show", getY() > 500);
+  };
+  const onScroll = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  window.addEventListener("pageshow", update);
+
+  let rafId = 0;
+  const stop = () => {
+    if (!rafId) return;
+    cancelAnimationFrame(rafId);
+    rafId = 0;
+    root.style.scrollBehavior = "";
+  };
+  const jump = (y) => {
+    window.scrollTo(0, y);
+    root.scrollTop = y;
+    document.body.scrollTop = y;
+  };
+  const toTop = () => {
+    stop();
+    const start = getY();
+    if (start <= 0) return;
+    root.style.scrollBehavior = "auto";
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calm) {
+      jump(0);
+      root.style.scrollBehavior = "";
+      return;
+    }
+    const dur = Math.min(900, Math.max(350, start / 4));
+    const t0 = performance.now();
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      jump(Math.round(start * (1 - e)));
+      if (p < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        rafId = 0;
+        jump(0);
+        root.style.scrollBehavior = "";
+      }
+    };
+    rafId = requestAnimationFrame(step);
+  };
+
+  ["touchstart", "wheel", "keydown"].forEach((ev) =>
+    window.addEventListener(ev, stop, { passive: true })
+  );
+  btn.addEventListener("click", toTop);
+  update();
 })();
 </script>
 </body>
