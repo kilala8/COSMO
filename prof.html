@@ -285,13 +285,13 @@ img {
   .area-basic .info-item:hover .info-label,
   .area-basic .info-item:hover .info-value,
   .area-basic .info-item:hover .gender-note {
-    color: #070720;
+    color: var(--on, #070720);
     text-shadow: none;
   }
   .area-basic .info-item:hover .gender-rainbow,
   .area-basic .info-item:hover .birthday-countdown {
     background: none;
-    -webkit-text-fill-color: #070720;
+    -webkit-text-fill-color: var(--on, #070720);
     animation: none;
   }
 }
@@ -304,13 +304,13 @@ img {
 .area-basic .info-item.is-pressed .info-label,
 .area-basic .info-item.is-pressed .info-value,
 .area-basic .info-item.is-pressed .gender-note {
-  color: #070720;
+  color: var(--on, #070720);
   text-shadow: none;
 }
 .area-basic .info-item.is-pressed .gender-rainbow,
 .area-basic .info-item.is-pressed .birthday-countdown {
   background: none;
-  -webkit-text-fill-color: #070720;
+  -webkit-text-fill-color: var(--on, #070720);
   animation: none;
 }
 
@@ -1341,11 +1341,43 @@ document.addEventListener("dragstart", (e) => {
 })();
 
 (() => {
-  const palette = ["#ff00aa", "#05bdfa", "#ff6f00", "#bfff5e", "#ff6f00", "#a200ff"];
-  document.querySelectorAll(".info-grid, .extra-list").forEach((group) => {
-    group.querySelectorAll(".info-item").forEach((item, i) => {
-      item.style.setProperty("--c", palette[i % palette.length]);
+  const basicColors = {
+    "名前": "#ff00aa",
+    "性別": "#07f068",
+    "年齢": "#a200ff",
+    "誕生日": "#1c42ff",
+    "誕生日まで": "#1c42ff",
+    "出自": "#ff6f00",
+    "身長": "#bfff5e",
+    "体重": "#ff1900",
+    "握力": "#00ffdd",
+    "偏差値": "#05bdfa",
+    "足の規模感": "#1c42ff",
+    "服の規模感": "#1c42ff",
+    "恋愛経験": "#ff00aa"
+  };
+  const extraPalette = ["#ff00aa", "#05bdfa", "#ff1900", "#07f068", "#a200ff", "#ff6f00", "#1c42ff", "#00ffdd"];
+  const fallback = ["#ff00aa", "#05bdfa", "#ff6f00", "#bfff5e", "#ff6f00", "#a200ff"];
+
+  const onColor = (hex) => {
+    const c = [1, 3, 5].map((i) => {
+      const v = parseInt(hex.slice(i, i + 2), 16) / 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
     });
+    const lum = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    return lum < 0.18 ? "#fff" : "#070720";
+  };
+  const paint = (item, color) => {
+    item.style.setProperty("--c", color);
+    item.style.setProperty("--on", onColor(color));
+  };
+
+  document.querySelectorAll(".info-grid .info-item").forEach((item, i) => {
+    const label = (item.querySelector(".info-label")?.textContent || "").trim();
+    paint(item, basicColors[label] || fallback[i % fallback.length]);
+  });
+  document.querySelectorAll(".extra-list .info-item").forEach((item, i) => {
+    paint(item, extraPalette[i % extraPalette.length]);
   });
 })();
 
