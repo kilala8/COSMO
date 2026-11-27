@@ -709,67 +709,6 @@ h1 {
   filter: drop-shadow(0 0 16px #ff00aa);
 }
 
-.outage-notice {
-  max-width: 900px;
-  margin: 0 auto 24px;
-  padding: 14px 18px;
-  border: 1.5px dashed #ff6f00;
-  border-radius: 14px;
-  background: rgba(18, 10, 40, 0.62);
-  box-shadow: 0 0 10px #ff6f0044, inset 0 0 12px #ff6f0014;
-  text-align: left;
-}
-.outage-notice-title {
-  margin: 0 0 6px;
-  color: #ff6f00;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 8px #ff6f0066;
-}
-.outage-notice p:not(.outage-notice-title) {
-  margin: 0;
-  color: #e7dcff;
-  font-size: 0.85rem;
-  line-height: 1.8;
-}
-.outage-notice p:not(.outage-notice-title) + p:not(.outage-notice-title) {
-  margin-top: 8px;
-}
-.outage-simbad {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed #a200ff77;
-  color: #e7dcff;
-  font-size: 0.85rem;
-  line-height: 1.8;
-}
-.outage-simbad-title {
-  margin: 0 0 4px;
-  color: #05bdfa;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 8px #05bdfa66;
-}
-.outage-simbad p { margin: 0; }
-.outage-simbad ul {
-  margin: 4px 0 6px;
-  padding-left: 1.4em;
-}
-.outage-simbad a {
-  color: #05bdfa;
-  text-decoration: underline;
-  text-decoration-color: #05bdfa88;
-  text-underline-offset: 4px;
-  overflow-wrap: anywhere;
-}
-.outage-simbad a:hover,
-.outage-simbad a:focus-visible {
-  color: #fff;
-  text-shadow: 0 0 8px #05bdfa;
-}
-
 .glossary-btn:focus-visible {
   outline: 2px dashed #05bdfa;
   outline-offset: 4px;
@@ -1099,6 +1038,19 @@ h1 {
   .hero-banner { animation: none !important; }
 }
 </style>
+  <meta name="description" content="気になる星に触れてみて✨ 太陽系から系外惑星まで。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KILALA no ZONE">
+  <meta property="og:title" content="星がたり｜KILALA no ZONE">
+  <meta property="og:description" content="気になる星に触れてみて✨ 太陽系から系外惑星まで。">
+  <meta property="og:url" content="https://kilala8.github.io/COSMO/ho4.html">
+  <meta property="og:image" content="https://kilala8.github.io/COSMO/2_ho4/0_file/0_card/1card_hoshigatari.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="星がたりのシェアカード">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%90%3C/text%3E%3C/svg%3E">
 </head>
 
 <body>
@@ -1115,7 +1067,7 @@ h1 {
              alt=""
              aria-hidden="true"
              class="hero-bg"
-             onerror="this.style.display='none'">
+             onerror="this.style.display='none'" decoding="async">
         <h1>
           <a href="index.html"
              class="logo-link"
@@ -1147,26 +1099,6 @@ h1 {
       </a>
     </div>
 
-    <aside class="outage-notice" role="note" aria-label="一次情報サイトのアクセス障害について">
-      <p class="outage-notice-title">※ 一次情報サイトのアクセス障害について</p>
-      <p>現在、参照先の公式サイトでアクセス障害が発生しており、一時的に閲覧できない場合があります。<br>
-      「星がたり」では、一次情報への参照先を引き続き掲載しています。復旧状況を確認しながら、リンクを維持していきます。<br>
-      ご不便をおかけしますが、復旧までお待ちください。</p>
-      <p>※ 各星のページに掲載している一次情報へのリンク先は、アクセス障害中も変更せず、そのまま残しています。</p>
-
-      <div class="outage-simbad">
-        <p class="outage-simbad-title">SIMBAD（天体データベース）</p>
-        <p><a href="https://simbad.cds.unistra.fr/simbad/sim-id?Ident=WR+102" target="_blank" rel="noopener noreferrer">Strasbourg本家・SIMBAD</a></p>
-        <p>※ 現在、運営元CDSのサイバーセキュリティ問題に伴い、本家サイトへのアクセスが不安定になっています。</p>
-        <p>代替アクセス先：</p>
-        <ul>
-          <li><a href="https://simbad.cfa.harvard.edu/simbad/" target="_blank" rel="noopener noreferrer">SIMBAD（CfA Harvard ミラー）</a></li>
-          <li><a href="https://simbad.idia.ac.za/" target="_blank" rel="noopener noreferrer">SIMBAD（IDIA ミラー）</a></li>
-        </ul>
-        <p>※ CfA Harvardミラーの収録データは2026年10月14日までのものです。</p>
-      </div>
-    </aside>
-
     <nav class="genre-index" id="genre-index" aria-label="ジャンル別の索引" hidden>
       <ul class="genre-list" id="genre-list"></ul>
     </nav>
@@ -1177,15 +1109,15 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/taiyo.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/taiyo.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/taiyo.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback sun-fallback'}))">
         </span>
         <span class="star-name">太陽☀️</span>
-        <span class="star-sub">俺たちのたいよう</span>
+        <span class="star-sub">俺たちのTHE SUN</span>
       </a>
       <a class="star-card" href="2_ho4/earth.html" data-new="2026-11-25">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/gaia.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/gaia.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">地球🌏</span>
@@ -1198,7 +1130,7 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/gonggong.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/gonggong.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/gonggong.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">あのゴンゴン</span>
@@ -1206,7 +1138,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/makemake.html" data-new="2026-11-22">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/makemake.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/makemake.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">まけまけ</span>
@@ -1219,7 +1151,7 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/hd189733b.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/HD189733b.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/HD189733b.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">HD 189733 b</span>
@@ -1227,7 +1159,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/toi1452b.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/toi1452b.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/toi1452b.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">TOI-1452 b</span>
@@ -1235,7 +1167,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/gj504b.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/gj504b.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/gj504b.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">GJ 504 b</span>
@@ -1243,7 +1175,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/tauceti_e.html" data-new="2026-11-22">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/tauceti_e.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/tauceti_e.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">タウ・セチ e</span>
@@ -1256,7 +1188,7 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/vycma.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/vycma.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/vycma.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">VYかにまよ</span>
@@ -1264,7 +1196,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/uyscuti.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/uyscuti.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/uyscuti.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">UY Scuti</span>
@@ -1272,7 +1204,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/wr102.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/wr102.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/wr102.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">WR 102</span>
@@ -1280,7 +1212,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/etacarinae.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/etacarinae.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/etacarinae.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">イータカリーナ</span>
@@ -1293,7 +1225,7 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/kani.html" data-new="2026-11-21">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/kani.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/kani.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">かにパルサー</span>
@@ -1306,7 +1238,7 @@ h1 {
         <div class="star-grid">
       <a class="star-card" href="2_ho4/ton618.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/ton-chan.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/ton-chan.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">TON 618</span>
@@ -1314,7 +1246,7 @@ h1 {
       </a>
       <a class="star-card" href="2_ho4/phoenixa.html">
         <span class="star-img-wrap">
-          <img src="2_ho4/0_file/phoenixa.webp" alt="" decoding="async"
+          <img loading="lazy" src="2_ho4/0_file/phoenixa.webp" alt="" decoding="async"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback'}))">
         </span>
         <span class="star-name">フェニックスA*</span>
