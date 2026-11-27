@@ -1013,6 +1013,9 @@ h1 {
 .tool-btn.size-btn1 { font-size: 0.9rem; }
 .tool-btn.size-btn2 { font-size: 1.05rem; }
 .tool-btn.size-btn3 { font-size: 1.25rem; }
+.tool-btn.size-btn-s1 { font-size: 0.85rem; }
+.tool-btn.size-btn-s2 { font-size: 0.75rem; }
+.tool-btn.size-btn-s3 { font-size: 0.65rem; }
 .tool-btn.palette-toggle[aria-expanded="true"] {
   background: var(--purple);
   color: #070720;
@@ -1214,6 +1217,9 @@ h1 {
           <div class="editor-toolbar">
             <button type="button" class="tool-btn bold-btn" data-tag="b">太字</button>
             <button type="button" class="tool-btn palette-toggle" data-tag="palette" aria-expanded="false" aria-controls="color-palette">🎨 文字色</button>
+            <button type="button" class="tool-btn size-btn size-btn-s3" data-tag="size" data-val="0.55em" title="文字を超極小に">超極小</button>
+            <button type="button" class="tool-btn size-btn size-btn-s2" data-tag="size" data-val="0.7em" title="文字を極小に">極小</button>
+            <button type="button" class="tool-btn size-btn size-btn-s1" data-tag="size" data-val="0.85em" title="文字を小さく">小</button>
             <button type="button" class="tool-btn size-btn size-btn1" data-tag="size" data-val="1.3em" title="文字を大きく">大</button>
             <button type="button" class="tool-btn size-btn size-btn2" data-tag="size" data-val="1.7em" title="文字を特大に">特大</button>
             <button type="button" class="tool-btn size-btn size-btn3" data-tag="size" data-val="2.3em" title="文字を超特大に">超特大</button>
@@ -1227,6 +1233,7 @@ h1 {
           <div id="color-palette" class="color-palette hidden" role="group" aria-label="文字色のパレット"></div>
           <textarea id="content" rows="10" required></textarea>
           <p class="field-note">
+            文字の大きさ: 選んだ文字に「超極小・極小・小・大・特大・超特大」ボタンを押すと、[size=0.7em]〜[/size] のように入るよ。<br>
             リンク: [url=https://〜]表示する文字[/url] ／ YouTube: [youtube]動画のURL[/youtube] ／ X埋め込み: [x]ポストのURL[/x] ／ 引用枠: [quote]引用したい文章[/quote]<br>
             画像: 上の画像の「📌 小・中・大」か「🖼️ 画像」ボタンで、カーソルの位置に [img=1] のような印が入るよ。その場所に画像が出る（同じ画像を何回入れてもOK）。大きさは [img=1:s]（小）[img=1:m]（中）で、印なしは大。入れたあとは「↔ 画像サイズ」で切り替えられるよ。本文に入れなかった画像は、本文の上にまとめて出るよ。
           </p>
@@ -1957,7 +1964,7 @@ document.querySelectorAll('.tool-btn').forEach(btn => {
     if (tag === 'b') {
       wrapSelection('[b]', '[/b]', '太字のテキスト', false);
     } else if (tag === 'size') {
-      wrapSelection(`[size=${val}]`, '[/size]', '大きなテキスト', false);
+      wrapSelection(`[size=${val}]`, '[/size]', parseFloat(val) < 1 ? '小さなテキスト' : '大きなテキスト', false);
     } else if (tag === 'quote') {
       wrapSelection('[quote]', '[/quote]', '引用したい文章', true);
     } else if (tag === 'url' || tag === 'youtube' || tag === 'twitter') {
