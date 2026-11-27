@@ -6,11 +6,11 @@
 <title>🥬 草と虹色回転菊 🥬</title>
 <style>
   :root {
-    --pink: #ff7ad9;
-    --cyan: #4de1ff;
-    --yellow: #ffe84a;
-    --purple: #b68cff;
-    --green: #b6ff5c;
+    --pink: #ff00aa;
+    --cyan: #05bdfa;
+    --yellow: #ff6f00;
+    --purple: #a200ff;
+    --green: #bfff5e;
   }
 
   * { box-sizing: border-box; }
@@ -72,25 +72,25 @@
     top: 15px;
     right: 15px;
     z-index: 15000;
-    background: rgba(255, 122, 217, 0.25);
-    color: #4de1ff;
+    background: rgba(255, 0, 170, 0.25);
+    color: #05bdfa;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-family: 'Courier New', monospace, sans-serif;
     font-weight: bold;
     font-size: 14px;
-    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
-    border: 1px solid #4de1ff;
-    text-shadow: 0 0 8px #4de1ff;
+    box-shadow: 0 0 12px #ff00aa, inset 0 0 8px #ff00aa;
+    border: 1px solid #05bdfa;
+    text-shadow: 0 0 8px #05bdfa;
     transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
   }
 
   #back-link:hover,
   #back-link:focus-visible {
     transform: scale(1.05);
-    background: rgba(255, 122, 217, 0.45);
-    box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+    background: rgba(255, 0, 170, 0.45);
+    box-shadow: 0 0 22px #ff00aa, 0 0 12px #05bdfa;
     outline: none;
   }
 
@@ -134,7 +134,7 @@
     width: 100%;
     height: 100%;
     transition: transform 0.1s ease;
-    filter: drop-shadow(0 0 10px #b6ff5c) drop-shadow(0 0 25px #4de1ff);
+    filter: drop-shadow(0 0 10px #bfff5e) drop-shadow(0 0 25px #05bdfa);
     animation: cabbageTilt 4s ease-in-out infinite alternate;
   }
 
@@ -224,7 +224,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 22px rgba(182, 140, 255, 0.8));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 22px rgba(162, 0, 255, 0.8));
   }
 
   @keyframes giantSpin {
@@ -242,13 +242,13 @@
   .kiku-layer.l5 { animation-delay: -2.4s; }
 
   @keyframes kikuColorCycle {
-    0% { fill: #ff2a5f; stroke: #ff7ad9; }
-    16% { fill: #b68cff; stroke: #d8b4fe; }
-    33% { fill: #2a6bff; stroke: #4de1ff; }
-    50% { fill: #00f0ff; stroke: #a1ffce; }
-    66% { fill: #b6ff5c; stroke: #ffe84a; }
-    83% { fill: #ffe84a; stroke: #ff2a5f; }
-    100% { fill: #ff2a5f; stroke: #ff7ad9; }
+    0% { fill: #ff1900; stroke: #ff00aa; }
+    16% { fill: #a200ff; stroke: #d8b4fe; }
+    33% { fill: #1c42ff; stroke: #05bdfa; }
+    50% { fill: #05bdfa; stroke: #07f068; }
+    66% { fill: #bfff5e; stroke: #ff6f00; }
+    83% { fill: #ff6f00; stroke: #ff1900; }
+    100% { fill: #ff1900; stroke: #ff00aa; }
   }
 
   #reward-modal {
@@ -373,7 +373,7 @@
 
   const FINALE_INTERVAL_MS = 10000;
 
-  const neonColors = ["#ff2a5f", "#2a6bff", "#ff7ad9", "#00f0ff", "#b6ff5c", "#ffe84a", "#b68cff"];
+  const neonColors = ["#ff1900", "#1c42ff", "#ff00aa", "#05bdfa", "#bfff5e", "#ff6f00", "#a200ff"];
   const veggies = ["🍅", "🫑", "🥕", "🥑", "🥖", "🥬", "🌽", "🍆"];
 
   let totalClicks = 0;
@@ -703,7 +703,7 @@
       const veins = lobeVeins(R, rot);
 
       out += `<g class="lobe" style="--i:${startIndex + i}">
-        <path d="${shape}" fill="none" stroke="rgba(6,70,40,0.4)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="${shape}" fill="none" stroke="rgba(2, 60, 26,0.4)" stroke-width="2.6" stroke-linejoin="round"/>
         <path d="${shape}" fill="${fill}" stroke="rgba(214,255,206,0.65)" stroke-width="0.7" stroke-linejoin="round"/>
         <path d="${veins.side}" fill="none" stroke="#f1ffd0" stroke-opacity="0.6" stroke-width="0.8" stroke-linecap="round"/>
         <path d="${veins.rib}" fill="none" stroke="#f4ffd8" stroke-opacity="0.85" stroke-width="1.7" stroke-linecap="round"/>
@@ -731,11 +731,11 @@
     return `
       <div class="cabbage">
         <svg viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="${CAB_CX}" cy="${CAB_CY}" r="36" fill="#157a44"/>
+          <circle cx="${CAB_CX}" cy="${CAB_CY}" r="36" fill="#036c2f"/>
           ${outer}
           ${inner}
           <circle cx="${CAB_CX}" cy="${CAB_CY}" r="15" fill="url(#cabHead)" stroke="rgba(214,255,206,0.6)" stroke-width="0.6"/>
-          <path d="${wraps}" fill="none" stroke="rgba(70,160,80,0.75)" stroke-width="0.9" stroke-linecap="round"/>
+          <path d="${wraps}" fill="none" stroke="rgba(4, 150, 66,0.75)" stroke-width="0.9" stroke-linecap="round"/>
           <ellipse cx="44" cy="46" rx="6.5" ry="3.6" transform="rotate(-30 44 46)" fill="#fff" fill-opacity="0.4"/>
         </svg>
       </div>
@@ -746,13 +746,13 @@
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <radialGradient id="cabOuter" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="46">
-          <stop offset="0" stop-color="#7fdc72"/><stop offset="0.6" stop-color="#34c05a"/><stop offset="1" stop-color="#1b9150"/>
+          <stop offset="0" stop-color="#07f068"/><stop offset="0.6" stop-color="#06c053"/><stop offset="1" stop-color="#048439"/>
         </radialGradient>
         <radialGradient id="cabInner" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="34">
-          <stop offset="0" stop-color="#d4ff9a"/><stop offset="0.6" stop-color="#8bee86"/><stop offset="1" stop-color="#4fd36b"/>
+          <stop offset="0" stop-color="#bfff5e"/><stop offset="0.6" stop-color="#63f763"/><stop offset="1" stop-color="#07f068"/>
         </radialGradient>
         <radialGradient id="cabHead" gradientUnits="userSpaceOnUse" cx="50" cy="52" r="16">
-          <stop offset="0" stop-color="#fbffdc"/><stop offset="0.7" stop-color="#d3ff9d"/><stop offset="1" stop-color="#a0ec86"/>
+          <stop offset="0" stop-color="#fbffdc"/><stop offset="0.7" stop-color="#d3ff9d"/><stop offset="1" stop-color="#bfff5e"/>
         </radialGradient>
       </defs>
     </svg>
