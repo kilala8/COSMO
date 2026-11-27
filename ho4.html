@@ -709,6 +709,31 @@ h1 {
   filter: drop-shadow(0 0 16px #ff00aa);
 }
 
+.outage-notice {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border: 1.5px dashed #ff6f00;
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.62);
+  box-shadow: 0 0 10px #ff6f0044, inset 0 0 12px #ff6f0014;
+  text-align: left;
+}
+.outage-notice-title {
+  margin: 0 0 6px;
+  color: #ff6f00;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px #ff6f0066;
+}
+.outage-notice p:not(.outage-notice-title) {
+  margin: 0;
+  color: #e7dcff;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
 .glossary-btn:focus-visible {
   outline: 2px dashed #05bdfa;
   outline-offset: 4px;
@@ -1086,6 +1111,13 @@ h1 {
       </a>
     </div>
 
+    <aside class="outage-notice" role="note" aria-label="一次情報サイトのアクセス障害について">
+      <p class="outage-notice-title">※ 一次情報サイトのアクセス障害について</p>
+      <p>現在、参照先の公式サイトでアクセス障害が発生しており、一時的に閲覧できない場合があります。<br>
+      「星がたり」では、一次情報への参照先を引き続き掲載しています。復旧状況を確認しながら、リンクを維持していきます。<br>
+      ご不便をおかけしますが、復旧までお待ちください。</p>
+    </aside>
+
     <nav class="genre-index" id="genre-index" aria-label="ジャンル別の索引" hidden>
       <ul class="genre-list" id="genre-list"></ul>
     </nav>
@@ -1100,7 +1132,7 @@ h1 {
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'planet-fallback sun-fallback'}))">
         </span>
         <span class="star-name">太陽☀️</span>
-        <span class="star-sub">俺たちのTHE SUN</span>
+        <span class="star-sub">俺たちのたいよう</span>
       </a>
       <a class="star-card" href="2_ho4/earth.html" data-new="2026-11-25">
         <span class="star-img-wrap">
