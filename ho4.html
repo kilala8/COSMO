@@ -733,6 +733,42 @@ h1 {
   font-size: 0.85rem;
   line-height: 1.8;
 }
+.outage-notice p:not(.outage-notice-title) + p:not(.outage-notice-title) {
+  margin-top: 8px;
+}
+.outage-simbad {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #a200ff77;
+  color: #e7dcff;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.outage-simbad-title {
+  margin: 0 0 4px;
+  color: #05bdfa;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px #05bdfa66;
+}
+.outage-simbad p { margin: 0; }
+.outage-simbad ul {
+  margin: 4px 0 6px;
+  padding-left: 1.4em;
+}
+.outage-simbad a {
+  color: #05bdfa;
+  text-decoration: underline;
+  text-decoration-color: #05bdfa88;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.outage-simbad a:hover,
+.outage-simbad a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 8px #05bdfa;
+}
 
 .glossary-btn:focus-visible {
   outline: 2px dashed #05bdfa;
@@ -1116,6 +1152,19 @@ h1 {
       <p>現在、参照先の公式サイトでアクセス障害が発生しており、一時的に閲覧できない場合があります。<br>
       「星がたり」では、一次情報への参照先を引き続き掲載しています。復旧状況を確認しながら、リンクを維持していきます。<br>
       ご不便をおかけしますが、復旧までお待ちください。</p>
+      <p>※ 各星のページに掲載している一次情報へのリンク先は、アクセス障害中も変更せず、そのまま残しています。</p>
+
+      <div class="outage-simbad">
+        <p class="outage-simbad-title">SIMBAD（天体データベース）</p>
+        <p><a href="https://simbad.cds.unistra.fr/simbad/sim-id?Ident=WR+102" target="_blank" rel="noopener noreferrer">Strasbourg本家・SIMBAD</a></p>
+        <p>※ 現在、運営元CDSのサイバーセキュリティ問題に伴い、本家サイトへのアクセスが不安定になっています。</p>
+        <p>代替アクセス先：</p>
+        <ul>
+          <li><a href="https://simbad.cfa.harvard.edu/simbad/" target="_blank" rel="noopener noreferrer">SIMBAD（CfA Harvard ミラー）</a></li>
+          <li><a href="https://simbad.idia.ac.za/" target="_blank" rel="noopener noreferrer">SIMBAD（IDIA ミラー）</a></li>
+        </ul>
+        <p>※ CfA Harvardミラーの収録データは2026年10月14日までのものです。</p>
+      </div>
     </aside>
 
     <nav class="genre-index" id="genre-index" aria-label="ジャンル別の索引" hidden>
