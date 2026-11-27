@@ -30,14 +30,14 @@
 
         .cloud {
             position: absolute; border-radius: 50%; z-index: 1;
-            background: rgba(255, 122, 217, 0.15);
+            background: rgba(255, 0, 170, 0.15);
             filter: blur(55px); animation: cloudDrift 25s infinite alternate ease-in-out;
         }
 
         #header-wrapper {
             position: relative; z-index: 100; padding: 10px 5px;
             background: rgba(18, 10, 45, 0.75); backdrop-filter: blur(10px);
-            border-bottom: 2px dashed #ff7ad9; text-align: center;
+            border-bottom: 2px dashed #ff00aa; text-align: center;
         }
         
         .header-link {
@@ -45,40 +45,40 @@
             display: inline-block;
         }
         h1 {
-            font-size: 1.1rem; margin: 0; color: #4de1ff;
-            text-shadow: 0 0 10px #4de1ff, 0 0 25px #ff7ad9;
+            font-size: 1.1rem; margin: 0; color: #05bdfa;
+            text-shadow: 0 0 10px #05bdfa, 0 0 25px #ff00aa;
             letter-spacing: 1px; line-height: 1.4;
             transition: transform 0.2s;
         }
         .header-link:hover h1 {
             transform: scale(1.02);
-            text-shadow: 0 0 15px #ff7ad9, 0 0 30px #ffe84a;
+            text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff6f00;
         }
 
         #calc-ui {
             position: fixed; top: 80px; right: 10px; z-index: 200;
             background: rgba(18, 10, 45, 0.9); padding: 10px; border-radius: 16px;
-            box-shadow: 0 0 25px rgba(255, 122, 217, 0.4), inset 0 0 15px rgba(182, 140, 255, 0.3); 
-            width: min(220px, calc(100vw - 20px)); border: 2px solid #ff7ad9;
+            box-shadow: 0 0 25px rgba(255, 0, 170, 0.4), inset 0 0 15px rgba(162, 0, 255, 0.3); 
+            width: min(220px, calc(100vw - 20px)); border: 2px solid #ff00aa;
         }
         #calc-display {
-            width: 100%; height: 45px; background: #070720; border: 1px solid #4de1ff; margin-bottom: 8px;
-            text-align: right; padding: 8px; box-sizing: border-box; font-size: 22px; color: #ffe84a; 
+            width: 100%; height: 45px; background: #070720; border: 1px solid #05bdfa; margin-bottom: 8px;
+            text-align: right; padding: 8px; box-sizing: border-box; font-size: 22px; color: #ff6f00; 
             border-radius: 8px; font-weight: bold; outline: none;
-            box-shadow: inset 0 0 10px rgba(77, 225, 255, 0.3);
-            text-shadow: 0 0 8px #ffe84a;
+            box-shadow: inset 0 0 10px rgba(5, 189, 250, 0.3);
+            text-shadow: 0 0 8px #ff6f00;
         }
         .calc-row {
             display: flex; gap: 4px; margin-bottom: 4px;
         }
         .calc-btn {
-            flex: 1; height: 50px; border: 1px solid #ff7ad9; background: rgba(255, 122, 217, 0.15);
-            color: #4de1ff; border-radius: 10px; cursor: pointer; font-weight: bold; 
+            flex: 1; height: 50px; border: 1px solid #ff00aa; background: rgba(255, 0, 170, 0.15);
+            color: #05bdfa; border-radius: 10px; cursor: pointer; font-weight: bold; 
             transition: 0.2s; font-size: 18px; touch-action: manipulation;
-            text-shadow: 0 0 8px #4de1ff;
-            box-shadow: 0 0 8px rgba(255, 122, 217, 0.2);
+            text-shadow: 0 0 8px #05bdfa;
+            box-shadow: 0 0 8px rgba(255, 0, 170, 0.2);
         }
-        .calc-btn:active { background: #ff7ad9; color: #070720; transform: scale(0.95); box-shadow: 0 0 15px #ff7ad9; }
+        .calc-btn:active { background: #ff00aa; color: #070720; transform: scale(0.95); box-shadow: 0 0 15px #ff00aa; }
 
         #mycelium { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10; pointer-events: none; }
 
@@ -93,23 +93,23 @@
 
         .mushroom {
             width: 85px; height: 115px;
-            background: radial-gradient(ellipse at top,#ffffff 0%,#ff7ad9 30%,#b68cff 70%,#4de1ff 100%);
+            background: radial-gradient(ellipse at top,#ffffff 0%,#ff00aa 30%,#a200ff 70%,#05bdfa 100%);
             border-radius: 70% 70% 55% 55% / 80% 80% 50% 50%;
             display:flex; align-items:center; justify-content:center;
             font-size:11px; color:#fff; font-weight:800; text-align:center;
             padding: 8px; box-sizing: border-box; position: relative;
-            box-shadow: 0 0 25px #ff7ad9, inset 0 0 15px #fff, 0 0 45px #4de1ff;
-            text-shadow: 0 0 10px #ff7ad9;
-            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 0 25px #ff00aa, inset 0 0 15px #fff, 0 0 45px #05bdfa;
+            text-shadow: 0 0 10px #ff00aa;
+            border: 1px solid rgba(255, 255, 255,0.6);
         }
-        .mushroom::before { content: '✨'; position: absolute; top: -25px; font-size: 26px; text-shadow: 0 0 15px #ffe84a; }
+        .mushroom::before { content: '✨'; position: absolute; top: -25px; font-size: 26px; text-shadow: 0 0 15px #ff6f00; }
         .mushroom::after {
             content:''; position:absolute; bottom:-25px; left:50%; transform:translateX(-50%);
-            width:18px; height:40px; background:linear-gradient(to bottom,#ff7ad9,#b68cff);
-            border-radius:10px; box-shadow:0 0 15px #ff7ad9;
+            width:18px; height:40px; background:linear-gradient(to bottom,#ff00aa,#a200ff);
+            border-radius:10px; box-shadow:0 0 15px #ff00aa;
         }
 
-        .heart { position:absolute; font-size:20px; pointer-events:none; z-index:250; text-shadow: 0 0 10px #ff7ad9; }
+        .heart { position:absolute; font-size:20px; pointer-events:none; z-index:250; text-shadow: 0 0 10px #ff00aa; }
 
         @media (max-width: 480px) {
             h1 { font-size: 0.95rem; }
@@ -122,7 +122,7 @@
     <div id="bg-container">
         <div class="cloud" style="width:500px; height:250px; top:8%; left:-5%;"></div>
         <div class="cloud" style="width:400px; height:200px; top:65%; left:60%;"></div>
-        <div class="cloud" style="width:300px; height:180px; top:35%; left:20%; background: rgba(77,225,255,0.1);"></div>
+        <div class="cloud" style="width:300px; height:180px; top:35%; left:20%; background: rgba(5, 189, 250,0.1);"></div>
     </div>
     
     <div id="header-wrapper">

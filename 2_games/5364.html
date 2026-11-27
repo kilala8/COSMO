@@ -25,23 +25,23 @@
     top: 15px;
     right: 15px;
     z-index: 3000;
-    background: rgba(255, 122, 217, 0.25);
-    color: #4de1ff;
+    background: rgba(255, 0, 170, 0.25);
+    color: #05bdfa;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-family: 'Courier New', monospace, sans-serif;
     font-weight: bold;
     font-size: 14px;
-    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
-    border: 1px solid #4de1ff;
-    text-shadow: 0 0 8px #4de1ff;
+    box-shadow: 0 0 12px #ff00aa, inset 0 0 8px #ff00aa;
+    border: 1px solid #05bdfa;
+    text-shadow: 0 0 8px #05bdfa;
     transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
   }
   #back-link:hover {
     transform: scale(1.05);
-    background: rgba(255, 122, 217, 0.45);
-    box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+    background: rgba(255, 0, 170, 0.45);
+    box-shadow: 0 0 22px #ff00aa, 0 0 12px #05bdfa;
   }
 
   .face {
@@ -52,7 +52,7 @@
     font-size: 80px;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 0 0 20px #ff7ad9, 0 0 40px #4de1ff;
+    text-shadow: 0 0 20px #ff00aa, 0 0 40px #05bdfa;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -70,7 +70,7 @@
     font-size: 40px;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 0 0 15px #ffe84a, 0 0 30px #ff7ad9;
+    text-shadow: 0 0 15px #ff6f00, 0 0 30px #ff00aa;
     pointer-events: none;
     z-index: 1000;
     animation: fadeInOut 3s ease;
@@ -80,12 +80,12 @@
     10%, 90% { opacity: 1; }
   }
   @keyframes rainbowBlink {
-    0% { color: #ff7ad9; text-shadow: 0 0 15px #ff7ad9, 0 0 30px #ff7ad9; }
-    20% { color: #ffe84a; text-shadow: 0 0 15px #ffe84a, 0 0 30px #ffe84a; }
-    40% { color: #b6ff5c; text-shadow: 0 0 15px #b6ff5c, 0 0 30px #b6ff5c; }
-    60% { color: #4de1ff; text-shadow: 0 0 15px #4de1ff, 0 0 30px #4de1ff; }
-    80% { color: #b68cff; text-shadow: 0 0 15px #b68cff, 0 0 30px #b68cff; }
-    100% { color: #ff7ad9; text-shadow: 0 0 15px #ff7ad9, 0 0 30px #ff7ad9; }
+    0% { color: #ff00aa; text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff00aa; }
+    20% { color: #ff6f00; text-shadow: 0 0 15px #ff6f00, 0 0 30px #ff6f00; }
+    40% { color: #bfff5e; text-shadow: 0 0 15px #bfff5e, 0 0 30px #bfff5e; }
+    60% { color: #05bdfa; text-shadow: 0 0 15px #05bdfa, 0 0 30px #05bdfa; }
+    80% { color: #a200ff; text-shadow: 0 0 15px #a200ff, 0 0 30px #a200ff; }
+    100% { color: #ff00aa; text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff00aa; }
   }
 </style>
 </head>
@@ -128,7 +128,7 @@ const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 const bugCount = isMobile ? 300 : 700;
 
 const neonBugColors = [
-  "#ff7ad9", "#ffe84a", "#4de1ff", "#b6ff5c", "#b68cff", "#ff36bd", "#00eaff"
+  "#ff00aa", "#ff6f00", "#05bdfa", "#bfff5e", "#a200ff", "#007bff", "#00ffdd"
 ];
 const bugs = Array.from({ length: bugCount }, () => ({
   x: Math.random() * w,
@@ -145,22 +145,22 @@ let lilySize = 1.0;
 let lilyRainbowMode = false;
 
 const lilyNeonColors = [
-  { color: "rgba(255,122,217,0.85)", shadow: "rgba(255,122,217,1)" },      
-  { color: "rgba(77,225,255,0.85)", shadow: "rgba(77,225,255,1)" },  
-  { color: "rgba(255,232,74,0.85)", shadow: "rgba(255,232,74,1)" },  
-  { color: "rgba(182,140,255,0.85)", shadow: "rgba(182,140,255,1)" },
-  { color: "rgba(255,54,189,0.85)", shadow: "rgba(255,54,189,1)" },  
-  { color: "rgba(182,255,92,0.85)", shadow: "rgba(182,255,92,1)" }  
+  { color: "rgba(255, 0, 170,0.85)", shadow: "rgba(255, 0, 170,1)" },      
+  { color: "rgba(5, 189, 250,0.85)", shadow: "rgba(5, 189, 250,1)" },  
+  { color: "rgba(255, 111, 0,0.85)", shadow: "rgba(255, 111, 0,1)" },  
+  { color: "rgba(162, 0, 255,0.85)", shadow: "rgba(162, 0, 255,1)" },
+  { color: "rgba(0, 123, 255,0.85)", shadow: "rgba(0, 123, 255,1)" },  
+  { color: "rgba(191, 255, 94,0.85)", shadow: "rgba(191, 255, 94,1)" }  
 ];
 
 const neonRainbow = [
-  "rgba(255,122,217,0.85)", 
-  "rgba(255,232,74,0.85)", 
-  "rgba(182,255,92,0.85)",
-  "rgba(77,225,255,0.85)",
-  "rgba(0,234,255,0.85)",
-  "rgba(182,140,255,0.85)",
-  "rgba(255,54,189,0.85)"
+  "rgba(255, 0, 170,0.85)", 
+  "rgba(255, 111, 0,0.85)", 
+  "rgba(191, 255, 94,0.85)",
+  "rgba(5, 189, 250,0.85)",
+  "rgba(0, 255, 221,0.85)",
+  "rgba(162, 0, 255,0.85)",
+  "rgba(0, 123, 255,0.85)"
 ];
 
 function getCurrentLilyColor(petalIndex) {
@@ -178,7 +178,7 @@ function getCurrentLilyColor(petalIndex) {
 
 function getCurrentLilyShadow() {
   if (lilyRainbowMode || lilyClickCount > 100) {
-    return "rgba(255,255,255,1)";
+    return "rgba(255, 255, 255,1)";
   } else {
     const colorIndex = Math.floor(lilyClickCount / 15) % lilyNeonColors.length;
     return lilyNeonColors[colorIndex].shadow;
@@ -192,10 +192,10 @@ function drawSpiderLily() {
   
   ctx.scale(lilySize, lilySize);
   
-  ctx.strokeStyle = "#4de1ff";
+  ctx.strokeStyle = "#05bdfa";
   ctx.lineWidth = 4;
   ctx.shadowBlur = 15;
-  ctx.shadowColor = "#4de1ff";
+  ctx.shadowColor = "#05bdfa";
   ctx.beginPath();
   ctx.moveTo(0, 0);
   ctx.lineTo(0, -120);
@@ -244,8 +244,8 @@ function celebrate(level = 1) {
       span.style.animation = 'rainbowBlink 0.5s infinite';
       span.style.animationDelay = `${Math.random() * 0.5}s`;
     } else {
-      span.style.color = '#ff7ad9';
-      span.style.textShadow = '0 0 15px #ff7ad9, 0 0 30px #4de1ff';
+      span.style.color = '#ff00aa';
+      span.style.textShadow = '0 0 15px #ff00aa, 0 0 30px #05bdfa';
     }
     
     celebDiv.appendChild(span);

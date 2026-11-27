@@ -25,28 +25,28 @@
     top: 15px;
     right: 15px;
     z-index: 3000;
-    background: rgba(255, 122, 217, 0.25);
-    color: #4de1ff;
+    background: rgba(255, 0, 170, 0.25);
+    color: #05bdfa;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-family: 'Courier New', monospace, sans-serif;
     font-weight: bold;
     font-size: 14px;
-    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
-    border: 1px solid #4de1ff;
-    text-shadow: 0 0 8px #4de1ff;
+    box-shadow: 0 0 12px #ff00aa, inset 0 0 8px #ff00aa;
+    border: 1px solid #05bdfa;
+    text-shadow: 0 0 8px #05bdfa;
     transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
   }
   #back-link:hover {
     transform: scale(1.05);
-    background: rgba(255, 122, 217, 0.45);
-    box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+    background: rgba(255, 0, 170, 0.45);
+    box-shadow: 0 0 22px #ff00aa, 0 0 12px #05bdfa;
   }
 
   .snow{
     position:absolute;pointer-events:none;font-size:22px;animation:snowfall linear forwards;
-    color: #4de1ff; text-shadow: 0 0 10px #4de1ff, 0 0 20px #ff7ad9;
+    color: #05bdfa; text-shadow: 0 0 10px #05bdfa, 0 0 20px #ff00aa;
   }
   @keyframes snowfall{
     0%{transform:translateY(-100px) translateX(0) rotate(0deg);opacity:0}
@@ -62,7 +62,7 @@
 
   .poop-inner {
     font-size: 24px; position: relative; z-index: 2; cursor: pointer;
-    filter: drop-shadow(0 0 8px var(--glow-color, #ff7ad9));
+    filter: drop-shadow(0 0 8px var(--glow-color, #ff00aa));
   }
 
   .poop-light {
@@ -73,7 +73,7 @@
 
   .face{
     position:absolute;font-size:45px;color:#fff;
-    text-shadow:0 0 15px #ff7ad9, 0 0 30px #4de1ff;
+    text-shadow:0 0 15px #ff00aa, 0 0 30px #05bdfa;
     pointer-events:none;z-index:100;
   }
 </style>
@@ -96,7 +96,7 @@ document.addEventListener("dragstart", (e) => {
 });
 
 const poops = [];
-const neonGlowColors = ["#ff7ad9", "#4de1ff", "#b68cff", "#b6ff5c", "#ffe84a", "#ff36bd"];
+const neonGlowColors = ["#ff00aa", "#05bdfa", "#a200ff", "#bfff5e", "#ff6f00", "#007bff"];
 let mouseX = 0, mouseY = 0;
 let isMouseActive = false;
 

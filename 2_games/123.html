@@ -18,51 +18,51 @@ canvas { display:block; }
     top: 15px;
     right: 15px;
     z-index: 50;
-    background: rgba(255, 122, 217, 0.2);
-    color: #4de1ff;
+    background: rgba(255, 0, 170, 0.2);
+    color: #05bdfa;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-family: 'Courier New', monospace, sans-serif;
     font-weight: bold;
     font-size: 14px;
-    box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
-    border: 1px solid #4de1ff;
-    text-shadow: 0 0 8px #4de1ff;
+    box-shadow: 0 0 12px #ff00aa, inset 0 0 8px #ff00aa;
+    border: 1px solid #05bdfa;
+    text-shadow: 0 0 8px #05bdfa;
     transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
 }
 #back-link:hover {
     transform: scale(1.05);
-    background: rgba(255, 122, 217, 0.4);
-    box-shadow: 0 0 20px #ff7ad9, 0 0 10px #4de1ff;
+    background: rgba(255, 0, 170, 0.4);
+    box-shadow: 0 0 20px #ff00aa, 0 0 10px #05bdfa;
 }
 
 #error-overlay {
     display:none; position:absolute; top:0; left:0; width:100%; height:100%;
-    background:rgba(7,7,32,0.85); backdrop-filter: blur(8px); z-index:100;
+    background:rgba(7, 7, 32,0.85); backdrop-filter: blur(8px); z-index:100;
     align-items:center; justify-content:center;
 }
 #error-overlay.active { display:flex; }
 #error-box {
-    background: rgba(18, 10, 45, 0.9); border:2px solid #ff7ad9; border-radius:16px;
+    background: rgba(18, 10, 45, 0.9); border:2px solid #ff00aa; border-radius:16px;
     padding:28px 36px; max-width:420px; width:90%; color:#f8edff;
     font-family:'Courier New',monospace; position:relative;
-    box-shadow: 0 0 25px #ff7ad9, inset 0 0 15px #b68cff;
+    box-shadow: 0 0 25px #ff00aa, inset 0 0 15px #a200ff;
 }
 #error-box h2 { font-size:15px; font-weight:700; letter-spacing:2px; margin:0 0 12px;
-    color: #4de1ff; text-shadow: 0 0 10px #4de1ff;
-    text-transform:uppercase; border-bottom:2px solid rgba(255,122,217,0.4); padding-bottom:8px; }
+    color: #05bdfa; text-shadow: 0 0 10px #05bdfa;
+    text-transform:uppercase; border-bottom:2px solid rgba(255, 0, 170,0.4); padding-bottom:8px; }
 #error-box p { font-size:13px; line-height:1.7; margin:6px 0; opacity:0.93; }
-#error-box .label { color: #ffe84a; font-size:11px; letter-spacing:1px; text-shadow: 0 0 6px #ffe84a; }
+#error-box .label { color: #ff6f00; font-size:11px; letter-spacing:1px; text-shadow: 0 0 6px #ff6f00; }
 #error-box .value { font-size:12px; margin-left:8px; color: #f8edff; }
 #error-close {
-    margin-top:20px; background:rgba(255,122,217,0.2);
-    border:1.5px solid #ff7ad9; color:#4de1ff; text-shadow: 0 0 8px #4de1ff;
+    margin-top:20px; background:rgba(255, 0, 170,0.2);
+    border:1.5px solid #ff00aa; color:#05bdfa; text-shadow: 0 0 8px #05bdfa;
     font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px;
     padding:8px 20px; border-radius:20px; cursor:pointer; display:block; width:100%;
-    box-shadow: 0 0 10px #ff7ad9; transition: 0.2s;
+    box-shadow: 0 0 10px #ff00aa; transition: 0.2s;
 }
-#error-close:hover { background:rgba(255,122,217,0.4); box-shadow: 0 0 18px #ff7ad9; }
+#error-close:hover { background:rgba(255, 0, 170,0.4); box-shadow: 0 0 18px #ff00aa; }
 </style>
 </head>
 <body>
@@ -127,15 +127,15 @@ const uraMessages = [
 ];
 
 const candyGradients = [
-    ['#ff7ad9', '#ffe84a'],
-    ['#4de1ff', '#ff7ad9'],
-    ['#b6ff5c', '#4de1ff'],
-    ['#ffe84a', '#b68cff'],
-    ['#ff36bd', '#4de1ff'],
-    ['#b68cff', '#ff7ad9']
+    ['#ff00aa', '#ff6f00'],
+    ['#05bdfa', '#ff00aa'],
+    ['#bfff5e', '#05bdfa'],
+    ['#ff6f00', '#a200ff'],
+    ['#00ffdd', '#ff00aa'],
+    ['#a200ff', '#ff00aa']
 ];
 
-const ghostColors = ['#4de1ff', '#ff7ad9'];
+const ghostColors = ['#05bdfa', '#ff00aa'];
 
 const rings = [
     { type:'candy', orbitR:80,  count:10, ballR:10, dir:-1, speed:0.35 },
@@ -167,8 +167,8 @@ function drawGhost(x, y, w, color) {
     
     ctx.strokeStyle="#ffffff"; ctx.lineWidth=1.5; ctx.lineJoin="round";
     let grad=ctx.createLinearGradient(-r,-r,r,r*2.5);
-    if (color==='#ff7ad9') { grad.addColorStop(0,'#ff7ad9'); grad.addColorStop(1,'#4de1ff'); }
-    else                   { grad.addColorStop(0,'#4de1ff'); grad.addColorStop(1,'#ff7ad9'); }
+    if (color==='#ff00aa') { grad.addColorStop(0,'#ff00aa'); grad.addColorStop(1,'#05bdfa'); }
+    else                   { grad.addColorStop(0,'#05bdfa'); grad.addColorStop(1,'#ff00aa'); }
     ctx.beginPath();
     ctx.arc(0,0,r,0,Math.PI*2);
     ctx.moveTo(r*0.7,r*0.7);
@@ -211,18 +211,18 @@ function drawCandy(x, y, r, colors) {
     ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill(); ctx.stroke();
 
     ctx.shadowBlur = 0;
-    ctx.fillStyle="rgba(255,255,255,0.7)";
+    ctx.fillStyle="rgba(255, 255, 255,0.7)";
     ctx.beginPath();
     ctx.arc(-r*0.3, -r*0.3, r*0.28, 0, Math.PI*2);
     ctx.fill();
 
-    ctx.fillStyle="#ffe84a";
+    ctx.fillStyle="#ff6f00";
     ctx.beginPath();
     ctx.arc(r*0.3, r*0.3, r*0.15, 0, Math.PI*2);
     ctx.fill();
 
     if (uraLevel>=9) {
-        ctx.fillStyle="#4de1ff";
+        ctx.fillStyle="#05bdfa";
         ctx.font=`${r*0.9}px serif`;
         ctx.textAlign="center";
         ctx.fillText(";;",r*0.6,-r*0.6);
@@ -255,11 +255,11 @@ function drawUraMessages() {
         
         ctx.shadowBlur = 10;
         if (i === MAX_URA - 1 && isLateStageCurrent) {
-            ctx.fillStyle = `rgba(255,50,80,${alpha})`;
-            ctx.shadowColor = "#ff3250";
+            ctx.fillStyle = `rgba(255, 25, 0,${alpha})`;
+            ctx.shadowColor = "#ff1900";
         } else {
-            ctx.fillStyle = `rgba(255,122,217,${alpha})`;
-            ctx.shadowColor = "#ff7ad9";
+            ctx.fillStyle = `rgba(255, 0, 170,${alpha})`;
+            ctx.shadowColor = "#ff00aa";
         }
         
         if (isLateStageCurrent && i >= 13) {

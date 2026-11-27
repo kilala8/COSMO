@@ -47,23 +47,23 @@
             top: 15px;
             right: 15px;
             z-index: 3000;
-            background: rgba(255, 122, 217, 0.25);
-            color: #4de1ff;
+            background: rgba(255, 0, 170, 0.25);
+            color: #05bdfa;
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
             font-family: 'Courier New', monospace, sans-serif;
             font-weight: bold;
             font-size: 14px;
-            box-shadow: 0 0 12px #ff7ad9, inset 0 0 8px #ff7ad9;
-            border: 1px solid #4de1ff;
-            text-shadow: 0 0 8px #4de1ff;
+            box-shadow: 0 0 12px #ff00aa, inset 0 0 8px #ff00aa;
+            border: 1px solid #05bdfa;
+            text-shadow: 0 0 8px #05bdfa;
             transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
         }
         #back-link:hover {
             transform: scale(1.05);
-            background: rgba(255, 122, 217, 0.45);
-            box-shadow: 0 0 22px #ff7ad9, 0 0 12px #4de1ff;
+            background: rgba(255, 0, 170, 0.45);
+            box-shadow: 0 0 22px #ff00aa, 0 0 12px #05bdfa;
         }
 
         #bg-layer { 
@@ -119,7 +119,7 @@
 
         .aura {
             position: absolute; width: 110%; height: 110%; border-radius: 50%;
-            background: conic-gradient(from 0deg, #ff7ad9, #ffe84a, #b6ff5c, #4de1ff, #b68cff, #ff7ad9);
+            background: conic-gradient(from 0deg, #ff00aa, #ff6f00, #bfff5e, #05bdfa, #a200ff, #ff00aa);
             filter: blur(10px); opacity: 0.8; 
             animation: auraSpin 3s infinite linear; 
             z-index: -1;
@@ -145,10 +145,10 @@
             position: relative;
             width: calc(var(--heart-size) * 0.45);
             height: calc(var(--heart-size) * 0.45);
-            background-color: var(--heart-color, #ff7ad9);
+            background-color: var(--heart-color, #ff00aa);
             transform: rotate(-45deg);
             pointer-events: none;
-            box-shadow: 0 0 10px var(--heart-color, #ff7ad9);
+            box-shadow: 0 0 10px var(--heart-color, #ff00aa);
             will-change: transform;
             animation: heartPulse 1.8s infinite alternate ease-in-out;
         }
@@ -159,7 +159,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: var(--heart-color, #ff7ad9);
+            background-color: var(--heart-color, #ff00aa);
             border-radius: 50%;
         }
 
@@ -194,13 +194,13 @@
         .pop { 
             font-size: var(--pop-size); 
             animation: bowafua 0.7s forwards; 
-            text-shadow: 0 0 20px #ff7ad9, 0 0 40px #4de1ff;
+            text-shadow: 0 0 20px #ff00aa, 0 0 40px #05bdfa;
         }
         
         .pop-giant { 
             font-size: var(--giant-size); 
             animation: giantBowafua 1.2s forwards; 
-            text-shadow: 0 0 60px #ffe84a, 0 0 100px #ff7ad9;
+            text-shadow: 0 0 60px #ff6f00, 0 0 100px #ff00aa;
         }
 
         @keyframes bowafua { 
@@ -252,8 +252,8 @@
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         const sparkleCount = isMobile ? 50 : 250;
 
-        const neonColors = ['#ff7ad9', '#ffe84a', '#4de1ff', '#b6ff5c', '#b68cff', '#ff36bd', '#00eaff', '#ffcc00'];
-        const neonBackColors = ['#230a38', '#38300a', '#0a3238', '#1f380a', '#220a38', '#380a27', '#0a2f38', '#382a0a'];
+        const neonColors = ['#ff00aa', '#ff6f00', '#05bdfa', '#bfff5e', '#a200ff', '#007bff', '#00ffdd', '#07f068'];
+        const neonBackColors = ['#230a38', '#381f0a', '#0a3238', '#1f380a', '#220a38', '#380a27', '#0a2f38', '#38180a'];
 
         function hexToRgba(hex, alpha) {
             const n = parseInt(hex.slice(1), 16);
@@ -289,7 +289,7 @@
                 if (!g || typeof g.createConicGradient !== 'function') return;
 
                 const conic = g.createConicGradient(-Math.PI / 2, size / 2, size / 2);
-                const stops = ['#ff7ad9', '#ffe84a', '#b6ff5c', '#4de1ff', '#b68cff', '#ff7ad9'];
+                const stops = ['#ff00aa', '#ff6f00', '#bfff5e', '#05bdfa', '#a200ff', '#ff00aa'];
                 stops.forEach((color, i) => conic.addColorStop(i / (stops.length - 1), color));
 
                 g.fillStyle = conic;
@@ -318,7 +318,7 @@
 
         const sparkCanvas = document.getElementById('spark-canvas');
         const sparkCtx = sparkCanvas.getContext('2d');
-        const sparkColors = ['#ff7ad9', '#ffe84a', '#4de1ff', '#b6ff5c', '#ffffff'];
+        const sparkColors = ['#ff00aa', '#ff6f00', '#05bdfa', '#bfff5e', '#ffffff'];
         const SPARK_DURATION = 1600; 
         const SPARK_MAX_SCALE = 2.5; 
 
@@ -465,7 +465,7 @@
             setTimeout(() => p.remove(), 1200);
         }
 
-        const heartColors = ['#ff7ad9', '#ffe84a', '#4de1ff', '#b6ff5c', '#b68cff', '#ff36bd', '#00eaff'];
+        const heartColors = ['#ff00aa', '#ff6f00', '#05bdfa', '#bfff5e', '#a200ff', '#007bff', '#00ffdd'];
         const heartCount = isMobile ? 24 : 70;
         const heartFragment = document.createDocumentFragment();
         
