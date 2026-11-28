@@ -1664,6 +1664,100 @@ button.yt-facade {
 @media (prefers-reduced-motion: reduce) {
   .to-top .finger { animation: none; }
 }
+
+.site-share-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  padding: 16px 12px;
+  border: 1px dashed #a200ffaa;
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.62);
+}
+
+.site-share-label {
+  color: var(--pink);
+  font-size: .8rem;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-shadow: 0 0 8px #ff00aa80;
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.site-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 9px;
+  background: rgba(18, 10, 40, .7);
+  color: #fff;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px #05bdfa4d;
+  transition: all .2s ease;
+}
+
+.site-share-btn:hover {
+  background: var(--cyan);
+  color: #070720;
+  box-shadow: 0 0 16px var(--cyan);
+  transform: translateY(-2px);
+}
+
+.site-share-btn.line-btn {
+  border-color: #bfff5e;
+  box-shadow: 0 0 8px #bfff5e4d;
+}
+
+.site-share-btn.line-btn:hover {
+  background: #bfff5e;
+  color: #070720;
+  box-shadow: 0 0 16px #bfff5e;
+}
+
+.site-share-btn.copy-btn {
+  border-color: var(--pink);
+  box-shadow: 0 0 8px #ff00aa4d;
+}
+
+.site-share-btn.copy-btn:hover {
+  background: var(--pink);
+  color: #070720;
+  box-shadow: 0 0 16px var(--pink);
+}
+
+.header-icons .site-share-area {
+  margin-top: 0;
+  width: min(92vw, 420px);
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 14px 8px;
+  row-gap: 8px;
+}
+
+.header-icons .site-share-area .site-share-label {
+  flex: 0 0 100%;
+  margin-bottom: 4px;
+}
+
+.header-icons .site-share-area .site-share-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 4px;
+  font-size: clamp(.66rem, 3.1vw, .82rem);
+  white-space: nowrap;
+}
 </style>
 </head>
 
@@ -1693,6 +1787,15 @@ button.yt-facade {
       <a href="prof.html" class="header-icon profile-icon" aria-label="プロフィールへ">
         <img src="1_files/dosei.webp" alt="" class="header-icon-img" draggable="false" decoding="async">
       </a>
+
+      <div class="site-share-area">
+        <span class="site-share-label">🪐 SHARE 🌎</span>
+        <a id="site-share-x" class="site-share-btn"
+           target="_blank" rel="noopener noreferrer">𝕏 Post</a>
+        <a id="site-share-line" class="site-share-btn line-btn"
+           target="_blank" rel="noopener noreferrer">💬 LINE</a>
+        <button id="site-share-copy" class="site-share-btn copy-btn" type="button">🔗 URLコピー</button>
+      </div>
     </nav>
 
     <div class="layout">
@@ -3018,6 +3121,40 @@ document.addEventListener('click', (event) => {
       window.location.href = href;
     }, 350);
   });
+})();
+</script>
+<script>
+(() => {
+  const currentUrl = window.location.href.split(/[?#]/)[0];
+  const shareText = "✨きららの日記💫 KILALA no ZONE\n🪐思いついたことを、思いついた時に書いています🌎";
+  const shareX = document.getElementById("site-share-x");
+  const shareLine = document.getElementById("site-share-line");
+  const shareCopy = document.getElementById("site-share-copy");
+
+  if (shareX) {
+    shareX.href =
+      "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) +
+      "&url=" + encodeURIComponent(currentUrl) + "&hashtags=KILALA_ZONE";
+  }
+
+  if (shareLine) {
+    shareLine.href =
+      "https://line.me/R/msg/text/?" + encodeURIComponent(shareText + "\n" + currentUrl);
+  }
+
+  if (shareCopy) {
+    shareCopy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(currentUrl);
+        shareCopy.textContent = "✓ コピーしたじょ！";
+      } catch (error) {
+        window.prompt("このURLをコピーしてください", currentUrl);
+      }
+      window.setTimeout(() => {
+        shareCopy.textContent = "🔗 URLコピー";
+      }, 1800);
+    });
+  }
 })();
 </script>
 <button type="button" class="to-top" id="toTop" aria-label="ページのいちばん上へ戻る">ページトップへ<span class="finger" aria-hidden="true">☝️</span></button>

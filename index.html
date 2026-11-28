@@ -383,9 +383,9 @@ h1 {
   text-shadow: none;
 }
 
-.nav-button:nth-child(2) { --btn-color: #ff00aa; }
-.nav-button:nth-child(3) { --btn-color: #a200ff; }
-.nav-button:nth-child(4) { --btn-color: #bfff5e; }
+.nav-button:nth-child(1) { --btn-color: #ff00aa; }
+.nav-button:nth-child(2) { --btn-color: #a200ff; }
+.nav-button:nth-child(3) { --btn-color: #bfff5e; }
 
 .nav-button.wide {
   grid-column: 1 / -1;
@@ -1033,6 +1033,147 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .hero-banner { animation: none !important; }
 }
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 2vw, 22px);
+  margin: 14px auto 0;
+  padding-bottom: 12px;
+  container-type: inline-size;
+}
+
+.icon-row .dosei-link {
+  flex: 0 1 38%;
+  max-width: 260px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.side-icon {
+  display: block;
+  flex: 0 1 22%;
+  max-width: 150px;
+  min-width: 0;
+  line-height: 0;
+}
+
+.side-icon-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transform-origin: 50% 80%;
+  transition: transform 0.3s ease;
+}
+
+.side-icon:hover .side-icon-img,
+.side-icon:focus-visible .side-icon-img {
+  transform: scale(1.06);
+}
+
+.nav-buttons.tri-nav {
+  grid-template-columns: 1fr;
+  gap: 26px;
+  padding: 0 10px;
+}
+
+.nav-buttons.tri-nav .nav-button {
+  grid-column: 1 / -1;
+}
+
+.nav-button.tri-line {
+  --tl-gap: 3px;
+  position: relative;
+  min-height: 70px;
+  border: 1px solid #bfff5e;
+  font-size: 1.05rem;
+}
+
+.nav-button.tri-line::before,
+.nav-button.tri-line::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.nav-button.tri-line::before {
+  inset: calc(-2px - var(--tl-gap));
+  border: 1px solid #ff00aa;
+  border-radius: calc(13px + var(--tl-gap));
+}
+
+.nav-button.tri-line::after {
+  inset: calc(-3px - 2 * var(--tl-gap));
+  border: 1px solid #05bdfa;
+  border-radius: calc(14px + 2 * var(--tl-gap));
+}
+
+@media (max-width: 600px) {
+  .nav-button.tri-line { --tl-gap: 2px; }
+}
+
+@supports (width: 1cqw) {
+  .icon-row {
+    --dosei-w: min(260px, 38cqw);
+    --side-ratio: 1;
+  }
+
+  .icon-row .dosei-link {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  .icon-row .dosei-img {
+    width: var(--dosei-w);
+  }
+
+  .side-icon {
+    flex: 0 1 auto;
+    max-width: 30cqw;
+  }
+
+  .side-icon-img {
+    width: auto;
+    max-width: 100%;
+    height: calc(var(--dosei-w) * 0.548 * var(--side-ratio));
+  }
+}
+
+.side-icon {
+  animation: sideFloat 4.6s ease-in-out infinite;
+}
+
+.icon-row .side-icon:last-child {
+  animation-duration: 5.4s;
+  animation-delay: -2s;
+}
+
+@keyframes sideFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+.side-icon-img.is-pop {
+  animation: sideBoyon 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes sideBoyon {
+  0%   { transform: scale(1, 1); }
+  15%  { transform: scale(1.22, 0.78); }
+  35%  { transform: scale(0.86, 1.2); }
+  55%  { transform: scale(1.1, 0.92); }
+  75%  { transform: scale(0.97, 1.04); }
+  100% { transform: scale(1, 1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-icon { animation: none; }
+  .side-icon-img.is-pop { animation: none; }
+}
 </style>
 </head>
 
@@ -1070,12 +1211,26 @@ footer {
       <span class="kira-text intro-text" aria-hidden="true">ゆっくりしていってください。</span>
     </p>
 
-    <div class="dosei-link">
-      <a href="prof.html"
-         aria-label="プロフィールページへ">
-        <img src="1_files/dosei.webp"
-             alt="土星（プロフィールへ）"
-             class="dosei-img"
+    <div class="icon-row">
+      <a class="side-icon" href="nikki.html" aria-label="きららの日記へ">
+        <img src="1_files/nikki.webp"
+             alt="きららの日記"
+             class="side-icon-img"
+             draggable="false" decoding="async">
+      </a>
+      <div class="dosei-link">
+        <a href="prof.html"
+           aria-label="プロフィールページへ">
+          <img src="1_files/dosei.webp"
+               alt="土星（プロフィールへ）"
+               class="dosei-img"
+               draggable="false" decoding="async">
+        </a>
+      </div>
+      <a class="side-icon" href="ho4.html" aria-label="星がたりへ">
+        <img src="1_files/hoshigatari.webp"
+             alt="星がたり"
+             class="side-icon-img"
              draggable="false" decoding="async">
       </a>
     </div>
@@ -1096,16 +1251,10 @@ footer {
     </div>
   </div>
 
-  <nav class="nav-buttons" aria-label="メインメニュー">
-    <a class="nav-button wide hoshi rainbow kira-button" href="ho4.html" data-new="2026-11-19" aria-label="星がたり">
-      <span class="kira-emoji" aria-hidden="true">✨</span><span class="kira-emoji" aria-hidden="true">🌏</span><span class="kira-text">星がたり</span><span class="kira-emoji" aria-hidden="true">🌍</span><span class="kira-emoji" aria-hidden="true">✨</span>
-    </a>
-    <a class="nav-button rainbow" href="hello.html">🪐HELLO</a>
-    <a class="nav-button rainbow" href="oekaki.html">🎨OEKAKI</a>
-    <a class="nav-button rainbow" href="game.html">⭐️ASOBI</a>
-    <a class="nav-button wide rainbow kira-button" href="nikki.html" aria-label="きららの日記">
-      <span class="kira-emoji" aria-hidden="true">✨</span><span class="kira-emoji" aria-hidden="true">💫</span><span class="kira-text">きららの日記</span><span class="kira-emoji" aria-hidden="true">💫</span><span class="kira-emoji" aria-hidden="true">✨</span>
-    </a>
+  <nav class="nav-buttons tri-nav" aria-label="メインメニュー">
+    <a class="nav-button tri-line rainbow" href="hello.html">🪐HELLO</a>
+    <a class="nav-button tri-line rainbow" href="oekaki.html">🎨OEKAKI</a>
+    <a class="nav-button tri-line rainbow" href="game.html">⭐️ASOBI</a>
   </nav>
 
   <div class="sub-links">
@@ -1205,7 +1354,7 @@ document.addEventListener("dragstart", (event) => {
   const shareLine = document.getElementById("share-line");
   const shareCopy = document.getElementById("share-copy");
 
-  const shareText = `${siteTitle}\n🪐きららのお家へようこそ(´ᯅ\`)🌎`;
+  const shareText = siteTitle + "\n🪐きららのお家へようこそ(´ᯅ`)🌎";
 
   if (shareX) {
     shareX.href =
@@ -1737,7 +1886,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const targets = document.querySelectorAll(
-    ".title-img, .hero h1 a, .dosei-link a, .nav-button, #guestbook-form .action-button, .site-share-btn"
+    ".title-img, .hero h1 a, .dosei-link a, .side-icon, .nav-button, #guestbook-form .action-button, .site-share-btn"
   );
 
   const colors = ["#ff00aa", "#05bdfa", "#ff6f00", "#a200ff", "#bfff5e"];
@@ -1990,6 +2139,81 @@ window.addEventListener("DOMContentLoaded", () => {
     const time = el.querySelector("time");
     if (time) time.after(badge);
     else el.append(badge);
+  });
+})();
+</script>
+<script>
+(() => {
+  const icons = document.querySelectorAll(".side-icon");
+  if (!icons.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let audioCtx = null;
+
+  function playBoyon() {
+    try {
+      const AudioCtor = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtor) return;
+      if (!audioCtx) audioCtx = new AudioCtor();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+
+      const t = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(170, t);
+      osc.frequency.exponentialRampToValueAtTime(520, t + 0.09);
+      osc.frequency.exponentialRampToValueAtTime(230, t + 0.2);
+      osc.frequency.exponentialRampToValueAtTime(400, t + 0.3);
+      osc.frequency.exponentialRampToValueAtTime(260, t + 0.42);
+
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.28, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.48);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(t);
+      osc.stop(t + 0.5);
+    } catch (e) {
+    }
+  }
+
+  icons.forEach((link) => {
+    const img = link.querySelector("img");
+    if (!img) return;
+
+    link.addEventListener("click", (e) => {
+      if (reduceMotion) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      e.preventDefault();
+      if (link.dataset.busy === "1") return;
+      link.dataset.busy = "1";
+
+      img.classList.remove("is-pop");
+      void img.offsetWidth;
+      img.classList.add("is-pop");
+      playBoyon();
+
+      window.setTimeout(() => {
+        window.location.href = href;
+      }, 420);
+    });
+
+    img.addEventListener("animationend", () => img.classList.remove("is-pop"));
+  });
+
+  window.addEventListener("pageshow", () => {
+    icons.forEach((link) => {
+      link.dataset.busy = "";
+      const img = link.querySelector("img");
+      if (img) img.classList.remove("is-pop");
+    });
   });
 })();
 </script>
