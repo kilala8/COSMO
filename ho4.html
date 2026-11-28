@@ -800,6 +800,18 @@ h1 {
 }
 .outage-simbad li { margin: 0 0 2px; }
 
+@keyframes fluffy-bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.35) rotate(-3deg); }
+  60%  { transform: scale(0.92) rotate(2deg); }
+  80%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.glossary-btn.is-pop img {
+  animation: fluffy-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .glossary-btn:focus-visible {
   outline: 2px dashed #05bdfa;
   outline-offset: 4px;
@@ -1847,6 +1859,43 @@ document.addEventListener("click", (event) => {
     cards.forEach((card) => {
       card.classList.remove("is-pop");
       delete card.dataset.going;
+    });
+  });
+})();
+
+(() => {
+  const btns = document.querySelectorAll(".glossary-btn");
+  if (!btns.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      const href = btn.getAttribute("href");
+      if (!href || href === "#" || reduceMotion) return;
+
+      e.preventDefault();
+      if (btn.dataset.going) return;
+      btn.dataset.going = "1";
+
+      btn.classList.remove("is-pop");
+      void btn.offsetWidth;
+      btn.classList.add("is-pop");
+
+      if (window.playBounceSound) window.playBounceSound();
+      if (window.createLogoSparkles) window.createLogoSparkles(btn.getBoundingClientRect());
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 350);
+    });
+  });
+
+  window.addEventListener("pageshow", () => {
+    btns.forEach((btn) => {
+      btn.classList.remove("is-pop");
+      delete btn.dataset.going;
     });
   });
 })();
