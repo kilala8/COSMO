@@ -725,6 +725,81 @@ h1 {
   filter: drop-shadow(0 0 16px #ff00aa);
 }
 
+/* 一次情報サイトのアクセス障害のお知らせ */
+.outage-notice {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border: 1.5px dashed #ff6f00;
+  border-radius: 14px;
+  background: rgba(18, 10, 40, 0.62);
+  box-shadow: 0 0 10px #ff6f0044, inset 0 0 12px #ff6f0014;
+  text-align: left;
+}
+.outage-notice-title {
+  margin: 0 0 6px;
+  color: #ff6f00;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px #ff6f0066;
+}
+.outage-notice p:not(.outage-notice-title) {
+  margin: 0;
+  color: #e7dcff;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.outage-notice p:not(.outage-notice-title) + p:not(.outage-notice-title) {
+  margin-top: 8px;
+}
+.outage-simbad {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #a200ff77;
+  color: #e7dcff;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.outage-simbad-title {
+  margin: 0 0 4px;
+  color: #05bdfa;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px #05bdfa66;
+}
+.outage-simbad p { margin: 0; }
+.outage-simbad ul {
+  margin: 4px 0 6px;
+  padding-left: 1.4em;
+}
+.outage-simbad a {
+  color: #05bdfa;
+  text-decoration: underline;
+  text-decoration-color: #05bdfa88;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.outage-simbad a:hover,
+.outage-simbad a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 8px #05bdfa;
+}
+.outage-notice a {
+  color: #05bdfa;
+  text-decoration: underline;
+  text-decoration-color: #05bdfa88;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.outage-notice a:hover,
+.outage-notice a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 8px #05bdfa;
+}
+.outage-simbad li { margin: 0 0 2px; }
+
 .glossary-btn:focus-visible {
   outline: 2px dashed #05bdfa;
   outline-offset: 4px;
@@ -1101,6 +1176,23 @@ h1 {
              onerror="this.replaceWith(document.createTextNode('🧮 ゆる計算解説'))">
       </a>
     </div>
+
+    <aside class="outage-notice" role="note" aria-label="一次情報サイトの障害およびミラーサイトの利用について">
+      <p class="outage-notice-title">【重要】一次情報サイトの障害およびミラーサイトの利用について</p>
+      <p>現在、星がたりが一次情報源として利用している、ストラスブール天文データセンター（CDS）の天体データベース「SIMBAD」において、サイバーセキュリティ上のインシデントが発生しており、本家サイトへのアクセスに障害が生じています。</p>
+      <p>このため、星がたりでは本家サイトの復旧までの間、ミラーサイトを通じて一次情報をご確認いただく形となります。<br>
+      以下のミラーサイトをご利用ください。</p>
+      <div class="outage-simbad">
+        <ul>
+          <li>SIMBAD（Harvardミラー）<br><a href="https://simbad.cfa.harvard.edu/simbad/" target="_blank" rel="noopener noreferrer">https://simbad.cfa.harvard.edu/simbad/</a></li>
+          <li>SIMBAD（IDIAミラー）<br><a href="https://simbad.idia.ac.za/" target="_blank" rel="noopener noreferrer">https://simbad.idia.ac.za/</a></li>
+        </ul>
+      </div>
+      <p>なお、ミラーサイトはそれぞれデータの更新時期が異なります。Harvardミラーについては、2026年10月14日までのデータが取り込まれていることが案内されています。<br>
+      障害の状況や代替アクセス方法については、CDS公式サイトでも案内されています。<br>
+      <a href="https://cds.unistra.fr/" target="_blank" rel="noopener noreferrer">https://cds.unistra.fr/</a><br>
+      ご利用の皆様にはご不便をおかけいたしますが、本家サイトの復旧まで、ミラーサイトをご利用くださいますようお願いいたします。</p>
+    </aside>
 
     <nav class="genre-index" id="genre-index" aria-label="ジャンル別の索引" hidden>
       <ul class="genre-list" id="genre-list"></ul>
